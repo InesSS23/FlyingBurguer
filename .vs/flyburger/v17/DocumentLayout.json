@@ -1,0 +1,90 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\UnityProjects\\jogo grupo\\flyburger\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{03C8D23A-C392-5DD8-1A38-4978CFB8DFD0}|Assembly-CSharp.csproj|C:\\UnityProjects\\jogo grupo\\flyburger\\assets\\scripts\\ui\\floatinguielement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03C8D23A-C392-5DD8-1A38-4978CFB8DFD0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\floatinguielement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03C8D23A-C392-5DD8-1A38-4978CFB8DFD0}|Assembly-CSharp.csproj|c:\\unityprojects\\jogo grupo\\flyburger\\assets\\scripts\\ui\\cloudmover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03C8D23A-C392-5DD8-1A38-4978CFB8DFD0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\cloudmover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03C8D23A-C392-5DD8-1A38-4978CFB8DFD0}|Assembly-CSharp.csproj|C:\\UnityProjects\\jogo grupo\\flyburger\\assets\\scripts\\ui\\pausemenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03C8D23A-C392-5DD8-1A38-4978CFB8DFD0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\pausemenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03C8D23A-C392-5DD8-1A38-4978CFB8DFD0}|Assembly-CSharp.csproj|C:\\UnityProjects\\jogo grupo\\flyburger\\assets\\scripts\\ui\\mainmenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03C8D23A-C392-5DD8-1A38-4978CFB8DFD0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\mainmenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FloatingUIElement.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\jogo grupo\\flyburger\\Assets\\Scripts\\UI\\FloatingUIElement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\FloatingUIElement.cs",
+              "ToolTip": "C:\\UnityProjects\\jogo grupo\\flyburger\\Assets\\Scripts\\UI\\FloatingUIElement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\FloatingUIElement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T22:15:32.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CloudMover.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\jogo grupo\\flyburger\\Assets\\Scripts\\UI\\CloudMover.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\CloudMover.cs",
+              "ToolTip": "C:\\UnityProjects\\jogo grupo\\flyburger\\Assets\\Scripts\\UI\\CloudMover.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\CloudMover.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAiwDMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T21:58:31.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PauseMenuController.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\jogo grupo\\flyburger\\Assets\\Scripts\\UI\\PauseMenuController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\PauseMenuController.cs",
+              "ToolTip": "C:\\UnityProjects\\jogo grupo\\flyburger\\Assets\\Scripts\\UI\\PauseMenuController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\PauseMenuController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAwwEAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T21:37:03.594Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainMenuController.cs",
+              "DocumentMoniker": "C:\\UnityProjects\\jogo grupo\\flyburger\\Assets\\Scripts\\UI\\MainMenuController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\MainMenuController.cs",
+              "ToolTip": "C:\\UnityProjects\\jogo grupo\\flyburger\\Assets\\Scripts\\UI\\MainMenuController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\MainMenuController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T21:00:43.393Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
