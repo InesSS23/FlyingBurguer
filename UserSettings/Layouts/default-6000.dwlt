@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 0
     width: 752.8
     height: 482.4
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 226}
+  m_MaxSize: {x: 4002, y: 4026}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -219,8 +219,8 @@ MonoBehaviour:
     y: 0
     width: 163.2
     height: 482.4
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 226}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 43.2
+    y: 0
     width: 1536
     height: 36
   m_SerializedDataModeController:
@@ -556,12 +556,12 @@ MonoBehaviour:
       displayed: 1
       id: Play Mode Controls
       index: 0
-      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Folded":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":-749.5999755859375,"y":-36.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":3,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
+      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Folded":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":146.4000244140625,"y":0.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
-      snapOffset: {x: -749.6, y: -36}
+      snapOffset: {x: 146.40002, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 3
+      snapCorner: 0
       layout: 4
       size: {x: 0, y: 0}
       sizeOverridden: 0
@@ -595,7 +595,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 79.200005
+    y: 24
     width: 162.2
     height: 456.4
   m_SerializedDataModeController:
@@ -614,8 +614,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs:
-      - m_Data: 45724
+      m_SelectedIDs: []
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
@@ -666,8 +665,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 163.2
-    y: 79.200005
+    x: 164.2
+    y: 24
     width: 242.00002
     height: 456.4
   m_SerializedDataModeController:
@@ -1332,7 +1331,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.14651081, y: -0.08654002, z: 0.012867829, w: -0.9853357}
     speed: 2
-    m_Value: {x: -0.14651032, y: -0.08653973, z: 0.012867786, w: -0.9853324}
+    m_Value: {x: -0.14651082, y: -0.08654002, z: 0.01286783, w: -0.98533577}
   m_Size:
     m_Target: 1378.3197
     speed: 2
@@ -1496,10 +1495,7 @@ MonoBehaviour:
     - m_Data: 46852
     m_LastClickedID:
       m_Data: 46852
-    m_ExpandedIDs:
-    - m_Data: 0
-    - m_Data: 46746
-    - m_Data: 1000000000
+    m_ExpandedIDs: []
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1530,9 +1526,7 @@ MonoBehaviour:
     m_SelectedIDs: []
     m_LastClickedID:
       m_Data: 0
-    m_ExpandedIDs:
-    - m_Data: 0
-    - m_Data: 46746
+    m_ExpandedIDs: []
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1653,7 +1647,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 561.60004
+    y: 506.4
     width: 1159
     height: 216.4
   m_SerializedDataModeController:
@@ -1690,8 +1684,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1160
-    y: 79.200005
+    x: 1161
+    y: 24
     width: 375
     height: 698.8
   m_SerializedDataModeController:
@@ -1792,8 +1786,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 407.2
-    y: 79.200005
+    x: 408.2
+    y: 24
     width: 750.8
     height: 456.4
   m_SerializedDataModeController:
@@ -1869,7 +1863,7 @@ MonoBehaviour:
       height: 890.7491
     m_MinimalGUI: 1
   m_defaultScale: 0.48880208
-  m_LastWindowPixelSize: {x: 938.5, y: 570.5}
+  m_LastWindowPixelSize: {x: 750.8, y: 456.4}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000001000000000000
