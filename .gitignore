@@ -1,0 +1,31 @@
+# unity - cenas que o unity recria sozinho
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# builds webgl que eu fiz para testar
+BuildWebGL*/
+*.zip
+*.rar
+
+# visual studio / rider
+.vs/
+.idea/
+*.csproj
+*.sln
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# ficheiros temporarios do sistema
+.DS_Store
+Thumbs.db
+
+# cache
+[Mm]emoryCaptures/
