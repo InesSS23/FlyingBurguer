@@ -3,18 +3,8 @@ using UnityEngine;
 
 public class DeliveryCounter : MonoBehaviour, IInteractable
 {
-    [Header("hamburger no balcao")]
-    [SerializeField] private List<string> deliveredBurger = new List<string>();
-
-    [Header("visual")]
-    [SerializeField] private Transform deliveryVisualPoint;
-    [SerializeField] private GameObject breadVisualPrefab;
-    [SerializeField] private GameObject cookedMeatVisualPrefab;
-    [SerializeField] private GameObject cheeseVisualPrefab;
-    [SerializeField] private GameObject lettuceVisualPrefab;
-    [SerializeField] private float layerHeight = 0.08f;
-
-    private List<GameObject> spawnedVisuals = new List<GameObject>();
+    [Header("manager dos clientes")]
+    [SerializeField] private CustomerManager customerManager;
 
     public void Interact()
     {
@@ -26,15 +16,9 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
             return;
         }
 
-        if (playerHand.HasBurger())
+        if (customerManager == null)
         {
-            ColocarHamburgerNoBalcao(playerHand);
-            return;
-        }
-
-        if (playerHand.IsEmpty() && deliveredBurger.Count > 0)
-        {
-            PegarHamburgerDoBalcao(playerHand);
+            Debug.Log("n tenho CustomerManager ligado no delivery");
             return;
         }
 
@@ -44,115 +28,24 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
             return;
         }
 
-        Debug.Log("n tens hamburger para entregar");
-    }
-
-    private void ColocarHamburgerNoBalcao(PlayerHand playerHand)
-    {
-        if (deliveredBurger.Count > 0)
+        if (!playerHand.HasBurger())
         {
-            Debug.Log("ja existe um hamburger no balcao");
+            Debug.Log("n tens hamburger para entregar");
             return;
         }
 
-        deliveredBurger = playerHand.GetBurgerCopy();
+        List<string> burger = playerHand.GetBurgerCopy();
+
+        bool delivered = customerManager.TryServeBurgerToCustomer(burger);
+
+        if (!delivered)
+        {
+            Debug.Log("pedido errado, n entreguei");
+            return;
+        }
 
         playerHand.ClearHand();
 
-        RecriarVisual();
-
-        Debug.Log("hamburger colocado no balcao");
-    }
-
-    private void PegarHamburgerDoBalcao(PlayerHand playerHand)
-    {
-        playerHand.TrySetBurger(deliveredBurger);
-
-        LimparBalcao();
-
-        Debug.Log("peguei no hamburger do balcao");
-    }
-
-    public List<string> GetDeliveredBurger()
-    {
-        return deliveredBurger;
-    }
-
-    public void LimparBalcao()
-    {
-        deliveredBurger.Clear();
-
-        for (int i = 0; i < spawnedVisuals.Count; i++)
-        {
-            if (spawnedVisuals[i] != null)
-            {
-                Destroy(spawnedVisuals[i]);
-            }
-        }
-
-        spawnedVisuals.Clear();
-    }
-
-    private void RecriarVisual()
-    {
-        LimparVisuais();
-
-        for (int i = 0; i < deliveredBurger.Count; i++)
-        {
-            CriarVisual(deliveredBurger[i], i);
-        }
-    }
-
-    private void CriarVisual(string item, int index)
-    {
-        if (deliveryVisualPoint == null)
-        {
-            Debug.Log("falta DeliveryVisualPoint");
-            return;
-        }
-
-        GameObject prefab = BuscarPrefab(item);
-
-        if (prefab == null)
-        {
-            Debug.Log("n tenho visual para: " + item);
-            return;
-        }
-
-        GameObject visual = Instantiate(prefab, deliveryVisualPoint);
-        visual.transform.localPosition = new Vector3(0, index * layerHeight, 0);
-        visual.transform.localRotation = Quaternion.identity;
-
-        spawnedVisuals.Add(visual);
-    }
-
-    private GameObject BuscarPrefab(string item)
-    {
-        if (item == "Bread")
-            return breadVisualPrefab;
-
-        if (item == "CookedMeat")
-            return cookedMeatVisualPrefab;
-
-        if (item == "Cheese")
-            return cheeseVisualPrefab;
-
-        if (item == "Lettuce")
-            return lettuceVisualPrefab;
-
-        return null;
-    }
-
-    private void LimparVisuais()
-    {
-        for (int i = 0; i < spawnedVisuals.Count; i++)
-        {
-            if (spawnedVisuals[i] != null)
-            {
-                Destroy(spawnedVisuals[i]);
-            }
-        }
-
-        spawnedVisuals.Clear();
+        Debug.Log("hamburger entregue ao cliente certo");
     }
 }

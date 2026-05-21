@@ -195,6 +195,37 @@ Transform:
   - {fileID: 1426326584}
   m_Father: {fileID: 21718124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &81617622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 81617623}
+  m_Layer: 0
+  m_Name: FoodVisualPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &81617623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81617622}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.18, z: -3.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 852664575}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &86750840
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +388,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 121640296}
+  - component: {fileID: 121640298}
+  - component: {fileID: 121640297}
   m_Layer: 0
   m_Name: ' ServicePoint1'
   m_TagString: Untagged
@@ -376,9 +409,43 @@ Transform:
   m_LocalPosition: {x: 8, y: 4.6, z: 19.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 475664148}
   m_Father: {fileID: 1128799493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &121640297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121640295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533586ac3609e24408db7ae62e783430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomerServicePoint
+  isOccupied: 0
+  currentCustomer: {fileID: 0}
+  burgerVisualSpawner: {fileID: 121640298}
+--- !u!114 &121640298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121640295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661e2fcd3742aad4ba0f5cd36739dcf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BurgerVisualSpawner
+  visualPoint: {fileID: 475664148}
+  breadVisualPrefab: {fileID: 2628186999485140287, guid: 987a2901527a1344ca978372496f71d3, type: 3}
+  cookedMeatVisualPrefab: {fileID: 2491650175235276925, guid: 90a534ee39776cc49967f6254e5896fa, type: 3}
+  cheeseVisualPrefab: {fileID: 5814846380265251095, guid: f6a0c1b60b318ba4297d013c53770160, type: 3}
+  lettuceVisualPrefab: {fileID: 8042123338010012481, guid: 4a44d28a46c04654581399eeffc62103, type: 3}
+  layerHeight: 0.08
 --- !u!1 &201082402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,6 +1127,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453310987}
   m_CullTransparentMesh: 1
+--- !u!1 &475664147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475664148}
+  m_Layer: 0
+  m_Name: FoodVisualPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &475664148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475664147}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.18, z: -3.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 121640296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &541052884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,6 +1327,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 712845446}
+  - component: {fileID: 712845448}
+  - component: {fileID: 712845447}
   m_Layer: 0
   m_Name: ServicePoint3
   m_TagString: Untagged
@@ -1248,9 +1348,43 @@ Transform:
   m_LocalPosition: {x: -7.74, y: 4.6, z: 19.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1322479299}
   m_Father: {fileID: 1128799493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &712845447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712845445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533586ac3609e24408db7ae62e783430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomerServicePoint
+  isOccupied: 0
+  currentCustomer: {fileID: 0}
+  burgerVisualSpawner: {fileID: 712845448}
+--- !u!114 &712845448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712845445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661e2fcd3742aad4ba0f5cd36739dcf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BurgerVisualSpawner
+  visualPoint: {fileID: 1322479299}
+  breadVisualPrefab: {fileID: 2628186999485140287, guid: 987a2901527a1344ca978372496f71d3, type: 3}
+  cookedMeatVisualPrefab: {fileID: 2491650175235276925, guid: 90a534ee39776cc49967f6254e5896fa, type: 3}
+  cheeseVisualPrefab: {fileID: 5814846380265251095, guid: f6a0c1b60b318ba4297d013c53770160, type: 3}
+  lettuceVisualPrefab: {fileID: 8042123338010012481, guid: 4a44d28a46c04654581399eeffc62103, type: 3}
+  layerHeight: 0.08
 --- !u!1001 &719847723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1338,6 +1472,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1394fbe251c180d45b694a056c56d251, type: 3}
   m_PrefabInstance: {fileID: 719847723}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &744900717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 744900718}
+  - component: {fileID: 744900719}
+  m_Layer: 0
+  m_Name: CustomerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &744900718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744900717}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1151648552}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &744900719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744900717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299fa0151f890684bb0da7c4e34ec918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomerManager
+  customerPrefab: {fileID: 3551596867303175071, guid: a4a7ee36549e1ff40bee9b50bb56097b, type: 3}
+  spawnPoints:
+  - {fileID: 1681560622}
+  - {fileID: 666941777}
+  servicePoints:
+  - {fileID: 121640297}
+  - {fileID: 852664577}
+  - {fileID: 712845447}
+  exitPoints:
+  - {fileID: 813831252}
+  - {fileID: 952216792}
+  minSpawnTime: 3
+  maxSpawnTime: 6
 --- !u!1 &813831251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,6 +1894,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 852664575}
+  - component: {fileID: 852664578}
+  - component: {fileID: 852664577}
+  - component: {fileID: 852664576}
   m_Layer: 0
   m_Name: ServicePoint2
   m_TagString: Untagged
@@ -1722,9 +1916,58 @@ Transform:
   m_LocalPosition: {x: 0.06, y: 4.6, z: 19.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 81617623}
   m_Father: {fileID: 1128799493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &852664576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852664574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533586ac3609e24408db7ae62e783430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomerServicePoint
+  isOccupied: 0
+  currentCustomer: {fileID: 0}
+  burgerVisualSpawner: {fileID: 0}
+--- !u!114 &852664577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852664574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533586ac3609e24408db7ae62e783430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomerServicePoint
+  isOccupied: 0
+  currentCustomer: {fileID: 0}
+  burgerVisualSpawner: {fileID: 852664578}
+--- !u!114 &852664578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852664574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661e2fcd3742aad4ba0f5cd36739dcf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BurgerVisualSpawner
+  visualPoint: {fileID: 81617623}
+  breadVisualPrefab: {fileID: 2628186999485140287, guid: 987a2901527a1344ca978372496f71d3, type: 3}
+  cookedMeatVisualPrefab: {fileID: 2491650175235276925, guid: 90a534ee39776cc49967f6254e5896fa, type: 3}
+  cheeseVisualPrefab: {fileID: 5814846380265251095, guid: f6a0c1b60b318ba4297d013c53770160, type: 3}
+  lettuceVisualPrefab: {fileID: 8042123338010012481, guid: 4a44d28a46c04654581399eeffc62103, type: 3}
+  layerHeight: 0.08
 --- !u!1 &907029570
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,7 +2402,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 744900718}
   m_Father: {fileID: 21718124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1156009699
@@ -2671,6 +2915,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292804454}
   m_CullTransparentMesh: 1
+--- !u!1 &1322479298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1322479299}
+  m_Layer: 0
+  m_Name: FoodVisualPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1322479299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322479298}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.18, z: -3.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 712845446}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1426326583
 GameObject:
   m_ObjectHideFlags: 0
@@ -2738,13 +3013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c18ff322a754444b1dc11bf9aa7a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryCounter
-  deliveredBurger: []
-  deliveryVisualPoint: {fileID: 637489109}
-  breadVisualPrefab: {fileID: 2628186999485140287, guid: 987a2901527a1344ca978372496f71d3, type: 3}
-  cookedMeatVisualPrefab: {fileID: 2491650175235276925, guid: 90a534ee39776cc49967f6254e5896fa, type: 3}
-  cheeseVisualPrefab: {fileID: 5814846380265251095, guid: f6a0c1b60b318ba4297d013c53770160, type: 3}
-  lettuceVisualPrefab: {fileID: 8042123338010012481, guid: 4a44d28a46c04654581399eeffc62103, type: 3}
-  layerHeight: 0.08
+  customerManager: {fileID: 744900719}
 --- !u!1 &1445430218
 GameObject:
   m_ObjectHideFlags: 0
