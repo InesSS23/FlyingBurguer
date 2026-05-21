@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\Player\FirstPersonPlayer.cs" />
     <Compile Include="Assets\Scripts\processo hamb\AssemblyTable.cs" />
     <Compile Include="Assets\Scripts\processo hamb\DeliveryCounter.cs" />
+    <Compile Include="Assets\Scripts\TrashBin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />

@@ -3,40 +3,156 @@ using UnityEngine;
 
 public class DeliveryCounter : MonoBehaviour, IInteractable
 {
-    [Header("mesa de montagem")]
-    [SerializeField] private AssemblyTable assemblyTable;
+    [Header("hamburger no balcao")]
+    [SerializeField] private List<string> deliveredBurger = new List<string>();
+
+    [Header("visual")]
+    [SerializeField] private Transform deliveryVisualPoint;
+    [SerializeField] private GameObject breadVisualPrefab;
+    [SerializeField] private GameObject cookedMeatVisualPrefab;
+    [SerializeField] private GameObject cheeseVisualPrefab;
+    [SerializeField] private GameObject lettuceVisualPrefab;
+    [SerializeField] private float layerHeight = 0.08f;
+
+    private List<GameObject> spawnedVisuals = new List<GameObject>();
 
     public void Interact()
     {
-        if (assemblyTable == null)
+        PlayerHand playerHand = FindFirstObjectByType<PlayerHand>();
+
+        if (playerHand == null)
         {
-            Debug.Log("n tenho a mesa de montagem ligada no delivery");
+            Debug.Log("n encontrei a mao do player");
             return;
         }
 
-        List<string> burger = assemblyTable.GetBurger();
-
-        if (burger == null || burger.Count == 0)
+        if (playerHand.HasBurger())
         {
-            Debug.Log("n tens hamburger para entregar");
+            ColocarHamburgerNoBalcao(playerHand);
             return;
         }
 
-        string burgerText = "hamburger entregue: ";
-
-        for (int i = 0; i < burger.Count; i++)
+        if (playerHand.IsEmpty() && deliveredBurger.Count > 0)
         {
-            burgerText += burger[i];
+            PegarHamburgerDoBalcao(playerHand);
+            return;
+        }
 
-            if (i < burger.Count - 1)
+        if (playerHand.HasItem())
+        {
+            Debug.Log("n podes entregar so um ingrediente");
+            return;
+        }
+
+        Debug.Log("n tens hamburger para entregar");
+    }
+
+    private void ColocarHamburgerNoBalcao(PlayerHand playerHand)
+    {
+        if (deliveredBurger.Count > 0)
+        {
+            Debug.Log("ja existe um hamburger no balcao");
+            return;
+        }
+
+        deliveredBurger = playerHand.GetBurgerCopy();
+
+        playerHand.ClearHand();
+
+        RecriarVisual();
+
+        Debug.Log("hamburger colocado no balcao");
+    }
+
+    private void PegarHamburgerDoBalcao(PlayerHand playerHand)
+    {
+        playerHand.TrySetBurger(deliveredBurger);
+
+        LimparBalcao();
+
+        Debug.Log("peguei no hamburger do balcao");
+    }
+
+    public List<string> GetDeliveredBurger()
+    {
+        return deliveredBurger;
+    }
+
+    public void LimparBalcao()
+    {
+        deliveredBurger.Clear();
+
+        for (int i = 0; i < spawnedVisuals.Count; i++)
+        {
+            if (spawnedVisuals[i] != null)
             {
-                burgerText += " + ";
+                Destroy(spawnedVisuals[i]);
             }
         }
 
-        Debug.Log(burgerText);
+        spawnedVisuals.Clear();
+    }
 
-        // por agora limpa a mesa depois de entregar
-        assemblyTable.ClearBurger();
+    private void RecriarVisual()
+    {
+        LimparVisuais();
+
+        for (int i = 0; i < deliveredBurger.Count; i++)
+        {
+            CriarVisual(deliveredBurger[i], i);
+        }
+    }
+
+    private void CriarVisual(string item, int index)
+    {
+        if (deliveryVisualPoint == null)
+        {
+            Debug.Log("falta DeliveryVisualPoint");
+            return;
+        }
+
+        GameObject prefab = BuscarPrefab(item);
+
+        if (prefab == null)
+        {
+            Debug.Log("n tenho visual para: " + item);
+            return;
+        }
+
+        GameObject visual = Instantiate(prefab, deliveryVisualPoint);
+        visual.transform.localPosition = new Vector3(0, index * layerHeight, 0);
+        visual.transform.localRotation = Quaternion.identity;
+
+        spawnedVisuals.Add(visual);
+    }
+
+    private GameObject BuscarPrefab(string item)
+    {
+        if (item == "Bread")
+            return breadVisualPrefab;
+
+        if (item == "CookedMeat")
+            return cookedMeatVisualPrefab;
+
+        if (item == "Cheese")
+            return cheeseVisualPrefab;
+
+        if (item == "Lettuce")
+            return lettuceVisualPrefab;
+
+        return null;
+    }
+
+    private void LimparVisuais()
+    {
+        for (int i = 0; i < spawnedVisuals.Count; i++)
+        {
+            if (spawnedVisuals[i] != null)
+            {
+                Destroy(spawnedVisuals[i]);
+            }
+        }
+
+        spawnedVisuals.Clear();
     }
 }

@@ -26,60 +26,92 @@ public class AssemblyTable : MonoBehaviour, IInteractable
             return;
         }
 
-        if (!playerHand.HasItem())
+        if (playerHand.HasBurger())
         {
-            Debug.Log("n tens nada na mao para meter no hamburger");
+            ColocarHamburgerNaMesa(playerHand);
             return;
         }
 
+        if (playerHand.HasItem())
+        {
+            AdicionarIngrediente(playerHand);
+            return;
+        }
+
+        if (currentBurger.Count > 0)
+        {
+            PegarHamburger(playerHand);
+            return;
+        }
+
+        Debug.Log("n tens nada na mao e a mesa esta vazia");
+    }
+
+    private void AdicionarIngrediente(PlayerHand playerHand)
+    {
         string item = playerHand.GetCurrentItem();
 
         if (item == "RawMeat")
         {
-            Debug.Log("n podes meter carne crua no hamburger, cozinha primeiro");
+            Debug.Log("n podes meter carne crua no hamburger");
             return;
         }
 
         currentBurger.Add(item);
-        Debug.Log("adicionei ao hamburger: " + item);
-
         CriarVisualDoIngrediente(item);
 
-        playerHand.ClearItem();
+        Debug.Log("adicionei ao hamburger: " + item);
+
+        playerHand.ClearHand();
 
         MostrarBurgerAtual();
+    }
+
+    private void PegarHamburger(PlayerHand playerHand)
+    {
+        if (!playerHand.IsEmpty())
+        {
+            Debug.Log("a tua mao n esta vazia");
+            return;
+        }
+
+        playerHand.TrySetBurger(currentBurger);
+
+        ClearBurger();
+
+        Debug.Log("peguei no hamburger da mesa");
+    }
+
+    private void ColocarHamburgerNaMesa(PlayerHand playerHand)
+    {
+        if (currentBurger.Count > 0)
+        {
+            Debug.Log("a mesa ja tem um hamburger");
+            return;
+        }
+
+        currentBurger = playerHand.GetBurgerCopy();
+
+        playerHand.ClearHand();
+
+        RecriarVisualDoBurger();
+
+        Debug.Log("voltei a meter o hamburger na mesa");
     }
 
     private void CriarVisualDoIngrediente(string item)
     {
         if (burgerVisualPoint == null)
         {
-            Debug.Log("n tens BurgerVisualPoint ligado na AssemblyTable");
+            Debug.Log("n tens BurgerVisualPoint ligado");
             return;
         }
 
-        GameObject prefab = null;
-
-        if (item == "Bread")
-        {
-            prefab = breadVisualPrefab;
-        }
-        else if (item == "CookedMeat")
-        {
-            prefab = cookedMeatVisualPrefab;
-        }
-        else if (item == "Cheese")
-        {
-            prefab = cheeseVisualPrefab;
-        }
-        else if (item == "Lettuce")
-        {
-            prefab = lettuceVisualPrefab;
-        }
+        GameObject prefab = BuscarPrefab(item);
 
         if (prefab == null)
         {
-            Debug.Log("n tenho visual para este ingrediente: " + item);
+            Debug.Log("n tenho visual para: " + item);
             return;
         }
 
@@ -88,6 +120,33 @@ public class AssemblyTable : MonoBehaviour, IInteractable
 
         GameObject visual = Instantiate(prefab, spawnPosition, burgerVisualPoint.rotation);
         spawnedVisuals.Add(visual);
+    }
+
+    private void RecriarVisualDoBurger()
+    {
+        LimparVisuais();
+
+        for (int i = 0; i < currentBurger.Count; i++)
+        {
+            CriarVisualDoIngrediente(currentBurger[i]);
+        }
+    }
+
+    private GameObject BuscarPrefab(string item)
+    {
+        if (item == "Bread")
+            return breadVisualPrefab;
+
+        if (item == "CookedMeat")
+            return cookedMeatVisualPrefab;
+
+        if (item == "Cheese")
+            return cheeseVisualPrefab;
+
+        if (item == "Lettuce")
+            return lettuceVisualPrefab;
+
+        return null;
     }
 
     private void MostrarBurgerAtual()
@@ -115,7 +174,12 @@ public class AssemblyTable : MonoBehaviour, IInteractable
     public void ClearBurger()
     {
         currentBurger.Clear();
+        LimparVisuais();
+        Debug.Log("hamburger limpo da mesa");
+    }
 
+    private void LimparVisuais()
+    {
         for (int i = 0; i < spawnedVisuals.Count; i++)
         {
             if (spawnedVisuals[i] != null)
@@ -125,7 +189,5 @@ public class AssemblyTable : MonoBehaviour, IInteractable
         }
 
         spawnedVisuals.Clear();
-
-        Debug.Log("hamburger limpo");
     }
 }

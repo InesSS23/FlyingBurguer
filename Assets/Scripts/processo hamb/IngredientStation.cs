@@ -15,6 +15,19 @@ public class IngredientStation : MonoBehaviour, IInteractable
             return;
         }
 
-        playerHand.TrySetItem(ingredientName);
+        if (playerHand.IsEmpty())
+        {
+            playerHand.TrySetItem(ingredientName);
+            return;
+        }
+
+        if (playerHand.HasItem() && playerHand.GetCurrentItem() == ingredientName)
+        {
+            Debug.Log("devolvi o ingrediente ao sitio: " + ingredientName);
+            playerHand.ClearHand();
+            return;
+        }
+
+        Debug.Log("ja tens outra coisa na mao");
     }
 }

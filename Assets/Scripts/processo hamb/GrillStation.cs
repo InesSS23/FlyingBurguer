@@ -1,10 +1,25 @@
+using System.Collections;
 using UnityEngine;
 
 public class GrillStation : MonoBehaviour, IInteractable
 {
-    [Header("configuração")]
+    [Header("nomes")]
     [SerializeField] private string rawMeatName = "RawMeat";
     [SerializeField] private string cookedMeatName = "CookedMeat";
+
+    [Header("tempo")]
+    [SerializeField] private float cookTime = 2f;
+
+    [Header("visual")]
+    [SerializeField] private Transform grillVisualPoint;
+    [SerializeField] private GameObject rawMeatVisualPrefab;
+    [SerializeField] private GameObject cookedMeatVisualPrefab;
+
+    private bool hasMeat = false;
+    private bool isCooking = false;
+    private bool isCooked = false;
+
+    private GameObject currentVisual;
 
     public void Interact()
     {
@@ -16,23 +31,102 @@ public class GrillStation : MonoBehaviour, IInteractable
             return;
         }
 
+        if (!hasMeat)
+        {
+            ColocarCarneNaGrelha(playerHand);
+            return;
+        }
+
+        if (isCooking)
+        {
+            Debug.Log("a carne ainda esta a cozinhar");
+            return;
+        }
+
+        if (isCooked)
+        {
+            TirarCarneDaGrelha(playerHand);
+        }
+    }
+
+    private void ColocarCarneNaGrelha(PlayerHand playerHand)
+    {
         if (!playerHand.HasItem())
         {
-            Debug.Log("n tens nada na mao para cozinhar");
+            Debug.Log("n tens carne para meter na grelha");
             return;
         }
 
-        string item = playerHand.GetCurrentItem();
-
-        if (item != rawMeatName)
+        if (playerHand.GetCurrentItem() != rawMeatName)
         {
-            Debug.Log("isto n pode ir para a grelha: " + item);
+            Debug.Log("isto n pode ir para a grelha: " + playerHand.GetCurrentItem());
             return;
         }
 
-        playerHand.ClearItem();
+        playerHand.ClearHand();
+
+        hasMeat = true;
+        isCooking = true;
+        isCooked = false;
+
+        CriarVisual(rawMeatVisualPrefab);
+
+        Debug.Log("carne crua metida na grelha");
+
+        StartCoroutine(CozinharCarne());
+    }
+
+    private IEnumerator CozinharCarne()
+    {
+        yield return new WaitForSeconds(cookTime);
+
+        isCooking = false;
+        isCooked = true;
+
+        CriarVisual(cookedMeatVisualPrefab);
+
+        Debug.Log("carne pronta");
+    }
+
+    private void TirarCarneDaGrelha(PlayerHand playerHand)
+    {
+        if (!playerHand.IsEmpty())
+        {
+            Debug.Log("tens de ter a mao vazia para tirar a carne");
+            return;
+        }
+
         playerHand.TrySetItem(cookedMeatName);
 
-        Debug.Log("carne cozinhada: " + cookedMeatName);
+        hasMeat = false;
+        isCooking = false;
+        isCooked = false;
+
+        LimparVisual();
+
+        Debug.Log("tirei a carne cozinhada da grelha");
+    }
+
+    private void CriarVisual(GameObject prefab)
+    {
+        LimparVisual();
+
+        if (prefab == null || grillVisualPoint == null)
+        {
+            Debug.Log("falta visual da grelha");
+            return;
+        }
+
+        currentVisual = Instantiate(prefab, grillVisualPoint);
+        currentVisual.transform.localPosition = Vector3.zero;
+        currentVisual.transform.localRotation = Quaternion.identity;
+    }
+
+    private void LimparVisual()
+    {
+        if (currentVisual != null)
+        {
+            Destroy(currentVisual);
+        }
     }
 }
