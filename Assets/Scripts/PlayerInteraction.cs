@@ -1,14 +1,14 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
     [Header("interação")]
     [SerializeField] private Camera playerCamera;
-    [SerializeField] private float interactionDistance = 3f;
+    [SerializeField] private float interactionDistance = 10f;
 
     void Start()
     {
-        // se eu n meter a camera no inspector, ele tenta apanhar a main camera
         if (playerCamera == null)
         {
             playerCamera = Camera.main;
@@ -17,8 +17,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
-        // clique esquerdo do rato
-        if (Input.GetMouseButtonDown(0))
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             TryInteract();
         }
@@ -27,17 +26,25 @@ public class PlayerInteraction : MonoBehaviour
     private void TryInteract()
     {
         if (playerCamera == null)
+        {
+            Debug.Log("n tenho camera para interagir");
             return;
+        }
 
-        // raio que sai do centro da camera para a frente
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
 
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, interactionDistance))
+        if (Physics.Raycast(ray, out hit, interactionDistance, ~0, QueryTriggerInteraction.Collide))
         {
-            // ve se o objeto clicado tem algum script interativo
+            Debug.Log("cliquei/olhei para: " + hit.collider.name);
+
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+
+            if (interactable == null)
+            {
+                interactable = hit.collider.GetComponentInParent<IInteractable>();
+            }
 
             if (interactable != null)
             {
@@ -45,8 +52,12 @@ public class PlayerInteraction : MonoBehaviour
             }
             else
             {
-                Debug.Log("olhei para isto mas n é interativo: " + hit.collider.name);
+                Debug.Log("este objeto n tem interação: " + hit.collider.name);
             }
+        }
+        else
+        {
+            Debug.Log("n acertei em nada com o clique");
         }
     }
 }
