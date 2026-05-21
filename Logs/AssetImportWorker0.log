@@ -69894,3 +69894,31 @@ Memory consumption went from 174.2 MB to 164.8 MB.
 Total: 47.516700 ms (FindLiveObjects: 3.387100 ms CreateObjectMapping: 2.929400 ms MarkObjects: 8.718500 ms  DeleteObjects: 32.478600 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 1792.569786 seconds.
+  path: Assets/Sprits/imagens/bebida.png
+  artifactKey: Guid(59a6cb45be2fe634faef8c7f949589df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprits/imagens/bebida.png using Guid(59a6cb45be2fe634faef8c7f949589df) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '03cb481eed469dc0b952e7f96131acef') in 0.4533883 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Sprits/imagens/queijo.png
+  artifactKey: Guid(0b1f305eecf448145bcceb0fb907f41f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprits/imagens/queijo.png using Guid(0b1f305eecf448145bcceb0fb907f41f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8ce58d2121a8f92efbdee2373b03e463') in 0.0334308 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000157 seconds.
+  path: Assets/Sprits/imagens/salada.png
+  artifactKey: Guid(cc0505ce4cd0af648adafc150750c8b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprits/imagens/salada.png using Guid(cc0505ce4cd0af648adafc150750c8b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7d22d8846abff82aae4de3fc81085497') in 0.0424713 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

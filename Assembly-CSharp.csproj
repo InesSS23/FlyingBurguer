@@ -65,6 +65,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInteraction.cs" />
+    <Compile Include="Assets\Scripts\npcs e pedidos\OrderSlotUI.cs" />
+    <Compile Include="Assets\Scripts\npcs e pedidos\OrderHUDManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHand.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Scripts\npcs e pedidos\BurgerVisualSpawner.cs" />

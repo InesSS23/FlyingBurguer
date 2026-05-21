@@ -26,10 +26,25 @@ public class CustomerManager : MonoBehaviour
 
     private void CriarPedidosPossiveis()
     {
-        possibleOrders.Add(new BurgerOrder("Burger simples", new List<string> { "Bread", "CookedMeat" }));
-        possibleOrders.Add(new BurgerOrder("Cheeseburger", new List<string> { "Bread", "CookedMeat", "Cheese" }));
-        possibleOrders.Add(new BurgerOrder("Burger alface", new List<string> { "Bread", "CookedMeat", "Lettuce" }));
-        possibleOrders.Add(new BurgerOrder("Burger completo", new List<string> { "Bread", "CookedMeat", "Cheese", "Lettuce" }));
+        possibleOrders.Add(new BurgerOrder("Burger simples", new List<string>
+    {
+        "Bread", "CookedMeat", "Bread"
+    }));
+
+        possibleOrders.Add(new BurgerOrder("Cheeseburger", new List<string>
+    {
+        "Bread", "CookedMeat", "Cheese", "Bread"
+    }));
+
+        possibleOrders.Add(new BurgerOrder("Burger alface", new List<string>
+    {
+        "Bread", "CookedMeat", "Lettuce", "Bread"
+    }));
+
+        possibleOrders.Add(new BurgerOrder("Burger completo", new List<string>
+    {
+        "Bread", "CookedMeat", "Cheese", "Lettuce", "Bread"
+    }));
     }
 
     private IEnumerator SpawnLoop()
@@ -82,6 +97,13 @@ public class CustomerManager : MonoBehaviour
 
         freePoint.SetCustomer(customer);
         customer.SetupCustomer(freePoint.transform, exitPoint, order, freePoint);
+
+        OrderHUDManager hud = FindFirstObjectByType<OrderHUDManager>();
+
+        if (hud != null)
+        {
+            hud.SetOrder(freePoint.GetOrderSlotIndex(), order);
+        }
     }
 
     private CustomerServicePoint GetFreeServicePoint()

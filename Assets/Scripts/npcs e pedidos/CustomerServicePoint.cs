@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class CustomerServicePoint : MonoBehaviour
 {
+    [Header("slot do hud")]
+    [SerializeField] private int orderSlotIndex = 0;
+
     [Header("estado")]
     [SerializeField] private bool isOccupied = false;
 
@@ -29,11 +32,23 @@ public class CustomerServicePoint : MonoBehaviour
         isOccupied = false;
 
         ClearFoodVisual();
+
+        OrderHUDManager hud = FindFirstObjectByType<OrderHUDManager>();
+
+        if (hud != null)
+        {
+            hud.ClearOrder(orderSlotIndex);
+        }
     }
 
     public CustomerNPC GetCurrentCustomer()
     {
         return currentCustomer;
+    }
+
+    public int GetOrderSlotIndex()
+    {
+        return orderSlotIndex;
     }
 
     public void ShowFoodVisual(List<string> burger)
