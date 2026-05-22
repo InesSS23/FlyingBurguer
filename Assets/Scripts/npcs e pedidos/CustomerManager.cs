@@ -151,13 +151,6 @@ public class CustomerManager : MonoBehaviour
 
         freePoint.SetCustomer(customer);
         customer.SetupCustomer(freePoint.transform, exitPoint, order, freePoint);
-
-        OrderHUDManager hud = FindFirstObjectByType<OrderHUDManager>();
-
-        if (hud != null)
-        {
-            hud.SetOrder(freePoint.GetOrderSlotIndex(), order);
-        }
     }
 
     private GameObject GetRandomCustomerPrefab()

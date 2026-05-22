@@ -32,13 +32,7 @@ public class CustomerServicePoint : MonoBehaviour
         isOccupied = false;
 
         ClearFoodVisual();
-
-        OrderHUDManager hud = FindFirstObjectByType<OrderHUDManager>();
-
-        if (hud != null)
-        {
-            hud.ClearOrder(orderSlotIndex);
-        }
+        ClearOrderHUD();
     }
 
     public CustomerNPC GetCurrentCustomer()
@@ -49,6 +43,26 @@ public class CustomerServicePoint : MonoBehaviour
     public int GetOrderSlotIndex()
     {
         return orderSlotIndex;
+    }
+
+    public void ShowOrderHUD(BurgerOrder order)
+    {
+        OrderHUDManager hud = FindFirstObjectByType<OrderHUDManager>();
+
+        if (hud != null)
+        {
+            hud.SetOrder(orderSlotIndex, order);
+        }
+    }
+
+    public void ClearOrderHUD()
+    {
+        OrderHUDManager hud = FindFirstObjectByType<OrderHUDManager>();
+
+        if (hud != null)
+        {
+            hud.ClearOrder(orderSlotIndex);
+        }
     }
 
     public void ShowFoodVisual(List<string> burger)

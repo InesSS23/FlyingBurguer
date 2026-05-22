@@ -13,6 +13,9 @@ public class CustomerNPC : MonoBehaviour
     [Header("comentarios")]
     [SerializeField] private string[] happyComments;
 
+    [Header("fala visual")]
+    [SerializeField] private CustomerSpeechUI speechUI;
+
     private Transform targetPoint;
     private Transform exitPoint;
 
@@ -32,7 +35,7 @@ public class CustomerNPC : MonoBehaviour
         isWaiting = false;
         isEating = false;
 
-        Debug.Log("cliente recebeu pedido: " + currentOrder.GetOrderText());
+        Debug.Log("cliente nasceu com pedido: " + currentOrder.GetOrderText());
     }
 
     void Update()
@@ -60,7 +63,13 @@ public class CustomerNPC : MonoBehaviour
         if (targetPoint != exitPoint)
         {
             isWaiting = true;
-            Debug.Log("cliente chegou e esta a espera: " + currentOrder.GetOrderText());
+
+            if (servicePoint != null)
+            {
+                servicePoint.ShowOrderHUD(currentOrder);
+            }
+
+            Debug.Log("cliente chegou ao service point e mostrou pedido: " + currentOrder.GetOrderText());
         }
         else
         {
@@ -102,12 +111,20 @@ public class CustomerNPC : MonoBehaviour
 
         if (servicePoint != null)
         {
+            servicePoint.ClearOrderHUD();
             servicePoint.ShowFoodVisual(burger);
         }
 
         Debug.Log("pedido certo, cliente recebeu o hamburger");
 
-        SayRandomComment();
+        string comment = GetRandomComment();
+
+        if (speechUI != null)
+        {
+            speechUI.ShowSpeech(comment);
+        }
+
+        Debug.Log("cliente: " + comment);
 
         yield return new WaitForSeconds(eatTime);
 
@@ -120,16 +137,14 @@ public class CustomerNPC : MonoBehaviour
         targetPoint = exitPoint;
     }
 
-    private void SayRandomComment()
+    private string GetRandomComment()
     {
         if (happyComments == null || happyComments.Length == 0)
         {
-            Debug.Log("cliente: estava bom!");
-            return;
+            return "Estava bom!";
         }
 
-        string comment = happyComments[Random.Range(0, happyComments.Length)];
-        Debug.Log("cliente: " + comment);
+        return happyComments[Random.Range(0, happyComments.Length)];
     }
 
     public BurgerOrder GetCurrentOrder()
