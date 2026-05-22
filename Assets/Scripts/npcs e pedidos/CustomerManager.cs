@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CustomerManager : MonoBehaviour
 {
-    [Header("prefab")]
-    [SerializeField] private GameObject customerPrefab;
+    [Header("prefabs dos clientes")]
+    [SerializeField] private GameObject[] customerPrefabs;
 
     [Header("pontos")]
     [SerializeField] private Transform[] spawnPoints;
@@ -104,9 +104,9 @@ public class CustomerManager : MonoBehaviour
             return;
         }
 
-        if (customerPrefab == null)
+        if (customerPrefabs == null || customerPrefabs.Length == 0)
         {
-            Debug.Log("falta ligar customer prefab");
+            Debug.Log("falta ligar os prefabs dos clientes");
             return;
         }
 
@@ -122,11 +122,23 @@ public class CustomerManager : MonoBehaviour
             return;
         }
 
+        GameObject selectedCustomerPrefab = GetRandomCustomerPrefab();
+
+        if (selectedCustomerPrefab == null)
+        {
+            Debug.Log("algum prefab de cliente está vazio no array");
+            return;
+        }
+
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Transform exitPoint = exitPoints[Random.Range(0, exitPoints.Length)];
         BurgerOrder order = possibleOrders[Random.Range(0, possibleOrders.Count)];
 
-        GameObject customerObject = Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
+        GameObject customerObject = Instantiate(
+            selectedCustomerPrefab,
+            spawnPoint.position,
+            spawnPoint.rotation
+        );
 
         CustomerNPC customer = customerObject.GetComponent<CustomerNPC>();
 
@@ -146,6 +158,12 @@ public class CustomerManager : MonoBehaviour
         {
             hud.SetOrder(freePoint.GetOrderSlotIndex(), order);
         }
+    }
+
+    private GameObject GetRandomCustomerPrefab()
+    {
+        int randomIndex = Random.Range(0, customerPrefabs.Length);
+        return customerPrefabs[randomIndex];
     }
 
     private CustomerServicePoint GetFreeServicePoint()
