@@ -16,40 +16,76 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private float minSpawnTime = 8f;
     [SerializeField] private float maxSpawnTime = 15f;
 
+    [Header("controlo")]
+    [SerializeField] private bool startSpawningAutomatically = false;
+
     private List<BurgerOrder> possibleOrders = new List<BurgerOrder>();
+    private Coroutine spawnCoroutine;
+    private bool isSpawning = false;
 
     void Start()
     {
         CriarPedidosPossiveis();
-        StartCoroutine(SpawnLoop());
+
+        if (startSpawningAutomatically)
+        {
+            StartSpawning();
+        }
     }
 
     private void CriarPedidosPossiveis()
     {
         possibleOrders.Add(new BurgerOrder("Burger simples", new List<string>
-    {
-        "Bread", "CookedMeat", "Bread"
-    }));
+        {
+            "Bread", "CookedMeat", "Bread"
+        }));
 
         possibleOrders.Add(new BurgerOrder("Cheeseburger", new List<string>
-    {
-        "Bread", "CookedMeat", "Cheese", "Bread"
-    }));
+        {
+            "Bread", "CookedMeat", "Cheese", "Bread"
+        }));
 
         possibleOrders.Add(new BurgerOrder("Burger alface", new List<string>
-    {
-        "Bread", "CookedMeat", "Lettuce", "Bread"
-    }));
+        {
+            "Bread", "CookedMeat", "Lettuce", "Bread"
+        }));
 
         possibleOrders.Add(new BurgerOrder("Burger completo", new List<string>
+        {
+            "Bread", "CookedMeat", "Cheese", "Lettuce", "Bread"
+        }));
+    }
+
+    public void StartSpawning()
     {
-        "Bread", "CookedMeat", "Cheese", "Lettuce", "Bread"
-    }));
+        if (isSpawning)
+            return;
+
+        isSpawning = true;
+        spawnCoroutine = StartCoroutine(SpawnLoop());
+
+        Debug.Log("clientes começaram a aparecer");
+    }
+
+    public void StopSpawning()
+    {
+        if (!isSpawning)
+            return;
+
+        isSpawning = false;
+
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine);
+            spawnCoroutine = null;
+        }
+
+        Debug.Log("clientes pararam de aparecer");
     }
 
     private IEnumerator SpawnLoop()
     {
-        while (true)
+        while (isSpawning)
         {
             float waitTime = Random.Range(minSpawnTime, maxSpawnTime);
             yield return new WaitForSeconds(waitTime);
@@ -74,9 +110,15 @@ public class CustomerManager : MonoBehaviour
             return;
         }
 
-        if (spawnPoints.Length == 0 || exitPoints.Length == 0)
+        if (spawnPoints == null || spawnPoints.Length == 0)
         {
-            Debug.Log("faltam spawn points ou exit points");
+            Debug.Log("faltam spawn points");
+            return;
+        }
+
+        if (exitPoints == null || exitPoints.Length == 0)
+        {
+            Debug.Log("faltam exit points");
             return;
         }
 

@@ -3,24 +3,37 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
-    [Header("Pause Menu")]
-    public GameObject pauseMenuPanel;
+    [Header("pause menu")]
+    [SerializeField] private GameObject pauseMenuPanel;
 
-    [Header("Scene Names")]
-    public string mainMenuSceneName = "MainMenu";
+    [Header("cenas")]
+    [SerializeField] private string mainMenuSceneName = "MainMenu";
+
+    [Header("controlo do dia")]
+    [SerializeField] private DayManager dayManager;
 
     private bool isPaused = false;
 
     private void Start()
     {
-        pauseMenuPanel.SetActive(false);
+        if (pauseMenuPanel != null)
+        {
+            pauseMenuPanel.SetActive(false);
+        }
+
         Time.timeScale = 1f;
+        isPaused = false;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (dayManager != null && dayManager.IsDayEnded())
+            {
+                return;
+            }
+
             if (isPaused)
             {
                 ResumeGame();
@@ -34,7 +47,11 @@ public class PauseMenuController : MonoBehaviour
 
     public void ResumeGame()
     {
-        pauseMenuPanel.SetActive(false);
+        if (pauseMenuPanel != null)
+        {
+            pauseMenuPanel.SetActive(false);
+        }
+
         Time.timeScale = 1f;
         isPaused = false;
 
@@ -44,12 +61,27 @@ public class PauseMenuController : MonoBehaviour
 
     public void PauseGame()
     {
-        pauseMenuPanel.SetActive(true);
+        if (pauseMenuPanel != null)
+        {
+            pauseMenuPanel.SetActive(true);
+        }
+
         Time.timeScale = 0f;
         isPaused = true;
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    public void ForceClosePauseMenu()
+    {
+        if (pauseMenuPanel != null)
+        {
+            pauseMenuPanel.SetActive(false);
+        }
+
+        Time.timeScale = 1f;
+        isPaused = false;
     }
 
     public void RestartDay()

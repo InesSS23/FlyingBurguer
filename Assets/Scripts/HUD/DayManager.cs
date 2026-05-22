@@ -1,86 +1,100 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class DayManager : MonoBehaviour
 {
     [Header("configuração do dia")]
     [SerializeField] private int dayNumber = 1;
-    [SerializeField] private float dayDuration = 300f; // 5 minutos
-    [SerializeField] private int targetScore = 50;
-    [SerializeField] private int pointsPerOrder = 10;
-
-    [Header("cenas")]
-    [SerializeField] private string nextLevelSceneName = "";
-    [SerializeField] private string failSceneName = "";
+    [SerializeField] private float dayDuration = 300f;
+    [SerializeField] private int targetScore = 100;
 
     [Header("ui")]
     [SerializeField] private TMP_Text dayText;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text timerText;
 
+    [Header("fim do dia")]
+    [SerializeField] private DayEndPanel dayEndPanel;
+    [SerializeField] private FirstPersonPlayer firstPersonPlayer;
+    [SerializeField] private PlayerInteraction playerInteraction;
+    [SerializeField] private CustomerManager customerManager;
+    [SerializeField] private PauseMenuController pauseMenuController;
+
     private float currentTime;
-    private int currentScore = 0;
+    private int currentScore;
+    private bool dayRunning = false;
     private bool dayEnded = false;
 
     void Start()
     {
         currentTime = dayDuration;
+        currentScore = 0;
+        dayRunning = false;
+        dayEnded = false;
+
         UpdateUI();
     }
 
     void Update()
     {
-        if (dayEnded)
+        if (!dayRunning || dayEnded)
             return;
 
         currentTime -= Time.deltaTime;
 
-        if (currentTime <= 0)
+        if (currentTime <= 0f)
         {
-            currentTime = 0;
-            EndDay();
+            currentTime = 0f;
+            dayRunning = false;
+            dayEnded = true;
+
+            UpdateUI();
+            FinishDay();
+
+            return;
         }
 
         UpdateUI();
     }
 
-    public void AddOrderPoints()
+    public void StartDay()
     {
         if (dayEnded)
             return;
 
-        currentScore += pointsPerOrder;
-
-        Debug.Log("pontos atuais: " + currentScore);
-
-        UpdateUI();
+        dayRunning = true;
+        Debug.Log("o dia começou e o timer arrancou");
     }
 
-    private void EndDay()
+    public void StopDay()
     {
-        dayEnded = true;
+        dayRunning = false;
+    }
 
-        Debug.Log("fim do dia");
+    public void AddScore(int amount)
+    {
+        if (dayEnded)
+            return;
 
-        if (currentScore >= targetScore)
-        {
-            Debug.Log("objetivo atingido, passar nivel");
+        currentScore += amount;
+        UpdateUI();
 
-            if (nextLevelSceneName != "")
-            {
-                SceneManager.LoadScene(nextLevelSceneName);
-            }
-        }
-        else
-        {
-            Debug.Log("objetivo falhou");
+        Debug.Log("pontos atuais: " + currentScore);
+    }
 
-            if (failSceneName != "")
-            {
-                SceneManager.LoadScene(failSceneName);
-            }
-        }
+    public int GetCurrentScore()
+    {
+        return currentScore;
+    }
+
+    public float GetCurrentTime()
+    {
+        return currentTime;
+    }
+
+    public bool IsDayEnded()
+    {
+        return dayEnded;
     }
 
     private void UpdateUI()
@@ -92,7 +106,7 @@ public class DayManager : MonoBehaviour
 
         if (scoreText != null)
         {
-            scoreText.text = "Pontos: " + currentScore + " / " + targetScore;
+            scoreText.text = currentScore + " / " + targetScore;
         }
 
         if (timerText != null)
@@ -100,7 +114,40 @@ public class DayManager : MonoBehaviour
             int minutes = Mathf.FloorToInt(currentTime / 60f);
             int seconds = Mathf.FloorToInt(currentTime % 60f);
 
-            timerText.text = "Tempo: " + minutes.ToString("00") + ":" + seconds.ToString("00");
+            timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+        }
+    }
+
+    private void FinishDay()
+    {
+        bool success = currentScore >= targetScore;
+
+        if (pauseMenuController != null)
+        {
+            pauseMenuController.ForceClosePauseMenu();
+        }
+
+        if (firstPersonPlayer != null)
+            firstPersonPlayer.enabled = false;
+
+        if (playerInteraction != null)
+            playerInteraction.enabled = false;
+
+        if (customerManager != null)
+            customerManager.StopSpawning();
+
+        if (dayEndPanel != null)
+        {
+            dayEndPanel.ShowResult(success, currentScore, targetScore);
+        }
+
+        if (success)
+        {
+            Debug.Log("dia concluído com sucesso");
+        }
+        else
+        {
+            Debug.Log("não atingiste a pontuação necessária");
         }
     }
 }

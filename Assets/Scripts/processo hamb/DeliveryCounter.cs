@@ -50,7 +50,7 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
 
         if (dayManager != null)
         {
-            dayManager.AddOrderPoints();
+            dayManager.AddScore(10);
         }
 
         Debug.Log("hamburger entregue ao cliente certo");

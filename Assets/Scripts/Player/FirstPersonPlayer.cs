@@ -14,15 +14,14 @@ public class FirstPersonPlayer : MonoBehaviour
     [SerializeField] private Vector3 cameraLocalPosition = new Vector3(0f, 7.78f, 0f);
 
     private float cameraPitch = 0f;
+    private CharacterController characterController;
 
-    private CharacterController controller;
+    private bool canMove = true;
 
     void Start()
     {
-        // vai buscar o character controller do player
-        controller = GetComponent<CharacterController>();
+        characterController = GetComponent<CharacterController>();
 
-        // garante que a camera fica no sitio certo quando o jogo começa
         if (playerCamera != null)
         {
             playerCamera.SetParent(transform);
@@ -30,19 +29,36 @@ public class FirstPersonPlayer : MonoBehaviour
             playerCamera.localRotation = Quaternion.identity;
         }
 
-        // prende o rato para olhar à volta
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        LockCursor();
     }
 
     void Update()
     {
-        // se estiver pausado, não mexe
         if (Time.timeScale == 0f)
+            return;
+
+        if (!canMove)
             return;
 
         OlharComRato();
         MoverComTeclado();
+    }
+
+    public void SetCanMove(bool value)
+    {
+        canMove = value;
+    }
+
+    public void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     private void OlharComRato()
@@ -55,10 +71,8 @@ public class FirstPersonPlayer : MonoBehaviour
         float mouseX = mouseDelta.x * mouseSensitivity;
         float mouseY = mouseDelta.y * mouseSensitivity;
 
-        // roda o corpo/player para os lados
         transform.Rotate(Vector3.up * mouseX);
 
-        // roda a camera para cima e para baixo
         cameraPitch -= mouseY;
         cameraPitch = Mathf.Clamp(cameraPitch, -80f, 80f);
 
@@ -87,14 +101,12 @@ public class FirstPersonPlayer : MonoBehaviour
         direction.y = 0f;
         direction.Normalize();
 
-        // se tiver character controller, usa isto para respeitar colisões
-        if (controller != null)
+        if (characterController != null)
         {
-            controller.Move(direction * moveSpeed * Time.deltaTime);
+            characterController.Move(direction * moveSpeed * Time.deltaTime);
         }
         else
         {
-            // plano b, mas este atravessa colliders
             transform.position += direction * moveSpeed * Time.deltaTime;
         }
     }
