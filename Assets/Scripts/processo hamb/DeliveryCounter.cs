@@ -46,6 +46,13 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
 
         playerHand.ClearHand();
 
+        DayManager dayManager = FindFirstObjectByType<DayManager>();
+
+        if (dayManager != null)
+        {
+            dayManager.AddOrderPoints();
+        }
+
         Debug.Log("hamburger entregue ao cliente certo");
     }
 }
