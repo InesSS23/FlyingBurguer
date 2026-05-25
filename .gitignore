@@ -7,6 +7,11 @@
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
 
+# layouts / janelas / preferências pessoais do Unity
+*.dwlt
+*.wlt
+*.layout
+
 # builds webgl que eu fiz para testar
 BuildWebGL*/
 *.zip
