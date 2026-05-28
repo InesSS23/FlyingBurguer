@@ -1,3 +1,4 @@
+@ -0,0 +1,31 @@
 # unity - cenas que o unity recria sozinho
 [Ll]ibrary/
 [Tt]emp/
@@ -6,11 +7,6 @@
 [Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
-
-# layouts / janelas / preferências pessoais do Unity
-*.dwlt
-*.wlt
-*.layout
 
 # builds webgl que eu fiz para testar
 BuildWebGL*/
