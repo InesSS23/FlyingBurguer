@@ -3536,7 +3536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299fa0151f890684bb0da7c4e34ec918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerManager
-  customerPrefab: {fileID: 3551596867303175071, guid: a4a7ee36549e1ff40bee9b50bb56097b, type: 3}
+  customerPrefabs: []
   spawnPoints:
   - {fileID: 1681560622}
   - {fileID: 666941777}
@@ -4661,8 +4661,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DayManager
   dayNumber: 1
-  dayDuration: 20
-  targetScore: 10
+  dayDuration: 300
+  targetScore: 50
   dayText: {fileID: 1709111712}
   scoreText: {fileID: 1684086772}
   timerText: {fileID: 853508273}
