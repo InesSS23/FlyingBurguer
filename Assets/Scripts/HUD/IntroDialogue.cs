@@ -47,6 +47,13 @@ public class IntroDialogue : MonoBehaviour
             dialoguePanel.SetActive(true);
         }
 
+        // CORREÇÃO: o Level1 força o jogador e a câmara para o ponto inicial antes de bloquear o jogador.
+        // Isto resolve o bug em que a câmara ficava virada para a parede/chão no WebGL ou ao reiniciar o dia.
+        if (firstPersonPlayer != null)
+        {
+            firstPersonPlayer.ResetPlayerAndCameraToStart();
+        }
+
         BloquearJogador();
         ShowCurrentLine();
         UpdateButtonText();
