@@ -12,6 +12,9 @@ public class PauseMenuController : MonoBehaviour
     [Header("controlo do dia")]
     [SerializeField] private DayManager dayManager;
 
+    [Header("áudio")]
+    [SerializeField] private AudioClip menuBackgroundMusic;
+
     private bool isPaused = false;
 
     private void Start()
@@ -93,6 +96,17 @@ public class PauseMenuController : MonoBehaviour
     public void BackToMainMenu()
     {
         Time.timeScale = 1f;
+        
+        // Para a música do jogo e toca a do menu
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.StopBackgroundMusic();
+            if (menuBackgroundMusic != null)
+            {
+                AudioManager.Instance.PlayBackgroundMusic(menuBackgroundMusic);
+            }
+        }
+        
         SceneManager.LoadScene(mainMenuSceneName);
     }
 }

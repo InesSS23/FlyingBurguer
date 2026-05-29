@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DayManager : MonoBehaviour
 {
-    [Header("configuração do dia")]
+    [Header("configuraï¿½ï¿½o do dia")]
     [SerializeField] private int dayNumber = 1;
     [SerializeField] private float dayDuration = 300f;
     [SerializeField] private int targetScore = 100;
@@ -20,6 +20,9 @@ public class DayManager : MonoBehaviour
     [SerializeField] private CustomerManager customerManager;
     [SerializeField] private PauseMenuController pauseMenuController;
 
+    [Header("Ã¡udio")]
+    [SerializeField] private AudioClip gameplayBackgroundMusic;
+
     private float currentTime;
     private int currentScore;
     private bool dayRunning = false;
@@ -31,6 +34,12 @@ public class DayManager : MonoBehaviour
         currentScore = 0;
         dayRunning = false;
         dayEnded = false;
+
+        // Toca a mÃºsica de fundo do jogo
+        if (AudioManager.Instance != null && gameplayBackgroundMusic != null)
+        {
+            AudioManager.Instance.PlayBackgroundMusic(gameplayBackgroundMusic);
+        }
 
         UpdateUI();
     }
@@ -63,7 +72,7 @@ public class DayManager : MonoBehaviour
             return;
 
         dayRunning = true;
-        Debug.Log("o dia começou e o timer arrancou");
+        Debug.Log("o dia comeï¿½ou e o timer arrancou");
     }
 
     public void StopDay()
@@ -122,6 +131,12 @@ public class DayManager : MonoBehaviour
     {
         bool success = currentScore >= targetScore;
 
+        // Para a mÃºsica de fundo
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.StopBackgroundMusic();
+        }
+
         if (pauseMenuController != null)
         {
             pauseMenuController.ForceClosePauseMenu();
@@ -143,11 +158,11 @@ public class DayManager : MonoBehaviour
 
         if (success)
         {
-            Debug.Log("dia concluído com sucesso");
+            Debug.Log("dia concluï¿½do com sucesso");
         }
         else
         {
-            Debug.Log("não atingiste a pontuação necessária");
+            Debug.Log("nï¿½o atingiste a pontuaï¿½ï¿½o necessï¿½ria");
         }
     }
 }
