@@ -1,24 +1,24 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class SettingsPanelController : MonoBehaviour
 {
-    [Header("Volume Sliders")]
-    [SerializeField] private Slider bgmVolumeSlider;
-    [SerializeField] private Slider sfxVolumeSlider;
+    [Header("sliders")]
+    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private Slider mouseSensitivitySlider;
 
-    [Header("Volume Text (Optional)")]
-    [SerializeField] private TextMeshProUGUI bgmVolumeText;
-    [SerializeField] private TextMeshProUGUI sfxVolumeText;
-
-    [Header("Navigation")]
-    [SerializeField] private Button backButton;
+    [Header("textos opcionais")]
+    [SerializeField] private TMP_Text volumeText;
+    [SerializeField] private TMP_Text mouseSensitivityText;
 
     private void OnEnable()
     {
-        InitializeSliders();
+        GameSettings.LoadSettings();
+
+        SetupSliders();
         AddListeners();
+        UpdateTexts();
     }
 
     private void OnDisable()
@@ -26,87 +26,72 @@ public class SettingsPanelController : MonoBehaviour
         RemoveListeners();
     }
 
-    private void InitializeSliders()
+    private void SetupSliders()
     {
-        if (bgmVolumeSlider != null)
+        if (volumeSlider != null)
         {
-            bgmVolumeSlider.value = AudioManager.Instance.GetBGMVolume();
+            volumeSlider.minValue = 0f;
+            volumeSlider.maxValue = 1f;
+            volumeSlider.value = GameSettings.GetMasterVolume();
         }
 
-        if (sfxVolumeSlider != null)
+        if (mouseSensitivitySlider != null)
         {
-            sfxVolumeSlider.value = AudioManager.Instance.GetSFXVolume();
+            mouseSensitivitySlider.minValue = 0.02f;
+            mouseSensitivitySlider.maxValue = 0.5f;
+            mouseSensitivitySlider.value = GameSettings.GetMouseSensitivity();
         }
-
-        UpdateVolumeText();
     }
 
     private void AddListeners()
     {
-        if (bgmVolumeSlider != null)
+        if (volumeSlider != null)
         {
-            bgmVolumeSlider.onValueChanged.AddListener(OnBGMVolumeChanged);
+            volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
         }
 
-        if (sfxVolumeSlider != null)
+        if (mouseSensitivitySlider != null)
         {
-            sfxVolumeSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
-        }
-
-        if (backButton != null)
-        {
-            backButton.onClick.AddListener(OnBackButtonClicked);
+            mouseSensitivitySlider.onValueChanged.AddListener(OnMouseSensitivityChanged);
         }
     }
 
     private void RemoveListeners()
     {
-        if (bgmVolumeSlider != null)
+        if (volumeSlider != null)
         {
-            bgmVolumeSlider.onValueChanged.RemoveListener(OnBGMVolumeChanged);
+            volumeSlider.onValueChanged.RemoveListener(OnVolumeChanged);
         }
 
-        if (sfxVolumeSlider != null)
+        if (mouseSensitivitySlider != null)
         {
-            sfxVolumeSlider.onValueChanged.RemoveListener(OnSFXVolumeChanged);
-        }
-
-        if (backButton != null)
-        {
-            backButton.onClick.RemoveListener(OnBackButtonClicked);
+            mouseSensitivitySlider.onValueChanged.RemoveListener(OnMouseSensitivityChanged);
         }
     }
 
-    private void OnBGMVolumeChanged(float value)
+    private void OnVolumeChanged(float value)
     {
-        AudioManager.Instance.SetBGMVolume(value);
-        UpdateVolumeText();
-        AudioManager.Instance.PlayButtonClickSFX();
+        GameSettings.SetMasterVolume(value);
+        UpdateTexts();
     }
 
-    private void OnSFXVolumeChanged(float value)
+    private void OnMouseSensitivityChanged(float value)
     {
-        AudioManager.Instance.SetSFXVolume(value);
-        UpdateVolumeText();
-        AudioManager.Instance.PlayButtonClickSFX();
+        GameSettings.SetMouseSensitivity(value);
+        UpdateTexts();
     }
 
-    private void OnBackButtonClicked()
+    private void UpdateTexts()
     {
-        AudioManager.Instance.PlayButtonClickSFX();
-        // O MainMenuController vai lidar com mostrar o menu anterior
-    }
-
-    private void UpdateVolumeText()
-    {
-        if (bgmVolumeText != null)
+        if (volumeText != null)
         {
-            bgmVolumeText.text = $"Música: {Mathf.RoundToInt(AudioManager.Instance.GetBGMVolume() * 100)}%";
+            int volumePercent = Mathf.RoundToInt(GameSettings.GetMasterVolume() * 100f);
+            volumeText.text = "Som: " + volumePercent + "%";
         }
 
-        if (sfxVolumeText != null)
+        if (mouseSensitivityText != null)
         {
-            sfxVolumeText.text = $"Efeitos: {Mathf.RoundToInt(AudioManager.Instance.GetSFXVolume() * 100)}%";
+            mouseSensitivityText.text = "Sensibilidade: " + GameSettings.GetMouseSensitivity().ToString("0.00");
         }
     }
 }

@@ -3349,7 +3349,6 @@ GameObject:
   m_Component:
   - component: {fileID: 611609169}
   - component: {fileID: 611609168}
-  - component: {fileID: 611609167}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -3357,30 +3356,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &611609167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611609166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e6774dce1995e5478adafd0ee42addb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DayManager
-  dayNumber: 1
-  dayDuration: 300
-  targetScore: 100
-  dayText: {fileID: 0}
-  scoreText: {fileID: 0}
-  timerText: {fileID: 0}
-  dayEndPanel: {fileID: 0}
-  firstPersonPlayer: {fileID: 0}
-  playerInteraction: {fileID: 0}
-  customerManager: {fileID: 0}
-  pauseMenuController: {fileID: 0}
-  gameplayBackgroundMusic: {fileID: 0}
 --- !u!82 &611609168
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3486,12 +3461,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611609166}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.88856, y: 0.62199, z: 0.88856}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1151648552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &637489108
 GameObject:
@@ -5294,7 +5269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DayManager
   dayNumber: 1
   dayDuration: 300
-  targetScore: 50
+  targetScore: 120
   dayText: {fileID: 1709111712}
   scoreText: {fileID: 1684086772}
   timerText: {fileID: 853508273}
@@ -6207,6 +6182,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 611609169}
   - {fileID: 744900718}
   - {fileID: 1043362474}
   - {fileID: 1794965642}
@@ -7302,6 +7278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryCounter
   customerManager: {fileID: 744900719}
+  dayManager: {fileID: 1043362475}
+  pointsPerDelivery: 10
 --- !u!1 &1445430218
 GameObject:
   m_ObjectHideFlags: 0
@@ -10236,4 +10214,3 @@ SceneRoots:
   - {fileID: 1180569199}
   - {fileID: 201082405}
   - {fileID: 412688018}
-  - {fileID: 611609169}

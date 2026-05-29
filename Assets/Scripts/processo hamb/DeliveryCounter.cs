@@ -6,6 +6,12 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
     [Header("manager dos clientes")]
     [SerializeField] private CustomerManager customerManager;
 
+    [Header("manager do dia / pontos")]
+    [SerializeField] private DayManager dayManager;
+
+    [Header("pontos")]
+    [SerializeField] private int pointsPerDelivery = 10;
+
     public void Interact()
     {
         PlayerHand playerHand = FindFirstObjectByType<PlayerHand>();
@@ -46,11 +52,13 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
 
         playerHand.ClearHand();
 
-        DayManager dayManager = FindFirstObjectByType<DayManager>();
-
         if (dayManager != null)
         {
-            dayManager.AddScore(10);
+            dayManager.AddScore(pointsPerDelivery);
+        }
+        else
+        {
+            Debug.Log("n tenho DayManager ligado no DeliveryCounter");
         }
 
         Debug.Log("hamburger entregue ao cliente certo");

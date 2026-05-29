@@ -16,9 +16,10 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
     {
+        GameSettings.LoadSettings();
+
         ShowMainMenu();
-        
-        // Toca a música de fundo do menu
+
         if (AudioManager.Instance != null && menuBackgroundMusic != null)
         {
             AudioManager.Instance.PlayBackgroundMusic(menuBackgroundMusic);
@@ -32,6 +33,7 @@ public class MainMenuController : MonoBehaviour
             AudioManager.Instance.PlayButtonClickSFX();
             AudioManager.Instance.StopBackgroundMusic();
         }
+
         SceneManager.LoadScene(levelSceneName);
     }
 
@@ -41,6 +43,7 @@ public class MainMenuController : MonoBehaviour
         {
             AudioManager.Instance.PlayButtonClickSFX();
         }
+
         mainButtonsPanel.SetActive(false);
         optionsPanel.SetActive(true);
         creditsPanel.SetActive(false);
@@ -52,6 +55,7 @@ public class MainMenuController : MonoBehaviour
         {
             AudioManager.Instance.PlayButtonClickSFX();
         }
+
         mainButtonsPanel.SetActive(false);
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(true);
@@ -63,6 +67,7 @@ public class MainMenuController : MonoBehaviour
         {
             AudioManager.Instance.PlayButtonClickSFX();
         }
+
         mainButtonsPanel.SetActive(true);
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
@@ -74,6 +79,7 @@ public class MainMenuController : MonoBehaviour
         {
             AudioManager.Instance.PlayButtonClickSFX();
         }
+
         Debug.Log("Sair do jogo");
         Application.Quit();
     }

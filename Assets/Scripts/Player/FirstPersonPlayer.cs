@@ -22,6 +22,8 @@ public class FirstPersonPlayer : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
 
+        mouseSensitivity = GameSettings.GetMouseSensitivity();
+
         if (playerCamera != null)
         {
             playerCamera.SetParent(transform);
@@ -47,6 +49,11 @@ public class FirstPersonPlayer : MonoBehaviour
     public void SetCanMove(bool value)
     {
         canMove = value;
+    }
+
+    public void SetMouseSensitivity(float value)
+    {
+        mouseSensitivity = value;
     }
 
     public void LockCursor()

@@ -5,6 +5,8 @@ public class PauseMenuController : MonoBehaviour
 {
     [Header("pause menu")]
     [SerializeField] private GameObject pauseMenuPanel;
+    [SerializeField] private GameObject pauseButtonsPanel;
+    [SerializeField] private GameObject optionsPanel;
 
     [Header("cenas")]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
@@ -19,9 +21,16 @@ public class PauseMenuController : MonoBehaviour
 
     private void Start()
     {
+        GameSettings.LoadSettings();
+
         if (pauseMenuPanel != null)
         {
             pauseMenuPanel.SetActive(false);
+        }
+
+        if (optionsPanel != null)
+        {
+            optionsPanel.SetActive(false);
         }
 
         Time.timeScale = 1f;
@@ -55,6 +64,16 @@ public class PauseMenuController : MonoBehaviour
             pauseMenuPanel.SetActive(false);
         }
 
+        if (optionsPanel != null)
+        {
+            optionsPanel.SetActive(false);
+        }
+
+        if (pauseButtonsPanel != null)
+        {
+            pauseButtonsPanel.SetActive(true);
+        }
+
         Time.timeScale = 1f;
         isPaused = false;
 
@@ -69,6 +88,16 @@ public class PauseMenuController : MonoBehaviour
             pauseMenuPanel.SetActive(true);
         }
 
+        if (pauseButtonsPanel != null)
+        {
+            pauseButtonsPanel.SetActive(true);
+        }
+
+        if (optionsPanel != null)
+        {
+            optionsPanel.SetActive(false);
+        }
+
         Time.timeScale = 0f;
         isPaused = true;
 
@@ -76,11 +105,47 @@ public class PauseMenuController : MonoBehaviour
         Cursor.visible = true;
     }
 
+    public void ShowOptions()
+    {
+        if (pauseButtonsPanel != null)
+        {
+            pauseButtonsPanel.SetActive(false);
+        }
+
+        if (optionsPanel != null)
+        {
+            optionsPanel.SetActive(true);
+        }
+    }
+
+    public void BackToPauseButtons()
+    {
+        if (optionsPanel != null)
+        {
+            optionsPanel.SetActive(false);
+        }
+
+        if (pauseButtonsPanel != null)
+        {
+            pauseButtonsPanel.SetActive(true);
+        }
+    }
+
     public void ForceClosePauseMenu()
     {
         if (pauseMenuPanel != null)
         {
             pauseMenuPanel.SetActive(false);
+        }
+
+        if (optionsPanel != null)
+        {
+            optionsPanel.SetActive(false);
+        }
+
+        if (pauseButtonsPanel != null)
+        {
+            pauseButtonsPanel.SetActive(true);
         }
 
         Time.timeScale = 1f;
@@ -96,17 +161,17 @@ public class PauseMenuController : MonoBehaviour
     public void BackToMainMenu()
     {
         Time.timeScale = 1f;
-        
-        // Para a música do jogo e toca a do menu
+
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.StopBackgroundMusic();
+
             if (menuBackgroundMusic != null)
             {
                 AudioManager.Instance.PlayBackgroundMusic(menuBackgroundMusic);
             }
         }
-        
+
         SceneManager.LoadScene(mainMenuSceneName);
     }
 }
