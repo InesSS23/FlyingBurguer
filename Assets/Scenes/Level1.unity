@@ -2410,6 +2410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenuController
   pauseMenuPanel: {fileID: 2042207935}
+  pauseButtonsPanel: {fileID: 0}
+  optionsPanel: {fileID: 0}
   mainMenuSceneName: MainMenu
   dayManager: {fileID: 1043362475}
   menuBackgroundMusic: {fileID: 0}
