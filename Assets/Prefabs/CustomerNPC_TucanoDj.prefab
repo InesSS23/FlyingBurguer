@@ -412,6 +412,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a66651cd2d93b2c48aa850cc24af66fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4829204774738603880}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a66651cd2d93b2c48aa850cc24af66fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7592678062011132731}
   m_SourcePrefab: {fileID: 100100000, guid: a66651cd2d93b2c48aa850cc24af66fe, type: 3}
 --- !u!1 &5049893858297744023 stripped
 GameObject:
@@ -437,6 +440,30 @@ MonoBehaviour:
   - Que magnifico
   - "Adoraria saber do que \xE9 feito"
   speechUI: {fileID: 2996203984789836744}
+  tucanoAnimator: {fileID: 0}
+  flyParameterName: isFlying
+--- !u!95 &7592678062011132731
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5049893858297744023}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: acb4b20ab86b2774cbc4940aa9289dd1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &5575178273709871149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a66651cd2d93b2c48aa850cc24af66fe, type: 3}

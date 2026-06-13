@@ -4522,6 +4522,7 @@ MonoBehaviour:
   - {fileID: 8472987967330036501, guid: 69ea47f4ca794454cb419eba2cca8931, type: 3}
   - {fileID: 2137281898610772367, guid: 73d3ed7e27d849b4eb217bd02934218d, type: 3}
   - {fileID: 5049893858297744023, guid: 1473fcba4a8927c489e1547355a55225, type: 3}
+  tucanoAnimationPrefab: {fileID: 111140971847679966, guid: 9aeaaf4a17b77f9448298e478f0487fb, type: 3}
   spawnPoints:
   - {fileID: 1681560622}
   - {fileID: 666941777}
@@ -4534,6 +4535,10 @@ MonoBehaviour:
   - {fileID: 952216792}
   minSpawnTime: 3
   maxSpawnTime: 6
+  spawnCheckRadius: 0.6
+  customerLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   startSpawningAutomatically: 0
 --- !u!1 &753971092
 GameObject:

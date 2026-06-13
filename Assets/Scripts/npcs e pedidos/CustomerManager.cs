@@ -2,36 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CustomerManager : MonoBehaviour
 {
     [Header("prefabs dos clientes")]
     [SerializeField] private GameObject[] customerPrefabs;
+
+
+    [Header("prefab animacao tucano")]
+    [SerializeField] private GameObject tucanoAnimationPrefab;
+
 
     [Header("pontos")]
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private CustomerServicePoint[] servicePoints;
     [SerializeField] private Transform[] exitPoints;
 
+
     [Header("tempo de spawn")]
     [SerializeField] private float minSpawnTime = 8f;
     [SerializeField] private float maxSpawnTime = 15f;
+    [SerializeField] private float spawnCheckRadius = 0.6f;
+[SerializeField] private LayerMask customerLayerMask;
+
 
     [Header("controlo")]
     [SerializeField] private bool startSpawningAutomatically = false;
+
 
     private List<BurgerOrder> possibleOrders = new List<BurgerOrder>();
     private Coroutine spawnCoroutine;
     private bool isSpawning = false;
 
+
     void Start()
     {
         CriarPedidosPossiveis();
+
 
         if (startSpawningAutomatically)
         {
             StartSpawning();
         }
     }
+    private bool IsSpawnPointFree(Transform point)
+{
+    Collider2D hit = Physics2D.OverlapPoint(point.position, customerLayerMask);
+    return hit == null;
+}
+
 
     private void CriarPedidosPossiveis()
     {
@@ -40,15 +59,18 @@ public class CustomerManager : MonoBehaviour
             "Bread", "CookedMeat", "Bread"
         }));
 
+
         possibleOrders.Add(new BurgerOrder("Cheeseburger", new List<string>
         {
             "Bread", "CookedMeat", "Cheese", "Bread"
         }));
 
+
         possibleOrders.Add(new BurgerOrder("Burger alface", new List<string>
         {
             "Bread", "CookedMeat", "Lettuce", "Bread"
         }));
+
 
         possibleOrders.Add(new BurgerOrder("Burger completo", new List<string>
         {
@@ -56,23 +78,29 @@ public class CustomerManager : MonoBehaviour
         }));
     }
 
+
     public void StartSpawning()
     {
         if (isSpawning)
             return;
 
+
         isSpawning = true;
         spawnCoroutine = StartCoroutine(SpawnLoop());
 
-        Debug.Log("clientes começaram a aparecer");
+
+        Debug.Log("clientes comeÃ§aram a aparecer");
     }
+
 
     public void StopSpawning()
     {
         if (!isSpawning)
             return;
 
+
         isSpawning = false;
+
 
         if (spawnCoroutine != null)
         {
@@ -80,8 +108,10 @@ public class CustomerManager : MonoBehaviour
             spawnCoroutine = null;
         }
 
+
         Debug.Log("clientes pararam de aparecer");
     }
+
 
     private IEnumerator SpawnLoop()
     {
@@ -90,74 +120,63 @@ public class CustomerManager : MonoBehaviour
             float waitTime = Random.Range(minSpawnTime, maxSpawnTime);
             yield return new WaitForSeconds(waitTime);
 
+
             TrySpawnCustomer();
         }
     }
 
+
     private void TrySpawnCustomer()
+{
+    CustomerServicePoint freePoint = GetFreeServicePoint();
+    if (freePoint == null) { Debug.Log("todos os lugares estao ocupados"); return; }
+    if (spawnPoints == null || spawnPoints.Length == 0) { Debug.Log("faltam spawn points"); return; }
+    if (exitPoints == null || exitPoints.Length == 0) { Debug.Log("faltam exit points"); return; }
+    if (customerPrefabs == null || customerPrefabs.Length == 0) { Debug.Log("falta ligar os prefabs"); return; }
+
+    GameObject selectedCustomerPrefab = GetRandomCustomerPrefab();
+    if (selectedCustomerPrefab == null) { Debug.Log("prefab vazio"); return; }
+
+    Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+    if (!IsSpawnPointFree(spawnPoint)) { Debug.Log("spawn point ocupado"); return; }
+
+    Transform exitPoint = exitPoints[Random.Range(0, exitPoints.Length)];
+    BurgerOrder order = possibleOrders[Random.Range(0, possibleOrders.Count)];
+
+    Debug.Log("PREFAB SELECIONADO: [" + selectedCustomerPrefab.name + "]");
+
+    GameObject customerObject = Instantiate(selectedCustomerPrefab, spawnPoint.position, spawnPoint.rotation);
+    CustomerNPC customer = customerObject.GetComponent<CustomerNPC>();
+    if (customer == null) { Debug.Log("sem CustomerNPC"); Destroy(customerObject); return; }
+
+    if (tucanoAnimationPrefab != null && selectedCustomerPrefab.name.Contains("Tucano"))
     {
-        CustomerServicePoint freePoint = GetFreeServicePoint();
+        GameObject tucanoObject = Instantiate(tucanoAnimationPrefab, spawnPoint.position, spawnPoint.rotation);
+        tucanoObject.transform.SetParent(customerObject.transform);
+        tucanoObject.transform.localPosition = Vector3.zero;
+        tucanoObject.transform.localScale = Vector3.one;
 
-        if (freePoint == null)
-        {
-            Debug.Log("todos os lugares estao ocupados, n spawna cliente");
-            return;
-        }
+        Camera tucanoCamera = tucanoObject.GetComponentInChildren<Camera>();
+        if (tucanoCamera != null) tucanoCamera.gameObject.SetActive(false);
 
-        if (customerPrefabs == null || customerPrefabs.Length == 0)
-        {
-            Debug.Log("falta ligar os prefabs dos clientes");
-            return;
-        }
+        Light tucanoLight = tucanoObject.GetComponentInChildren<Light>();
+        if (tucanoLight != null) tucanoLight.gameObject.SetActive(false);
 
-        if (spawnPoints == null || spawnPoints.Length == 0)
-        {
-            Debug.Log("faltam spawn points");
-            return;
-        }
-
-        if (exitPoints == null || exitPoints.Length == 0)
-        {
-            Debug.Log("faltam exit points");
-            return;
-        }
-
-        GameObject selectedCustomerPrefab = GetRandomCustomerPrefab();
-
-        if (selectedCustomerPrefab == null)
-        {
-            Debug.Log("algum prefab de cliente está vazio no array");
-            return;
-        }
-
-        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        Transform exitPoint = exitPoints[Random.Range(0, exitPoints.Length)];
-        BurgerOrder order = possibleOrders[Random.Range(0, possibleOrders.Count)];
-
-        GameObject customerObject = Instantiate(
-            selectedCustomerPrefab,
-            spawnPoint.position,
-            spawnPoint.rotation
-        );
-
-        CustomerNPC customer = customerObject.GetComponent<CustomerNPC>();
-
-        if (customer == null)
-        {
-            Debug.Log("o prefab do cliente n tem CustomerNPC");
-            Destroy(customerObject);
-            return;
-        }
-
-        freePoint.SetCustomer(customer);
-        customer.SetupCustomer(freePoint.transform, exitPoint, order, freePoint);
+        Animator anim = tucanoObject.GetComponentInChildren<Animator>();
+        customer.SetTucanoAnimator(anim);
     }
+
+    freePoint.SetCustomer(customer);
+    customer.SetupCustomer(freePoint.transform, exitPoint, order, freePoint);
+}
+
 
     private GameObject GetRandomCustomerPrefab()
     {
         int randomIndex = Random.Range(0, customerPrefabs.Length);
         return customerPrefabs[randomIndex];
     }
+
 
     private CustomerServicePoint GetFreeServicePoint()
     {
@@ -169,8 +188,10 @@ public class CustomerManager : MonoBehaviour
             }
         }
 
+
         return null;
     }
+
 
     public bool TryServeBurgerToCustomer(List<string> burger)
     {
@@ -180,15 +201,19 @@ public class CustomerManager : MonoBehaviour
             return false;
         }
 
+
         for (int i = 0; i < servicePoints.Length; i++)
         {
             if (servicePoints[i] == null)
                 continue;
 
+
             CustomerNPC customer = servicePoints[i].GetCurrentCustomer();
+
 
             if (customer == null)
                 continue;
+
 
             if (customer.CanReceiveBurger(burger))
             {
@@ -196,6 +221,7 @@ public class CustomerManager : MonoBehaviour
                 return true;
             }
         }
+
 
         Debug.Log("nenhum cliente quer este hamburger");
         return false;
