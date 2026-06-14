@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2c0a5a9fda111094996233a68f257a77, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c0a5a9fda111094996233a68f257a77, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c0a5a9fda111094996233a68f257a77, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c0a5a9fda111094996233a68f257a77, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.8203335
       objectReference: {fileID: 0}
@@ -50,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2c0a5a9fda111094996233a68f257a77, type: 3}
       propertyPath: m_Name
-      value: Lettuce
+      value: LettuceVisual
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
