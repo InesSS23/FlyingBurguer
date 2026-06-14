@@ -1,11 +1,11 @@
 [Licensing::Module] Trying to connect to existing licensing client channel...
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ac163" at "2026-06-14T13:02:56.7921466Z"
 Built from '6000.3/staging' branch; Version is '6000.3.8f1 (1c7db571dde0) revision 1867189'; Using compiler version '194234433'; Build Type 'Release'
 OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'pt' Physical Memory: 30637 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
 System  architecture: x64
 Process architecture: x64
-Date: 2026-06-14T13:02:56Z
+Date: 2026-06-14T18:40:47Z
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ac163" at "2026-06-14T18:40:47.08083Z"
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity 6000.3.8f1\Editor\Unity.exe
@@ -19,7 +19,7 @@ C:/Users/ac163/OneDrive/Documentos/GitHub/FlyingBurguer
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-52945
+55749
 -licensingIpc
 LicenseClient-ac163
 -job-worker-count
@@ -67,12 +67,12 @@ C:/Users/ac163/OneDrive/Documentos/GitHub/FlyingBurguer
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
     "memorysetup-temp-allocator-size-cloud-worker=32768"
-Player connection [5472]  Target information:
+Player connection [8668]  Target information:
 
-Player connection [5472]  * "[IP] 192.168.1.73 [Port] 0 [Flags] 2 [Guid] 13620004 [EditorId] 13620004 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-JPROM8B) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [8668]  * "[IP] 192.168.1.73 [Port] 0 [Flags] 2 [Guid] 1006573019 [EditorId] 1006573019 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-JPROM8B) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [5472] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [5472] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [8668] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8668] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 3
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -84,7 +84,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 6.89 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 5.95 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.3.8f1 (1c7db571dde0)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity 6000.3.8f1/Editor/Data/Resources/UnitySubsystems
@@ -100,7 +100,7 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity 6000.3.8f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity 6000.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity 6000.3.8f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56712
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56720
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity 6000.3.8f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
@@ -108,14 +108,14 @@ Register platform support module: C:/Program Files/Unity 6000.3.8f1/Editor/Data/
 [Licensing::Module] Licensing is not yet initialized.
 [Licensing::Client] Handshaking with LicensingClient:
   Version:                 1.17.4+4293ba1
-  Session Id:              2060af665c19463ba6d994ad704bec0d
+  Session Id:              10f9dba9debc447e9c11c1aef434a208
   Correlation Id:          e04baee1b6564c64042726500a7082fe
-  External correlation Id: 4792998358466413412
+  External correlation Id: 8115236770709525353
   Machine Id:              iq33tNw+HNvMWw3UYURrGbCJFlk=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-ac163" (connect: 0.00s, validation: 0.00s, handshake: 2.68s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ac163-notifications" at "2026-06-14T13:02:59.474228Z"
-[Licensing::Module] Licensing Background thread has ended after 2.68s
-[Licensing::Module] Licensing is initialized (took 0.84s).
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-ac163" (connect: 0.00s, validation: 0.00s, handshake: 2.13s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ac163-notifications" at "2026-06-14T18:40:49.2138449Z"
+[Licensing::Module] Licensing Background thread has ended after 2.13s
+[Licensing::Module] Licensing is initialized (took 0.66s).
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Module] License group:
   Id: 6872731913130-UnityPersXXXX
@@ -123,43 +123,43 @@ Register platform support module: C:/Program Files/Unity 6000.3.8f1/Editor/Data/
   Type: Assigned
   Expiration: Unlimited
 Register platform support module: C:/Program Files/Unity 6000.3.8f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
-Registered in 0.853435 seconds.
-- Loaded All Assemblies, in  2.382 seconds
+Registered in 0.669742 seconds.
+- Loaded All Assemblies, in  1.833 seconds
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 692 ms
+Android Extension - Scanning For ADB Devices 553 ms
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.129 seconds
-Domain Reload Profiling: 4503ms
-	BeginReloadAssembly (460ms)
+- Finished resetting the current domain, in  1.813 seconds
+Domain Reload Profiling: 3641ms
+	BeginReloadAssembly (422ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (2ms)
-	RebuildCommonClasses (185ms)
-	RebuildNativeTypeToScriptingClass (75ms)
-	initialDomainReloadingComplete (1030ms)
-	LoadAllAssembliesAndSetupDomain (623ms)
-		LoadAssemblies (452ms)
+	RebuildCommonClasses (105ms)
+	RebuildNativeTypeToScriptingClass (36ms)
+	initialDomainReloadingComplete (786ms)
+	LoadAllAssembliesAndSetupDomain (477ms)
+		LoadAssemblies (417ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (612ms)
-			TypeCache.Refresh (607ms)
-				TypeCache.ScanAssembly (569ms)
+		AnalyzeDomain (464ms)
+			TypeCache.Refresh (460ms)
+				TypeCache.ScanAssembly (434ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (2130ms)
+	FinalizeReload (1815ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1994ms)
+		SetupLoadedEditorAssemblies (1717ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (1048ms)
-			SetLoadedEditorAssemblies (14ms)
-			BeforeProcessingInitializeOnLoad (289ms)
-			ProcessInitializeOnLoadAttributes (483ms)
-			ProcessInitializeOnLoadMethodAttributes (159ms)
+			InitializePlatformSupportModulesInManaged (808ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (233ms)
+			ProcessInitializeOnLoadAttributes (410ms)
+			ProcessInitializeOnLoadMethodAttributes (257ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -169,8 +169,8 @@ Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
 [Licensing::Client] Successfully resolved entitlement details
-- Loaded All Assemblies, in  2.334 seconds
-Refreshing native plugins compatible for Editor in 4.32 ms, found 3 plugins.
+- Loaded All Assemblies, in  1.905 seconds
+Refreshing native plugins compatible for Editor in 3.15 ms, found 3 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
@@ -180,957 +180,52 @@ Package Manager log level set to [2]
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.521 seconds
-Domain Reload Profiling: 4842ms
-	BeginReloadAssembly (394ms)
+- Finished resetting the current domain, in  2.072 seconds
+Domain Reload Profiling: 3960ms
+	BeginReloadAssembly (450ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (18ms)
+		DisableScriptedObjects (22ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (62ms)
-	RebuildCommonClasses (109ms)
-	RebuildNativeTypeToScriptingClass (44ms)
-	initialDomainReloadingComplete (114ms)
-	LoadAllAssembliesAndSetupDomain (1660ms)
-		LoadAssemblies (1037ms)
+		CreateAndSetChildDomain (79ms)
+	RebuildCommonClasses (85ms)
+	RebuildNativeTypeToScriptingClass (30ms)
+	initialDomainReloadingComplete (102ms)
+	LoadAllAssembliesAndSetupDomain (1219ms)
+		LoadAssemblies (820ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (834ms)
-			TypeCache.Refresh (608ms)
-				TypeCache.ScanAssembly (569ms)
-			BuildScriptInfoCaches (187ms)
-			ResolveRequiredComponents (31ms)
-	FinalizeReload (2522ms)
+		AnalyzeDomain (625ms)
+			TypeCache.Refresh (418ms)
+				TypeCache.ScanAssembly (386ms)
+			BuildScriptInfoCaches (160ms)
+			ResolveRequiredComponents (38ms)
+	FinalizeReload (2074ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1854ms)
+		SetupLoadedEditorAssemblies (1494ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (33ms)
-			SetLoadedEditorAssemblies (13ms)
-			BeforeProcessingInitializeOnLoad (543ms)
-			ProcessInitializeOnLoadAttributes (1050ms)
-			ProcessInitializeOnLoadMethodAttributes (199ms)
-			AfterProcessingInitializeOnLoad (16ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (21ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 3.73 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6297 unused Assets / (5.1 MB). Loaded Objects now: 7095.
-Memory consumption went from 143.6 MB to 138.6 MB.
-Total: 25.071800 ms (FindLiveObjects: 1.169300 ms CreateObjectMapping: 1.926500 ms MarkObjects: 15.463600 ms  DeleteObjects: 6.510200 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 99995.522213 seconds.
-  path: Assets/Prefabs/CarneFBX.fbx
-  artifactKey: Guid(b5ab835a39f503a46bb16e99ecce0f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CarneFBX.fbx using Guid(b5ab835a39f503a46bb16e99ecce0f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '488024f257e75a28b086b1b4638ed87a') in 1.8969113 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 212.038033 seconds.
-  path: Assets/Prefabs/CarneFBX.fbx
-  artifactKey: Guid(b5ab835a39f503a46bb16e99ecce0f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CarneFBX.fbx using Guid(b5ab835a39f503a46bb16e99ecce0f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fd537aabd3cbf675fabe596f0438df29') in 0.0674847 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.701910 seconds.
-  path: Assets/Prefabs/CarneFBX.fbx
-  artifactKey: Guid(b5ab835a39f503a46bb16e99ecce0f04) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/CarneFBX.fbx using Guid(b5ab835a39f503a46bb16e99ecce0f04) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1bf4a97534c1fbe52f29fc6bc5229a28') in 0.3144899 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 309.063585 seconds.
-  path: Assets/Prefabs/CarneFBX.fbx
-  artifactKey: Guid(b5ab835a39f503a46bb16e99ecce0f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CarneFBX.fbx using Guid(b5ab835a39f503a46bb16e99ecce0f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1d9ea41be7292262a01a974e193ebded') in 0.0979705 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.742381 seconds.
-  path: Assets/Prefabs/CarneFBX.fbx
-  artifactKey: Guid(b5ab835a39f503a46bb16e99ecce0f04) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/CarneFBX.fbx using Guid(b5ab835a39f503a46bb16e99ecce0f04) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5c03512de8eba43367bf652aa890d41c') in 0.0377699 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 12.647869 seconds.
-  path: Assets/Prefabs/CarneFBX.prefab
-  artifactKey: Guid(cefa5ecfdfbc31d4b98bf5fe36030f93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CarneFBX.prefab using Guid(cefa5ecfdfbc31d4b98bf5fe36030f93) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3dbbfc6bf754dc5d63ba70eeed9c6b91') in 0.0426034 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.803689 seconds.
-  path: Assets/Prefabs/CarneFBX.prefab
-  artifactKey: Guid(cefa5ecfdfbc31d4b98bf5fe36030f93) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/CarneFBX.prefab using Guid(cefa5ecfdfbc31d4b98bf5fe36030f93) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5b456cfcac3176b2b09ab1158e7be00a') in 0.0286562 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 21
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.031528 seconds.
-  path: Assets/Prefabs/CarneFBX.prefab
-  artifactKey: Guid(cefa5ecfdfbc31d4b98bf5fe36030f93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CarneFBX.prefab using Guid(cefa5ecfdfbc31d4b98bf5fe36030f93) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f4ea954b4c19c5e27e874a97081f6bc9') in 0.0022326 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 37.656143 seconds.
-  path: Assets/bonecos/CarneFBX.fbx
-  artifactKey: Guid(abef857e014a88a4c87f0d2a7f4869c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/bonecos/CarneFBX.fbx using Guid(abef857e014a88a4c87f0d2a7f4869c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4902c30e2bcd15e860d86b4bad554cd8') in 0.0553819 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.753321 seconds.
-  path: Assets/bonecos/CarneFBX.fbx
-  artifactKey: Guid(abef857e014a88a4c87f0d2a7f4869c0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/bonecos/CarneFBX.fbx using Guid(abef857e014a88a4c87f0d2a7f4869c0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '97fdb5cf5b6a32bf52e939cc5201edaa') in 0.0300521 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.672508 seconds.
-  path: Assets/bonecos/CookedMeat.fbx
-  artifactKey: Guid(abef857e014a88a4c87f0d2a7f4869c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/bonecos/CookedMeat.fbx using Guid(abef857e014a88a4c87f0d2a7f4869c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '68a0ad3575e2b70da7dd8fbc140fa7cf') in 0.0819255 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.735529 seconds.
-  path: Assets/bonecos/CookedMeat.fbx
-  artifactKey: Guid(abef857e014a88a4c87f0d2a7f4869c0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/bonecos/CookedMeat.fbx using Guid(abef857e014a88a4c87f0d2a7f4869c0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3c2ddf697300a10243897d3be1bf1905') in 0.0270703 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.054112 seconds.
-  path: Assets/Prefabs/CookedMeat.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CookedMeat.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8356f9bf03c42020d5fab4726bbf026b') in 0.034488 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.824179 seconds.
-  path: Assets/Prefabs/CookedMeat.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/CookedMeat.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a43b26c8cff161fcab8b49196ee25349') in 0.0200319 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 21
-
-========================================================================
-Received Import Request.
-  Time since last request: 98.252037 seconds.
-  path: Assets/Prefabs/CookedMeat_Visual.prefab
-  artifactKey: Guid(90a534ee39776cc49967f6254e5896fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CookedMeat_Visual.prefab using Guid(90a534ee39776cc49967f6254e5896fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a3f7125948e9e8337a609cc0df72c754') in 0.0359156 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.746761 seconds.
-  path: Assets/Prefabs/CookedMeat_Visual.prefab
-  artifactKey: Guid(90a534ee39776cc49967f6254e5896fa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/CookedMeat_Visual.prefab using Guid(90a534ee39776cc49967f6254e5896fa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a955722308150fe5b37feaf108e3da0c') in 0.0832494 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.375809 seconds.
-  path: Assets/Prefabs/CookedMeatVisual.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CookedMeatVisual.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '569d9ef02fd68db59321bc878e2d6730') in 0.0221119 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.776902 seconds.
-  path: Assets/Prefabs/CookedMeatVisual.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/CookedMeatVisual.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '42feb1e16023579e27fc60ba53697f38') in 0.0259017 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 21
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-- Loaded All Assemblies, in  2.452 seconds
-Refreshing native plugins compatible for Editor in 3.27 ms, found 3 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.606 seconds
-Domain Reload Profiling: 5049ms
-	BeginReloadAssembly (675ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (83ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (159ms)
-	RebuildCommonClasses (106ms)
-	RebuildNativeTypeToScriptingClass (46ms)
-	initialDomainReloadingComplete (90ms)
-	LoadAllAssembliesAndSetupDomain (1526ms)
-		LoadAssemblies (1084ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (717ms)
-			TypeCache.Refresh (13ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (659ms)
-			ResolveRequiredComponents (35ms)
-	FinalizeReload (2607ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2056ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (44ms)
-			SetLoadedEditorAssemblies (16ms)
-			BeforeProcessingInitializeOnLoad (616ms)
-			ProcessInitializeOnLoadAttributes (1143ms)
-			ProcessInitializeOnLoadMethodAttributes (219ms)
-			AfterProcessingInitializeOnLoad (18ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (41ms)
-Refreshing native plugins compatible for Editor in 2.84 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6296 unused Assets / (4.8 MB). Loaded Objects now: 7180.
-Memory consumption went from 151.5 MB to 146.7 MB.
-Total: 28.309500 ms (FindLiveObjects: 1.162800 ms CreateObjectMapping: 1.831400 ms MarkObjects: 18.154700 ms  DeleteObjects: 7.157500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-- Loaded All Assemblies, in  1.582 seconds
-Refreshing native plugins compatible for Editor in 2.07 ms, found 3 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.692 seconds
-Domain Reload Profiling: 3271ms
-	BeginReloadAssembly (410ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (18ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (89ms)
-	RebuildCommonClasses (74ms)
-	RebuildNativeTypeToScriptingClass (22ms)
-	initialDomainReloadingComplete (46ms)
-	LoadAllAssembliesAndSetupDomain (1025ms)
-		LoadAssemblies (740ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (471ms)
-			TypeCache.Refresh (11ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (413ms)
-			ResolveRequiredComponents (40ms)
-	FinalizeReload (1693ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1317ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (21ms)
-			SetLoadedEditorAssemblies (9ms)
-			BeforeProcessingInitializeOnLoad (382ms)
-			ProcessInitializeOnLoadAttributes (738ms)
-			ProcessInitializeOnLoadMethodAttributes (155ms)
-			AfterProcessingInitializeOnLoad (13ms)
+			InitializePlatformSupportModulesInManaged (25ms)
+			SetLoadedEditorAssemblies (11ms)
+			BeforeProcessingInitializeOnLoad (379ms)
+			ProcessInitializeOnLoadAttributes (893ms)
+			ProcessInitializeOnLoadMethodAttributes (172ms)
+			AfterProcessingInitializeOnLoad (14ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (38ms)
-Refreshing native plugins compatible for Editor in 3.37 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (12ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+Refreshing native plugins compatible for Editor in 2.24 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6295 unused Assets / (4.8 MB). Loaded Objects now: 7183.
-Memory consumption went from 151.2 MB to 146.3 MB.
-Total: 24.073200 ms (FindLiveObjects: 1.516700 ms CreateObjectMapping: 2.048400 ms MarkObjects: 14.239700 ms  DeleteObjects: 6.265200 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 229.921035 seconds.
-  path: Assets/Prefabs/CookedMeatVisual.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CookedMeatVisual.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a7e92e9f9182aea5f88b52911a68a47b') in 1.8554118 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
+Unloading 6297 unused Assets / (4.6 MB). Loaded Objects now: 7095.
+Memory consumption went from 143.5 MB to 138.9 MB.
+Total: 17.881000 ms (FindLiveObjects: 1.116000 ms CreateObjectMapping: 1.726700 ms MarkObjects: 10.346900 ms  DeleteObjects: 4.689700 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.032512 seconds.
-  path: Assets/Prefabs/CookedMeatVisual.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CookedMeatVisual.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '16d1ac71609e6ce2654644d7d399c209') in 0.0390187 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
+  Time since last request: 119935.685227 seconds.
+  path: Assets/Prefabs/CenarioFBX.prefab
+  artifactKey: Guid(d4db10d938993e146b48ed0f08ef902c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Prefabs/CenarioFBX.prefab using Guid(d4db10d938993e146b48ed0f08ef902c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '513716602b18e30fa29550e942ad7a18') in 0.6973222 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 131
 
-========================================================================
-Received Import Request.
-  Time since last request: 1.093518 seconds.
-  path: Assets/Prefabs/CookedMeatVisual.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CookedMeatVisual.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6919d0a330029fae2a0657640f3f1b1f') in 0.0361862 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  2.552 seconds
-Refreshing native plugins compatible for Editor in 3.24 ms, found 3 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  3.926 seconds
-Domain Reload Profiling: 6468ms
-	BeginReloadAssembly (668ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (70ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (137ms)
-	RebuildCommonClasses (162ms)
-	RebuildNativeTypeToScriptingClass (39ms)
-	initialDomainReloadingComplete (92ms)
-	LoadAllAssembliesAndSetupDomain (1578ms)
-		LoadAssemblies (1247ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (646ms)
-			TypeCache.Refresh (18ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (578ms)
-			ResolveRequiredComponents (42ms)
-	FinalizeReload (3928ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (3244ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (45ms)
-			SetLoadedEditorAssemblies (16ms)
-			BeforeProcessingInitializeOnLoad (659ms)
-			ProcessInitializeOnLoadAttributes (2065ms)
-			ProcessInitializeOnLoadMethodAttributes (431ms)
-			AfterProcessingInitializeOnLoad (28ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (92ms)
-Refreshing native plugins compatible for Editor in 5.91 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6296 unused Assets / (4.4 MB). Loaded Objects now: 7206.
-Memory consumption went from 151.4 MB to 147.0 MB.
-Total: 36.872500 ms (FindLiveObjects: 2.182300 ms CreateObjectMapping: 3.163900 ms MarkObjects: 24.665100 ms  DeleteObjects: 6.858500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 54.670198 seconds.
-  path: Assets/Prefabs/CookedMeatVisual.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/CookedMeatVisual.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b3514b02cc92a441811e2ec22810d6c3') in 0.1548452 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 21
-
-========================================================================
-Received Import Request.
-  Time since last request: 13.534172 seconds.
-  path: Assets/Prefabs/CarneFBX.fbx
-  artifactKey: Guid(b5ab835a39f503a46bb16e99ecce0f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CarneFBX.fbx using Guid(b5ab835a39f503a46bb16e99ecce0f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '99eff3bb19aec3ed41b8024e69aea84c') in 1.6286074 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 25.888452 seconds.
-  path: Assets/bonecos/CarneFBX.fbx
-  artifactKey: Guid(33f1dfbe109b9314281f5894f4b634e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/bonecos/CarneFBX.fbx using Guid(33f1dfbe109b9314281f5894f4b634e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8cdb36e0f2cecbc3276e891cae45089a') in 0.1922771 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.621372 seconds.
-  path: Assets/bonecos/CarneFBX.fbx
-  artifactKey: Guid(33f1dfbe109b9314281f5894f4b634e6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/bonecos/CarneFBX.fbx using Guid(33f1dfbe109b9314281f5894f4b634e6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f6fc4e12603138101658b10ad2763401') in 0.0863828 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.522679 seconds.
-  path: Assets/bonecos/CookedMeatVisual.fbx
-  artifactKey: Guid(33f1dfbe109b9314281f5894f4b634e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/bonecos/CookedMeatVisual.fbx using Guid(33f1dfbe109b9314281f5894f4b634e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd5de2903bfa38c547b721001348c49ad') in 0.1220691 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.637542 seconds.
-  path: Assets/bonecos/CookedMeatVisual.fbx
-  artifactKey: Guid(33f1dfbe109b9314281f5894f4b634e6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/bonecos/CookedMeatVisual.fbx using Guid(33f1dfbe109b9314281f5894f4b634e6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3705a8843732a81e30e378110f3764f5') in 0.045456 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.518465 seconds.
-  path: Assets/Prefabs/CookedMeatVisual.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CookedMeatVisual.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9da2e957030ae2fed99af4d8e0c1432b') in 0.0463555 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.849366 seconds.
-  path: Assets/Prefabs/CookedMeatVisual.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/CookedMeatVisual.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ac5d9e065fcad405cc0e4885e565d2d2') in 0.0296093 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 21
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.989471 seconds.
-  path: Assets/Prefabs/CookedMeatVisual.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CookedMeatVisual.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ebf9d3b7e999c756b3de084604abdb81') in 0.0431254 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.761208 seconds.
-  path: Assets/Prefabs/CookedMeatVisual.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/CookedMeatVisual.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd4de4f8bc26d9c218b257b90823e099f') in 0.0252083 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 21
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.312483 seconds.
-  path: Assets/Prefabs/CookedMeatVisual.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CookedMeatVisual.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ba88b183a8a4b2a428ef6580b9ca8373') in 0.0453634 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.659107 seconds.
-  path: Assets/Prefabs/CookedMeatVisual.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CookedMeatVisual.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b2db797ca81ad32e9363e68780835d14') in 0.0503764 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.699922 seconds.
-  path: Assets/Prefabs/CookedMeatVisual.prefab
-  artifactKey: Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/CookedMeatVisual.prefab using Guid(1cf65c4c129506d4f9555023fc9cab1e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '929c50a77701f865dbc609e17c234da8') in 0.0353429 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 21
-
-========================================================================
-Received Import Request.
-  Time since last request: 30.605905 seconds.
-  path: Assets/Scenes/Level1.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Scenes/Level1.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2afcad3b1ac5d2796a4231435fd68f5f') in 0.0658521 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-- Loaded All Assemblies, in  2.571 seconds
-Refreshing native plugins compatible for Editor in 3.90 ms, found 3 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.654 seconds
-Domain Reload Profiling: 5216ms
-	BeginReloadAssembly (694ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (78ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (156ms)
-	RebuildCommonClasses (142ms)
-	RebuildNativeTypeToScriptingClass (43ms)
-	initialDomainReloadingComplete (94ms)
-	LoadAllAssembliesAndSetupDomain (1586ms)
-		LoadAssemblies (1200ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (682ms)
-			TypeCache.Refresh (12ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (628ms)
-			ResolveRequiredComponents (33ms)
-	FinalizeReload (2656ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2051ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (29ms)
-			SetLoadedEditorAssemblies (10ms)
-			BeforeProcessingInitializeOnLoad (561ms)
-			ProcessInitializeOnLoadAttributes (1063ms)
-			ProcessInitializeOnLoadMethodAttributes (359ms)
-			AfterProcessingInitializeOnLoad (27ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (65ms)
-Refreshing native plugins compatible for Editor in 3.54 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6296 unused Assets / (4.9 MB). Loaded Objects now: 7229.
-Memory consumption went from 151.5 MB to 146.6 MB.
-Total: 26.109100 ms (FindLiveObjects: 1.470000 ms CreateObjectMapping: 1.587900 ms MarkObjects: 15.271800 ms  DeleteObjects: 7.775700 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  2.392 seconds
-Refreshing native plugins compatible for Editor in 3.94 ms, found 3 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  3.418 seconds
-Domain Reload Profiling: 5798ms
-	BeginReloadAssembly (619ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (14ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (1ms)
-		CreateAndSetChildDomain (125ms)
-	RebuildCommonClasses (134ms)
-	RebuildNativeTypeToScriptingClass (53ms)
-	initialDomainReloadingComplete (100ms)
-	LoadAllAssembliesAndSetupDomain (1472ms)
-		LoadAssemblies (1191ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (598ms)
-			TypeCache.Refresh (13ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (544ms)
-			ResolveRequiredComponents (30ms)
-	FinalizeReload (3419ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2713ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (39ms)
-			SetLoadedEditorAssemblies (11ms)
-			BeforeProcessingInitializeOnLoad (684ms)
-			ProcessInitializeOnLoadAttributes (1446ms)
-			ProcessInitializeOnLoadMethodAttributes (483ms)
-			AfterProcessingInitializeOnLoad (50ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (113ms)
-Refreshing native plugins compatible for Editor in 5.06 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6295 unused Assets / (4.2 MB). Loaded Objects now: 7232.
-Memory consumption went from 151.3 MB to 147.1 MB.
-Total: 34.588400 ms (FindLiveObjects: 1.827900 ms CreateObjectMapping: 2.780900 ms MarkObjects: 21.092300 ms  DeleteObjects: 8.883900 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 160.178148 seconds.
-  path: Assets/bonecos/RawMeat.fbx
-  artifactKey: Guid(e03b09c83ab932d4e817b9b8bf4eddcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/bonecos/RawMeat.fbx using Guid(e03b09c83ab932d4e817b9b8bf4eddcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a5bbed99640a61df61d4cb938b1d5f0a') in 1.9302211 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 33.023674 seconds.
-  path: Assets/bonecos/RawMeat.fbx
-  artifactKey: Guid(e03b09c83ab932d4e817b9b8bf4eddcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/bonecos/RawMeat.fbx using Guid(e03b09c83ab932d4e817b9b8bf4eddcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '854437a082d1133e1bdaf9e850f804ed') in 0.0823495 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.771801 seconds.
-  path: Assets/bonecos/RawMeat.fbx
-  artifactKey: Guid(e03b09c83ab932d4e817b9b8bf4eddcb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/bonecos/RawMeat.fbx using Guid(e03b09c83ab932d4e817b9b8bf4eddcb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2c91f7b415d79c5b895717e415f24494') in 0.2440973 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.777242 seconds.
-  path: Assets/Prefabs/RawMeat.prefab
-  artifactKey: Guid(b1dff9854db047d499a12f24af973021) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/RawMeat.prefab using Guid(b1dff9854db047d499a12f24af973021) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e7dbe1026d6e5c7c906224a27784487d') in 0.0309526 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.812694 seconds.
-  path: Assets/Prefabs/RawMeat.prefab
-  artifactKey: Guid(b1dff9854db047d499a12f24af973021) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/RawMeat.prefab using Guid(b1dff9854db047d499a12f24af973021) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f27a6d2bf0e38d7c4f6601ef58ea6310') in 0.032964 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 21
-
-========================================================================
-Received Import Request.
-  Time since last request: 9.151432 seconds.
-  path: Assets/Prefabs/RawMeat_Visual.prefab
-  artifactKey: Guid(df7bba11fe9cc8d40ac30a3c35902051) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/RawMeat_Visual.prefab using Guid(df7bba11fe9cc8d40ac30a3c35902051) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '069f3fe5cf8de87bdc3c912c6e035ecc') in 0.0331003 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.729565 seconds.
-  path: Assets/Prefabs/RawMeat_Visual.prefab
-  artifactKey: Guid(df7bba11fe9cc8d40ac30a3c35902051) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/RawMeat_Visual.prefab using Guid(df7bba11fe9cc8d40ac30a3c35902051) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '788c45a8c51d924b803aa1fa211fafa2') in 0.0869705 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
-
-========================================================================
-Received Import Request.
-  Time since last request: 35.143683 seconds.
-  path: Assets/Prefabs/RawMeatVisual.prefab
-  artifactKey: Guid(b1dff9854db047d499a12f24af973021) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/RawMeatVisual.prefab using Guid(b1dff9854db047d499a12f24af973021) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c9db6dcf1ae5fd2d0a85b68cda249cec') in 0.0252987 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.765150 seconds.
-  path: Assets/Prefabs/RawMeatVisual.prefab
-  artifactKey: Guid(b1dff9854db047d499a12f24af973021) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/RawMeatVisual.prefab using Guid(b1dff9854db047d499a12f24af973021) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '9f7f3c19a6afec3edeeed1d121529881') in 0.0235354 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 21
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-- Loaded All Assemblies, in  2.447 seconds
-Refreshing native plugins compatible for Editor in 3.37 ms, found 3 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.785 seconds
-Domain Reload Profiling: 5221ms
-	BeginReloadAssembly (623ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (71ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (145ms)
-	RebuildCommonClasses (120ms)
-	RebuildNativeTypeToScriptingClass (41ms)
-	initialDomainReloadingComplete (85ms)
-	LoadAllAssembliesAndSetupDomain (1567ms)
-		LoadAssemblies (1127ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (699ms)
-			TypeCache.Refresh (15ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (639ms)
-			ResolveRequiredComponents (34ms)
-	FinalizeReload (2786ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2190ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (64ms)
-			SetLoadedEditorAssemblies (12ms)
-			BeforeProcessingInitializeOnLoad (651ms)
-			ProcessInitializeOnLoadAttributes (1168ms)
-			ProcessInitializeOnLoadMethodAttributes (270ms)
-			AfterProcessingInitializeOnLoad (24ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (52ms)
-Refreshing native plugins compatible for Editor in 20.43 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6296 unused Assets / (3.1 MB). Loaded Objects now: 7255.
-Memory consumption went from 151.6 MB to 148.5 MB.
-Total: 85.523800 ms (FindLiveObjects: 2.135100 ms CreateObjectMapping: 4.076200 ms MarkObjects: 68.934600 ms  DeleteObjects: 10.373500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 116.629837 seconds.
-  path: Assets/Prefabs/RawMeatVisual.prefab
-  artifactKey: Guid(b1dff9854db047d499a12f24af973021) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/RawMeatVisual.prefab using Guid(b1dff9854db047d499a12f24af973021) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1f970a9221352582b49b03f71d731610') in 1.1403694 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.531605 seconds.
-  path: Assets/Prefabs/RawMeatVisual.prefab
-  artifactKey: Guid(b1dff9854db047d499a12f24af973021) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/RawMeatVisual.prefab using Guid(b1dff9854db047d499a12f24af973021) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '75c5ef670ba3d91b53b254008aa79a45') in 0.0350818 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.282686 seconds.
-  path: Assets/Prefabs/RawMeatVisual.prefab
-  artifactKey: Guid(b1dff9854db047d499a12f24af973021) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/RawMeatVisual.prefab using Guid(b1dff9854db047d499a12f24af973021) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '974d7379dc27a873e25d49d035e59179') in 0.0306585 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.994 seconds
-Refreshing native plugins compatible for Editor in 2.37 ms, found 3 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.316 seconds
-Domain Reload Profiling: 4303ms
-	BeginReloadAssembly (575ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (49ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (136ms)
-	RebuildCommonClasses (92ms)
-	RebuildNativeTypeToScriptingClass (42ms)
-	initialDomainReloadingComplete (81ms)
-	LoadAllAssembliesAndSetupDomain (1195ms)
-		LoadAssemblies (923ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (525ms)
-			TypeCache.Refresh (12ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (479ms)
-			ResolveRequiredComponents (26ms)
-	FinalizeReload (2318ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1815ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (24ms)
-			SetLoadedEditorAssemblies (8ms)
-			BeforeProcessingInitializeOnLoad (450ms)
-			ProcessInitializeOnLoadAttributes (1039ms)
-			ProcessInitializeOnLoadMethodAttributes (262ms)
-			AfterProcessingInitializeOnLoad (30ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (70ms)
-Refreshing native plugins compatible for Editor in 4.49 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6296 unused Assets / (4.6 MB). Loaded Objects now: 7278.
-Memory consumption went from 151.7 MB to 147.1 MB.
-Total: 24.384000 ms (FindLiveObjects: 1.719400 ms CreateObjectMapping: 2.401300 ms MarkObjects: 14.225700 ms  DeleteObjects: 6.034600 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 78.940014 seconds.
-  path: Assets/TextMesh Pro/Examples & Extras/Materials/Crate - Surface Shader Scene.mat
-  artifactKey: Guid(e6b9b44320f4448d9d5e0ee634259966) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Examples & Extras/Materials/Crate - Surface Shader Scene.mat using Guid(e6b9b44320f4448d9d5e0ee634259966) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6354dd2fde3a276c1722ce077f03e161') in 3.1739182 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000067 seconds.
-  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat
-  artifactKey: Guid(79459efec17a4d00a321bdcc27bbc385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat using Guid(79459efec17a4d00a321bdcc27bbc385) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a56380a2334891de16c6e48855566f7f') in 0.3505555 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000089 seconds.
-  path: Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/LiberationSans SDF - Overlay.mat
-  artifactKey: Guid(9ad269c99dcf42b7aedefd83dd5a7b9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/LiberationSans SDF - Overlay.mat using Guid(9ad269c99dcf42b7aedefd83dd5a7b9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '62d36d916f2c2dce6175e76246ce5882') in 0.1232947 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000106 seconds.
-  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat
-  artifactKey: Guid(e73a58f6e2794ae7b1b7e50b7fb811b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat using Guid(e73a58f6e2794ae7b1b7e50b7fb811b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dbbe94b16b3dc96fff3d07d5359a5ad3') in 0.1482567 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000068 seconds.
-  path: Assets/TextMesh Pro/Examples & Extras/Materials/Ground - Surface Shader Scene.mat
-  artifactKey: Guid(aadd5a709a48466c887296bb5b1b8110) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Examples & Extras/Materials/Ground - Surface Shader Scene.mat using Guid(aadd5a709a48466c887296bb5b1b8110) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '816df55dbde5d550831bd23380003cd8') in 0.0705829 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000070 seconds.
-  path: Assets/TextMesh Pro/Examples & Extras/Materials/Ground - Logo Scene.mat
-  artifactKey: Guid(c719e38f25a9480abd2480ab621a2949) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Examples & Extras/Materials/Ground - Logo Scene.mat using Guid(c719e38f25a9480abd2480ab621a2949) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ef0797a4f0d38f51e7ba7bf573101af2') in 0.0522576 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000077 seconds.
-  path: Assets/TextMesh Pro/Examples & Extras/Materials/Ground - URP.mat
-  artifactKey: Guid(71529b88994c1a341b22bc57c038674a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Examples & Extras/Materials/Ground - URP.mat using Guid(71529b88994c1a341b22bc57c038674a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd12985cf2d16b77f7bc5d57acc2e02f1') in 11.1635403 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.440911 seconds.
-  path: Assets/Materials/Material.003.mat
-  artifactKey: Guid(2cd61fef6b5435b4d800e39fd749ee52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Material.003.mat using Guid(2cd61fef6b5435b4d800e39fd749ee52) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8c5f86ead12e012d9527aadd14c5a581') in 0.0647263 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-- Loaded All Assemblies, in  3.122 seconds
-Refreshing native plugins compatible for Editor in 3.68 ms, found 3 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  5.476 seconds
-Domain Reload Profiling: 8584ms
-	BeginReloadAssembly (855ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (108ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (181ms)
-	RebuildCommonClasses (149ms)
-	RebuildNativeTypeToScriptingClass (60ms)
-	initialDomainReloadingComplete (122ms)
-	LoadAllAssembliesAndSetupDomain (1920ms)
-		LoadAssemblies (1520ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (765ms)
-			TypeCache.Refresh (29ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (690ms)
-			ResolveRequiredComponents (38ms)
-	FinalizeReload (5478ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (4561ms)
-			LogAssemblyErrors (1ms)
-			InitializePlatformSupportModulesInManaged (77ms)
-			SetLoadedEditorAssemblies (37ms)
-			BeforeProcessingInitializeOnLoad (1442ms)
-			ProcessInitializeOnLoadAttributes (2479ms)
-			ProcessInitializeOnLoadMethodAttributes (458ms)
-			AfterProcessingInitializeOnLoad (66ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (102ms)
-Refreshing native plugins compatible for Editor in 3.73 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6296 unused Assets / (3.6 MB). Loaded Objects now: 7301.
-Memory consumption went from 151.7 MB to 148.1 MB.
-Total: 24.989600 ms (FindLiveObjects: 2.114800 ms CreateObjectMapping: 2.362700 ms MarkObjects: 15.733400 ms  DeleteObjects: 4.775800 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 353.289848 seconds.
-  path: Assets/Prefabs/RawMeatVisual.prefab
-  artifactKey: Guid(b1dff9854db047d499a12f24af973021) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Prefabs/RawMeatVisual.prefab using Guid(b1dff9854db047d499a12f24af973021) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f989a0b40126dfcad3c8846e2d7781a3') in 0.3182608 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 21
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000042 seconds.
-  path: Assets/bonecos/carnefbx.fbx
-  artifactKey: Guid(a26b695e6da81554fb15484a9a0ff34c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/bonecos/carnefbx.fbx using Guid(a26b695e6da81554fb15484a9a0ff34c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd2a34f5091aa27886043461cdedf5381') in 0.2400782 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 20
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000046 seconds.
-  path: Assets/Materials/Material.003.mat
-  artifactKey: Guid(2cd61fef6b5435b4d800e39fd749ee52) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Materials/Material.003.mat using Guid(2cd61fef6b5435b4d800e39fd749ee52) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f5e4af101138f64126c32878ea098816') in 0.0308945 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/bonecos/RawMeat.fbx
-  artifactKey: Guid(e03b09c83ab932d4e817b9b8bf4eddcb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/bonecos/RawMeat.fbx using Guid(e03b09c83ab932d4e817b9b8bf4eddcb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '14523f04c4169d0c56505abc06c8d830') in 0.0659315 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
-
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0

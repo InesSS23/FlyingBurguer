@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: beef
-    second: {fileID: 2100000, guid: 97903eae38adf6f49b648adef71a4a6c, type: 2}
+    second: {fileID: 880774007180850119, guid: e6fa99284e8ffab4c93632f3365626b4, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
