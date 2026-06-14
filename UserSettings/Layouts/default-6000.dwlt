@@ -75,7 +75,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 96
+  controlID: 41
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 56}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 97
+  controlID: 42
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -693,32 +693,7 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
-      - m_Data: -42064
-      - m_Data: -5606
-      - m_Data: -5590
-      - m_Data: -5578
-      - m_Data: -3148
-      - m_Data: -2930
-      - m_Data: -2928
-      - m_Data: -2092
-      - m_Data: 46652
-      - m_Data: 46680
-      - m_Data: 46714
-      - m_Data: 46732
-      - m_Data: 46776
-      - m_Data: 46924
-      - m_Data: 46988
-      - m_Data: 46996
-      - m_Data: 47020
-      - m_Data: 47116
-      - m_Data: 47170
-      - m_Data: 47216
-      - m_Data: 47236
-      - m_Data: 47240
-      - m_Data: 47284
-      - m_Data: 47362
-      - m_Data: 47504
-      - m_Data: 47654
+      - m_Data: -1296
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -844,7 +819,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -854,7 +829,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\ac163\OneDrive\Documentos\GitHub\FlyingBurguer
   m_LockTracker:
@@ -863,9 +838,9 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 72.400024}
     m_SelectedIDs:
-    - m_Data: 46352
+    - m_Data: 49266
     m_LastClickedID:
-      m_Data: 46352
+      m_Data: 49266
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 49266
@@ -932,9 +907,9 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
     m_SelectedInstanceIDs:
-    - m_Data: 47284
-    m_LastClickedInstanceID: 47284
-    m_HadKeyboardFocusLastEvent: 1
+    - m_Data: 45942
+    m_LastClickedInstanceID: 45942
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs:
     - m_Data: 49600
     - m_Data: 49624
