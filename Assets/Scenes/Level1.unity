@@ -5574,7 +5574,7 @@ MonoBehaviour:
   currentBurger: []
   burgerVisualPoint: {fileID: 926563612}
   breadVisualPrefab: {fileID: 2628186999485140287, guid: 987a2901527a1344ca978372496f71d3, type: 3}
-  cookedMeatVisualPrefab: {fileID: 2491650175235276925, guid: 90a534ee39776cc49967f6254e5896fa, type: 3}
+  cookedMeatVisualPrefab: {fileID: 2613704282212099793, guid: cefa5ecfdfbc31d4b98bf5fe36030f93, type: 3}
   cheeseVisualPrefab: {fileID: 5814846380265251095, guid: f6a0c1b60b318ba4297d013c53770160, type: 3}
   lettuceVisualPrefab: {fileID: 8042123338010012481, guid: 4a44d28a46c04654581399eeffc62103, type: 3}
   layerHeight: 0.08
@@ -8801,8 +8801,8 @@ MonoBehaviour:
   cookedMeatName: CookedMeat
   cookTime: 2
   grillVisualPoint: {fileID: 541052885}
-  rawMeatVisualPrefab: {fileID: 2491650175235276925, guid: df7bba11fe9cc8d40ac30a3c35902051, type: 3}
-  cookedMeatVisualPrefab: {fileID: 2491650175235276925, guid: 90a534ee39776cc49967f6254e5896fa, type: 3}
+  rawMeatVisualPrefab: {fileID: 6454744611248011855, guid: b1dff9854db047d499a12f24af973021, type: 3}
+  cookedMeatVisualPrefab: {fileID: 2613704282212099793, guid: cefa5ecfdfbc31d4b98bf5fe36030f93, type: 3}
 --- !u!1 &1559138428
 GameObject:
   m_ObjectHideFlags: 0
@@ -11517,10 +11517,10 @@ MonoBehaviour:
   currentBurger: []
   handVisualPoint: {fileID: 1225553001}
   breadVisualPrefab: {fileID: 2628186999485140287, guid: 987a2901527a1344ca978372496f71d3, type: 3}
-  cookedMeatVisualPrefab: {fileID: 2491650175235276925, guid: 90a534ee39776cc49967f6254e5896fa, type: 3}
+  cookedMeatVisualPrefab: {fileID: 2613704282212099793, guid: cefa5ecfdfbc31d4b98bf5fe36030f93, type: 3}
   cheeseVisualPrefab: {fileID: 5814846380265251095, guid: f6a0c1b60b318ba4297d013c53770160, type: 3}
   lettuceVisualPrefab: {fileID: 8042123338010012481, guid: 4a44d28a46c04654581399eeffc62103, type: 3}
-  rawMeatVisualPrefab: {fileID: 2491650175235276925, guid: df7bba11fe9cc8d40ac30a3c35902051, type: 3}
+  rawMeatVisualPrefab: {fileID: 6454744611248011855, guid: b1dff9854db047d499a12f24af973021, type: 3}
   layerHeight: 0.08
 --- !u!1 &2107933073
 GameObject:
@@ -11805,6 +11805,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121402416}
   m_CullTransparentMesh: 1
+--- !u!1001 &4570920110236523774
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5969535234389942517, guid: b1dff9854db047d499a12f24af973021, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.1405935
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969535234389942517, guid: b1dff9854db047d499a12f24af973021, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.535294
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969535234389942517, guid: b1dff9854db047d499a12f24af973021, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 40.764618
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969535234389942517, guid: b1dff9854db047d499a12f24af973021, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969535234389942517, guid: b1dff9854db047d499a12f24af973021, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969535234389942517, guid: b1dff9854db047d499a12f24af973021, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969535234389942517, guid: b1dff9854db047d499a12f24af973021, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969535234389942517, guid: b1dff9854db047d499a12f24af973021, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969535234389942517, guid: b1dff9854db047d499a12f24af973021, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969535234389942517, guid: b1dff9854db047d499a12f24af973021, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454744611248011855, guid: b1dff9854db047d499a12f24af973021, type: 3}
+      propertyPath: m_Name
+      value: RawMeatVisual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1dff9854db047d499a12f24af973021, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -11815,3 +11872,4 @@ SceneRoots:
   - {fileID: 1180569199}
   - {fileID: 201082405}
   - {fileID: 412688018}
+  - {fileID: 4570920110236523774}
