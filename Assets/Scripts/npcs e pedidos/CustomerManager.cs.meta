@@ -1,2 +1,12 @@
 fileFormatVersion: 2
 guid: 299fa0151f890684bb0da7c4e34ec918
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - tucanoAnimationPrefab: {fileID: 111140971847679966, guid: 9aeaaf4a17b77f9448298e478f0487fb, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

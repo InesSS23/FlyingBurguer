@@ -23,7 +23,7 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private float minSpawnTime = 8f;
     [SerializeField] private float maxSpawnTime = 15f;
     [SerializeField] private float spawnCheckRadius = 0.6f;
-[SerializeField] private LayerMask customerLayerMask;
+    [SerializeField] private LayerMask customerLayerMask;
 
 
     [Header("controlo")]
