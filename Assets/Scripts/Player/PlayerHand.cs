@@ -16,6 +16,8 @@ public class PlayerHand : MonoBehaviour
     [SerializeField] private GameObject cheeseVisualPrefab;
     [SerializeField] private GameObject lettuceVisualPrefab;
     [SerializeField] private GameObject rawMeatVisualPrefab;
+    [SerializeField] private GameObject tomatoVisualPrefab;
+
     [SerializeField] private float layerHeight = 0.08f;
 
     private List<GameObject> spawnedVisuals = new List<GameObject>();
@@ -142,6 +144,9 @@ public class PlayerHand : MonoBehaviour
 
     private GameObject BuscarPrefab(string item)
     {
+        if (item == "Tomato")
+        return tomatoVisualPrefab;
+
         if (item == "Bread")
             return breadVisualPrefab;
 

@@ -12,6 +12,8 @@ public class AssemblyTable : MonoBehaviour, IInteractable
     [SerializeField] private GameObject cookedMeatVisualPrefab;
     [SerializeField] private GameObject cheeseVisualPrefab;
     [SerializeField] private GameObject lettuceVisualPrefab;
+    [SerializeField] private GameObject tomatoVisualPrefab;
+
     [SerializeField] private float layerHeight = 0.08f;
 
     private List<GameObject> spawnedVisuals = new List<GameObject>();
@@ -145,6 +147,9 @@ public class AssemblyTable : MonoBehaviour, IInteractable
 
         if (item == "Lettuce")
             return lettuceVisualPrefab;
+
+        if (item == "Tomato")
+        return tomatoVisualPrefab;
 
         return null;
     }
