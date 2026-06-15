@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: a26b695e6da81554fb15484a9a0ff34c
+guid: 1d9bebb05f0e8074994aa770a3514ead
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: beef
-    second: {fileID: 880774007180850119, guid: e6fa99284e8ffab4c93632f3365626b4, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
