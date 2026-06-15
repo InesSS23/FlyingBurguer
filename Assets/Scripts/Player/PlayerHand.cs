@@ -17,6 +17,7 @@ public class PlayerHand : MonoBehaviour
     [SerializeField] private GameObject lettuceVisualPrefab;
     [SerializeField] private GameObject rawMeatVisualPrefab;
     [SerializeField] private GameObject tomatoVisualPrefab;
+    [SerializeField] private GameObject pepperVisualPrefab;
 
     [SerializeField] private float layerHeight = 0.08f;
 
@@ -161,6 +162,9 @@ public class PlayerHand : MonoBehaviour
 
         if (item == "RawMeat")
             return rawMeatVisualPrefab;
+
+        if (item == "Pepper")
+            return pepperVisualPrefab;
 
         return null;
     }
