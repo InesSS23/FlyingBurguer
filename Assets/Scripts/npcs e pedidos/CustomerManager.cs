@@ -149,6 +149,7 @@ public class CustomerManager : MonoBehaviour
     CustomerNPC customer = customerObject.GetComponent<CustomerNPC>();
     if (customer == null) { Debug.Log("sem CustomerNPC"); Destroy(customerObject); return; }
 
+//tucano VOAR-----------------------------------------------------------------------------------------------------------------------------------
     if (tucanoAnimationPrefab != null && selectedCustomerPrefab.name.Contains("Tucano"))
     {
         GameObject tucanoObject = Instantiate(tucanoAnimationPrefab, spawnPoint.position, spawnPoint.rotation);
@@ -163,11 +164,12 @@ public class CustomerManager : MonoBehaviour
         if (tucanoLight != null) tucanoLight.gameObject.SetActive(false);
 
         Animator anim = tucanoObject.GetComponentInChildren<Animator>();
-        customer.SetTucanoAnimator(anim);
+        customer.SetTucanoAnimator(anim); // <- PRIMEIRO o animator
     }
 
     freePoint.SetCustomer(customer);
     customer.SetupCustomer(freePoint.transform, exitPoint, order, freePoint);
+    //FIM tucano VOAR-----------------------------------------------------------------------------------------------------------------------------------
 }
 
 
