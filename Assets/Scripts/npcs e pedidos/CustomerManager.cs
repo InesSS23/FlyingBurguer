@@ -150,7 +150,8 @@ public class CustomerManager : MonoBehaviour
     if (customer == null) { Debug.Log("sem CustomerNPC"); Destroy(customerObject); return; }
 
 //tucano VOAR-----------------------------------------------------------------------------------------------------------------------------------
-    if (tucanoAnimationPrefab != null && selectedCustomerPrefab.name.Contains("Tucano"))
+    Debug.Log("IsTucano: " + customer.IsTucano());
+    if (tucanoAnimationPrefab != null && customer.IsTucano())
     {
         GameObject tucanoObject = Instantiate(tucanoAnimationPrefab, spawnPoint.position, spawnPoint.rotation);
         tucanoObject.transform.SetParent(customerObject.transform);

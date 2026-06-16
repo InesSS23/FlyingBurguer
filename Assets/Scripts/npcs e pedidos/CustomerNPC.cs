@@ -20,6 +20,10 @@ public class CustomerNPC : MonoBehaviour
     [Header("fala visual")]
     [SerializeField] private CustomerSpeechUI speechUI;
 
+[Header("tucano")]
+[SerializeField] private bool isTucano = false;
+
+public bool IsTucano() => isTucano;
 
     [Header("animacao do tucano")]
     [SerializeField] private string flyParameterName = "isFlying";
@@ -66,6 +70,9 @@ public class CustomerNPC : MonoBehaviour
 
     void Update()
     {
+        if (isTucano && tucanoAnimator == null)
+        Debug.Log("ANIMATOR PERDIDO no frame " + Time.frameCount);
+
         if (targetPoint == null)
             return;
 
@@ -124,14 +131,18 @@ public class CustomerNPC : MonoBehaviour
 
     private void SetFlyAnimation(bool flying)
     {
-        Debug.Log("SetFlyAnimation: " + flying + " | animator: " + (tucanoAnimator == null ? "NULL" : "OK"));
-
-
-        if (tucanoAnimator == null)
-            return;
-
-
+        if (tucanoAnimator == null) return;
+        
         tucanoAnimator.SetBool(flyParameterName, flying);
+        Debug.Log("SET BOOL: " + flyParameterName + " = " + flying + 
+                " | param existe: " + AnimatorHasParam(flyParameterName));
+    }
+
+    private bool AnimatorHasParam(string paramName)
+    {
+        foreach (var p in tucanoAnimator.parameters)
+            if (p.name == paramName) return true;
+        return false;
     }
 
 

@@ -440,7 +440,7 @@ MonoBehaviour:
   - Que magnifico
   - "Adoraria saber do que \xE9 feito"
   speechUI: {fileID: 2996203984789836744}
-  tucanoAnimator: {fileID: 0}
+  isTucano: 1
   flyParameterName: isFlying
 --- !u!95 &7592678062011132731
 Animator:

@@ -690,7 +690,7 @@ MonoBehaviour:
     m_DynamicPanelBehavior: 0
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 363.8}
+      scrollPos: {x: 0, y: 0}
       m_SelectedIDs: []
       m_LastClickedID:
         m_Data: 0
@@ -851,7 +851,7 @@ MonoBehaviour:
       m_Data: 49762
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 49640
+    - m_Data: 49906
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -885,7 +885,7 @@ MonoBehaviour:
       m_Data: 52386
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 49640
+    - m_Data: 49906
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1689,7 +1689,7 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 7.177172, y: 12.537005, z: 20.943283}
+    m_Target: {x: 15.050089, y: 6.5984154, z: 26.067575}
     speed: 2
     m_Value: {x: 7.177172, y: 12.537005, z: 20.943283}
   m_RenderMode: 0
@@ -1737,11 +1737,11 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.089688815, y: 0.8547878, z: -0.15766634, w: -0.48625085}
+    m_Target: {x: 0.0012131378, y: 0.96750283, z: -0.2528241, w: 0.0046397825}
     speed: 2
     m_Value: {x: -0.0896886, y: 0.8547858, z: -0.15766597, w: -0.4862497}
   m_Size:
-    m_Target: 0.9049965
+    m_Target: 29.724737
     speed: 2
     m_Value: 0.9049965
   m_Ortho:
