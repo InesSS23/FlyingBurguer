@@ -132,10 +132,10 @@ public bool IsTucano() => isTucano;
     private void SetFlyAnimation(bool flying)
     {
         if (tucanoAnimator == null) return;
-        
+
+        tucanoAnimator.Rebind();
+        tucanoAnimator.Update(0f);
         tucanoAnimator.SetBool(flyParameterName, flying);
-        Debug.Log("SET BOOL: " + flyParameterName + " = " + flying + 
-                " | param existe: " + AnimatorHasParam(flyParameterName));
     }
 
     private bool AnimatorHasParam(string paramName)
