@@ -9,6 +9,8 @@ public class CustomerManager : MonoBehaviour
 
     [Header("prefab animacao tucano")]
     [SerializeField] private GameObject tucanoAnimationPrefab;
+    [Header("prefab animacao arara")]
+    [SerializeField] private GameObject araraAnimationPrefab;
 
     [Header("pontos")]
     [SerializeField] private Transform[] spawnPoints;
@@ -120,7 +122,8 @@ public class CustomerManager : MonoBehaviour
         CustomerNPC customer = customerObject.GetComponent<CustomerNPC>();
         if (customer == null) { Debug.Log("sem CustomerNPC"); Destroy(customerObject); return; }
 
-        Debug.Log("IsTucano: " + customer.IsTucano());
+        Debug.Log("IsTucano: " + customer.IsTucano() + " | IsArara: " + customer.IsArara());
+
         if (tucanoAnimationPrefab != null && customer.IsTucano())
         {
             GameObject tucanoObject = Instantiate(tucanoAnimationPrefab, spawnPoint.position, spawnPoint.rotation);
@@ -137,6 +140,25 @@ public class CustomerManager : MonoBehaviour
             Animator anim = tucanoObject.GetComponentInChildren<Animator>();
             Debug.Log("TUCANO ANIM OBJECT: " + (anim == null ? "NULL" : anim.gameObject.name));
             customer.SetTucanoAnimator(anim);
+            customer.SetVisualsActive(false, tucanoObject.transform);
+        }
+        else if (araraAnimationPrefab != null && customer.IsArara())
+        {
+            GameObject araraObject = Instantiate(araraAnimationPrefab, spawnPoint.position, spawnPoint.rotation);
+            araraObject.transform.SetParent(customerObject.transform);
+            araraObject.transform.localPosition = Vector3.zero;
+            araraObject.transform.localScale = Vector3.one;
+
+            Camera araraCamera = araraObject.GetComponentInChildren<Camera>();
+            if (araraCamera != null) araraCamera.gameObject.SetActive(false);
+
+            Light araraLight = araraObject.GetComponentInChildren<Light>();
+            if (araraLight != null) araraLight.gameObject.SetActive(false);
+
+            Animator anim = araraObject.GetComponentInChildren<Animator>();
+            Debug.Log("ARARA ANIM OBJECT: " + (anim == null ? "NULL" : anim.gameObject.name));
+            customer.SetAraraAnimator(anim);
+            customer.SetVisualsActive(false, araraObject.transform);
         }
 
         freePoint.SetCustomer(customer);

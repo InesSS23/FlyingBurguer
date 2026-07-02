@@ -60,7 +60,12 @@ MonoBehaviour:
   - muito bom!
   - "isto sim \xE9 servi\xE7o!"
   - "adoro hamb\xFArgueres voadores!"
+  impatientComment: Demoraste muito, vou embora!
   speechUI: {fileID: 5031690183801215037}
+  isTucano: 0
+  isArara: 1
+  flyParameterName: isFlying
+  araraFlyParameterName: isFlying
 --- !u!1 &1915254391223564760
 GameObject:
   m_ObjectHideFlags: 0

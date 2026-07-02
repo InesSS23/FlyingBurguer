@@ -24,10 +24,16 @@ public class CustomerNPC : MonoBehaviour
 [Header("tucano")]
 [SerializeField] private bool isTucano = false;
 
+[Header("arara")]
+[SerializeField] private bool isArara = false;
+
 public bool IsTucano() => isTucano;
+public bool IsArara() => isArara;
+
 
     [Header("animacao do tucano")]
     [SerializeField] private string flyParameterName = "isFlying";
+
 
 
     private Transform targetPoint;
@@ -46,11 +52,22 @@ public bool IsTucano() => isTucano;
     private float patienceTime = 25f;
     private bool warnedMissingTucanoAnimator = false;
 
+    
+    [Header("animacao da arara")]
+    [SerializeField] private string araraFlyParameterName = "isFlying";
+    private Animator araraAnimator;
+
+
 
     public void SetTucanoAnimator(Animator anim)
     {
         tucanoAnimator = anim;
         Debug.Log("tucano animator recebido: " + (anim != null ? "SIM" : "NAO"));
+    }
+        public void SetAraraAnimator(Animator anim)
+    {
+        araraAnimator = anim;
+        Debug.Log("arara animator recebido: " + (anim != null ? "SIM" : "NAO"));
     }
 
 
@@ -69,6 +86,7 @@ public bool IsTucano() => isTucano;
 
 
         SetFlyAnimation(true);
+        if (isArara) SetAraraFlyAnimation(true);
 
 
         Debug.Log("cliente nasceu com pedido: " + currentOrder.GetOrderText());
@@ -77,11 +95,10 @@ public bool IsTucano() => isTucano;
 
     void Update()
     {
-        if (isTucano && tucanoAnimator == null && !warnedMissingTucanoAnimator)
-        {
-            warnedMissingTucanoAnimator = true;
-            Debug.Log("Animator do tucano nao esta ligado.");
-        }
+         if (isTucano && tucanoAnimator == null)
+            Debug.Log("ANIMATOR PERDIDO (tucano) no frame " + Time.frameCount);
+        if (isArara && araraAnimator == null)
+            Debug.Log("ANIMATOR PERDIDO (arara) no frame " + Time.frameCount);
 
         if (targetPoint == null)
             return;
@@ -112,7 +129,8 @@ public bool IsTucano() => isTucano;
             isWaiting = true;
 
 
-            SetFlyAnimation(false);
+            if (isTucano) SetFlyAnimation(false);
+            if (isArara) SetAraraFlyAnimation(false);
 
 
             if (servicePoint != null)
@@ -120,13 +138,13 @@ public bool IsTucano() => isTucano;
                 servicePoint.ShowOrderHUD(currentOrder);
             }
 
-            StartPatienceTimer();
 
             Debug.Log("cliente chegou ao service point e mostrou pedido: " + currentOrder.GetOrderText());
         }
         else
         {
-            SetFlyAnimation(true);
+            if (isTucano) SetFlyAnimation(true);
+            if (isArara) SetAraraFlyAnimation(true);
 
 
             if (servicePoint != null)
@@ -143,11 +161,19 @@ public bool IsTucano() => isTucano;
     private void SetFlyAnimation(bool flying)
     {
         if (tucanoAnimator == null) return;
-        if (!AnimatorHasParam(flyParameterName)) return;
 
         tucanoAnimator.Rebind();
         tucanoAnimator.Update(0f);
         tucanoAnimator.SetBool(flyParameterName, flying);
+    }
+
+    private void SetAraraFlyAnimation(bool flying)
+    {
+        if (araraAnimator == null) return;
+
+        araraAnimator.Rebind();
+        araraAnimator.Update(0f);
+        araraAnimator.SetBool(araraFlyParameterName, flying);
     }
 
     private bool AnimatorHasParam(string paramName)
@@ -282,6 +308,7 @@ public bool IsTucano() => isTucano;
         }
 
         SetFlyAnimation(true);
+        if (isArara) SetAraraFlyAnimation(true);
         targetPoint = exitPoint;
     }
 
@@ -295,6 +322,17 @@ public bool IsTucano() => isTucano;
 
 
         return happyComments[Random.Range(0, happyComments.Length)];
+    }
+
+    public void SetVisualsActive(bool active, Transform excludeSubtree = null)
+    {
+        Renderer[] rends = GetComponentsInChildren<Renderer>(true);
+        foreach (var r in rends)
+        {
+            if (excludeSubtree != null && r.transform.IsChildOf(excludeSubtree))
+                continue;
+            r.enabled = active;
+        }
     }
 
 

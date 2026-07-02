@@ -1151,7 +1151,7 @@ GameObject:
   - component: {fileID: 7794351348795004181}
   - component: {fileID: 8434096106700341089}
   m_Layer: 0
-  m_Name: AraraVoarFBX
+  m_Name: AraraAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1190,7 +1190,7 @@ Animator:
   m_GameObject: {fileID: 6875235703830985554}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 53ab1defaffb0274c90f54f1ca72bff9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 53f264b522200c34eaa11020e00498cb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
