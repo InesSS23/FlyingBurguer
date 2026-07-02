@@ -15,7 +15,7 @@ public class AssemblyTable : MonoBehaviour, IInteractable
     [SerializeField] private GameObject tomatoVisualPrefab;
     [SerializeField] private GameObject pepperVisualPrefab;
 
-    [SerializeField] private float layerHeight = 0.08f;
+    [SerializeField] private float layerHeight = 0.14f;
 
     private List<GameObject> spawnedVisuals = new List<GameObject>();
 

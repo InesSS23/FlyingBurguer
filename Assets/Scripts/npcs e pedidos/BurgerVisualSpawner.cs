@@ -11,9 +11,11 @@ public class BurgerVisualSpawner : MonoBehaviour
     [SerializeField] private GameObject cookedMeatVisualPrefab;
     [SerializeField] private GameObject cheeseVisualPrefab;
     [SerializeField] private GameObject lettuceVisualPrefab;
+    [SerializeField] private GameObject tomatoVisualPrefab;
+    [SerializeField] private GameObject pepperVisualPrefab;
 
     [Header("altura das camadas")]
-    [SerializeField] private float layerHeight = 0.08f;
+    [SerializeField] private float layerHeight = 0.14f;
 
     private List<GameObject> spawnedVisuals = new List<GameObject>();
 
@@ -78,6 +80,12 @@ public class BurgerVisualSpawner : MonoBehaviour
 
         if (item == "Lettuce")
             return lettuceVisualPrefab;
+
+        if (item == "Tomato")
+            return tomatoVisualPrefab;
+
+        if (item == "Pepper")
+            return pepperVisualPrefab;
 
         return null;
     }

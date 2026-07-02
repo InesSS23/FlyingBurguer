@@ -21,6 +21,11 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private float spawnCheckRadius = 0.6f;
     [SerializeField] private LayerMask customerLayerMask;
 
+    [Header("dificuldade dos clientes")]
+    [SerializeField] private float customerPatienceTime = 25f;
+    [SerializeField] private int missedCustomerPenalty = 5;
+    [SerializeField] private DayManager dayManager;
+
     [Header("controlo")]
     [SerializeField] private bool startSpawningAutomatically = false;
 
@@ -37,16 +42,29 @@ public class CustomerManager : MonoBehaviour
 
     private bool IsSpawnPointFree(Transform point)
     {
-        Collider2D hit = Physics2D.OverlapPoint(point.position, customerLayerMask);
-        return hit == null;
+        int mask = customerLayerMask.value == 0 ? ~0 : customerLayerMask.value;
+        Collider[] hits = Physics.OverlapSphere(point.position, spawnCheckRadius, mask, QueryTriggerInteraction.Collide);
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].GetComponentInParent<CustomerNPC>() != null)
+                return false;
+        }
+
+        return true;
     }
 
     private void CriarPedidosPossiveis()
     {
+        possibleOrders.Clear();
+
         possibleOrders.Add(new BurgerOrder("Burger simples", new List<string> { "Bread", "CookedMeat", "Bread" }));
         possibleOrders.Add(new BurgerOrder("Cheeseburger", new List<string> { "Bread", "CookedMeat", "Cheese", "Bread" }));
         possibleOrders.Add(new BurgerOrder("Burger alface", new List<string> { "Bread", "CookedMeat", "Lettuce", "Bread" }));
         possibleOrders.Add(new BurgerOrder("Burger completo", new List<string> { "Bread", "CookedMeat", "Cheese", "Lettuce", "Bread" }));
+        possibleOrders.Add(new BurgerOrder("Burger tomate", new List<string> { "Bread", "CookedMeat", "Tomato", "Bread" }));
+        possibleOrders.Add(new BurgerOrder("Burger picante", new List<string> { "Bread", "CookedMeat", "Cheese", "Pepper", "Bread" }));
+        possibleOrders.Add(new BurgerOrder("Burger especial", new List<string> { "Bread", "CookedMeat", "Cheese", "Lettuce", "Tomato", "Pepper", "Bread" }));
     }
 
     public void StartSpawning()
@@ -122,7 +140,7 @@ public class CustomerManager : MonoBehaviour
         }
 
         freePoint.SetCustomer(customer);
-        customer.SetupCustomer(freePoint.transform, exitPoint, order, freePoint);
+        customer.SetupCustomer(freePoint.transform, exitPoint, order, freePoint, customerPatienceTime, this);
     }
 
     private GameObject GetRandomCustomerPrefab()
@@ -161,5 +179,15 @@ public class CustomerManager : MonoBehaviour
 
         Debug.Log("nenhum cliente quer este hamburger");
         return false;
+    }
+
+    public void NotifyCustomerLeftImpatient(CustomerNPC customer)
+    {
+        if (dayManager != null && missedCustomerPenalty > 0)
+        {
+            dayManager.AddScore(-missedCustomerPenalty);
+        }
+
+        Debug.Log("cliente perdeu a paciencia e foi embora");
     }
 }

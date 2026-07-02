@@ -15,6 +15,7 @@ public class CustomerNPC : MonoBehaviour
 
     [Header("comentarios")]
     [SerializeField] private string[] happyComments;
+    [SerializeField] private string impatientComment = "Demoraste muito, vou embora!";
 
 
     [Header("fala visual")]
@@ -35,11 +36,15 @@ public bool IsTucano() => isTucano;
 
     private BurgerOrder currentOrder;
     private CustomerServicePoint servicePoint;
+    private CustomerManager customerManager;
 
 
     private bool isWaiting = false;
     private bool isEating = false;
     private Animator tucanoAnimator;
+    private Coroutine patienceCoroutine;
+    private float patienceTime = 25f;
+    private bool warnedMissingTucanoAnimator = false;
 
 
     public void SetTucanoAnimator(Animator anim)
@@ -49,12 +54,14 @@ public bool IsTucano() => isTucano;
     }
 
 
-    public void SetupCustomer(Transform serviceTarget, Transform exitTarget, BurgerOrder order, CustomerServicePoint point)
+    public void SetupCustomer(Transform serviceTarget, Transform exitTarget, BurgerOrder order, CustomerServicePoint point, float maxPatienceTime, CustomerManager manager)
     {
         targetPoint = serviceTarget;
         exitPoint = exitTarget;
         currentOrder = order;
         servicePoint = point;
+        customerManager = manager;
+        patienceTime = maxPatienceTime;
 
 
         isWaiting = false;
@@ -70,8 +77,11 @@ public bool IsTucano() => isTucano;
 
     void Update()
     {
-        if (isTucano && tucanoAnimator == null)
-        Debug.Log("ANIMATOR PERDIDO no frame " + Time.frameCount);
+        if (isTucano && tucanoAnimator == null && !warnedMissingTucanoAnimator)
+        {
+            warnedMissingTucanoAnimator = true;
+            Debug.Log("Animator do tucano nao esta ligado.");
+        }
 
         if (targetPoint == null)
             return;
@@ -110,6 +120,7 @@ public bool IsTucano() => isTucano;
                 servicePoint.ShowOrderHUD(currentOrder);
             }
 
+            StartPatienceTimer();
 
             Debug.Log("cliente chegou ao service point e mostrou pedido: " + currentOrder.GetOrderText());
         }
@@ -132,6 +143,7 @@ public bool IsTucano() => isTucano;
     private void SetFlyAnimation(bool flying)
     {
         if (tucanoAnimator == null) return;
+        if (!AnimatorHasParam(flyParameterName)) return;
 
         tucanoAnimator.Rebind();
         tucanoAnimator.Update(0f);
@@ -168,6 +180,7 @@ public bool IsTucano() => isTucano;
             return;
         }
 
+        StopPatienceTimer();
 
         StartCoroutine(EatAndLeave(burger));
     }
@@ -211,6 +224,64 @@ public bool IsTucano() => isTucano;
 
 
         isEating = false;
+        targetPoint = exitPoint;
+    }
+
+
+    private void StartPatienceTimer()
+    {
+        StopPatienceTimer();
+
+        if (patienceTime <= 0f)
+            return;
+
+        patienceCoroutine = StartCoroutine(PatienceRoutine());
+    }
+
+
+    private void StopPatienceTimer()
+    {
+        if (patienceCoroutine != null)
+        {
+            StopCoroutine(patienceCoroutine);
+            patienceCoroutine = null;
+        }
+    }
+
+
+    private IEnumerator PatienceRoutine()
+    {
+        yield return new WaitForSeconds(patienceTime);
+
+        if (!isWaiting || isEating)
+            yield break;
+
+        LeaveBecauseImpatient();
+    }
+
+
+    private void LeaveBecauseImpatient()
+    {
+        isWaiting = false;
+        isEating = false;
+
+        if (servicePoint != null)
+        {
+            servicePoint.ClearOrderHUD();
+            servicePoint.SetFree();
+        }
+
+        if (speechUI != null)
+        {
+            speechUI.ShowSpeech(impatientComment);
+        }
+
+        if (customerManager != null)
+        {
+            customerManager.NotifyCustomerLeftImpatient(this);
+        }
+
+        SetFlyAnimation(true);
         targetPoint = exitPoint;
     }
 
