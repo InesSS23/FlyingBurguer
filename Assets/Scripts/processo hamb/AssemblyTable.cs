@@ -15,7 +15,16 @@ public class AssemblyTable : MonoBehaviour, IInteractable
     [SerializeField] private GameObject tomatoVisualPrefab;
     [SerializeField] private GameObject pepperVisualPrefab;
 
+    [Header("altura base das camadas")]
     [SerializeField] private float layerHeight = 0.14f;
+
+    [Header("ajuste individual dos ingredientes")]
+    [SerializeField] private float breadExtraY = -0.02f;
+    [SerializeField] private float cookedMeatExtraY = 0f;
+    [SerializeField] private float cheeseExtraY = 0.04f;
+    [SerializeField] private float lettuceExtraY = 0.05f;
+    [SerializeField] private float tomatoExtraY = 0.03f;
+    [SerializeField] private float pepperExtraY = 0.04f;
 
     private List<GameObject> spawnedVisuals = new List<GameObject>();
 
@@ -61,7 +70,7 @@ public class AssemblyTable : MonoBehaviour, IInteractable
         }
 
         currentBurger.Add(item);
-        CriarVisualDoIngrediente(item);
+        RecriarVisualDoBurger();
 
         Debug.Log("adicionei ao hamburger: " + item);
 
@@ -102,14 +111,24 @@ public class AssemblyTable : MonoBehaviour, IInteractable
         Debug.Log("voltei a meter o hamburger na mesa");
     }
 
-    private void CriarVisualDoIngrediente(string item)
+    private void RecriarVisualDoBurger()
     {
+        LimparVisuais();
+
         if (burgerVisualPoint == null)
         {
             Debug.Log("n tens BurgerVisualPoint ligado");
             return;
         }
 
+        for (int i = 0; i < currentBurger.Count; i++)
+        {
+            CriarVisualDoIngrediente(currentBurger[i], i);
+        }
+    }
+
+    private void CriarVisualDoIngrediente(string item, int index)
+    {
         GameObject prefab = BuscarPrefab(item);
 
         if (prefab == null)
@@ -118,21 +137,37 @@ public class AssemblyTable : MonoBehaviour, IInteractable
             return;
         }
 
-        Vector3 spawnPosition = burgerVisualPoint.position;
-        spawnPosition.y += spawnedVisuals.Count * layerHeight;
+        GameObject visual = Instantiate(prefab, burgerVisualPoint);
 
-        GameObject visual = Instantiate(prefab, spawnPosition, burgerVisualPoint.rotation);
+        float finalY = index * layerHeight + BuscarExtraY(item);
+
+        visual.transform.localPosition = new Vector3(0f, finalY, 0f);
+        visual.transform.localRotation = Quaternion.identity;
+
         spawnedVisuals.Add(visual);
     }
 
-    private void RecriarVisualDoBurger()
+    private float BuscarExtraY(string item)
     {
-        LimparVisuais();
+        if (item == "Bread")
+            return breadExtraY;
 
-        for (int i = 0; i < currentBurger.Count; i++)
-        {
-            CriarVisualDoIngrediente(currentBurger[i]);
-        }
+        if (item == "CookedMeat")
+            return cookedMeatExtraY;
+
+        if (item == "Cheese")
+            return cheeseExtraY;
+
+        if (item == "Lettuce")
+            return lettuceExtraY;
+
+        if (item == "Tomato")
+            return tomatoExtraY;
+
+        if (item == "Pepper")
+            return pepperExtraY;
+
+        return 0f;
     }
 
     private GameObject BuscarPrefab(string item)
@@ -150,10 +185,10 @@ public class AssemblyTable : MonoBehaviour, IInteractable
             return lettuceVisualPrefab;
 
         if (item == "Tomato")
-        return tomatoVisualPrefab;
+            return tomatoVisualPrefab;
 
         if (item == "Pepper")
-        return pepperVisualPrefab;
+            return pepperVisualPrefab;
 
         return null;
     }

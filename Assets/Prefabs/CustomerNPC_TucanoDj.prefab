@@ -330,6 +330,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomerSpeechUI
   speechPanel: {fileID: 8508686215697067922}
   speechText: {fileID: 2970911309543598203}
+  speechPanelImage: {fileID: 0}
+  normalPanelColor: {r: 1, g: 0.95, b: 0.78, a: 1}
+  normalTextColor: {r: 0, g: 0, b: 0, a: 1}
+  angryPanelColor: {r: 1, g: 0.35, b: 0.2, a: 1}
+  angryTextColor: {r: 1, g: 1, b: 1, a: 1}
   speechDuration: 2.5
   faceCamera: 1
 --- !u!1001 &5392421069876279238
@@ -439,9 +444,13 @@ MonoBehaviour:
   - "Uma autentica explus\xE3o de sabores"
   - Que magnifico
   - "Adoraria saber do que \xE9 feito"
+  impatientComment: vou embora!  tanto tempo
+  impatientLeaveDelay: 3
   speechUI: {fileID: 2996203984789836744}
   isTucano: 1
+  isArara: 0
   flyParameterName: isFlying
+  araraFlyParameterName: isFlying
 --- !u!95 &7592678062011132731
 Animator:
   serializedVersion: 7

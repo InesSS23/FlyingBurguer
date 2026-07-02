@@ -19,7 +19,16 @@ public class PlayerHand : MonoBehaviour
     [SerializeField] private GameObject tomatoVisualPrefab;
     [SerializeField] private GameObject pepperVisualPrefab;
 
+    [Header("altura base das camadas")]
     [SerializeField] private float layerHeight = 0.14f;
+
+    [Header("ajuste individual dos ingredientes")]
+    [SerializeField] private float breadExtraY = 0f;
+    [SerializeField] private float cookedMeatExtraY = 0f;
+    [SerializeField] private float cheeseExtraY = 0.04f;
+    [SerializeField] private float lettuceExtraY = 0.05f;
+    [SerializeField] private float tomatoExtraY = 0.03f;
+    [SerializeField] private float pepperExtraY = 0.04f;
 
     private List<GameObject> spawnedVisuals = new List<GameObject>();
 
@@ -137,17 +146,39 @@ public class PlayerHand : MonoBehaviour
 
         GameObject visual = Instantiate(prefab, handVisualPoint);
 
-        visual.transform.localPosition = new Vector3(0, index * layerHeight, 0);
+        float finalY = index * layerHeight + BuscarExtraY(item);
+
+        visual.transform.localPosition = new Vector3(0f, finalY, 0f);
         visual.transform.localRotation = Quaternion.identity;
 
         spawnedVisuals.Add(visual);
     }
 
+    private float BuscarExtraY(string item)
+    {
+        if (item == "Bread")
+            return breadExtraY;
+
+        if (item == "CookedMeat")
+            return cookedMeatExtraY;
+
+        if (item == "Cheese")
+            return cheeseExtraY;
+
+        if (item == "Lettuce")
+            return lettuceExtraY;
+
+        if (item == "Tomato")
+            return tomatoExtraY;
+
+        if (item == "Pepper")
+            return pepperExtraY;
+
+        return 0f;
+    }
+
     private GameObject BuscarPrefab(string item)
     {
-        if (item == "Tomato")
-        return tomatoVisualPrefab;
-
         if (item == "Bread")
             return breadVisualPrefab;
 
@@ -162,6 +193,9 @@ public class PlayerHand : MonoBehaviour
 
         if (item == "RawMeat")
             return rawMeatVisualPrefab;
+
+        if (item == "Tomato")
+            return tomatoVisualPrefab;
 
         if (item == "Pepper")
             return pepperVisualPrefab;

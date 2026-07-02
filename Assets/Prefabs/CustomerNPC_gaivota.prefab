@@ -193,6 +193,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomerSpeechUI
   speechPanel: {fileID: 2156324697026694256}
   speechText: {fileID: 5228784912818817992}
+  speechPanelImage: {fileID: 0}
+  normalPanelColor: {r: 1, g: 0.95, b: 0.78, a: 1}
+  normalTextColor: {r: 0, g: 0, b: 0, a: 1}
+  angryPanelColor: {r: 1, g: 0.35, b: 0.2, a: 1}
+  angryTextColor: {r: 1, g: 1, b: 1, a: 1}
   speechDuration: 2.5
   faceCamera: 1
 --- !u!1 &6637020563401726604
@@ -441,4 +446,10 @@ MonoBehaviour:
   - Que maravilha
   - Comida Comida COMIDAAA
   - "Chefe, qual \xE9 a receita?"
+  impatientComment: vou embora!  tanto tempo
+  impatientLeaveDelay: 3
   speechUI: {fileID: 5494391676580021966}
+  isTucano: 0
+  isArara: 0
+  flyParameterName: isFlying
+  araraFlyParameterName: isFlying

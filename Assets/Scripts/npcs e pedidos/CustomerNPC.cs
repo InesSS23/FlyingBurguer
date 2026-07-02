@@ -2,76 +2,108 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class CustomerNPC : MonoBehaviour
 {
     [Header("movimento")]
     [SerializeField] private float moveSpeed = 3f;
 
-
     [Header("tempo a comer/comentar")]
     [SerializeField] private float eatTime = 3f;
 
+    [Header("comentarios positivos")]
+    [SerializeField]
+    private string[] happyComments =
+    {
+        "Muito bom!",
+        "Isto sim é serviço!",
+        "Adoro hambúrgueres voadores!"
+    };
 
-    [Header("comentarios")]
-    [SerializeField] private string[] happyComments;
-    [SerializeField] private string impatientComment = "Demoraste muito, vou embora!";
+    [Header("comentarios negativos")]
+    [SerializeField]
+    private string[] impatientComments =
+    {
+        "Demoraste muito! Vou embora!",
+        "Estou farto de esperar!",
+        "Que serviço lento!",
+        "Já perdi a fome!",
+        "Vou comer noutro sítio!"
+    };
 
+    [SerializeField] private float impatientLeaveDelay = 3f;
 
     [Header("fala visual")]
     [SerializeField] private CustomerSpeechUI speechUI;
 
-[Header("tucano")]
-[SerializeField] private bool isTucano = false;
+    [Header("tucano")]
+    [SerializeField] private bool isTucano = false;
 
-[Header("arara")]
-[SerializeField] private bool isArara = false;
-
-public bool IsTucano() => isTucano;
-public bool IsArara() => isArara;
-
+    [Header("arara")]
+    [SerializeField] private bool isArara = false;
 
     [Header("animacao do tucano")]
     [SerializeField] private string flyParameterName = "isFlying";
 
-
+    [Header("animacao da arara")]
+    [SerializeField] private string araraFlyParameterName = "isFlying";
 
     private Transform targetPoint;
     private Transform exitPoint;
-
 
     private BurgerOrder currentOrder;
     private CustomerServicePoint servicePoint;
     private CustomerManager customerManager;
 
-
     private bool isWaiting = false;
     private bool isEating = false;
-    private Animator tucanoAnimator;
-    private Coroutine patienceCoroutine;
-    private float patienceTime = 25f;
-    private bool warnedMissingTucanoAnimator = false;
 
-    
-    [Header("animacao da arara")]
-    [SerializeField] private string araraFlyParameterName = "isFlying";
+    private Animator tucanoAnimator;
     private Animator araraAnimator;
 
+    private Coroutine patienceCoroutine;
+    private float patienceTime = 25f;
 
+    private bool warnedMissingTucanoAnimator = false;
+    private bool warnedMissingAraraAnimator = false;
+
+    public bool IsTucano()
+    {
+        return isTucano;
+    }
+
+    public bool IsArara()
+    {
+        return isArara;
+    }
 
     public void SetTucanoAnimator(Animator anim)
     {
         tucanoAnimator = anim;
-        Debug.Log("tucano animator recebido: " + (anim != null ? "SIM" : "NAO"));
+
+        if (anim != null)
+        {
+            Debug.Log("tucano animator recebido");
+        }
     }
-        public void SetAraraAnimator(Animator anim)
+
+    public void SetAraraAnimator(Animator anim)
     {
         araraAnimator = anim;
-        Debug.Log("arara animator recebido: " + (anim != null ? "SIM" : "NAO"));
+
+        if (anim != null)
+        {
+            Debug.Log("arara animator recebido");
+        }
     }
 
-
-    public void SetupCustomer(Transform serviceTarget, Transform exitTarget, BurgerOrder order, CustomerServicePoint point, float maxPatienceTime, CustomerManager manager)
+    public void SetupCustomer(
+        Transform serviceTarget,
+        Transform exitTarget,
+        BurgerOrder order,
+        CustomerServicePoint point,
+        float maxPatienceTime,
+        CustomerManager manager
+    )
     {
         targetPoint = serviceTarget;
         exitPoint = exitTarget;
@@ -80,33 +112,25 @@ public bool IsArara() => isArara;
         customerManager = manager;
         patienceTime = maxPatienceTime;
 
-
         isWaiting = false;
         isEating = false;
 
+        StopPatienceTimer();
 
         SetFlyAnimation(true);
-        if (isArara) SetAraraFlyAnimation(true);
-
 
         Debug.Log("cliente nasceu com pedido: " + currentOrder.GetOrderText());
     }
 
-
     void Update()
     {
-         if (isTucano && tucanoAnimator == null)
-            Debug.Log("ANIMATOR PERDIDO (tucano) no frame " + Time.frameCount);
-        if (isArara && araraAnimator == null)
-            Debug.Log("ANIMATOR PERDIDO (arara) no frame " + Time.frameCount);
+        CheckAnimatorWarnings();
 
         if (targetPoint == null)
             return;
 
-
         if (isWaiting || isEating)
             return;
-
 
         transform.position = Vector3.MoveTowards(
             transform.position,
@@ -114,13 +138,26 @@ public bool IsArara() => isArara;
             moveSpeed * Time.deltaTime
         );
 
-
         if (Vector3.Distance(transform.position, targetPoint.position) < 0.1f)
         {
             ChegouAoPonto();
         }
     }
 
+    private void CheckAnimatorWarnings()
+    {
+        if (isTucano && tucanoAnimator == null && !warnedMissingTucanoAnimator)
+        {
+            warnedMissingTucanoAnimator = true;
+            Debug.LogWarning("CustomerNPC: este cliente está marcado como Tucano, mas não recebeu Animator.");
+        }
+
+        if (isArara && araraAnimator == null && !warnedMissingAraraAnimator)
+        {
+            warnedMissingAraraAnimator = true;
+            Debug.LogWarning("CustomerNPC: este cliente está marcado como Arara, mas não recebeu Animator.");
+        }
+    }
 
     private void ChegouAoPonto()
     {
@@ -128,81 +165,92 @@ public bool IsArara() => isArara;
         {
             isWaiting = true;
 
-
-            if (isTucano) SetFlyAnimation(false);
-            if (isArara) SetAraraFlyAnimation(false);
-
+            SetFlyAnimation(false);
 
             if (servicePoint != null)
             {
                 servicePoint.ShowOrderHUD(currentOrder);
             }
 
+            StartPatienceTimer();
 
             Debug.Log("cliente chegou ao service point e mostrou pedido: " + currentOrder.GetOrderText());
         }
         else
         {
-            if (isTucano) SetFlyAnimation(true);
-            if (isArara) SetAraraFlyAnimation(true);
+            SetFlyAnimation(true);
 
+            StopPatienceTimer();
 
             if (servicePoint != null)
             {
                 servicePoint.SetFree();
             }
 
-
             Destroy(gameObject);
         }
     }
 
-
     private void SetFlyAnimation(bool flying)
     {
-        if (tucanoAnimator == null) return;
+        if (isTucano)
+        {
+            SetAnimatorBool(tucanoAnimator, flyParameterName, flying);
+        }
 
-        tucanoAnimator.Rebind();
-        tucanoAnimator.Update(0f);
-        tucanoAnimator.SetBool(flyParameterName, flying);
+        if (isArara)
+        {
+            SetAnimatorBool(araraAnimator, araraFlyParameterName, flying);
+        }
     }
 
-    private void SetAraraFlyAnimation(bool flying)
+    private void SetAnimatorBool(Animator animator, string parameterName, bool value)
     {
-        if (araraAnimator == null) return;
+        if (animator == null)
+            return;
 
-        araraAnimator.Rebind();
-        araraAnimator.Update(0f);
-        araraAnimator.SetBool(araraFlyParameterName, flying);
+        if (string.IsNullOrEmpty(parameterName))
+            return;
+
+        if (!AnimatorHasParameter(animator, parameterName))
+        {
+            Debug.LogWarning("Animator não tem o parâmetro: " + parameterName);
+            return;
+        }
+
+        animator.SetBool(parameterName, value);
     }
 
-    private bool AnimatorHasParam(string paramName)
+    private bool AnimatorHasParameter(Animator animator, string parameterName)
     {
-        foreach (var p in tucanoAnimator.parameters)
-            if (p.name == paramName) return true;
+        if (animator == null)
+            return false;
+
+        foreach (AnimatorControllerParameter parameter in animator.parameters)
+        {
+            if (parameter.name == parameterName)
+                return true;
+        }
+
         return false;
     }
-
 
     public bool CanReceiveBurger(List<string> burger)
     {
         if (!isWaiting)
             return false;
 
-
         if (currentOrder == null)
             return false;
 
-
         return currentOrder.MatchesBurger(burger);
     }
-
 
     public void ReceiveCorrectBurger(List<string> burger)
     {
         if (!CanReceiveBurger(burger))
         {
-            Debug.Log("este hamburger n Ã© para este cliente");
+            Debug.Log("este hamburger n é para este cliente");
             return;
         }
 
@@ -211,12 +259,10 @@ public bool IsArara() => isArara;
         StartCoroutine(EatAndLeave(burger));
     }
 
-
     private IEnumerator EatAndLeave(List<string> burger)
     {
         isWaiting = false;
         isEating = true;
-
 
         if (servicePoint != null)
         {
@@ -224,35 +270,27 @@ public bool IsArara() => isArara;
             servicePoint.ShowFoodVisual(burger);
         }
 
-
         Debug.Log("pedido certo, cliente recebeu o hamburger");
 
-
-        string comment = GetRandomComment();
-
+        string comment = GetRandomHappyComment();
 
         if (speechUI != null)
         {
             speechUI.ShowSpeech(comment);
         }
 
-
         Debug.Log("cliente: " + comment);
 
-
         yield return new WaitForSeconds(eatTime);
-
 
         if (servicePoint != null)
         {
             servicePoint.ClearFoodVisual();
         }
 
-
         isEating = false;
         targetPoint = exitPoint;
     }
-
 
     private void StartPatienceTimer()
     {
@@ -264,7 +302,6 @@ public bool IsArara() => isArara;
         patienceCoroutine = StartCoroutine(PatienceRoutine());
     }
 
-
     private void StopPatienceTimer()
     {
         if (patienceCoroutine != null)
@@ -274,7 +311,6 @@ public bool IsArara() => isArara;
         }
     }
 
-
     private IEnumerator PatienceRoutine()
     {
         yield return new WaitForSeconds(patienceTime);
@@ -282,64 +318,84 @@ public bool IsArara() => isArara;
         if (!isWaiting || isEating)
             yield break;
 
-        LeaveBecauseImpatient();
+        StartCoroutine(LeaveBecauseImpatientRoutine());
     }
 
-
-    private void LeaveBecauseImpatient()
+    private IEnumerator LeaveBecauseImpatientRoutine()
     {
         isWaiting = false;
-        isEating = false;
+        isEating = true;
+
+        StopPatienceTimer();
 
         if (servicePoint != null)
         {
             servicePoint.ClearOrderHUD();
-            servicePoint.SetFree();
         }
+
+        string impatientComment = GetRandomImpatientComment();
 
         if (speechUI != null)
         {
-            speechUI.ShowSpeech(impatientComment);
+            speechUI.ShowAngrySpeech(impatientComment);
         }
+
+        Debug.Log("cliente perdeu a paciencia: " + impatientComment);
 
         if (customerManager != null)
         {
             customerManager.NotifyCustomerLeftImpatient(this);
         }
 
+        yield return new WaitForSeconds(impatientLeaveDelay);
+
+        if (speechUI != null)
+        {
+            speechUI.HideSpeech();
+        }
+
+        isEating = false;
+
         SetFlyAnimation(true);
-        if (isArara) SetAraraFlyAnimation(true);
+
         targetPoint = exitPoint;
     }
 
-
-    private string GetRandomComment()
+    private string GetRandomHappyComment()
     {
         if (happyComments == null || happyComments.Length == 0)
         {
             return "Estava bom!";
         }
 
-
         return happyComments[Random.Range(0, happyComments.Length)];
+    }
+
+    private string GetRandomImpatientComment()
+    {
+        if (impatientComments == null || impatientComments.Length == 0)
+        {
+            return "Demoraste muito! Vou embora!";
+        }
+
+        return impatientComments[Random.Range(0, impatientComments.Length)];
     }
 
     public void SetVisualsActive(bool active, Transform excludeSubtree = null)
     {
         Renderer[] rends = GetComponentsInChildren<Renderer>(true);
-        foreach (var r in rends)
+
+        foreach (Renderer rend in rends)
         {
-            if (excludeSubtree != null && r.transform.IsChildOf(excludeSubtree))
+            if (excludeSubtree != null && rend.transform.IsChildOf(excludeSubtree))
                 continue;
-            r.enabled = active;
+
+            rend.enabled = active;
         }
     }
-
 
     public BurgerOrder GetCurrentOrder()
     {
         return currentOrder;
     }
-
-
 }

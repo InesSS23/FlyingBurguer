@@ -1,12 +1,22 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CustomerSpeechUI : MonoBehaviour
 {
     [Header("ui da fala")]
     [SerializeField] private GameObject speechPanel;
     [SerializeField] private TMP_Text speechText;
+    [SerializeField] private Image speechPanelImage;
+
+    [Header("cores normais")]
+    [SerializeField] private Color normalPanelColor = new Color(1f, 0.95f, 0.82f, 1f);
+    [SerializeField] private Color normalTextColor = Color.black;
+
+    [Header("cores zangado")]
+    [SerializeField] private Color angryPanelColor = new Color(1f, 0.35f, 0.2f, 1f);
+    [SerializeField] private Color angryTextColor = Color.white;
 
     [Header("tempo visivel")]
     [SerializeField] private float speechDuration = 2.5f;
@@ -18,6 +28,7 @@ public class CustomerSpeechUI : MonoBehaviour
 
     void Start()
     {
+        TryFindPanelImage();
         HideSpeech();
     }
 
@@ -35,19 +46,30 @@ public class CustomerSpeechUI : MonoBehaviour
 
     public void ShowSpeech(string message)
     {
-        Debug.Log("vou mostrar fala: " + message);
+        ShowSpeechWithStyle(message, false);
+    }
 
+    public void ShowAngrySpeech(string message)
+    {
+        ShowSpeechWithStyle(message, true);
+    }
+
+    private void ShowSpeechWithStyle(string message, bool angry)
+    {
         if (speechPanel == null)
         {
-            Debug.Log("SpeechPanel nao esta ligado");
+            Debug.LogWarning("SpeechPanel nao esta ligado");
             return;
         }
 
         if (speechText == null)
         {
-            Debug.Log("SpeechText nao esta ligado");
+            Debug.LogWarning("SpeechText nao esta ligado");
             return;
         }
+
+        TryFindPanelImage();
+        ApplyColors(angry);
 
         if (speechCoroutine != null)
         {
@@ -65,6 +87,30 @@ public class CustomerSpeechUI : MonoBehaviour
         yield return new WaitForSeconds(speechDuration);
 
         HideSpeech();
+    }
+
+    private void ApplyColors(bool angry)
+    {
+        if (speechPanelImage != null)
+        {
+            speechPanelImage.color = angry ? angryPanelColor : normalPanelColor;
+        }
+
+        if (speechText != null)
+        {
+            speechText.color = angry ? angryTextColor : normalTextColor;
+        }
+    }
+
+    private void TryFindPanelImage()
+    {
+        if (speechPanelImage != null)
+            return;
+
+        if (speechPanel == null)
+            return;
+
+        speechPanelImage = speechPanel.GetComponent<Image>();
     }
 
     public void HideSpeech()

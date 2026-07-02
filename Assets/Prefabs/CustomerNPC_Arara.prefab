@@ -60,7 +60,8 @@ MonoBehaviour:
   - muito bom!
   - "isto sim \xE9 servi\xE7o!"
   - "adoro hamb\xFArgueres voadores!"
-  impatientComment: Demoraste muito, vou embora!
+  impatientComment: vou embora!  tanto tempo
+  impatientLeaveDelay: 3
   speechUI: {fileID: 5031690183801215037}
   isTucano: 0
   isArara: 1
@@ -638,6 +639,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomerSpeechUI
   speechPanel: {fileID: 7960871439045039049}
   speechText: {fileID: 3116946183785127864}
+  speechPanelImage: {fileID: 0}
+  normalPanelColor: {r: 1, g: 0.95, b: 0.78, a: 1}
+  normalTextColor: {r: 0, g: 0, b: 0, a: 1}
+  angryPanelColor: {r: 1, g: 0.35, b: 0.2, a: 1}
+  angryTextColor: {r: 1, g: 1, b: 1, a: 1}
   speechDuration: 2.5
   faceCamera: 1
 --- !u!1 &6241382864926891518

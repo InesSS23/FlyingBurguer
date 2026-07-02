@@ -330,6 +330,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomerSpeechUI
   speechPanel: {fileID: 273195125033860329}
   speechText: {fileID: 755534248829403829}
+  speechPanelImage: {fileID: 0}
+  normalPanelColor: {r: 1, g: 0.95, b: 0.78, a: 1}
+  normalTextColor: {r: 0, g: 0, b: 0, a: 1}
+  angryPanelColor: {r: 1, g: 0.35, b: 0.2, a: 1}
+  angryTextColor: {r: 1, g: 1, b: 1, a: 1}
   speechDuration: 2.5
   faceCamera: 1
 --- !u!1001 &8743580879421478468
@@ -436,7 +441,13 @@ MonoBehaviour:
   - Que carne saburosa
   - "T\xE3o soculento"
   - Este sabor...
+  impatientComment: vou embora!  tanto tempo
+  impatientLeaveDelay: 3
   speechUI: {fileID: 2979532850589759739}
+  isTucano: 0
+  isArara: 0
+  flyParameterName: isFlying
+  araraFlyParameterName: isFlying
 --- !u!4 &9141683848393650607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6fa99284e8ffab4c93632f3365626b4, type: 3}
