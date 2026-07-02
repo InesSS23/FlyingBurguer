@@ -85,7 +85,7 @@ public class DayManager : MonoBehaviour
         if (dayEnded)
             return;
 
-        currentScore += amount;
+        currentScore = Mathf.Max(0, currentScore + amount);
         UpdateUI();
 
         Debug.Log("pontos atuais: " + currentScore);

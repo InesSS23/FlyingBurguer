@@ -10,6 +10,8 @@ public class OrderHUDManager : MonoBehaviour
     [SerializeField] private Sprite cookedMeatSprite;
     [SerializeField] private Sprite cheeseSprite;
     [SerializeField] private Sprite lettuceSprite;
+    [SerializeField] private Sprite tomatoSprite;
+    [SerializeField] private Sprite pepperSprite;
 
     void Start()
     {
@@ -62,6 +64,12 @@ public class OrderHUDManager : MonoBehaviour
 
         if (ingredient == "Lettuce")
             return lettuceSprite;
+
+        if (ingredient == "Tomato")
+            return tomatoSprite;
+
+        if (ingredient == "Pepper")
+            return pepperSprite;
 
         return null;
     }

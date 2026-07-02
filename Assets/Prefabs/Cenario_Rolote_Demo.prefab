@@ -629,11 +629,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyTable
   currentBurger: []
   burgerVisualPoint: {fileID: 0}
-  breadVisualPrefab: {fileID: 2628186999485140287, guid: 987a2901527a1344ca978372496f71d3, type: 3}
-  cookedMeatVisualPrefab: {fileID: 2613704282212099793, guid: cefa5ecfdfbc31d4b98bf5fe36030f93, type: 3}
+  breadVisualPrefab: {fileID: 4903866073429564365, guid: 75102e1a5bd41ed408658e3c2e5ea0dd, type: 3}
+  cookedMeatVisualPrefab: {fileID: 5487186573873431929, guid: 4ddfacd964abab94fb5576cfab96f7c9, type: 3}
   cheeseVisualPrefab: {fileID: 5814846380265251095, guid: f6a0c1b60b318ba4297d013c53770160, type: 3}
   lettuceVisualPrefab: {fileID: 8353778972075930892, guid: 9489d8757203c6149b5d9dcde0319bbe, type: 3}
-  layerHeight: 0.08
+  tomatoVisualPrefab: {fileID: 1015378928504195681, guid: d130a2c5407295742a9e0f3794e27e73, type: 3}
+  pepperVisualPrefab: {fileID: 4233165289014671106, guid: 4a5990c7528c9d64ba24aa643c6c47f0, type: 3}
+  layerHeight: 0.14
 --- !u!65 &8744213304128826172
 BoxCollider:
   m_ObjectHideFlags: 0
