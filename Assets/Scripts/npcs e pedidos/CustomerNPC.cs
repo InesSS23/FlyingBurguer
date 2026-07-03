@@ -289,6 +289,8 @@ public class CustomerNPC : MonoBehaviour
         }
 
         isEating = false;
+
+        SetFlyAnimation(true);
         targetPoint = exitPoint;
     }
 
