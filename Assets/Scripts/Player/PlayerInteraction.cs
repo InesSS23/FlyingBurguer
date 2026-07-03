@@ -3,9 +3,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [Header("interação")]
+    [Header("interacao")]
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float interactionDistance = 10f;
+    [SerializeField] private bool debugRaycastHits = false;
 
     void Start()
     {
@@ -27,17 +28,29 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (playerCamera == null)
         {
-            Debug.Log("n tenho camera para interagir");
+            Debug.Log("nao tenho camera para interagir");
             return;
         }
 
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        RaycastHit[] hits = Physics.RaycastAll(ray, interactionDistance, ~0, QueryTriggerInteraction.Collide);
 
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, interactionDistance, ~0, QueryTriggerInteraction.Collide))
+        if (hits.Length == 0)
         {
-            Debug.Log("cliquei/olhei para: " + hit.collider.name);
+            Debug.Log("nao acertei em nada com o clique");
+            return;
+        }
+
+        System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            RaycastHit hit = hits[i];
+
+            if (debugRaycastHits)
+            {
+                Debug.Log("raycast hit: " + hit.collider.name);
+            }
 
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
 
@@ -48,16 +61,12 @@ public class PlayerInteraction : MonoBehaviour
 
             if (interactable != null)
             {
+                Debug.Log("interagi com: " + hit.collider.name);
                 interactable.Interact();
-            }
-            else
-            {
-                Debug.Log("este objeto n tem interação: " + hit.collider.name);
+                return;
             }
         }
-        else
-        {
-            Debug.Log("n acertei em nada com o clique");
-        }
+
+        Debug.Log("olhei para objetos, mas nenhum tinha interacao");
     }
 }

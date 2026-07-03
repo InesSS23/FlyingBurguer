@@ -119,17 +119,17 @@ public class CustomerManager : MonoBehaviour
 
         possibleOrders.Add(new BurgerOrder(
             "Burger vegetariano falso",
-            new List<string> { "Bread", "CookedMeat", "Lettuce", "Tomato", "Pepper", "Bread" }
+            new List<string> { "Bread", "CookedMeat", "Lettuce", "Pepper", "Bread" }
         ));
 
         possibleOrders.Add(new BurgerOrder(
             "Burger completo",
-            new List<string> { "Bread", "CookedMeat", "Cheese", "Lettuce", "Tomato", "Bread" }
+            new List<string> { "Bread", "CookedMeat", "Cheese", "Lettuce", "Bread" }
         ));
 
         possibleOrders.Add(new BurgerOrder(
             "Burger especial voador",
-            new List<string> { "Bread", "CookedMeat", "Cheese", "Lettuce", "Tomato", "Pepper", "Bread" }
+            new List<string> { "Bread", "CookedMeat", "Cheese", "Pepper", "Bread" }
         ));
     }
 
@@ -339,6 +339,8 @@ public class CustomerManager : MonoBehaviour
             return false;
         }
 
+        Debug.Log("tentando entregar hamburger: " + BurgerToText(burger));
+
         for (int i = 0; i < servicePoints.Length; i++)
         {
             if (servicePoints[i] == null)
@@ -347,7 +349,15 @@ public class CustomerManager : MonoBehaviour
             CustomerNPC customer = servicePoints[i].GetCurrentCustomer();
 
             if (customer == null)
+            {
+                Debug.Log("service point " + i + " sem cliente");
                 continue;
+            }
+
+            BurgerOrder order = customer.GetCurrentOrder();
+            string orderText = order != null ? order.GetOrderText() : "sem pedido";
+
+            Debug.Log("service point " + i + " tem cliente com pedido: " + orderText);
 
             if (customer.CanReceiveBurger(burger))
             {
@@ -358,6 +368,23 @@ public class CustomerManager : MonoBehaviour
 
         Debug.Log("nenhum cliente quer este hamburger");
         return false;
+    }
+
+    private string BurgerToText(List<string> burger)
+    {
+        string text = "";
+
+        for (int i = 0; i < burger.Count; i++)
+        {
+            text += burger[i];
+
+            if (i < burger.Count - 1)
+            {
+                text += " + ";
+            }
+        }
+
+        return text;
     }
 
     public void NotifyCustomerLeftImpatient(CustomerNPC customer)
