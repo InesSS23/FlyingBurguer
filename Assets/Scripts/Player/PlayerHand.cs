@@ -18,6 +18,8 @@ public class PlayerHand : MonoBehaviour
     [SerializeField] private GameObject rawMeatVisualPrefab;
     [SerializeField] private GameObject tomatoVisualPrefab;
     [SerializeField] private GameObject pepperVisualPrefab;
+    [SerializeField] private GameObject frozenFriesVisualPrefab;
+    [SerializeField] private GameObject cookedFriesVisualPrefab;
 
     [Header("altura base das camadas")]
     [SerializeField] private float layerHeight = 0.14f;
@@ -29,6 +31,8 @@ public class PlayerHand : MonoBehaviour
     [SerializeField] private float lettuceExtraY = 0.05f;
     [SerializeField] private float tomatoExtraY = 0.03f;
     [SerializeField] private float pepperExtraY = 0.04f;
+    [SerializeField] private float frozenFriesExtraY = 0f;
+    [SerializeField] private float cookedFriesExtraY = 0f;
 
     private List<GameObject> spawnedVisuals = new List<GameObject>();
 
@@ -174,6 +178,12 @@ public class PlayerHand : MonoBehaviour
         if (item == "Pepper")
             return pepperExtraY;
 
+        if (item == "FrozenFries")
+            return frozenFriesExtraY;
+
+        if (item == "CookedFries")
+            return cookedFriesExtraY;
+
         return 0f;
     }
 
@@ -199,6 +209,12 @@ public class PlayerHand : MonoBehaviour
 
         if (item == "Pepper")
             return pepperVisualPrefab;
+
+        if (item == "FrozenFries")
+            return frozenFriesVisualPrefab;
+
+        if (item == "CookedFries")
+            return cookedFriesVisualPrefab;
 
         return null;
     }
