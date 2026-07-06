@@ -292,7 +292,7 @@ public class CustomerManager : MonoBehaviour
             Debug.Log("TUCANO ANIM OBJECT: " + (anim == null ? "NULL" : anim.gameObject.name));
 
             customer.SetTucanoAnimator(anim);
-            customer.SetVisualsActive(false, tucanoObject.transform);
+            customer.SetFlyingVisualRoot(tucanoObject.transform);
         }
         else if (araraAnimationPrefab != null && customer.IsArara())
         {
@@ -322,7 +322,7 @@ public class CustomerManager : MonoBehaviour
             Debug.Log("ARARA ANIM OBJECT: " + (anim == null ? "NULL" : anim.gameObject.name));
 
             customer.SetAraraAnimator(anim);
-            customer.SetVisualsActive(false, araraObject.transform);
+            customer.SetFlyingVisualRoot(araraObject.transform);
         }
 
         freePoint.SetCustomer(customer);

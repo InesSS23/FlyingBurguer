@@ -59,6 +59,7 @@ public class CustomerNPC : MonoBehaviour
 
     private Animator tucanoAnimator;
     private Animator araraAnimator;
+    private Transform flyingVisualRoot;
 
     private Coroutine patienceCoroutine;
     private float patienceTime = 25f;
@@ -94,6 +95,12 @@ public class CustomerNPC : MonoBehaviour
         {
             Debug.Log("arara animator recebido");
         }
+    }
+
+    public void SetFlyingVisualRoot(Transform visualRoot)
+    {
+        flyingVisualRoot = visualRoot;
+        ApplyFlyingVisualMode(true);
     }
 
     public void SetupCustomer(
@@ -193,6 +200,11 @@ public class CustomerNPC : MonoBehaviour
 
     private void SetFlyAnimation(bool flying)
     {
+        if (flying)
+        {
+            ApplyFlyingVisualMode(true);
+        }
+
         if (isTucano)
         {
             SetAnimatorBool(tucanoAnimator, flyParameterName, flying);
@@ -201,6 +213,28 @@ public class CustomerNPC : MonoBehaviour
         if (isArara)
         {
             SetAnimatorBool(araraAnimator, araraFlyParameterName, flying);
+        }
+
+        if (!flying)
+        {
+            ApplyFlyingVisualMode(false);
+        }
+    }
+
+    private void ApplyFlyingVisualMode(bool flying)
+    {
+        if (flyingVisualRoot == null)
+            return;
+
+        if (flying)
+        {
+            flyingVisualRoot.gameObject.SetActive(true);
+            SetVisualsActive(false, flyingVisualRoot);
+        }
+        else
+        {
+            SetVisualsActive(true, flyingVisualRoot);
+            flyingVisualRoot.gameObject.SetActive(false);
         }
     }
 
@@ -299,7 +333,7 @@ public class CustomerNPC : MonoBehaviour
         if (servicePoint != null)
         {
             servicePoint.ClearOrderHUD();
-            servicePoint.ShowFoodVisual(tray.GetBurgerCopy());
+            servicePoint.ShowFoodVisual(tray);
         }
 
         Debug.Log("pedido certo, cliente recebeu o tabuleiro");

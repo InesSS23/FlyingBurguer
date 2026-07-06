@@ -336,6 +336,10 @@ MonoBehaviour:
   angryPanelColor: {r: 1, g: 0.35, b: 0.2, a: 1}
   angryTextColor: {r: 1, g: 1, b: 1, a: 1}
   speechDuration: 2.5
+  autoFitText: 1
+  maxVisibleLines: 4
+  minFontSize: 10
+  maxFontSize: 22
   faceCamera: 1
 --- !u!1001 &8743580879421478468
 PrefabInstance:

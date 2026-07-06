@@ -73,6 +73,14 @@ public class CustomerServicePoint : MonoBehaviour
         }
     }
 
+    public void ShowFoodVisual(MealTray tray)
+    {
+        if (burgerVisualSpawner != null)
+        {
+            burgerVisualSpawner.ShowTray(tray);
+        }
+    }
+
     public void ClearFoodVisual()
     {
         if (burgerVisualSpawner != null)

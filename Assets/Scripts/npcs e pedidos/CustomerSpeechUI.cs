@@ -21,6 +21,12 @@ public class CustomerSpeechUI : MonoBehaviour
     [Header("tempo visivel")]
     [SerializeField] private float speechDuration = 2.5f;
 
+    [Header("limites do texto")]
+    [SerializeField] private bool autoFitText = true;
+    [SerializeField] private int maxVisibleLines = 4;
+    [SerializeField] private float minFontSize = 10f;
+    [SerializeField] private float maxFontSize = 22f;
+
     [Header("camera")]
     [SerializeField] private bool faceCamera = true;
 
@@ -81,6 +87,8 @@ public class CustomerSpeechUI : MonoBehaviour
 
     private IEnumerator ShowSpeechRoutine(string message)
     {
+        PrepareSpeechText();
+
         speechText.text = message;
         speechPanel.SetActive(true);
 
@@ -100,6 +108,20 @@ public class CustomerSpeechUI : MonoBehaviour
         {
             speechText.color = angry ? angryTextColor : normalTextColor;
         }
+    }
+
+    private void PrepareSpeechText()
+    {
+        if (speechText == null || !autoFitText)
+            return;
+
+        speechText.enableWordWrapping = true;
+        speechText.enableAutoSizing = true;
+        speechText.fontSizeMin = minFontSize;
+        speechText.fontSizeMax = maxFontSize;
+        speechText.maxVisibleLines = maxVisibleLines;
+        speechText.overflowMode = TextOverflowModes.Overflow;
+        speechText.alignment = TextAlignmentOptions.Center;
     }
 
     private void TryFindPanelImage()
