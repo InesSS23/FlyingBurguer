@@ -28,9 +28,11 @@ public class PlayerHand : MonoBehaviour
     [SerializeField] private GameObject drinkVisualPrefab;
 
     [Header("posicoes no tabuleiro")]
-    [SerializeField] private Vector3 burgerOnTrayPosition = new Vector3(0f, 0.08f, 0f);
-    [SerializeField] private Vector3 friesOnTrayPosition = new Vector3(-0.35f, 0.08f, 0f);
-    [SerializeField] private Vector3 drinkOnTrayPosition = new Vector3(0.35f, 0.08f, 0f);
+    [SerializeField] private Vector3 trayVisualPosition = Vector3.zero;
+    [SerializeField] private Vector3 trayItemsOffset = Vector3.zero;
+    [SerializeField] private Vector3 burgerOnTrayPosition = new Vector3(0f, 0.08f, -0.05f);
+    [SerializeField] private Vector3 friesOnTrayPosition = new Vector3(-0.7f, 0.08f, 0.05f);
+    [SerializeField] private Vector3 drinkOnTrayPosition = new Vector3(0.7f, 0.08f, 0.05f);
     [SerializeField] private Vector3 trayVisualRotation = new Vector3(-90f, 0f, 0f);
 
     [Header("altura base das camadas")]
@@ -214,23 +216,23 @@ public class PlayerHand : MonoBehaviour
 
         if (trayVisualPrefab != null)
         {
-            CriarVisualDireto(trayVisualPrefab, Vector3.zero, Quaternion.Euler(trayVisualRotation));
+            CriarVisualDireto(trayVisualPrefab, trayVisualPosition, Quaternion.Euler(trayVisualRotation));
         }
 
         for (int i = 0; i < currentTray.burger.Count; i++)
         {
-            CriarVisual(currentTray.burger[i], i, burgerOnTrayPosition);
+            CriarVisual(currentTray.burger[i], i, trayItemsOffset + burgerOnTrayPosition);
         }
 
         if (currentTray.hasFries)
         {
-            Vector3 position = friesOnTrayPosition + new Vector3(0f, trayFriesExtraY, 0f);
+            Vector3 position = trayItemsOffset + friesOnTrayPosition + new Vector3(0f, trayFriesExtraY, 0f);
             CriarVisualDireto(BuscarPrefab("CookedFries"), position);
         }
 
         if (currentTray.hasDrink)
         {
-            Vector3 position = drinkOnTrayPosition + new Vector3(0f, trayDrinkExtraY, 0f);
+            Vector3 position = trayItemsOffset + drinkOnTrayPosition + new Vector3(0f, trayDrinkExtraY, 0f);
             CriarVisualDireto(BuscarPrefab("Drink"), position);
         }
     }

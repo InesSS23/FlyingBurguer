@@ -19,9 +19,11 @@ public class AssemblyTable : MonoBehaviour, IInteractable
     [SerializeField] private GameObject drinkVisualPrefab;
 
     [Header("posicoes no tabuleiro")]
-    [SerializeField] private Vector3 burgerOnTrayPosition = new Vector3(0f, 0.08f, 0f);
-    [SerializeField] private Vector3 friesOnTrayPosition = new Vector3(-0.35f, 0.08f, 0f);
-    [SerializeField] private Vector3 drinkOnTrayPosition = new Vector3(0.35f, 0.08f, 0f);
+    [SerializeField] private Vector3 trayVisualPosition = Vector3.zero;
+    [SerializeField] private Vector3 trayItemsOffset = Vector3.zero;
+    [SerializeField] private Vector3 burgerOnTrayPosition = new Vector3(0f, 0.08f, -0.05f);
+    [SerializeField] private Vector3 friesOnTrayPosition = new Vector3(-0.7f, 0.08f, 0.05f);
+    [SerializeField] private Vector3 drinkOnTrayPosition = new Vector3(0.7f, 0.08f, 0.05f);
     [SerializeField] private Vector3 trayVisualRotation = new Vector3(-90f, 0f, 0f);
 
     [Header("altura base das camadas")]
@@ -223,22 +225,22 @@ public class AssemblyTable : MonoBehaviour, IInteractable
 
         if (trayVisualPrefab != null && !currentTray.IsEmpty())
         {
-            CriarVisual(trayVisualPrefab, Vector3.zero, Quaternion.Euler(trayVisualRotation));
+            CriarVisual(trayVisualPrefab, trayVisualPosition, Quaternion.Euler(trayVisualRotation));
         }
 
         for (int i = 0; i < currentTray.burger.Count; i++)
         {
-            CriarVisualDoIngrediente(currentTray.burger[i], i, burgerOnTrayPosition);
+            CriarVisualDoIngrediente(currentTray.burger[i], i, trayItemsOffset + burgerOnTrayPosition);
         }
 
         if (currentTray.hasFries)
         {
-            CriarVisualDoIngrediente("CookedFries", 0, friesOnTrayPosition);
+            CriarVisualDoIngrediente("CookedFries", 0, trayItemsOffset + friesOnTrayPosition);
         }
 
         if (currentTray.hasDrink)
         {
-            CriarVisualDoIngrediente("Drink", 0, drinkOnTrayPosition);
+            CriarVisualDoIngrediente("Drink", 0, trayItemsOffset + drinkOnTrayPosition);
         }
     }
 
