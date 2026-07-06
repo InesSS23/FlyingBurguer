@@ -9,8 +9,12 @@ public class PlayerHand : MonoBehaviour
     [Header("hamburger na mao")]
     [SerializeField] private List<string> currentBurger = new List<string>();
 
+    [Header("tabuleiro na mao")]
+    [SerializeField] private MealTray currentTray = new MealTray();
+
     [Header("visual na mao")]
     [SerializeField] private Transform handVisualPoint;
+    [SerializeField] private GameObject trayVisualPrefab;
     [SerializeField] private GameObject breadVisualPrefab;
     [SerializeField] private GameObject cookedMeatVisualPrefab;
     [SerializeField] private GameObject cheeseVisualPrefab;
@@ -22,6 +26,12 @@ public class PlayerHand : MonoBehaviour
     [SerializeField] private GameObject cookedFriesVisualPrefab;
     [SerializeField] private GameObject emptyCupVisualPrefab;
     [SerializeField] private GameObject drinkVisualPrefab;
+
+    [Header("posicoes no tabuleiro")]
+    [SerializeField] private Vector3 burgerOnTrayPosition = new Vector3(0f, 0.08f, 0f);
+    [SerializeField] private Vector3 friesOnTrayPosition = new Vector3(-0.35f, 0.08f, 0f);
+    [SerializeField] private Vector3 drinkOnTrayPosition = new Vector3(0.35f, 0.08f, 0f);
+    [SerializeField] private Vector3 trayVisualRotation = new Vector3(-90f, 0f, 0f);
 
     [Header("altura base das camadas")]
     [SerializeField] private float layerHeight = 0.14f;
@@ -35,10 +45,17 @@ public class PlayerHand : MonoBehaviour
     [SerializeField] private float pepperExtraY = 0.04f;
     [SerializeField] private float frozenFriesExtraY = 0f;
     [SerializeField] private float cookedFriesExtraY = 0f;
-    [SerializeField] private float emptyCupExtraY = 0f;
-    [SerializeField] private float drinkExtraY = 0f;
+    [SerializeField] private float emptyCupExtraY = -0.7f;
+    [SerializeField] private float drinkExtraY = -0.7f;
+    [SerializeField] private float trayFriesExtraY = 0f;
+    [SerializeField] private float trayDrinkExtraY = 0f;
 
     private List<GameObject> spawnedVisuals = new List<GameObject>();
+
+    private void Awake()
+    {
+        GarantirTabuleiro();
+    }
 
     public bool HasItem()
     {
@@ -50,9 +67,16 @@ public class PlayerHand : MonoBehaviour
         return currentBurger.Count > 0;
     }
 
+    public bool HasTray()
+    {
+        GarantirTabuleiro();
+
+        return currentTray != null && !currentTray.IsEmpty();
+    }
+
     public bool IsEmpty()
     {
-        return !HasItem() && !HasBurger();
+        return !HasItem() && !HasBurger() && !HasTray();
     }
 
     public string GetCurrentItem()
@@ -63,6 +87,13 @@ public class PlayerHand : MonoBehaviour
     public List<string> GetBurgerCopy()
     {
         return new List<string>(currentBurger);
+    }
+
+    public MealTray GetTrayCopy()
+    {
+        GarantirTabuleiro();
+
+        return currentTray.Copy();
     }
 
     public bool TrySetItem(string itemName)
@@ -101,6 +132,27 @@ public class PlayerHand : MonoBehaviour
         return true;
     }
 
+    public bool TrySetTray(MealTray tray)
+    {
+        if (!IsEmpty())
+        {
+            Debug.Log("ja tenho algo na mao");
+            return false;
+        }
+
+        if (tray == null || tray.IsEmpty())
+        {
+            Debug.Log("esse tabuleiro esta vazio");
+            return false;
+        }
+
+        currentTray = tray.Copy();
+        Debug.Log("peguei no tabuleiro");
+
+        AtualizarVisualDaMao();
+        return true;
+    }
+
     public void ClearHand()
     {
         if (HasItem())
@@ -113,14 +165,24 @@ public class PlayerHand : MonoBehaviour
             Debug.Log("larguei/usei o hamburger");
         }
 
+        if (HasTray())
+        {
+            Debug.Log("larguei/usei o tabuleiro");
+        }
+
         currentItem = "";
         currentBurger.Clear();
+
+        GarantirTabuleiro();
+        currentTray.Clear();
 
         LimparVisualDaMao();
     }
 
     private void AtualizarVisualDaMao()
     {
+        GarantirTabuleiro();
+
         LimparVisualDaMao();
 
         if (handVisualPoint == null)
@@ -131,18 +193,49 @@ public class PlayerHand : MonoBehaviour
 
         if (HasItem())
         {
-            CriarVisual(currentItem, 0);
+            CriarVisual(currentItem, 0, Vector3.zero);
         }
         else if (HasBurger())
         {
             for (int i = 0; i < currentBurger.Count; i++)
             {
-                CriarVisual(currentBurger[i], i);
+                CriarVisual(currentBurger[i], i, Vector3.zero);
             }
+        }
+        else if (HasTray())
+        {
+            CriarVisualDoTabuleiro();
         }
     }
 
-    private void CriarVisual(string item, int index)
+    private void CriarVisualDoTabuleiro()
+    {
+        GarantirTabuleiro();
+
+        if (trayVisualPrefab != null)
+        {
+            CriarVisualDireto(trayVisualPrefab, Vector3.zero, Quaternion.Euler(trayVisualRotation));
+        }
+
+        for (int i = 0; i < currentTray.burger.Count; i++)
+        {
+            CriarVisual(currentTray.burger[i], i, burgerOnTrayPosition);
+        }
+
+        if (currentTray.hasFries)
+        {
+            Vector3 position = friesOnTrayPosition + new Vector3(0f, trayFriesExtraY, 0f);
+            CriarVisualDireto(BuscarPrefab("CookedFries"), position);
+        }
+
+        if (currentTray.hasDrink)
+        {
+            Vector3 position = drinkOnTrayPosition + new Vector3(0f, trayDrinkExtraY, 0f);
+            CriarVisualDireto(BuscarPrefab("Drink"), position);
+        }
+    }
+
+    private void CriarVisual(string item, int index, Vector3 basePosition)
     {
         GameObject prefab = BuscarPrefab(item);
 
@@ -152,12 +245,26 @@ public class PlayerHand : MonoBehaviour
             return;
         }
 
+        float finalY = index * layerHeight + BuscarExtraY(item);
+        Vector3 finalPosition = basePosition + new Vector3(0f, finalY, 0f);
+
+        CriarVisualDireto(prefab, finalPosition);
+    }
+
+    private void CriarVisualDireto(GameObject prefab, Vector3 localPosition)
+    {
+        CriarVisualDireto(prefab, localPosition, Quaternion.identity);
+    }
+
+    private void CriarVisualDireto(GameObject prefab, Vector3 localPosition, Quaternion localRotation)
+    {
+        if (prefab == null)
+            return;
+
         GameObject visual = Instantiate(prefab, handVisualPoint);
 
-        float finalY = index * layerHeight + BuscarExtraY(item);
-
-        visual.transform.localPosition = new Vector3(0f, finalY, 0f);
-        visual.transform.localRotation = Quaternion.identity;
+        visual.transform.localPosition = localPosition;
+        visual.transform.localRotation = localRotation;
 
         spawnedVisuals.Add(visual);
     }
@@ -233,6 +340,15 @@ public class PlayerHand : MonoBehaviour
             return drinkVisualPrefab;
 
         return null;
+    }
+
+    private void GarantirTabuleiro()
+    {
+        if (currentTray == null)
+            currentTray = new MealTray();
+
+        if (currentTray.burger == null)
+            currentTray.burger = new List<string>();
     }
 
     private void LimparVisualDaMao()

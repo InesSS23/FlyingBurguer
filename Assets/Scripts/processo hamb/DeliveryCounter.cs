@@ -34,14 +34,41 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
             return;
         }
 
-        if (!playerHand.HasBurger())
+        if (playerHand.HasTray())
         {
-            Debug.Log("n tens hamburger para entregar");
+            EntregarTabuleiro(playerHand);
             return;
         }
 
-        List<string> burger = playerHand.GetBurgerCopy();
+        if (playerHand.HasBurger())
+        {
+            EntregarHamburgerAntigo(playerHand);
+            return;
+        }
 
+        Debug.Log("n tens tabuleiro para entregar");
+    }
+
+    private void EntregarTabuleiro(PlayerHand playerHand)
+    {
+        MealTray tray = playerHand.GetTrayCopy();
+
+        if (tray == null || !tray.HasBurger())
+        {
+            Debug.Log("o tabuleiro n tem hamburger para entregar");
+            return;
+        }
+
+        EntregarBurger(playerHand, tray.GetBurgerCopy(), "tabuleiro entregue ao cliente certo");
+    }
+
+    private void EntregarHamburgerAntigo(PlayerHand playerHand)
+    {
+        EntregarBurger(playerHand, playerHand.GetBurgerCopy(), "hamburger entregue ao cliente certo");
+    }
+
+    private void EntregarBurger(PlayerHand playerHand, List<string> burger, string successMessage)
+    {
         bool delivered = customerManager.TryServeBurgerToCustomer(burger);
 
         if (!delivered)
@@ -61,6 +88,6 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
             Debug.Log("n tenho DayManager ligado no DeliveryCounter");
         }
 
-        Debug.Log("hamburger entregue ao cliente certo");
+        Debug.Log(successMessage);
     }
 }

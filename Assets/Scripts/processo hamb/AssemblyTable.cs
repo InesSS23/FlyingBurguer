@@ -3,17 +3,26 @@ using UnityEngine;
 
 public class AssemblyTable : MonoBehaviour, IInteractable
 {
-    [Header("hamburger atual")]
-    [SerializeField] private List<string> currentBurger = new List<string>();
+    [Header("pedido atual")]
+    [SerializeField] private MealTray currentTray = new MealTray();
 
-    [Header("visual do hamburger")]
+    [Header("visual do pedido")]
     [SerializeField] private Transform burgerVisualPoint;
+    [SerializeField] private GameObject trayVisualPrefab;
     [SerializeField] private GameObject breadVisualPrefab;
     [SerializeField] private GameObject cookedMeatVisualPrefab;
     [SerializeField] private GameObject cheeseVisualPrefab;
     [SerializeField] private GameObject lettuceVisualPrefab;
     [SerializeField] private GameObject tomatoVisualPrefab;
     [SerializeField] private GameObject pepperVisualPrefab;
+    [SerializeField] private GameObject cookedFriesVisualPrefab;
+    [SerializeField] private GameObject drinkVisualPrefab;
+
+    [Header("posicoes no tabuleiro")]
+    [SerializeField] private Vector3 burgerOnTrayPosition = new Vector3(0f, 0.08f, 0f);
+    [SerializeField] private Vector3 friesOnTrayPosition = new Vector3(-0.35f, 0.08f, 0f);
+    [SerializeField] private Vector3 drinkOnTrayPosition = new Vector3(0.35f, 0.08f, 0f);
+    [SerializeField] private Vector3 trayVisualRotation = new Vector3(-90f, 0f, 0f);
 
     [Header("altura base das camadas")]
     [SerializeField] private float layerHeight = 0.14f;
@@ -25,11 +34,20 @@ public class AssemblyTable : MonoBehaviour, IInteractable
     [SerializeField] private float lettuceExtraY = 0.05f;
     [SerializeField] private float tomatoExtraY = 0.03f;
     [SerializeField] private float pepperExtraY = 0.04f;
+    [SerializeField] private float friesExtraY = 0f;
+    [SerializeField] private float drinkExtraY = 0f;
 
     private List<GameObject> spawnedVisuals = new List<GameObject>();
 
+    private void Awake()
+    {
+        GarantirTabuleiro();
+    }
+
     public void Interact()
     {
+        GarantirTabuleiro();
+
         PlayerHand playerHand = FindFirstObjectByType<PlayerHand>();
 
         if (playerHand == null)
@@ -38,48 +56,110 @@ public class AssemblyTable : MonoBehaviour, IInteractable
             return;
         }
 
+        if (playerHand.HasTray())
+        {
+            ColocarTabuleiroNaMesa(playerHand);
+            return;
+        }
+
         if (playerHand.HasBurger())
         {
-            ColocarHamburgerNaMesa(playerHand);
+            ColocarHamburgerAntigoNaMesa(playerHand);
             return;
         }
 
         if (playerHand.HasItem())
         {
-            AdicionarIngrediente(playerHand);
+            AdicionarItemAoPedido(playerHand);
             return;
         }
 
-        if (currentBurger.Count > 0)
+        if (!currentTray.IsEmpty())
         {
-            PegarHamburger(playerHand);
+            PegarTabuleiro(playerHand);
             return;
         }
 
         Debug.Log("n tens nada na mao e a mesa esta vazia");
     }
 
-    private void AdicionarIngrediente(PlayerHand playerHand)
+    private void AdicionarItemAoPedido(PlayerHand playerHand)
     {
         string item = playerHand.GetCurrentItem();
 
         if (item == "RawMeat")
         {
-            Debug.Log("n podes meter carne crua no hamburger");
+            Debug.Log("n podes meter carne crua no pedido");
             return;
         }
 
-        currentBurger.Add(item);
-        RecriarVisualDoBurger();
+        if (item == "FrozenFries")
+        {
+            Debug.Log("as batatas ainda estao congeladas");
+            return;
+        }
+
+        if (item == "EmptyCup")
+        {
+            Debug.Log("tens de encher o copo antes de o meter no tabuleiro");
+            return;
+        }
+
+        if (item == "CookedFries")
+        {
+            AdicionarBatatas(playerHand);
+            return;
+        }
+
+        if (item == "Drink")
+        {
+            AdicionarBebida(playerHand);
+            return;
+        }
+
+        currentTray.burger.Add(item);
+        RecriarVisualDoPedido();
 
         Debug.Log("adicionei ao hamburger: " + item);
 
         playerHand.ClearHand();
 
-        MostrarBurgerAtual();
+        MostrarPedidoAtual();
     }
 
-    private void PegarHamburger(PlayerHand playerHand)
+    private void AdicionarBatatas(PlayerHand playerHand)
+    {
+        if (currentTray.hasFries)
+        {
+            Debug.Log("o tabuleiro ja tem batatas");
+            return;
+        }
+
+        currentTray.hasFries = true;
+        RecriarVisualDoPedido();
+
+        playerHand.ClearHand();
+
+        Debug.Log("adicionei batatas ao tabuleiro");
+    }
+
+    private void AdicionarBebida(PlayerHand playerHand)
+    {
+        if (currentTray.hasDrink)
+        {
+            Debug.Log("o tabuleiro ja tem bebida");
+            return;
+        }
+
+        currentTray.hasDrink = true;
+        RecriarVisualDoPedido();
+
+        playerHand.ClearHand();
+
+        Debug.Log("adicionei bebida ao tabuleiro");
+    }
+
+    private void PegarTabuleiro(PlayerHand playerHand)
     {
         if (!playerHand.IsEmpty())
         {
@@ -87,32 +167,52 @@ public class AssemblyTable : MonoBehaviour, IInteractable
             return;
         }
 
-        playerHand.TrySetBurger(currentBurger);
+        if (!playerHand.TrySetTray(currentTray))
+            return;
 
-        ClearBurger();
+        ClearTray();
 
-        Debug.Log("peguei no hamburger da mesa");
+        Debug.Log("peguei no tabuleiro da mesa");
     }
 
-    private void ColocarHamburgerNaMesa(PlayerHand playerHand)
+    private void ColocarTabuleiroNaMesa(PlayerHand playerHand)
     {
-        if (currentBurger.Count > 0)
+        if (!currentTray.IsEmpty())
         {
-            Debug.Log("a mesa ja tem um hamburger");
+            Debug.Log("a mesa ja tem um pedido");
             return;
         }
 
-        currentBurger = playerHand.GetBurgerCopy();
+        currentTray = playerHand.GetTrayCopy();
 
         playerHand.ClearHand();
 
-        RecriarVisualDoBurger();
+        RecriarVisualDoPedido();
+
+        Debug.Log("voltei a meter o tabuleiro na mesa");
+    }
+
+    private void ColocarHamburgerAntigoNaMesa(PlayerHand playerHand)
+    {
+        if (!currentTray.IsEmpty())
+        {
+            Debug.Log("a mesa ja tem um pedido");
+            return;
+        }
+
+        currentTray.burger = playerHand.GetBurgerCopy();
+
+        playerHand.ClearHand();
+
+        RecriarVisualDoPedido();
 
         Debug.Log("voltei a meter o hamburger na mesa");
     }
 
-    private void RecriarVisualDoBurger()
+    private void RecriarVisualDoPedido()
     {
+        GarantirTabuleiro();
+
         LimparVisuais();
 
         if (burgerVisualPoint == null)
@@ -121,13 +221,28 @@ public class AssemblyTable : MonoBehaviour, IInteractable
             return;
         }
 
-        for (int i = 0; i < currentBurger.Count; i++)
+        if (trayVisualPrefab != null && !currentTray.IsEmpty())
         {
-            CriarVisualDoIngrediente(currentBurger[i], i);
+            CriarVisual(trayVisualPrefab, Vector3.zero, Quaternion.Euler(trayVisualRotation));
+        }
+
+        for (int i = 0; i < currentTray.burger.Count; i++)
+        {
+            CriarVisualDoIngrediente(currentTray.burger[i], i, burgerOnTrayPosition);
+        }
+
+        if (currentTray.hasFries)
+        {
+            CriarVisualDoIngrediente("CookedFries", 0, friesOnTrayPosition);
+        }
+
+        if (currentTray.hasDrink)
+        {
+            CriarVisualDoIngrediente("Drink", 0, drinkOnTrayPosition);
         }
     }
 
-    private void CriarVisualDoIngrediente(string item, int index)
+    private void CriarVisualDoIngrediente(string item, int index, Vector3 basePosition)
     {
         GameObject prefab = BuscarPrefab(item);
 
@@ -137,12 +252,22 @@ public class AssemblyTable : MonoBehaviour, IInteractable
             return;
         }
 
-        GameObject visual = Instantiate(prefab, burgerVisualPoint);
-
         float finalY = index * layerHeight + BuscarExtraY(item);
+        Vector3 finalPosition = basePosition + new Vector3(0f, finalY, 0f);
 
-        visual.transform.localPosition = new Vector3(0f, finalY, 0f);
-        visual.transform.localRotation = Quaternion.identity;
+        CriarVisual(prefab, finalPosition);
+    }
+
+    private void CriarVisual(GameObject prefab, Vector3 localPosition)
+    {
+        CriarVisual(prefab, localPosition, Quaternion.identity);
+    }
+
+    private void CriarVisual(GameObject prefab, Vector3 localPosition, Quaternion localRotation)
+    {
+        GameObject visual = Instantiate(prefab, burgerVisualPoint);
+        visual.transform.localPosition = localPosition;
+        visual.transform.localRotation = localRotation;
 
         spawnedVisuals.Add(visual);
     }
@@ -167,6 +292,12 @@ public class AssemblyTable : MonoBehaviour, IInteractable
         if (item == "Pepper")
             return pepperExtraY;
 
+        if (item == "CookedFries")
+            return friesExtraY;
+
+        if (item == "Drink")
+            return drinkExtraY;
+
         return 0f;
     }
 
@@ -190,36 +321,69 @@ public class AssemblyTable : MonoBehaviour, IInteractable
         if (item == "Pepper")
             return pepperVisualPrefab;
 
+        if (item == "CookedFries")
+            return cookedFriesVisualPrefab;
+
+        if (item == "Drink")
+            return drinkVisualPrefab;
+
         return null;
     }
 
-    private void MostrarBurgerAtual()
+    private void MostrarPedidoAtual()
     {
-        string burgerText = "hamburger atual: ";
+        string pedidoText = "pedido atual: ";
 
-        for (int i = 0; i < currentBurger.Count; i++)
+        for (int i = 0; i < currentTray.burger.Count; i++)
         {
-            burgerText += currentBurger[i];
+            pedidoText += currentTray.burger[i];
 
-            if (i < currentBurger.Count - 1)
+            if (i < currentTray.burger.Count - 1)
             {
-                burgerText += " + ";
+                pedidoText += " + ";
             }
         }
 
-        Debug.Log(burgerText);
+        if (currentTray.hasFries)
+            pedidoText += " + Batatas";
+
+        if (currentTray.hasDrink)
+            pedidoText += " + Bebida";
+
+        Debug.Log(pedidoText);
     }
 
     public List<string> GetBurger()
     {
-        return currentBurger;
+        return currentTray.GetBurgerCopy();
+    }
+
+    public MealTray GetTray()
+    {
+        return currentTray.Copy();
     }
 
     public void ClearBurger()
     {
-        currentBurger.Clear();
+        ClearTray();
+    }
+
+    public void ClearTray()
+    {
+        GarantirTabuleiro();
+
+        currentTray.Clear();
         LimparVisuais();
-        Debug.Log("hamburger limpo da mesa");
+        Debug.Log("pedido limpo da mesa");
+    }
+
+    private void GarantirTabuleiro()
+    {
+        if (currentTray == null)
+            currentTray = new MealTray();
+
+        if (currentTray.burger == null)
+            currentTray.burger = new List<string>();
     }
 
     private void LimparVisuais()
