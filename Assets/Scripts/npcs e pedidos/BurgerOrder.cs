@@ -5,11 +5,21 @@ public class BurgerOrder
 {
     public string orderName;
     public List<string> ingredients = new List<string>();
+    public bool wantsFries = false;
+    public bool wantsDrink = false;
 
     public BurgerOrder(string name, List<string> orderIngredients)
     {
         orderName = name;
         ingredients = orderIngredients;
+    }
+
+    public BurgerOrder(string name, List<string> orderIngredients, bool includeFries, bool includeDrink)
+    {
+        orderName = name;
+        ingredients = orderIngredients;
+        wantsFries = includeFries;
+        wantsDrink = includeDrink;
     }
 
     public bool MatchesBurger(List<string> burger)
@@ -31,6 +41,26 @@ public class BurgerOrder
         return true;
     }
 
+    public bool MatchesTray(MealTray tray)
+    {
+        if (tray == null)
+            return false;
+
+        if (!tray.HasBurger())
+            return false;
+
+        if (!MatchesBurger(tray.GetBurgerCopy()))
+            return false;
+
+        if (tray.hasFries != wantsFries)
+            return false;
+
+        if (tray.hasDrink != wantsDrink)
+            return false;
+
+        return true;
+    }
+
     public string GetOrderText()
     {
         string text = orderName + ": ";
@@ -44,6 +74,12 @@ public class BurgerOrder
                 text += " + ";
             }
         }
+
+        if (wantsFries)
+            text += " + Batatas";
+
+        if (wantsDrink)
+            text += " + Bebida";
 
         return text;
     }

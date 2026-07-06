@@ -243,14 +243,25 @@ public class CustomerNPC : MonoBehaviour
         if (currentOrder == null)
             return false;
 
-        return currentOrder.MatchesBurger(burger);
+        return !currentOrder.wantsFries && !currentOrder.wantsDrink && currentOrder.MatchesBurger(burger);
+    }
+
+    public bool CanReceiveTray(MealTray tray)
+    {
+        if (!isWaiting)
+            return false;
+
+        if (currentOrder == null)
+            return false;
+
+        return currentOrder.MatchesTray(tray);
     }
 
     public void ReceiveCorrectBurger(List<string> burger)
     {
         if (!CanReceiveBurger(burger))
         {
-            Debug.Log("este hamburger n é para este cliente");
+            Debug.Log("este hamburger n e para este cliente");
             return;
         }
 
@@ -259,7 +270,28 @@ public class CustomerNPC : MonoBehaviour
         StartCoroutine(EatAndLeave(burger));
     }
 
+    public void ReceiveCorrectTray(MealTray tray)
+    {
+        if (!CanReceiveTray(tray))
+        {
+            Debug.Log("este tabuleiro n e para este cliente");
+            return;
+        }
+
+        StopPatienceTimer();
+
+        StartCoroutine(EatAndLeave(tray));
+    }
+
     private IEnumerator EatAndLeave(List<string> burger)
+    {
+        MealTray tray = new MealTray();
+        tray.burger = new List<string>(burger);
+
+        yield return EatAndLeave(tray);
+    }
+
+    private IEnumerator EatAndLeave(MealTray tray)
     {
         isWaiting = false;
         isEating = true;
@@ -267,10 +299,10 @@ public class CustomerNPC : MonoBehaviour
         if (servicePoint != null)
         {
             servicePoint.ClearOrderHUD();
-            servicePoint.ShowFoodVisual(burger);
+            servicePoint.ShowFoodVisual(tray.GetBurgerCopy());
         }
 
-        Debug.Log("pedido certo, cliente recebeu o hamburger");
+        Debug.Log("pedido certo, cliente recebeu o tabuleiro");
 
         string comment = GetRandomHappyComment();
 

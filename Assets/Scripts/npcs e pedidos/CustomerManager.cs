@@ -72,64 +72,90 @@ public class CustomerManager : MonoBehaviour
     {
         possibleOrders.Clear();
 
-        possibleOrders.Add(new BurgerOrder(
+        AdicionarPedidoComVariacoes(new BurgerOrder(
             "Burger simples",
             new List<string> { "Bread", "CookedMeat", "Bread" }
         ));
 
-        possibleOrders.Add(new BurgerOrder(
+        AdicionarPedidoComVariacoes(new BurgerOrder(
             "Cheeseburger",
             new List<string> { "Bread", "CookedMeat", "Cheese", "Bread" }
         ));
 
-        possibleOrders.Add(new BurgerOrder(
+        AdicionarPedidoComVariacoes(new BurgerOrder(
             "Burger alface",
             new List<string> { "Bread", "CookedMeat", "Lettuce", "Bread" }
         ));
 
-        possibleOrders.Add(new BurgerOrder(
+        AdicionarPedidoComVariacoes(new BurgerOrder(
             "Burger tomate",
             new List<string> { "Bread", "CookedMeat", "Tomato", "Bread" }
         ));
 
-        possibleOrders.Add(new BurgerOrder(
+        AdicionarPedidoComVariacoes(new BurgerOrder(
             "Burger pimento",
             new List<string> { "Bread", "CookedMeat", "Pepper", "Bread" }
         ));
 
-        possibleOrders.Add(new BurgerOrder(
+        AdicionarPedidoComVariacoes(new BurgerOrder(
             "Burger queijo e tomate",
             new List<string> { "Bread", "CookedMeat", "Cheese", "Tomato", "Bread" }
         ));
 
-        possibleOrders.Add(new BurgerOrder(
+        AdicionarPedidoComVariacoes(new BurgerOrder(
             "Burger queijo e alface",
             new List<string> { "Bread", "CookedMeat", "Cheese", "Lettuce", "Bread" }
         ));
 
-        possibleOrders.Add(new BurgerOrder(
+        AdicionarPedidoComVariacoes(new BurgerOrder(
             "Burger fresco",
             new List<string> { "Bread", "CookedMeat", "Lettuce", "Tomato", "Bread" }
         ));
 
-        possibleOrders.Add(new BurgerOrder(
+        AdicionarPedidoComVariacoes(new BurgerOrder(
             "Burger picante",
             new List<string> { "Bread", "CookedMeat", "Cheese", "Pepper", "Bread" }
         ));
 
-        possibleOrders.Add(new BurgerOrder(
+        AdicionarPedidoComVariacoes(new BurgerOrder(
             "Burger vegetariano falso",
             new List<string> { "Bread", "CookedMeat", "Lettuce", "Pepper", "Bread" }
         ));
 
-        possibleOrders.Add(new BurgerOrder(
+        AdicionarPedidoComVariacoes(new BurgerOrder(
             "Burger completo",
             new List<string> { "Bread", "CookedMeat", "Cheese", "Lettuce", "Bread" }
         ));
 
-        possibleOrders.Add(new BurgerOrder(
+        AdicionarPedidoComVariacoes(new BurgerOrder(
             "Burger especial voador",
             new List<string> { "Bread", "CookedMeat", "Cheese", "Pepper", "Bread" }
+        ));
+    }
+
+    private void AdicionarPedidoComVariacoes(BurgerOrder baseOrder)
+    {
+        possibleOrders.Add(baseOrder);
+
+        possibleOrders.Add(new BurgerOrder(
+            baseOrder.orderName + " com batatas",
+            baseOrder.ingredients,
+            true,
+            false
+        ));
+
+        possibleOrders.Add(new BurgerOrder(
+            baseOrder.orderName + " com bebida",
+            baseOrder.ingredients,
+            false,
+            true
+        ));
+
+        possibleOrders.Add(new BurgerOrder(
+            "Menu " + baseOrder.orderName,
+            baseOrder.ingredients,
+            true,
+            true
         ));
     }
 
@@ -370,6 +396,45 @@ public class CustomerManager : MonoBehaviour
         return false;
     }
 
+    public bool TryServeTrayToCustomer(MealTray tray)
+    {
+        if (tray == null || !tray.HasBurger())
+        {
+            Debug.Log("tabuleiro vazio ou sem hamburger");
+            return false;
+        }
+
+        Debug.Log("tentando entregar tabuleiro: " + TrayToText(tray));
+
+        for (int i = 0; i < servicePoints.Length; i++)
+        {
+            if (servicePoints[i] == null)
+                continue;
+
+            CustomerNPC customer = servicePoints[i].GetCurrentCustomer();
+
+            if (customer == null)
+            {
+                Debug.Log("service point " + i + " sem cliente");
+                continue;
+            }
+
+            BurgerOrder order = customer.GetCurrentOrder();
+            string orderText = order != null ? order.GetOrderText() : "sem pedido";
+
+            Debug.Log("service point " + i + " tem cliente com pedido: " + orderText);
+
+            if (customer.CanReceiveTray(tray))
+            {
+                customer.ReceiveCorrectTray(tray);
+                return true;
+            }
+        }
+
+        Debug.Log("nenhum cliente quer este tabuleiro");
+        return false;
+    }
+
     private string BurgerToText(List<string> burger)
     {
         string text = "";
@@ -383,6 +448,19 @@ public class CustomerManager : MonoBehaviour
                 text += " + ";
             }
         }
+
+        return text;
+    }
+
+    private string TrayToText(MealTray tray)
+    {
+        string text = BurgerToText(tray.GetBurgerCopy());
+
+        if (tray.hasFries)
+            text += " + Batatas";
+
+        if (tray.hasDrink)
+            text += " + Bebida";
 
         return text;
     }
