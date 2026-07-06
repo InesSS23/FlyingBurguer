@@ -47,11 +47,26 @@ public class CustomerServicePoint : MonoBehaviour
 
     public void ShowOrderHUD(BurgerOrder order)
     {
+        ShowOrderHUD(order, 0f);
+    }
+
+    public void ShowOrderHUD(BurgerOrder order, float patienceTime)
+    {
         OrderHUDManager hud = FindFirstObjectByType<OrderHUDManager>();
 
         if (hud != null)
         {
-            hud.SetOrder(orderSlotIndex, order);
+            hud.SetOrder(orderSlotIndex, order, patienceTime);
+        }
+    }
+
+    public void UpdateOrderHUDTimer(float remainingTime, float maxTime)
+    {
+        OrderHUDManager hud = FindFirstObjectByType<OrderHUDManager>();
+
+        if (hud != null)
+        {
+            hud.SetOrderTimer(orderSlotIndex, remainingTime, maxTime);
         }
     }
 

@@ -17,11 +17,6 @@ public class BurgerVisualSpawner : MonoBehaviour
     [SerializeField] private GameObject cookedFriesVisualPrefab;
     [SerializeField] private GameObject drinkVisualPrefab;
 
-    [Header("tabuleiro simples visivel")]
-    [SerializeField] private bool useSimpleTrayBase = false;
-    [SerializeField] private Vector3 simpleTrayScale = new Vector3(1.8f, 0.08f, 1.1f);
-    [SerializeField] private Color simpleTrayColor = new Color(0.45f, 0.05f, 0.08f, 1f);
-
     [Header("posicoes no tabuleiro")]
     [SerializeField] private Vector3 trayVisualPosition = new Vector3(0.15f, -0.1f, 0.5f);
     [SerializeField] private Vector3 trayItemsOffset = new Vector3(0.15f, -0.1f, 0.5f);
@@ -85,11 +80,7 @@ public class BurgerVisualSpawner : MonoBehaviour
 
         Debug.Log("visual do tabuleiro recebido - burger: " + burgerText(tray.GetBurgerCopy()) + " | batatas: " + tray.hasFries + " | bebida: " + tray.hasDrink);
 
-        if (useSimpleTrayBase)
-        {
-            CriarTabuleiroSimples();
-        }
-        else if (trayVisualPrefab != null)
+        if (trayVisualPrefab != null)
         {
             CriarVisualDireto(trayVisualPrefab, trayVisualPosition, Quaternion.Euler(trayVisualRotation));
         }
@@ -110,29 +101,6 @@ public class BurgerVisualSpawner : MonoBehaviour
         {
             CriarVisual("Drink", 0, trayItemsOffset + drinkOnTrayPosition);
         }
-    }
-
-    private void CriarTabuleiroSimples()
-    {
-        GameObject tray = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        tray.transform.SetParent(visualPoint, false);
-        tray.transform.localPosition = trayVisualPosition;
-        tray.transform.localRotation = Quaternion.identity;
-        tray.transform.localScale = simpleTrayScale;
-
-        Collider trayCollider = tray.GetComponent<Collider>();
-        if (trayCollider != null)
-        {
-            Destroy(trayCollider);
-        }
-
-        Renderer renderer = tray.GetComponent<Renderer>();
-        if (renderer != null)
-        {
-            renderer.material.color = simpleTrayColor;
-        }
-
-        spawnedVisuals.Add(tray);
     }
 
     private void CriarVisual(string item, int index, Vector3 basePosition)

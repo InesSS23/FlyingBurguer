@@ -22,6 +22,11 @@ public class OrderHUDManager : MonoBehaviour
 
     public void SetOrder(int slotIndex, BurgerOrder order)
     {
+        SetOrder(slotIndex, order, 0f);
+    }
+
+    public void SetOrder(int slotIndex, BurgerOrder order, float patienceTime)
+    {
         if (slotIndex < 0 || slotIndex >= orderSlots.Length)
         {
             Debug.Log("slot de pedido invalido: " + slotIndex);
@@ -30,7 +35,18 @@ public class OrderHUDManager : MonoBehaviour
 
         if (orderSlots[slotIndex] != null)
         {
-            orderSlots[slotIndex].SetOrder(order, this);
+            orderSlots[slotIndex].SetOrder(order, this, patienceTime);
+        }
+    }
+
+    public void SetOrderTimer(int slotIndex, float remainingTime, float maxTime)
+    {
+        if (slotIndex < 0 || slotIndex >= orderSlots.Length)
+            return;
+
+        if (orderSlots[slotIndex] != null)
+        {
+            orderSlots[slotIndex].UpdateTimer(remainingTime, maxTime);
         }
     }
 

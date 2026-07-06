@@ -176,7 +176,7 @@ public class CustomerNPC : MonoBehaviour
 
             if (servicePoint != null)
             {
-                servicePoint.ShowOrderHUD(currentOrder);
+                servicePoint.ShowOrderHUD(currentOrder, patienceTime);
             }
 
             StartPatienceTimer();
@@ -381,11 +381,28 @@ public class CustomerNPC : MonoBehaviour
 
     private IEnumerator PatienceRoutine()
     {
-        yield return new WaitForSeconds(patienceTime);
+        float remainingTime = patienceTime;
 
-        if (!isWaiting || isEating)
-            yield break;
+        while (remainingTime > 0f)
+        {
+            if (!isWaiting || isEating)
+                yield break;
 
+            if (servicePoint != null)
+            {
+                servicePoint.UpdateOrderHUDTimer(remainingTime, patienceTime);
+            }
+
+            remainingTime -= Time.deltaTime;
+            yield return null;
+        }
+
+        if (servicePoint != null)
+        {
+            servicePoint.UpdateOrderHUDTimer(0f, patienceTime);
+        }
+
+        patienceCoroutine = null;
         StartCoroutine(LeaveBecauseImpatientRoutine());
     }
 
