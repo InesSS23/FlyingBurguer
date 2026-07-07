@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,39 +8,49 @@ public class OrderSlotUI : MonoBehaviour
     [SerializeField] private GameObject slotRoot;
     [SerializeField] private Transform iconsParent;
 
-    private List<GameObject> spawnedIcons = new List<GameObject>();
-    private TMP_Text timerText;
+    [Header("tamanhos")]
+    [SerializeField] private Vector2 ingredientIconSize = new Vector2(70f, 70f);
+    [SerializeField] private Vector2 extraIconSize = new Vector2(52f, 52f);
 
-    private static readonly Vector2 IconSize = new Vector2(70f, 70f);
-    private static readonly Vector2 TimerSize = new Vector2(68f, 32f);
+    [Header("barra de tempo")]
+    [SerializeField] private Vector2 horizontalTimeBarSize = new Vector2(220f, 8f);
+    [SerializeField] private float timeBarGapBelowOrder = 4f;
+    [SerializeField] private float timeAlertSeconds = 15f;
+    [SerializeField] private Color timeBarNormalColor = new Color(0.1f, 0.75f, 0.2f, 1f);
+    [SerializeField] private Color timeBarAlertColor = new Color(0.9f, 0.05f, 0.05f, 1f);
+    [SerializeField] private Color timeBarBackgroundColor = new Color(0f, 0f, 0f, 0.25f);
+
     private const float ExtraIconSpacing = 5f;
     private const float ExtraIconGapFromBurgerBox = 8f;
-    private const float TimerGapFromExtras = 8f;
-    private const float TimerAlertSeconds = 10f;
-    private const float TimerFontSize = 24f;
-    private static readonly Color TimerNormalColor = Color.black;
-    private static readonly Color TimerAlertColor = Color.red;
+
+    private readonly List<GameObject> spawnedIcons = new List<GameObject>();
+
+    private GameObject timeBarRoot;
+    private Image timeBarFill;
+    private RectTransform timeBarFillRect;
+
+    private int shownSourceIndex = -1;
 
     void Awake()
     {
-        EnsureTimerText();
+        EnsureTimeBar();
         ClearOrder();
     }
 
-    public void SetOrder(BurgerOrder order, OrderHUDManager hudManager)
+    public bool IsShowingSource(int sourceIndex)
     {
-        SetOrder(order, hudManager, 0f);
+        return shownSourceIndex == sourceIndex;
     }
 
-    public void SetOrder(BurgerOrder order, OrderHUDManager hudManager, float patienceTime)
+    public void SetOrder(int sourceIndex, BurgerOrder order, OrderHUDManager hudManager, float remainingTime, float maxTime)
     {
         ClearIcons();
-        EnsureTimerText();
+        EnsureTimeBar();
+
+        shownSourceIndex = sourceIndex;
 
         if (slotRoot != null)
-        {
             slotRoot.SetActive(true);
-        }
 
         if (order == null)
         {
@@ -52,11 +61,45 @@ public class OrderSlotUI : MonoBehaviour
         AddExtraIcons(order, hudManager);
 
         for (int i = 0; i < order.ingredients.Count; i++)
+            AddIngredientIcon(order.ingredients[i], hudManager);
+
+        UpdateTimer(remainingTime, maxTime);
+    }
+
+    public void UpdateTimer(float remainingTime, float maxTime)
+    {
+        EnsureTimeBar();
+
+        if (timeBarRoot == null || timeBarFill == null || timeBarFillRect == null)
+            return;
+
+        if (maxTime <= 0f)
         {
-            AddIcon(order.ingredients[i], hudManager);
+            timeBarRoot.SetActive(false);
+            return;
         }
 
-        UpdateTimer(patienceTime, patienceTime);
+        timeBarRoot.SetActive(true);
+
+        float remaining = Mathf.Clamp(remainingTime, 0f, maxTime);
+        float normalizedTime = remaining / maxTime;
+
+        timeBarFill.color = remaining <= timeAlertSeconds ? timeBarAlertColor : timeBarNormalColor;
+        timeBarFillRect.sizeDelta = new Vector2(horizontalTimeBarSize.x * normalizedTime, horizontalTimeBarSize.y);
+
+        PositionTimeBar();
+    }
+
+    public void ClearOrder()
+    {
+        shownSourceIndex = -1;
+        ClearIcons();
+
+        if (timeBarRoot != null)
+            timeBarRoot.SetActive(false);
+
+        if (slotRoot != null)
+            slotRoot.SetActive(false);
     }
 
     private void AddExtraIcons(BurgerOrder order, OrderHUDManager hudManager)
@@ -70,12 +113,10 @@ public class OrderSlotUI : MonoBehaviour
             extras.Add("CookedFries");
 
         for (int i = 0; i < extras.Count; i++)
-        {
             AddExtraIcon(extras[i], i, extras.Count, hudManager);
-        }
     }
 
-    private void AddIcon(string itemName, OrderHUDManager hudManager)
+    private void AddIngredientIcon(string itemName, OrderHUDManager hudManager)
     {
         Sprite sprite = hudManager.GetSpriteForIngredient(itemName);
 
@@ -86,7 +127,6 @@ public class OrderSlotUI : MonoBehaviour
         }
 
         GameObject iconObject = new GameObject("Icon_" + itemName);
-
         iconObject.transform.SetParent(iconsParent, false);
 
         Image image = iconObject.AddComponent<Image>();
@@ -94,7 +134,7 @@ public class OrderSlotUI : MonoBehaviour
         image.preserveAspect = true;
 
         RectTransform rect = iconObject.GetComponent<RectTransform>();
-        rect.sizeDelta = IconSize;
+        rect.sizeDelta = ingredientIconSize;
 
         spawnedIcons.Add(iconObject);
     }
@@ -109,13 +149,11 @@ public class OrderSlotUI : MonoBehaviour
             return;
         }
 
-        RectTransform slotRect = slotRoot != null
-            ? slotRoot.GetComponent<RectTransform>()
-            : GetComponent<RectTransform>();
+        RectTransform slotRect = GetSlotRect();
 
         if (slotRect == null)
         {
-            AddIcon(itemName, hudManager);
+            AddIngredientIcon(itemName, hudManager);
             return;
         }
 
@@ -130,85 +168,24 @@ public class OrderSlotUI : MonoBehaviour
         rect.anchorMin = new Vector2(0.5f, 0.5f);
         rect.anchorMax = new Vector2(0.5f, 0.5f);
         rect.pivot = new Vector2(0.5f, 0.5f);
-        rect.sizeDelta = IconSize;
+        rect.sizeDelta = extraIconSize;
 
-        float slotWidth = slotRect.rect.width;
-
-        if (slotWidth <= 1f && iconsParent != null)
-        {
-            RectTransform iconsRect = iconsParent.GetComponent<RectTransform>();
-
-            if (iconsRect != null)
-                slotWidth = iconsRect.rect.width;
-        }
-
-        if (slotWidth <= 1f)
-            slotWidth = 430f;
-
-        float slotHalfWidth = slotWidth * 0.5f;
+        float slotHalfWidth = GetSlotWidth(slotRect) * 0.5f;
         float rightToLeftIndex = totalExtras - 1 - index;
-        float x = -slotHalfWidth - ExtraIconGapFromBurgerBox - (IconSize.x * 0.5f) - rightToLeftIndex * (IconSize.x + ExtraIconSpacing);
+
+        float x = -slotHalfWidth
+            - ExtraIconGapFromBurgerBox
+            - (extraIconSize.x * 0.5f)
+            - rightToLeftIndex * (extraIconSize.x + ExtraIconSpacing);
 
         rect.anchoredPosition = new Vector2(x, 0f);
 
         spawnedIcons.Add(iconObject);
     }
 
-    public void UpdateTimer(float remainingTime, float maxTime)
+    private void EnsureTimeBar()
     {
-        EnsureTimerText();
-
-        if (timerText == null)
-            return;
-
-        if (maxTime <= 0f)
-        {
-            timerText.gameObject.SetActive(false);
-            return;
-        }
-
-        timerText.gameObject.SetActive(true);
-
-        float remaining = Mathf.Max(0f, remainingTime);
-        int seconds = Mathf.CeilToInt(remaining);
-        timerText.text = seconds.ToString();
-        timerText.color = remaining <= TimerAlertSeconds ? TimerAlertColor : TimerNormalColor;
-
-        PositionTimer();
-    }
-
-    public void ClearOrder()
-    {
-        ClearIcons();
-
-        if (timerText != null)
-        {
-            timerText.text = "";
-            timerText.gameObject.SetActive(false);
-        }
-
-        if (slotRoot != null)
-        {
-            slotRoot.SetActive(false);
-        }
-    }
-
-    private void ClearIcons()
-    {
-        for (int i = 0; i < spawnedIcons.Count; i++)
-        {
-            if (spawnedIcons[i] != null)
-            {
-                Destroy(spawnedIcons[i]);
-            }
-        }
-
-        spawnedIcons.Clear();
-    }
-
-    private void EnsureTimerText()
-    {
-        if (timerText != null)
+        if (timeBarRoot != null)
             return;
 
         RectTransform slotRect = GetSlotRect();
@@ -216,37 +193,64 @@ public class OrderSlotUI : MonoBehaviour
         if (slotRect == null)
             return;
 
-        GameObject timerObject = new GameObject("PedidoTimer");
-        timerObject.transform.SetParent(slotRect, false);
+        timeBarRoot = new GameObject("PedidoTimeBar");
+        timeBarRoot.transform.SetParent(slotRect, false);
 
-        timerText = timerObject.AddComponent<TextMeshProUGUI>();
-        timerText.alignment = TextAlignmentOptions.Center;
-        timerText.fontSize = TimerFontSize;
-        timerText.enableAutoSizing = false;
-        timerText.color = TimerNormalColor;
-        timerText.raycastTarget = false;
+        Image background = timeBarRoot.AddComponent<Image>();
+        background.color = timeBarBackgroundColor;
+        background.raycastTarget = false;
 
-        RectTransform timerRect = timerObject.GetComponent<RectTransform>();
-        timerRect.anchorMin = new Vector2(0.5f, 0.5f);
-        timerRect.anchorMax = new Vector2(0.5f, 0.5f);
-        timerRect.pivot = new Vector2(0.5f, 0.5f);
-        timerRect.sizeDelta = TimerSize;
+        RectTransform rootRect = timeBarRoot.GetComponent<RectTransform>();
+        rootRect.anchorMin = new Vector2(0.5f, 0.5f);
+        rootRect.anchorMax = new Vector2(0.5f, 0.5f);
+        rootRect.pivot = new Vector2(0.5f, 0.5f);
+        rootRect.sizeDelta = horizontalTimeBarSize;
 
-        PositionTimer();
-        timerObject.SetActive(false);
+        GameObject fillObject = new GameObject("Fill");
+        fillObject.transform.SetParent(timeBarRoot.transform, false);
+
+        timeBarFill = fillObject.AddComponent<Image>();
+        timeBarFill.color = timeBarNormalColor;
+        timeBarFill.raycastTarget = false;
+
+        timeBarFillRect = fillObject.GetComponent<RectTransform>();
+        timeBarFillRect.anchorMin = new Vector2(0f, 0.5f);
+        timeBarFillRect.anchorMax = new Vector2(0f, 0.5f);
+        timeBarFillRect.pivot = new Vector2(0f, 0.5f);
+        timeBarFillRect.anchoredPosition = Vector2.zero;
+        timeBarFillRect.sizeDelta = horizontalTimeBarSize;
+
+        PositionTimeBar();
+        timeBarRoot.SetActive(false);
     }
 
-    private void PositionTimer()
+    private void PositionTimeBar()
     {
-        if (timerText == null)
+        if (timeBarRoot == null)
             return;
 
         RectTransform slotRect = GetSlotRect();
-        RectTransform timerRect = timerText.GetComponent<RectTransform>();
+        RectTransform barRect = timeBarRoot.GetComponent<RectTransform>();
 
-        if (slotRect == null || timerRect == null)
+        if (slotRect == null || barRect == null)
             return;
 
+        barRect.sizeDelta = horizontalTimeBarSize;
+
+        if (timeBarFillRect != null)
+            timeBarFillRect.sizeDelta = new Vector2(timeBarFillRect.sizeDelta.x, horizontalTimeBarSize.y);
+
+        float slotHeight = slotRect.rect.height;
+
+        if (slotHeight <= 1f)
+            slotHeight = 70f;
+
+        float y = -(slotHeight * 0.5f) - timeBarGapBelowOrder - (horizontalTimeBarSize.y * 0.5f);
+        barRect.anchoredPosition = new Vector2(0f, y);
+    }
+
+    private float GetSlotWidth(RectTransform slotRect)
+    {
         float slotWidth = slotRect.rect.width;
 
         if (slotWidth <= 1f && iconsParent != null)
@@ -260,21 +264,7 @@ public class OrderSlotUI : MonoBehaviour
         if (slotWidth <= 1f)
             slotWidth = 430f;
 
-        float slotHalfWidth = slotWidth * 0.5f;
-        int extraCount = 0;
-
-        for (int i = 0; i < spawnedIcons.Count; i++)
-        {
-            if (spawnedIcons[i] != null && spawnedIcons[i].name.StartsWith("ExtraIcon_"))
-                extraCount++;
-        }
-
-        float extrasWidth = extraCount > 0
-            ? extraCount * IconSize.x + (extraCount - 1) * ExtraIconSpacing + TimerGapFromExtras
-            : 0f;
-
-        float x = -slotHalfWidth - ExtraIconGapFromBurgerBox - extrasWidth - (TimerSize.x * 0.5f);
-        timerRect.anchoredPosition = new Vector2(x, 0f);
+        return slotWidth;
     }
 
     private RectTransform GetSlotRect()
@@ -283,5 +273,16 @@ public class OrderSlotUI : MonoBehaviour
             return slotRoot.GetComponent<RectTransform>();
 
         return GetComponent<RectTransform>();
+    }
+
+    private void ClearIcons()
+    {
+        for (int i = 0; i < spawnedIcons.Count; i++)
+        {
+            if (spawnedIcons[i] != null)
+                Destroy(spawnedIcons[i]);
+        }
+
+        spawnedIcons.Clear();
     }
 }
