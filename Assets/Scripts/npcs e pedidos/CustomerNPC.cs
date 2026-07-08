@@ -15,8 +15,8 @@ public class CustomerNPC : MonoBehaviour
     private string[] happyComments =
     {
         "Muito bom!",
-        "Isto sim È serviÁo!",
-        "Adoro hamb˙rgueres voadores!"
+        "Isto sim √© servi√ßo!",
+        "Adoro hamb√∫rgueres voadores!"
     };
 
     [Header("comentarios negativos")]
@@ -25,9 +25,9 @@ public class CustomerNPC : MonoBehaviour
     {
         "Demoraste muito! Vou embora!",
         "Estou farto de esperar!",
-        "Que serviÁo lento!",
-        "J· perdi a fome!",
-        "Vou comer noutro sÌtio!"
+        "Que servi√ßo lento!",
+        "J√° perdi a fome!",
+        "Vou comer noutro s√≠tio!"
     };
 
     [SerializeField] private float impatientLeaveDelay = 3f;
@@ -41,11 +41,17 @@ public class CustomerNPC : MonoBehaviour
     [Header("arara")]
     [SerializeField] private bool isArara = false;
 
+    [Header("gaivota")]
+    [SerializeField] private bool isGaivota = false;
+
     [Header("animacao do tucano")]
     [SerializeField] private string flyParameterName = "isFlying";
 
     [Header("animacao da arara")]
     [SerializeField] private string araraFlyParameterName = "isFlying";
+
+    [Header("animacao da gaivota")]
+    [SerializeField] private string gaivotaFlyParameterName = "isFlying";
 
     private Transform targetPoint;
     private Transform exitPoint;
@@ -59,13 +65,14 @@ public class CustomerNPC : MonoBehaviour
 
     private Animator tucanoAnimator;
     private Animator araraAnimator;
-    private Transform flyingVisualRoot;
+    private Animator gaivotaAnimator;
 
     private Coroutine patienceCoroutine;
     private float patienceTime = 25f;
 
     private bool warnedMissingTucanoAnimator = false;
     private bool warnedMissingAraraAnimator = false;
+    private bool warnedMissingGaivotaAnimator = false;
 
     public bool IsTucano()
     {
@@ -75,6 +82,11 @@ public class CustomerNPC : MonoBehaviour
     public bool IsArara()
     {
         return isArara;
+    }
+
+    public bool IsGaivota()
+    {
+        return isGaivota;
     }
 
     public void SetTucanoAnimator(Animator anim)
@@ -97,10 +109,14 @@ public class CustomerNPC : MonoBehaviour
         }
     }
 
-    public void SetFlyingVisualRoot(Transform visualRoot)
+    public void SetGaivotaAnimator(Animator anim)
     {
-        flyingVisualRoot = visualRoot;
-        ApplyFlyingVisualMode(true);
+        gaivotaAnimator = anim;
+
+        if (anim != null)
+        {
+            Debug.Log("gaivota animator recebido");
+        }
     }
 
     public void SetupCustomer(
@@ -124,7 +140,14 @@ public class CustomerNPC : MonoBehaviour
 
         StopPatienceTimer();
 
-        SetFlyAnimation(true);
+        if (isTucano)
+            SetFlyAnimation(true);
+
+        if (isArara)
+            SetAraraFlyAnimation(true);
+
+        if (isGaivota)
+            SetGaivotaFlyAnimation(true);
 
         Debug.Log("cliente nasceu com pedido: " + currentOrder.GetOrderText());
     }
@@ -156,13 +179,18 @@ public class CustomerNPC : MonoBehaviour
         if (isTucano && tucanoAnimator == null && !warnedMissingTucanoAnimator)
         {
             warnedMissingTucanoAnimator = true;
-            Debug.LogWarning("CustomerNPC: este cliente est· marcado como Tucano, mas n„o recebeu Animator.");
+            Debug.LogWarning("CustomerNPC: este cliente est√° marcado como Tucano, mas n√£o recebeu Animator.");
         }
 
         if (isArara && araraAnimator == null && !warnedMissingAraraAnimator)
         {
             warnedMissingAraraAnimator = true;
-            Debug.LogWarning("CustomerNPC: este cliente est· marcado como Arara, mas n„o recebeu Animator.");
+            Debug.LogWarning("CustomerNPC: este cliente est√° marcado como Arara, mas n√£o recebeu Animator.");
+        }
+        if (isGaivota && gaivotaAnimator == null && !warnedMissingGaivotaAnimator)
+        {
+            warnedMissingGaivotaAnimator = true;
+            Debug.LogWarning("CustomerNPC: este cliente est√° marcado como Gaivota, mas n√£o recebeu Animator.");
         }
     }
 
@@ -172,7 +200,14 @@ public class CustomerNPC : MonoBehaviour
         {
             isWaiting = true;
 
-            SetFlyAnimation(false);
+            if (isTucano)
+                SetFlyAnimation(false);
+
+            if (isArara)
+                SetAraraFlyAnimation(false);
+
+            if (isGaivota)
+                SetGaivotaFlyAnimation(false);
 
             if (servicePoint != null)
             {
@@ -185,7 +220,14 @@ public class CustomerNPC : MonoBehaviour
         }
         else
         {
-            SetFlyAnimation(true);
+            if (isTucano)
+                SetFlyAnimation(true);
+
+            if (isArara)
+                SetAraraFlyAnimation(true);
+
+            if (isGaivota)
+                SetGaivotaFlyAnimation(true);
 
             StopPatienceTimer();
 
@@ -200,42 +242,32 @@ public class CustomerNPC : MonoBehaviour
 
     private void SetFlyAnimation(bool flying)
     {
-        if (flying)
-        {
-            ApplyFlyingVisualMode(true);
-        }
-
-        if (isTucano)
-        {
-            SetAnimatorBool(tucanoAnimator, flyParameterName, flying);
-        }
-
-        if (isArara)
-        {
-            SetAnimatorBool(araraAnimator, araraFlyParameterName, flying);
-        }
-
-        if (!flying)
-        {
-            ApplyFlyingVisualMode(false);
-        }
-    }
-
-    private void ApplyFlyingVisualMode(bool flying)
-    {
-        if (flyingVisualRoot == null)
+        if (tucanoAnimator == null)
             return;
 
-        if (flying)
-        {
-            flyingVisualRoot.gameObject.SetActive(true);
-            SetVisualsActive(false, flyingVisualRoot);
-        }
-        else
-        {
-            SetVisualsActive(true, flyingVisualRoot);
-            flyingVisualRoot.gameObject.SetActive(false);
-        }
+        tucanoAnimator.Rebind();
+        tucanoAnimator.Update(0f);
+        SetAnimatorBool(tucanoAnimator, flyParameterName, flying);
+    }
+
+    private void SetAraraFlyAnimation(bool flying)
+    {
+        if (araraAnimator == null)
+            return;
+
+        araraAnimator.Rebind();
+        araraAnimator.Update(0f);
+        SetAnimatorBool(araraAnimator, araraFlyParameterName, flying);
+    }
+
+    private void SetGaivotaFlyAnimation(bool flying)
+    {
+        if (gaivotaAnimator == null)
+            return;
+
+        gaivotaAnimator.Rebind();
+        gaivotaAnimator.Update(0f);
+        SetAnimatorBool(gaivotaAnimator, gaivotaFlyParameterName, flying);
     }
 
     private void SetAnimatorBool(Animator animator, string parameterName, bool value)
@@ -248,7 +280,7 @@ public class CustomerNPC : MonoBehaviour
 
         if (!AnimatorHasParameter(animator, parameterName))
         {
-            Debug.LogWarning("Animator n„o tem o par‚metro: " + parameterName);
+            Debug.LogWarning("Animator n√£o tem o par√¢metro: " + parameterName);
             return;
         }
 
@@ -356,8 +388,20 @@ public class CustomerNPC : MonoBehaviour
 
         isEating = false;
 
-        SetFlyAnimation(true);
+        SetCorrectFlyAnimation(true);
         targetPoint = exitPoint;
+    }
+
+    private void SetCorrectFlyAnimation(bool flying)
+    {
+        if (isTucano)
+            SetFlyAnimation(flying);
+
+        if (isArara)
+            SetAraraFlyAnimation(flying);
+
+        if (isGaivota)
+            SetGaivotaFlyAnimation(flying);
     }
 
     private void StartPatienceTimer()
@@ -441,7 +485,7 @@ public class CustomerNPC : MonoBehaviour
 
         isEating = false;
 
-        SetFlyAnimation(true);
+        SetCorrectFlyAnimation(true);
 
         targetPoint = exitPoint;
     }

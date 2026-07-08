@@ -450,10 +450,17 @@ MonoBehaviour:
   - Que maravilha
   - Comida Comida COMIDAAA
   - "Chefe, qual \xE9 a receita?"
-  impatientComment: vou embora!  tanto tempo
+  impatientComments:
+  - Demoraste muito! Vou embora!
+  - Estou farto de esperar!
+  - "Que servi\uFFFDo lento!"
+  - "J\uFFFD perdi a fome!"
+  - "Vou comer noutro s\uFFFDtio!"
   impatientLeaveDelay: 3
   speechUI: {fileID: 5494391676580021966}
   isTucano: 0
   isArara: 0
+  isGaivota: 1
   flyParameterName: isFlying
   araraFlyParameterName: isFlying
+  gaivotaFlyParameterName: isFlying

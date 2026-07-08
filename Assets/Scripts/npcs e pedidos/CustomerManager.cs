@@ -12,6 +12,9 @@ public class CustomerManager : MonoBehaviour
 
     [Header("prefab animacao arara")]
     [SerializeField] private GameObject araraAnimationPrefab;
+    
+    [Header("prefab animacao gaivota")]
+    [SerializeField] private GameObject gaivotaAnimationPrefab;
 
     [Header("pontos")]
     [SerializeField] private Transform[] spawnPoints;
@@ -262,7 +265,7 @@ public class CustomerManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("IsTucano: " + customer.IsTucano() + " | IsArara: " + customer.IsArara());
+        Debug.Log("IsTucano: " + customer.IsTucano() + " | IsArara: " + customer.IsArara() + " | IsGaivota: " + customer.IsGaivota());
 
         if (tucanoAnimationPrefab != null && customer.IsTucano())
         {
@@ -292,7 +295,7 @@ public class CustomerManager : MonoBehaviour
             Debug.Log("TUCANO ANIM OBJECT: " + (anim == null ? "NULL" : anim.gameObject.name));
 
             customer.SetTucanoAnimator(anim);
-            customer.SetFlyingVisualRoot(tucanoObject.transform);
+            customer.SetVisualsActive(false, tucanoObject.transform);
         }
         else if (araraAnimationPrefab != null && customer.IsArara())
         {
@@ -322,7 +325,37 @@ public class CustomerManager : MonoBehaviour
             Debug.Log("ARARA ANIM OBJECT: " + (anim == null ? "NULL" : anim.gameObject.name));
 
             customer.SetAraraAnimator(anim);
-            customer.SetFlyingVisualRoot(araraObject.transform);
+            customer.SetVisualsActive(false, araraObject.transform);
+        }
+        else if (gaivotaAnimationPrefab != null && customer.IsGaivota())
+        {
+            GameObject gaivotaObject = Instantiate(
+                gaivotaAnimationPrefab,
+                spawnPoint.position,
+                spawnPoint.rotation
+            );
+
+            gaivotaObject.transform.SetParent(customerObject.transform);
+            gaivotaObject.transform.localPosition = Vector3.zero;
+            gaivotaObject.transform.localScale = Vector3.one;
+
+            Camera gaivotaCamera = gaivotaObject.GetComponentInChildren<Camera>();
+            if (gaivotaCamera != null)
+            {
+                gaivotaCamera.gameObject.SetActive(false);
+            }
+
+            Light gaivotaLight = gaivotaObject.GetComponentInChildren<Light>();
+            if (gaivotaLight != null)
+            {
+                gaivotaLight.gameObject.SetActive(false);
+            }
+
+            Animator anim = gaivotaObject.GetComponentInChildren<Animator>();
+            Debug.Log("GAIVOTA ANIM OBJECT: " + (anim == null ? "NULL" : anim.gameObject.name));
+
+            customer.SetGaivotaAnimator(anim);
+            customer.SetVisualsActive(false, gaivotaObject.transform);
         }
 
         freePoint.SetCustomer(customer);
