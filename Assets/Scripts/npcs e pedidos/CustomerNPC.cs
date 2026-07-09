@@ -44,6 +44,9 @@ public class CustomerNPC : MonoBehaviour
     [Header("gaivota")]
     [SerializeField] private bool isGaivota = false;
 
+    [Header("coruja")]
+    [SerializeField] private bool isCoruja = false;
+
     [Header("animacao do tucano")]
     [SerializeField] private string flyParameterName = "isFlying";
 
@@ -52,6 +55,9 @@ public class CustomerNPC : MonoBehaviour
 
     [Header("animacao da gaivota")]
     [SerializeField] private string gaivotaFlyParameterName = "isFlying";
+
+    [Header("animacao da coruja")]
+    [SerializeField] private string corujaFlyParameterName = "isFlying";
 
     private Transform targetPoint;
     private Transform exitPoint;
@@ -66,6 +72,8 @@ public class CustomerNPC : MonoBehaviour
     private Animator tucanoAnimator;
     private Animator araraAnimator;
     private Animator gaivotaAnimator;
+    private Animator corujaAnimator;
+
 
     private Coroutine patienceCoroutine;
     private float patienceTime = 25f;
@@ -73,6 +81,7 @@ public class CustomerNPC : MonoBehaviour
     private bool warnedMissingTucanoAnimator = false;
     private bool warnedMissingAraraAnimator = false;
     private bool warnedMissingGaivotaAnimator = false;
+    private bool warnedMissingCorujaAnimator = false;
 
     public bool IsTucano()
     {
@@ -87,6 +96,11 @@ public class CustomerNPC : MonoBehaviour
     public bool IsGaivota()
     {
         return isGaivota;
+    }
+
+    public bool IsCoruja()
+    {
+        return isCoruja;
     }
 
     public void SetTucanoAnimator(Animator anim)
@@ -119,6 +133,16 @@ public class CustomerNPC : MonoBehaviour
         }
     }
 
+    public void SetCorujaAnimator(Animator anim)
+    {
+        corujaAnimator = anim;
+
+        if (anim != null)
+        {
+            Debug.Log("coruja animator recebido");
+        }
+    }
+
     public void SetupCustomer(
         Transform serviceTarget,
         Transform exitTarget,
@@ -148,6 +172,10 @@ public class CustomerNPC : MonoBehaviour
 
         if (isGaivota)
             SetGaivotaFlyAnimation(true);
+
+        if (isCoruja)
+            SetCorujaFlyAnimation(true);
+
 
         Debug.Log("cliente nasceu com pedido: " + currentOrder.GetOrderText());
     }
@@ -192,6 +220,11 @@ public class CustomerNPC : MonoBehaviour
             warnedMissingGaivotaAnimator = true;
             Debug.LogWarning("CustomerNPC: este cliente está marcado como Gaivota, mas não recebeu Animator.");
         }
+        if (isCoruja && corujaAnimator == null && !warnedMissingCorujaAnimator)
+        {
+            warnedMissingCorujaAnimator = true;
+            Debug.LogWarning("CustomerNPC: este cliente está marcado como Coruja, mas não recebeu Animator.");
+        }
     }
 
     private void ChegouAoPonto()
@@ -208,6 +241,10 @@ public class CustomerNPC : MonoBehaviour
 
             if (isGaivota)
                 SetGaivotaFlyAnimation(false);
+
+            if (isCoruja)
+                SetCorujaFlyAnimation(false);
+
 
             if (servicePoint != null)
             {
@@ -228,6 +265,9 @@ public class CustomerNPC : MonoBehaviour
 
             if (isGaivota)
                 SetGaivotaFlyAnimation(true);
+
+            if (isCoruja)
+                SetCorujaFlyAnimation(true);
 
             StopPatienceTimer();
 
@@ -268,6 +308,16 @@ public class CustomerNPC : MonoBehaviour
         gaivotaAnimator.Rebind();
         gaivotaAnimator.Update(0f);
         SetAnimatorBool(gaivotaAnimator, gaivotaFlyParameterName, flying);
+    }
+
+    private void SetCorujaFlyAnimation(bool flying)
+    {
+        if (corujaAnimator == null)
+            return;
+
+        corujaAnimator.Rebind();
+        corujaAnimator.Update(0f);
+        SetAnimatorBool(corujaAnimator, corujaFlyParameterName, flying);
     }
 
     private void SetAnimatorBool(Animator animator, string parameterName, bool value)
@@ -402,6 +452,9 @@ public class CustomerNPC : MonoBehaviour
 
         if (isGaivota)
             SetGaivotaFlyAnimation(flying);
+
+        if (isCoruja)
+            SetCorujaFlyAnimation(flying);
     }
 
     private void StartPatienceTimer()

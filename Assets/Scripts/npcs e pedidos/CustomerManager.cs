@@ -16,6 +16,10 @@ public class CustomerManager : MonoBehaviour
     [Header("prefab animacao gaivota")]
     [SerializeField] private GameObject gaivotaAnimationPrefab;
 
+    [Header("prefab animacao coruja")]
+    [SerializeField] private GameObject corujaAnimationPrefab;
+    [SerializeField] private Vector3 corujaLocalPositionOffset = Vector3.zero;
+
     [Header("pontos")]
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private CustomerServicePoint[] servicePoints;
@@ -265,7 +269,7 @@ public class CustomerManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("IsTucano: " + customer.IsTucano() + " | IsArara: " + customer.IsArara() + " | IsGaivota: " + customer.IsGaivota());
+        Debug.Log("IsTucano: " + customer.IsTucano() + " | IsArara: " + customer.IsArara() + " | IsGaivota: " + customer.IsGaivota() + " | IsCoruja: " + customer.IsCoruja());
 
         if (tucanoAnimationPrefab != null && customer.IsTucano())
         {
@@ -356,6 +360,37 @@ public class CustomerManager : MonoBehaviour
 
             customer.SetGaivotaAnimator(anim);
             customer.SetVisualsActive(false, gaivotaObject.transform);
+        }
+        
+        
+        else if (corujaAnimationPrefab != null && customer.IsCoruja())
+        {
+            GameObject corujaObject = Instantiate(
+                corujaAnimationPrefab,
+                spawnPoint.position,
+                spawnPoint.rotation
+            );
+
+            corujaObject.transform.SetParent(customerObject.transform);
+            corujaObject.transform.localPosition = corujaLocalPositionOffset;
+
+            Camera corujaCamera = corujaObject.GetComponentInChildren<Camera>();
+            if (corujaCamera != null)
+            {
+                corujaCamera.gameObject.SetActive(false);
+            }
+
+            Light corujaLight = corujaObject.GetComponentInChildren<Light>();
+            if (corujaLight != null)
+            {
+                corujaLight.gameObject.SetActive(false);
+            }
+
+            Animator anim = corujaObject.GetComponentInChildren<Animator>();
+            Debug.Log("CORUJA ANIM OBJECT: " + (anim == null ? "NULL" : anim.gameObject.name));
+
+            customer.SetCorujaAnimator(anim);
+            customer.SetVisualsActive(false, corujaObject.transform);
         }
 
         freePoint.SetCustomer(customer);

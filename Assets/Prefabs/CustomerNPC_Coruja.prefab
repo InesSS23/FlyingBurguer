@@ -445,13 +445,22 @@ MonoBehaviour:
   - Que carne saburosa
   - "T\xE3o soculento"
   - Este sabor...
-  impatientComment: vou embora!  tanto tempo
+  impatientComments:
+  - Demoraste muito! Vou embora!
+  - Estou farto de esperar!
+  - "Que servi\xE7o lento!"
+  - "J\xE1 perdi a fome!"
+  - "Vou comer noutro s\xEDtio!"
   impatientLeaveDelay: 3
   speechUI: {fileID: 2979532850589759739}
   isTucano: 0
   isArara: 0
+  isGaivota: 0
+  isCoruja: 1
   flyParameterName: isFlying
   araraFlyParameterName: isFlying
+  gaivotaFlyParameterName: isFlying
+  corujaFlyParameterName: isFlying
 --- !u!4 &9141683848393650607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6fa99284e8ffab4c93632f3365626b4, type: 3}
