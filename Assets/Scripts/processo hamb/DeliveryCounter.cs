@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DeliveryCounter : MonoBehaviour, IInteractable
@@ -9,7 +8,7 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
     [Header("manager do dia / pontos")]
     [SerializeField] private DayManager dayManager;
 
-    [Header("pontos")]
+    [Header("pontos fallback se nao houver DayManager")]
     [SerializeField] private int pointsPerDelivery = 10;
 
     public void Interact()
@@ -69,15 +68,18 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
 
         playerHand.ClearHand();
 
+        int pointsToAdd = pointsPerDelivery;
+
         if (dayManager != null)
         {
-            dayManager.AddScore(pointsPerDelivery);
+            pointsToAdd = dayManager.GetPointsPerDelivery();
+            dayManager.AddScore(pointsToAdd);
         }
         else
         {
             Debug.Log("n tenho DayManager ligado no DeliveryCounter");
         }
 
-        Debug.Log("tabuleiro entregue ao cliente certo");
+        Debug.Log("tabuleiro entregue ao cliente certo. Pontos ganhos: " + pointsToAdd);
     }
 }

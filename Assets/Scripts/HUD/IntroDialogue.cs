@@ -10,9 +10,16 @@ public class IntroDialogue : MonoBehaviour
     [SerializeField] private Button skipButton;
     [SerializeField] private TMP_Text skipButtonText;
 
-    [Header("falas")]
+    [Header("imagem da cutscene")]
+    [SerializeField] private Image cutsceneImage;
+    [SerializeField] private bool keepPreviousImageWhenFrameImageIsEmpty = true;
+
+    [Header("falas antigas - fallback")]
     [TextArea(2, 5)]
     [SerializeField] private string[] dialogueLines;
+
+    [Header("falas novas com imagem")]
+    [SerializeField] private DialogueFrame[] dialogueFrames;
 
     [Header("scripts do jogador para bloquear")]
     [SerializeField] private FirstPersonPlayer firstPersonPlayer;
@@ -21,7 +28,7 @@ public class IntroDialogue : MonoBehaviour
     [Header("clientes")]
     [SerializeField] private CustomerManager customerManager;
 
-    [Header("timer / pontuação")]
+    [Header("timer / pontuacao")]
     [SerializeField] private DayManager dayManager;
 
     private int currentLine = 0;
@@ -29,12 +36,35 @@ public class IntroDialogue : MonoBehaviour
 
     void Start()
     {
+        TryLoadDialogueFromLevelConfig();
+
         if (skipButton != null)
         {
             skipButton.onClick.AddListener(NextLine);
+
+            if (skipButtonText == null)
+            {
+                skipButtonText = skipButton.GetComponentInChildren<TMP_Text>(true);
+            }
         }
 
         StartDialogue();
+    }
+
+    private void TryLoadDialogueFromLevelConfig()
+    {
+        if (dayManager == null)
+            return;
+
+        LevelConfig config = dayManager.GetLevelConfig();
+
+        if (config == null)
+            return;
+
+        if (config.introFrames != null && config.introFrames.Length > 0)
+        {
+            dialogueFrames = config.introFrames;
+        }
     }
 
     private void StartDialogue()
@@ -47,18 +77,61 @@ public class IntroDialogue : MonoBehaviour
             dialoguePanel.SetActive(true);
         }
 
-        // CORREÇÃO: o Level1 força o jogador e a câmara para o ponto inicial antes de bloquear o jogador.
-        // Isto resolve o bug em que a câmara ficava virada para a parede/chão no WebGL ou ao reiniciar o dia.
         if (firstPersonPlayer != null)
         {
             firstPersonPlayer.ResetPlayerAndCameraToStart();
         }
 
         BloquearJogador();
+
+        if (GetLineCount() <= 0)
+        {
+            EndDialogue();
+            return;
+        }
+
         ShowCurrentLine();
         UpdateButtonText();
 
-        Debug.Log("dialogo inicial começou");
+        Debug.Log("dialogo inicial comecou");
+    }
+
+    private int GetLineCount()
+    {
+        if (dialogueFrames != null && dialogueFrames.Length > 0)
+            return dialogueFrames.Length;
+
+        if (dialogueLines != null)
+            return dialogueLines.Length;
+
+        return 0;
+    }
+
+    private string GetCurrentText()
+    {
+        if (dialogueFrames != null && dialogueFrames.Length > 0)
+        {
+            if (currentLine >= 0 && currentLine < dialogueFrames.Length)
+                return dialogueFrames[currentLine].text;
+
+            return "";
+        }
+
+        if (dialogueLines != null && currentLine >= 0 && currentLine < dialogueLines.Length)
+            return dialogueLines[currentLine];
+
+        return "";
+    }
+
+    private Sprite GetCurrentImage()
+    {
+        if (dialogueFrames != null && dialogueFrames.Length > 0)
+        {
+            if (currentLine >= 0 && currentLine < dialogueFrames.Length)
+                return dialogueFrames[currentLine].image;
+        }
+
+        return null;
     }
 
     private void ShowCurrentLine()
@@ -69,13 +142,23 @@ public class IntroDialogue : MonoBehaviour
             return;
         }
 
-        if (dialogueLines == null || dialogueLines.Length == 0)
-        {
-            EndDialogue();
-            return;
-        }
+        dialogueText.text = GetCurrentText();
 
-        dialogueText.text = dialogueLines[currentLine];
+        if (cutsceneImage != null)
+        {
+            Sprite frameImage = GetCurrentImage();
+
+            if (frameImage != null)
+            {
+                cutsceneImage.sprite = frameImage;
+                cutsceneImage.enabled = true;
+            }
+            else if (!keepPreviousImageWhenFrameImageIsEmpty)
+            {
+                cutsceneImage.sprite = null;
+                cutsceneImage.enabled = false;
+            }
+        }
     }
 
     private void NextLine()
@@ -85,7 +168,7 @@ public class IntroDialogue : MonoBehaviour
 
         currentLine++;
 
-        if (currentLine >= dialogueLines.Length)
+        if (currentLine >= GetLineCount())
         {
             EndDialogue();
             return;
@@ -97,13 +180,13 @@ public class IntroDialogue : MonoBehaviour
 
     private void UpdateButtonText()
     {
-        if (skipButtonText == null || dialogueLines == null || dialogueLines.Length == 0)
+        if (skipButtonText == null)
             return;
 
-        if (currentLine == dialogueLines.Length - 1)
-            skipButtonText.text = "Começar Dia";
+        if (currentLine == GetLineCount() - 1)
+            skipButtonText.text = "Comecar Dia";
         else
-            skipButtonText.text = "Skip";
+            skipButtonText.text = "Proximo";
     }
 
     private void EndDialogue()

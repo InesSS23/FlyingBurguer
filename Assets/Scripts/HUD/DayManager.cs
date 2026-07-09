@@ -3,10 +3,14 @@ using UnityEngine;
 
 public class DayManager : MonoBehaviour
 {
-    [Header("configura��o do dia")]
+    [Header("configuracao do nivel")]
+    [SerializeField] private LevelConfig levelConfig;
+
+    [Header("configuracao do dia - fallback se nao houver LevelConfig")]
     [SerializeField] private int dayNumber = 1;
     [SerializeField] private float dayDuration = 300f;
     [SerializeField] private int targetScore = 100;
+    [SerializeField] private int pointsPerDelivery = 10;
 
     [Header("ui")]
     [SerializeField] private TMP_Text dayText;
@@ -20,7 +24,7 @@ public class DayManager : MonoBehaviour
     [SerializeField] private CustomerManager customerManager;
     [SerializeField] private PauseMenuController pauseMenuController;
 
-    [Header("áudio")]
+    [Header("audio")]
     [SerializeField] private AudioClip gameplayBackgroundMusic;
 
     private float currentTime;
@@ -30,12 +34,20 @@ public class DayManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
+
+        ApplyLevelConfig();
+
         currentTime = dayDuration;
         currentScore = 0;
         dayRunning = false;
         dayEnded = false;
 
-        // Toca a música de fundo do jogo
+        if (customerManager != null && levelConfig != null)
+        {
+            customerManager.ApplyLevelConfig(levelConfig);
+        }
+
         if (AudioManager.Instance != null && gameplayBackgroundMusic != null)
         {
             AudioManager.Instance.PlayBackgroundMusic(gameplayBackgroundMusic);
@@ -66,13 +78,34 @@ public class DayManager : MonoBehaviour
         UpdateUI();
     }
 
+    private void ApplyLevelConfig()
+    {
+        if (levelConfig == null)
+            return;
+
+        dayNumber = levelConfig.dayNumber;
+        dayDuration = levelConfig.dayDuration;
+        targetScore = levelConfig.targetScore;
+        pointsPerDelivery = levelConfig.pointsPerDelivery;
+
+        if (levelConfig.gameplayBackgroundMusic != null)
+        {
+            gameplayBackgroundMusic = levelConfig.gameplayBackgroundMusic;
+        }
+    }
+
+    public LevelConfig GetLevelConfig()
+    {
+        return levelConfig;
+    }
+
     public void StartDay()
     {
         if (dayEnded)
             return;
 
         dayRunning = true;
-        Debug.Log("o dia come�ou e o timer arrancou");
+        Debug.Log("o dia comecou e o timer arrancou");
     }
 
     public void StopDay()
@@ -99,6 +132,11 @@ public class DayManager : MonoBehaviour
     public float GetCurrentTime()
     {
         return currentTime;
+    }
+
+    public int GetPointsPerDelivery()
+    {
+        return pointsPerDelivery;
     }
 
     public bool IsDayEnded()
@@ -131,7 +169,6 @@ public class DayManager : MonoBehaviour
     {
         bool success = currentScore >= targetScore;
 
-        // Para a música de fundo
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.StopBackgroundMusic();
@@ -153,16 +190,16 @@ public class DayManager : MonoBehaviour
 
         if (dayEndPanel != null)
         {
-            dayEndPanel.ShowResult(success, currentScore, targetScore);
+            dayEndPanel.ShowResult(success, currentScore, targetScore, levelConfig);
         }
 
         if (success)
         {
-            Debug.Log("dia conclu�do com sucesso");
+            Debug.Log("dia concluido com sucesso");
         }
         else
         {
-            Debug.Log("n�o atingiste a pontua��o necess�ria");
+            Debug.Log("nao atingiste a pontuacao necessaria");
         }
     }
 }

@@ -115,7 +115,7 @@ public class CustomerSpeechUI : MonoBehaviour
         if (speechText == null || !autoFitText)
             return;
 
-        speechText.enableWordWrapping = true;
+        speechText.textWrappingMode = TextWrappingModes.Normal;
         speechText.enableAutoSizing = true;
         speechText.fontSizeMin = minFontSize;
         speechText.fontSizeMax = maxFontSize;

@@ -12,7 +12,7 @@ public class CustomerManager : MonoBehaviour
 
     [Header("prefab animacao arara")]
     [SerializeField] private GameObject araraAnimationPrefab;
-    
+
     [Header("prefab animacao gaivota")]
     [SerializeField] private GameObject gaivotaAnimationPrefab;
 
@@ -43,14 +43,44 @@ public class CustomerManager : MonoBehaviour
     private Coroutine spawnCoroutine;
     private bool isSpawning = false;
 
+    private LevelConfig activeConfig;
+    private bool levelConfigApplied = false;
+
     void Start()
     {
-        CriarPedidosPossiveis();
+        if (!levelConfigApplied && dayManager != null && dayManager.GetLevelConfig() != null)
+        {
+            ApplyLevelConfig(dayManager.GetLevelConfig());
+        }
+
+        if (!levelConfigApplied)
+        {
+            CriarPedidosPossiveis();
+        }
 
         if (startSpawningAutomatically)
         {
             StartSpawning();
         }
+    }
+
+    public void ApplyLevelConfig(LevelConfig config)
+    {
+        if (config == null)
+            return;
+
+        activeConfig = config;
+
+        minSpawnTime = Mathf.Max(0.1f, config.minSpawnTime);
+        maxSpawnTime = Mathf.Max(minSpawnTime, config.maxSpawnTime);
+        customerPatienceTime = Mathf.Max(1f, config.customerPatienceTime);
+        missedCustomerPenalty = Mathf.Max(0, config.missedCustomerPenalty);
+
+        CriarPedidosPossiveis();
+
+        levelConfigApplied = true;
+
+        Debug.Log("CustomerManager configurado para o dia " + config.dayNumber);
     }
 
     private bool IsSpawnPointFree(Transform point)
@@ -79,6 +109,28 @@ public class CustomerManager : MonoBehaviour
     {
         possibleOrders.Clear();
 
+        if (activeConfig == null)
+        {
+            CriarPedidosPadrao();
+        }
+        else
+        {
+            CriarPedidosAPartirDoLevelConfig(activeConfig);
+        }
+
+        if (possibleOrders.Count == 0)
+        {
+            possibleOrders.Add(new BurgerOrder(
+                "Burger simples",
+                new List<string> { "Bread", "CookedMeat", "Bread" }
+            ));
+        }
+
+        Debug.Log("Pedidos possiveis criados: " + possibleOrders.Count);
+    }
+
+    private void CriarPedidosPadrao()
+    {
         AdicionarPedidoComVariacoes(new BurgerOrder(
             "Burger simples",
             new List<string> { "Bread", "CookedMeat", "Bread" }
@@ -123,47 +175,138 @@ public class CustomerManager : MonoBehaviour
             "Burger picante",
             new List<string> { "Bread", "CookedMeat", "Cheese", "Pepper", "Bread" }
         ));
+    }
 
-        AdicionarPedidoComVariacoes(new BurgerOrder(
-            "Burger vegetariano falso",
-            new List<string> { "Bread", "CookedMeat", "Lettuce", "Pepper", "Bread" }
-        ));
+    private void CriarPedidosAPartirDoLevelConfig(LevelConfig config)
+    {
+        List<string> extras = new List<string>();
 
-        AdicionarPedidoComVariacoes(new BurgerOrder(
-            "Burger completo",
-            new List<string> { "Bread", "CookedMeat", "Cheese", "Lettuce", "Bread" }
-        ));
+        if (config.allowCheese)
+            extras.Add("Cheese");
 
-        AdicionarPedidoComVariacoes(new BurgerOrder(
-            "Burger especial voador",
-            new List<string> { "Bread", "CookedMeat", "Cheese", "Pepper", "Bread" }
-        ));
+        if (config.allowLettuce)
+            extras.Add("Lettuce");
+
+        if (config.allowTomato)
+            extras.Add("Tomato");
+
+        if (config.allowPepper)
+            extras.Add("Pepper");
+
+        int maxExtras = Mathf.Clamp(config.maxExtraIngredients, 0, 2);
+
+        AdicionarPedidoComVariacoes(CriarPedido("Burger simples"));
+
+        if (maxExtras >= 1)
+        {
+            for (int i = 0; i < extras.Count; i++)
+            {
+                string extra = extras[i];
+                string nome = "Burger " + NomeIngrediente(extra);
+
+                AdicionarPedidoComVariacoes(CriarPedido(nome, extra));
+            }
+        }
+
+        if (maxExtras >= 2)
+        {
+            for (int i = 0; i < extras.Count; i++)
+            {
+                for (int j = i + 1; j < extras.Count; j++)
+                {
+                    string extraA = extras[i];
+                    string extraB = extras[j];
+
+                    string nome = "Burger " + NomeIngrediente(extraA) + " e " + NomeIngrediente(extraB);
+
+                    AdicionarPedidoComVariacoes(CriarPedido(nome, extraA, extraB));
+                }
+            }
+        }
+    }
+
+    private BurgerOrder CriarPedido(string nome, params string[] extras)
+    {
+        List<string> ingredientes = new List<string>();
+
+        ingredientes.Add("Bread");
+        ingredientes.Add("CookedMeat");
+
+        if (extras != null)
+        {
+            for (int i = 0; i < extras.Length; i++)
+            {
+                ingredientes.Add(extras[i]);
+            }
+        }
+
+        ingredientes.Add("Bread");
+
+        return new BurgerOrder(nome, ingredientes);
+    }
+
+    private string NomeIngrediente(string ingredient)
+    {
+        switch (ingredient)
+        {
+            case "Cheese":
+                return "queijo";
+
+            case "Lettuce":
+                return "alface";
+
+            case "Tomato":
+                return "tomate";
+
+            case "Pepper":
+                return "pimento";
+
+            default:
+                return ingredient;
+        }
     }
 
     private void AdicionarPedidoComVariacoes(BurgerOrder baseOrder)
     {
-        possibleOrders.Add(baseOrder);
-
         possibleOrders.Add(new BurgerOrder(
-            baseOrder.orderName + " com batatas",
-            baseOrder.ingredients,
-            true,
+            baseOrder.orderName,
+            new List<string>(baseOrder.ingredients),
+            false,
             false
         ));
 
-        possibleOrders.Add(new BurgerOrder(
-            baseOrder.orderName + " com bebida",
-            baseOrder.ingredients,
-            false,
-            true
-        ));
+        bool allowFries = activeConfig == null || activeConfig.allowFries;
+        bool allowDrink = activeConfig == null || activeConfig.allowDrink;
 
-        possibleOrders.Add(new BurgerOrder(
-            "Menu " + baseOrder.orderName,
-            baseOrder.ingredients,
-            true,
-            true
-        ));
+        if (allowFries)
+        {
+            possibleOrders.Add(new BurgerOrder(
+                baseOrder.orderName + " com batatas",
+                new List<string>(baseOrder.ingredients),
+                true,
+                false
+            ));
+        }
+
+        if (allowDrink)
+        {
+            possibleOrders.Add(new BurgerOrder(
+                baseOrder.orderName + " com bebida",
+                new List<string>(baseOrder.ingredients),
+                false,
+                true
+            ));
+        }
+
+        if (allowFries && allowDrink)
+        {
+            possibleOrders.Add(new BurgerOrder(
+                "Menu " + baseOrder.orderName,
+                new List<string>(baseOrder.ingredients),
+                true,
+                true
+            ));
+        }
     }
 
     public void StartSpawning()
@@ -174,7 +317,7 @@ public class CustomerManager : MonoBehaviour
         isSpawning = true;
         spawnCoroutine = StartCoroutine(SpawnLoop());
 
-        Debug.Log("clientes começaram a aparecer");
+        Debug.Log("clientes comecaram a aparecer");
     }
 
     public void StopSpawning()
@@ -230,6 +373,17 @@ public class CustomerManager : MonoBehaviour
         if (customerPrefabs == null || customerPrefabs.Length == 0)
         {
             Debug.Log("falta ligar os prefabs");
+            return;
+        }
+
+        if (possibleOrders == null || possibleOrders.Count == 0)
+        {
+            CriarPedidosPossiveis();
+        }
+
+        if (possibleOrders == null || possibleOrders.Count == 0)
+        {
+            Debug.Log("nao existem pedidos possiveis");
             return;
         }
 
@@ -361,8 +515,6 @@ public class CustomerManager : MonoBehaviour
             customer.SetGaivotaAnimator(anim);
             customer.SetVisualsActive(false, gaivotaObject.transform);
         }
-        
-        
         else if (corujaAnimationPrefab != null && customer.IsCoruja())
         {
             GameObject corujaObject = Instantiate(
