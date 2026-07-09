@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a265f2db43918c247ad7679a866e9021, type: 3}
   m_Name: Level3_Config
   m_EditorClassIdentifier: Assembly-CSharp::LevelConfig
-  dayNumber: 1
+  dayNumber: 3
   sceneName: Level1
   nextSceneName: 
   isFinalLevel: 0
@@ -20,9 +20,9 @@ MonoBehaviour:
   dayDuration: 300
   targetScore: 100
   pointsPerDelivery: 10
-  minSpawnTime: 8
-  maxSpawnTime: 15
-  customerPatienceTime: 25
+  minSpawnTime: 3
+  maxSpawnTime: 6
+  customerPatienceTime: 60
   missedCustomerPenalty: 5
   allowCheese: 1
   allowLettuce: 1
