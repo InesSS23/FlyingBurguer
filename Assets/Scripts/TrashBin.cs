@@ -18,6 +18,11 @@ public class TrashBin : MonoBehaviour, IInteractable
             return;
         }
 
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayTrashSFX();
+        }
+
         playerHand.ClearHand();
 
         Debug.Log("deitei fora o que tinha na mao");

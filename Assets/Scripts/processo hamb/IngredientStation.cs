@@ -23,6 +23,11 @@ public class IngredientStation : MonoBehaviour, IInteractable
 
         if (playerHand.HasItem() && playerHand.GetCurrentItem() == ingredientName)
         {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayPickupObjectSFX();
+            }
+
             Debug.Log("devolvi o ingrediente ao sitio: " + ingredientName);
             playerHand.ClearHand();
             return;

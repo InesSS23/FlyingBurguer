@@ -8,8 +8,14 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
     [Header("manager do dia / pontos")]
     [SerializeField] private DayManager dayManager;
 
+    [Header("feedback visual")]
+    [SerializeField] private FeedbackMessageUI feedbackMessageUI;
+
     [Header("pontos fallback se nao houver DayManager")]
     [SerializeField] private int pointsPerDelivery = 10;
+
+    [Header("penalizacao")]
+    [SerializeField] private int wrongOrderPenalty = 5;
 
     public void Interact()
     {
@@ -62,11 +68,17 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
 
         if (!delivered)
         {
+            PenalizarPedidoIncorreto();
             Debug.Log("pedido errado, n entreguei");
             return;
         }
 
         playerHand.ClearHand();
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayPlaceObjectSFX();
+        }
 
         int pointsToAdd = pointsPerDelivery;
 
@@ -81,5 +93,23 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
         }
 
         Debug.Log("tabuleiro entregue ao cliente certo. Pontos ganhos: " + pointsToAdd);
+    }
+
+    private void PenalizarPedidoIncorreto()
+    {
+        if (dayManager != null)
+        {
+            dayManager.AddScore(-wrongOrderPenalty);
+        }
+
+        if (feedbackMessageUI != null)
+        {
+            feedbackMessageUI.ShowMessage("pedido incorreto");
+        }
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayWrongOrderSFX();
+        }
     }
 }

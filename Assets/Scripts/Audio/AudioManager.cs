@@ -18,6 +18,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip placeObjectSFX;
     [SerializeField] private AudioClip addBurgerIngredientSFX;
     [SerializeField] private AudioClip readySFX;
+    [SerializeField] private AudioClip wrongOrderSFX;
+    [SerializeField] private AudioClip trashSFX;
 
     [Header("Efeitos de processo")]
     [SerializeField] private AudioClip grillMeatLoopSFX;
@@ -28,15 +30,44 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float defaultBGMVolume = 0.5f;
     [SerializeField] private float defaultSFXVolume = 0.7f;
 
+    /*
+        AUMENTAR OU BAIXAR SONS ESPECIFICOS AQUI
+
+        1f   = volume normal
+        1.2f = um pouco mais alto
+        1.5f = mais alto
+        0.7f = mais baixo
+
+        Evita passar muito de 2f para nao distorcer.
+    */
+    private const float BUTTON_CLICK_VOLUME = 1f;
+
+    private const float PICKUP_OBJECT_VOLUME = 1.3f;
+    private const float PLACE_OBJECT_VOLUME = 1.25f;
+    private const float ADD_BURGER_INGREDIENT_VOLUME = 1.25f;
+    private const float READY_VOLUME = 1.5f;
+    private const float WRONG_ORDER_VOLUME = 2f;
+    private const float TRASH_VOLUME = 1.4f;
+
+    private const float GRILL_MEAT_VOLUME = 1.25f;
+    private const float FRY_FRIES_VOLUME = 1.25f;
+    private const float FILL_DRINK_VOLUME = 1.35f;
+
     private float bgmVolume;
     private float sfxVolume;
 
     private bool initialized = false;
 
-    private readonly List<AudioSource> activeLoopingSources = new List<AudioSource>();
-
     private const string BGM_VOLUME_KEY = "BGMVolume";
     private const string SFX_VOLUME_KEY = "SFXVolume";
+
+    private class LoopingSFXInstance
+    {
+        public AudioSource source;
+        public float volumeMultiplier;
+    }
+
+    private readonly List<LoopingSFXInstance> activeLoopingSources = new List<LoopingSFXInstance>();
 
     private void Awake()
     {
@@ -125,16 +156,29 @@ public class AudioManager : MonoBehaviour
         if (sfxAudioSource == null || clip == null)
             return;
 
-        float finalVolume = sfxVolume * Mathf.Clamp01(volumeMultiplier);
-        sfxAudioSource.PlayOneShot(clip, finalVolume);
+        float safeMultiplier = Mathf.Clamp(volumeMultiplier, 0f, 3f);
+
+        /*
+            O volume geral continua controlado pela barra das opções.
+            Aqui só estamos a dizer se este som é mais forte/fraco que os outros.
+        */
+        sfxAudioSource.volume = sfxVolume;
+        sfxAudioSource.PlayOneShot(clip, safeMultiplier);
     }
 
     public AudioSource PlayLoopingSFX(AudioClip clip)
+    {
+        return PlayLoopingSFX(clip, 1f);
+    }
+
+    public AudioSource PlayLoopingSFX(AudioClip clip, float volumeMultiplier)
     {
         InitializeAudio();
 
         if (clip == null)
             return null;
+
+        float safeMultiplier = Mathf.Clamp(volumeMultiplier, 0f, 3f);
 
         GameObject loopObject = new GameObject("LoopingSFX_" + clip.name);
         loopObject.transform.SetParent(transform);
@@ -144,11 +188,15 @@ public class AudioManager : MonoBehaviour
         source.loop = true;
         source.playOnAwake = false;
         source.spatialBlend = 0f;
-        source.volume = sfxVolume;
+        source.volume = Mathf.Clamp(sfxVolume * safeMultiplier, 0f, 3f);
 
         source.Play();
 
-        activeLoopingSources.Add(source);
+        LoopingSFXInstance instance = new LoopingSFXInstance();
+        instance.source = source;
+        instance.volumeMultiplier = safeMultiplier;
+
+        activeLoopingSources.Add(instance);
 
         return source;
     }
@@ -158,9 +206,13 @@ public class AudioManager : MonoBehaviour
         if (source == null)
             return;
 
-        if (activeLoopingSources.Contains(source))
+        for (int i = activeLoopingSources.Count - 1; i >= 0; i--)
         {
-            activeLoopingSources.Remove(source);
+            if (activeLoopingSources[i].source == source)
+            {
+                activeLoopingSources.RemoveAt(i);
+                break;
+            }
         }
 
         source.Stop();
@@ -171,10 +223,10 @@ public class AudioManager : MonoBehaviour
     {
         for (int i = activeLoopingSources.Count - 1; i >= 0; i--)
         {
-            if (activeLoopingSources[i] != null)
+            if (activeLoopingSources[i] != null && activeLoopingSources[i].source != null)
             {
-                activeLoopingSources[i].Stop();
-                Destroy(activeLoopingSources[i].gameObject);
+                activeLoopingSources[i].source.Stop();
+                Destroy(activeLoopingSources[i].source.gameObject);
             }
         }
 
@@ -183,42 +235,52 @@ public class AudioManager : MonoBehaviour
 
     public void PlayButtonClickSFX()
     {
-        PlaySFX(buttonClickSFX);
+        PlaySFX(buttonClickSFX, BUTTON_CLICK_VOLUME);
     }
 
     public void PlayPickupObjectSFX()
     {
-        PlaySFX(pickupObjectSFX);
+        PlaySFX(pickupObjectSFX, PICKUP_OBJECT_VOLUME);
     }
 
     public void PlayPlaceObjectSFX()
     {
-        PlaySFX(placeObjectSFX);
+        PlaySFX(placeObjectSFX, PLACE_OBJECT_VOLUME);
     }
 
     public void PlayAddBurgerIngredientSFX()
     {
-        PlaySFX(addBurgerIngredientSFX);
+        PlaySFX(addBurgerIngredientSFX, ADD_BURGER_INGREDIENT_VOLUME);
     }
 
     public void PlayReadySFX()
     {
-        PlaySFX(readySFX);
+        PlaySFX(readySFX, READY_VOLUME);
+    }
+
+    public void PlayWrongOrderSFX()
+    {
+        PlaySFX(wrongOrderSFX, WRONG_ORDER_VOLUME);
+    }
+
+    public void PlayTrashSFX()
+    {
+        PlaySFX(trashSFX, TRASH_VOLUME);
     }
 
     public AudioSource PlayGrillMeatLoopSFX()
     {
-        return PlayLoopingSFX(grillMeatLoopSFX);
+        return PlayLoopingSFX(grillMeatLoopSFX, GRILL_MEAT_VOLUME);
     }
 
     public AudioSource PlayFryFriesLoopSFX()
     {
-        return PlayLoopingSFX(fryFriesLoopSFX);
+        return PlayLoopingSFX(fryFriesLoopSFX, FRY_FRIES_VOLUME);
     }
 
     public AudioSource PlayFillDrinkLoopSFX()
     {
-        return PlayLoopingSFX(fillDrinkLoopSFX);
+        return PlayLoopingSFX(fillDrinkLoopSFX, FILL_DRINK_VOLUME);
     }
 
     public void SetBGMVolume(float volume)
@@ -243,12 +305,19 @@ public class AudioManager : MonoBehaviour
             sfxAudioSource.volume = sfxVolume;
         }
 
-        for (int i = 0; i < activeLoopingSources.Count; i++)
+        for (int i = activeLoopingSources.Count - 1; i >= 0; i--)
         {
-            if (activeLoopingSources[i] != null)
+            if (activeLoopingSources[i] == null || activeLoopingSources[i].source == null)
             {
-                activeLoopingSources[i].volume = sfxVolume;
+                activeLoopingSources.RemoveAt(i);
+                continue;
             }
+
+            activeLoopingSources[i].source.volume = Mathf.Clamp(
+                sfxVolume * activeLoopingSources[i].volumeMultiplier,
+                0f,
+                3f
+            );
         }
 
         PlayerPrefs.SetFloat(SFX_VOLUME_KEY, sfxVolume);
