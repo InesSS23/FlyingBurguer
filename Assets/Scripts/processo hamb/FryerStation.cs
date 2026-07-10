@@ -24,6 +24,12 @@ public class FryerStation : MonoBehaviour, IInteractable
     private bool isCooked = false;
 
     private GameObject currentVisual;
+    private AudioSource cookingLoopSource;
+
+    private void OnDisable()
+    {
+        StopCookingSound();
+    }
 
     public void Interact()
     {
@@ -74,6 +80,12 @@ public class FryerStation : MonoBehaviour, IInteractable
         isCooked = false;
 
         MostrarBatatasCongeladas();
+        PlayCookingSound();
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayPlaceObjectSFX();
+        }
 
         Debug.Log("batatas congeladas metidas na fritadeira");
 
@@ -86,6 +98,13 @@ public class FryerStation : MonoBehaviour, IInteractable
 
         isCooking = false;
         isCooked = true;
+
+        StopCookingSound();
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayReadySFX();
+        }
 
         MostrarBatatasFritas();
 
@@ -110,6 +129,26 @@ public class FryerStation : MonoBehaviour, IInteractable
         LimparVisual();
 
         Debug.Log("tirei as batatas fritas da fritadeira");
+    }
+
+    private void PlayCookingSound()
+    {
+        StopCookingSound();
+
+        if (AudioManager.Instance != null)
+        {
+            cookingLoopSource = AudioManager.Instance.PlayFryFriesLoopSFX();
+        }
+    }
+
+    private void StopCookingSound()
+    {
+        if (AudioManager.Instance != null && cookingLoopSource != null)
+        {
+            AudioManager.Instance.StopLoopingSFX(cookingLoopSource);
+        }
+
+        cookingLoopSource = null;
     }
 
     private void MostrarBatatasCongeladas()

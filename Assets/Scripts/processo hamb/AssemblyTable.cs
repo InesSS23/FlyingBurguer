@@ -122,6 +122,11 @@ public class AssemblyTable : MonoBehaviour, IInteractable
         currentTray.burger.Add(item);
         RecriarVisualDoPedido();
 
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayAddBurgerIngredientSFX();
+        }
+
         Debug.Log("adicionei ao hamburger: " + item);
 
         playerHand.ClearHand();
@@ -140,6 +145,11 @@ public class AssemblyTable : MonoBehaviour, IInteractable
         currentTray.hasFries = true;
         RecriarVisualDoPedido();
 
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayPlaceObjectSFX();
+        }
+
         playerHand.ClearHand();
 
         Debug.Log("adicionei batatas ao tabuleiro");
@@ -155,6 +165,11 @@ public class AssemblyTable : MonoBehaviour, IInteractable
 
         currentTray.hasDrink = true;
         RecriarVisualDoPedido();
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayPlaceObjectSFX();
+        }
 
         playerHand.ClearHand();
 
@@ -191,6 +206,11 @@ public class AssemblyTable : MonoBehaviour, IInteractable
 
         RecriarVisualDoPedido();
 
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayPlaceObjectSFX();
+        }
+
         Debug.Log("voltei a meter o tabuleiro na mesa");
     }
 
@@ -207,6 +227,11 @@ public class AssemblyTable : MonoBehaviour, IInteractable
         playerHand.ClearHand();
 
         RecriarVisualDoPedido();
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayPlaceObjectSFX();
+        }
 
         Debug.Log("voltei a meter o hamburger na mesa");
     }

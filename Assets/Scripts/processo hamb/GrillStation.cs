@@ -20,6 +20,12 @@ public class GrillStation : MonoBehaviour, IInteractable
     private bool isCooked = false;
 
     private GameObject currentVisual;
+    private AudioSource cookingLoopSource;
+
+    private void OnDisable()
+    {
+        StopCookingSound();
+    }
 
     public void Interact()
     {
@@ -70,6 +76,7 @@ public class GrillStation : MonoBehaviour, IInteractable
         isCooked = false;
 
         CriarVisual(rawMeatVisualPrefab);
+        PlayCookingSound();
 
         Debug.Log("carne crua metida na grelha");
 
@@ -82,6 +89,13 @@ public class GrillStation : MonoBehaviour, IInteractable
 
         isCooking = false;
         isCooked = true;
+
+        StopCookingSound();
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayReadySFX();
+        }
 
         CriarVisual(cookedMeatVisualPrefab);
 
@@ -96,7 +110,8 @@ public class GrillStation : MonoBehaviour, IInteractable
             return;
         }
 
-        playerHand.TrySetItem(cookedMeatName);
+        if (!playerHand.TrySetItem(cookedMeatName))
+            return;
 
         hasMeat = false;
         isCooking = false;
@@ -105,6 +120,26 @@ public class GrillStation : MonoBehaviour, IInteractable
         LimparVisual();
 
         Debug.Log("tirei a carne cozinhada da grelha");
+    }
+
+    private void PlayCookingSound()
+    {
+        StopCookingSound();
+
+        if (AudioManager.Instance != null)
+        {
+            cookingLoopSource = AudioManager.Instance.PlayGrillMeatLoopSFX();
+        }
+    }
+
+    private void StopCookingSound()
+    {
+        if (AudioManager.Instance != null && cookingLoopSource != null)
+        {
+            AudioManager.Instance.StopLoopingSFX(cookingLoopSource);
+        }
+
+        cookingLoopSource = null;
     }
 
     private void CriarVisual(GameObject prefab)

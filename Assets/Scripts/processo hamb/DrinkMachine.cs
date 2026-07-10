@@ -24,6 +24,12 @@ public class DrinkMachine : MonoBehaviour, IInteractable
     private bool isFilled = false;
 
     private GameObject currentVisual;
+    private AudioSource fillingLoopSource;
+
+    private void OnDisable()
+    {
+        StopFillingSound();
+    }
 
     public void Interact()
     {
@@ -74,6 +80,12 @@ public class DrinkMachine : MonoBehaviour, IInteractable
         isFilled = false;
 
         MostrarCopoVazio();
+        PlayFillingSound();
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayPlaceObjectSFX();
+        }
 
         Debug.Log("copo vazio metido na maquina");
 
@@ -86,6 +98,13 @@ public class DrinkMachine : MonoBehaviour, IInteractable
 
         isFilling = false;
         isFilled = true;
+
+        StopFillingSound();
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayReadySFX();
+        }
 
         MostrarCopoCheio();
 
@@ -110,6 +129,26 @@ public class DrinkMachine : MonoBehaviour, IInteractable
         LimparVisual();
 
         Debug.Log("tirei a bebida da maquina");
+    }
+
+    private void PlayFillingSound()
+    {
+        StopFillingSound();
+
+        if (AudioManager.Instance != null)
+        {
+            fillingLoopSource = AudioManager.Instance.PlayFillDrinkLoopSFX();
+        }
+    }
+
+    private void StopFillingSound()
+    {
+        if (AudioManager.Instance != null && fillingLoopSource != null)
+        {
+            AudioManager.Instance.StopLoopingSFX(fillingLoopSource);
+        }
+
+        fillingLoopSource = null;
     }
 
     private void MostrarCopoVazio()

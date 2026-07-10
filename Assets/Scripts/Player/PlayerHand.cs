@@ -110,6 +110,8 @@ public class PlayerHand : MonoBehaviour
         Debug.Log("agora tenho na mao: " + currentItem);
 
         AtualizarVisualDaMao();
+        PlayPickupSound();
+
         return true;
     }
 
@@ -131,6 +133,8 @@ public class PlayerHand : MonoBehaviour
         Debug.Log("peguei no hamburger");
 
         AtualizarVisualDaMao();
+        PlayPickupSound();
+
         return true;
     }
 
@@ -152,6 +156,8 @@ public class PlayerHand : MonoBehaviour
         Debug.Log("peguei no tabuleiro");
 
         AtualizarVisualDaMao();
+        PlayPickupSound();
+
         return true;
     }
 
@@ -179,6 +185,14 @@ public class PlayerHand : MonoBehaviour
         currentTray.Clear();
 
         LimparVisualDaMao();
+    }
+
+    private void PlayPickupSound()
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayPickupObjectSFX();
+        }
     }
 
     private void AtualizarVisualDaMao()

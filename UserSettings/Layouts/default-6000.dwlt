@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 43
+    y: 0
     width: 1920
     height: 36
   m_SerializedDataModeController:
@@ -581,7 +581,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 79
+    y: 24
     width: 301
     height: 612
   m_SerializedDataModeController:
@@ -600,10 +600,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 17}
-      m_SelectedIDs:
-      - m_Data: -7390
+      m_SelectedIDs: []
       m_LastClickedID:
-        m_Data: -7390
+        m_Data: 0
       m_ExpandedIDs:
       - m_Data: -6416
       - m_Data: -2284
@@ -662,8 +661,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 302
-    y: 79
+    x: 303
+    y: 24
     width: 1303
     height: 612
   m_SerializedDataModeController:
@@ -1328,11 +1327,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.0035995697, y: -0.018302679, z: -0.00009033339, w: -0.9998595}
     speed: 2
-    m_Value: {x: 0.003599449, y: -0.018302066, z: -0.000090330366, w: -0.999826}
+    m_Value: {x: 0.00359957, y: -0.018302679, z: -0.00009033339, w: -0.9998596}
   m_Size:
     m_Target: 563.3503
     speed: 2
-    m_Value: 589.89557
+    m_Value: 563.3503
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1615,8 +1614,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1607
-    y: 79
+    x: 1608
+    y: 24
     width: 312
     height: 612
   m_SerializedDataModeController:
@@ -1667,7 +1666,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 717
+    y: 662
     width: 1920
     height: 277
   m_SerializedDataModeController:
@@ -1718,12 +1717,11 @@ MonoBehaviour:
       m_Data: 51472
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 47160
-    - m_Data: 47162
-    - m_Data: 47164
-    - m_Data: 47166
-    - m_Data: 47168
-    - m_Data: 1000000000
+    - m_Data: 50162
+    - m_Data: 50164
+    - m_Data: 50166
+    - m_Data: 50168
+    - m_Data: 50170
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1757,11 +1755,11 @@ MonoBehaviour:
       m_Data: 52386
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 47160
-    - m_Data: 47162
-    - m_Data: 47164
-    - m_Data: 47166
-    - m_Data: 47168
+    - m_Data: 50162
+    - m_Data: 50164
+    - m_Data: 50166
+    - m_Data: 50168
+    - m_Data: 50170
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
