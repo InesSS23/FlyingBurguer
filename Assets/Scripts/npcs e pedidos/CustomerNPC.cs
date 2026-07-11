@@ -68,12 +68,12 @@ public class CustomerNPC : MonoBehaviour
 
     private bool isWaiting = false;
     private bool isEating = false;
+    private bool isDespawning = false;
 
     private Animator tucanoAnimator;
     private Animator araraAnimator;
     private Animator gaivotaAnimator;
     private Animator corujaAnimator;
-
 
     private Coroutine patienceCoroutine;
     private float patienceTime = 25f;
@@ -82,6 +82,11 @@ public class CustomerNPC : MonoBehaviour
     private bool warnedMissingAraraAnimator = false;
     private bool warnedMissingGaivotaAnimator = false;
     private bool warnedMissingCorujaAnimator = false;
+
+    private CustomerFadeEffect fadeEffect;
+
+    private const float SPAWN_FADE_DURATION = 0.35f;
+    private const float DESPAWN_FADE_DURATION = 0.35f;
 
     public bool IsTucano()
     {
@@ -161,6 +166,7 @@ public class CustomerNPC : MonoBehaviour
 
         isWaiting = false;
         isEating = false;
+        isDespawning = false;
 
         StopPatienceTimer();
 
@@ -176,6 +182,7 @@ public class CustomerNPC : MonoBehaviour
         if (isCoruja)
             SetCorujaFlyAnimation(true);
 
+        StartSpawnFade();
 
         Debug.Log("cliente nasceu com pedido: " + currentOrder.GetOrderText());
     }
@@ -183,6 +190,9 @@ public class CustomerNPC : MonoBehaviour
     void Update()
     {
         CheckAnimatorWarnings();
+
+        if (isDespawning)
+            return;
 
         if (targetPoint == null)
             return;
@@ -202,6 +212,21 @@ public class CustomerNPC : MonoBehaviour
         }
     }
 
+    private void StartSpawnFade()
+    {
+        if (fadeEffect == null)
+        {
+            fadeEffect = GetComponent<CustomerFadeEffect>();
+        }
+
+        if (fadeEffect == null)
+        {
+            fadeEffect = gameObject.AddComponent<CustomerFadeEffect>();
+        }
+
+        fadeEffect.FadeIn(SPAWN_FADE_DURATION);
+    }
+
     private void CheckAnimatorWarnings()
     {
         if (isTucano && tucanoAnimator == null && !warnedMissingTucanoAnimator)
@@ -215,11 +240,13 @@ public class CustomerNPC : MonoBehaviour
             warnedMissingAraraAnimator = true;
             Debug.LogWarning("CustomerNPC: este cliente está marcado como Arara, mas não recebeu Animator.");
         }
+
         if (isGaivota && gaivotaAnimator == null && !warnedMissingGaivotaAnimator)
         {
             warnedMissingGaivotaAnimator = true;
             Debug.LogWarning("CustomerNPC: este cliente está marcado como Gaivota, mas não recebeu Animator.");
         }
+
         if (isCoruja && corujaAnimator == null && !warnedMissingCorujaAnimator)
         {
             warnedMissingCorujaAnimator = true;
@@ -245,7 +272,6 @@ public class CustomerNPC : MonoBehaviour
             if (isCoruja)
                 SetCorujaFlyAnimation(false);
 
-
             if (servicePoint != null)
             {
                 servicePoint.ShowOrderHUD(currentOrder, patienceTime);
@@ -257,6 +283,9 @@ public class CustomerNPC : MonoBehaviour
         }
         else
         {
+            if (isDespawning)
+                return;
+
             if (isTucano)
                 SetFlyAnimation(true);
 
@@ -269,15 +298,39 @@ public class CustomerNPC : MonoBehaviour
             if (isCoruja)
                 SetCorujaFlyAnimation(true);
 
-            StopPatienceTimer();
-
-            if (servicePoint != null)
-            {
-                servicePoint.SetFree();
-            }
-
-            Destroy(gameObject);
+            StartCoroutine(DespawnWithFade());
         }
+    }
+
+    private IEnumerator DespawnWithFade()
+    {
+        isDespawning = true;
+
+        StopPatienceTimer();
+
+        if (speechUI != null)
+        {
+            speechUI.HideSpeech();
+        }
+
+        if (servicePoint != null)
+        {
+            servicePoint.SetFree();
+        }
+
+        if (fadeEffect == null)
+        {
+            fadeEffect = GetComponent<CustomerFadeEffect>();
+        }
+
+        if (fadeEffect == null)
+        {
+            fadeEffect = gameObject.AddComponent<CustomerFadeEffect>();
+        }
+
+        yield return fadeEffect.FadeOutRoutine(DESPAWN_FADE_DURATION);
+
+        Destroy(gameObject);
     }
 
     private void SetFlyAnimation(bool flying)

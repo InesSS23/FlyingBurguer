@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\HUD\DayEndPanel.cs" />
     <Compile Include="Assets\Scripts\processo hamb\FryerStation.cs" />
     <Compile Include="Assets\Scripts\IInteractable.cs" />
+    <Compile Include="Assets\Scripts\npcs e pedidos\CustomerFadeEffect.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelConfig.cs" />
