@@ -461,6 +461,8 @@ MonoBehaviour:
   isTucano: 0
   isArara: 0
   isGaivota: 1
+  isCoruja: 0
   flyParameterName: isFlying
   araraFlyParameterName: isFlying
   gaivotaFlyParameterName: isFlying
+  corujaFlyParameterName: isFlying
