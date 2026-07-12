@@ -18,7 +18,6 @@ public class CustomerManager : MonoBehaviour
 
     [Header("prefab animacao coruja")]
     [SerializeField] private GameObject corujaAnimationPrefab;
-    [SerializeField] private Vector3 corujaLocalPositionOffset = Vector3.zero;
 
     [Header("pontos")]
     [SerializeField] private Transform[] spawnPoints;
@@ -524,7 +523,8 @@ public class CustomerManager : MonoBehaviour
             );
 
             corujaObject.transform.SetParent(customerObject.transform);
-            corujaObject.transform.localPosition = corujaLocalPositionOffset;
+            corujaObject.transform.localPosition = Vector3.zero;
+            corujaObject.transform.localScale = Vector3.one;
 
             Camera corujaCamera = corujaObject.GetComponentInChildren<Camera>();
             if (corujaCamera != null)
