@@ -58,9 +58,16 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
     {
         MealTray tray = playerHand.GetTrayCopy();
 
-        if (tray == null || !tray.HasBurger())
+        if (tray == null || tray.IsEmpty())
         {
-            Debug.Log("o tabuleiro n tem hamburger para entregar");
+            Debug.Log("tabuleiro vazio");
+            return;
+        }
+
+        if (!tray.HasBurger())
+        {
+            PenalizarPedidoIncorreto();
+            Debug.Log("pedido errado: tabuleiro sem hamburger");
             return;
         }
 
@@ -101,15 +108,27 @@ public class DeliveryCounter : MonoBehaviour, IInteractable
         {
             dayManager.AddScore(-wrongOrderPenalty);
         }
+        else
+        {
+            Debug.LogWarning("DayManager nao esta ligado no DeliveryCounter.");
+        }
 
         if (feedbackMessageUI != null)
         {
             feedbackMessageUI.ShowMessage("pedido incorreto");
         }
+        else
+        {
+            Debug.LogWarning("FeedbackMessageUI nao esta ligado no DeliveryCounter.");
+        }
 
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.PlayWrongOrderSFX();
+        }
+        else
+        {
+            Debug.LogWarning("AudioManager nao existe na scene.");
         }
     }
 }
