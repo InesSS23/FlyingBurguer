@@ -169,9 +169,13 @@ public class DayManager : MonoBehaviour
     {
         bool success = currentScore >= targetScore;
 
+        dayRunning = false;
+        dayEnded = true;
+
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.StopBackgroundMusic();
+            AudioManager.Instance.StopAllLoopingSFX();
         }
 
         if (pauseMenuController != null)
@@ -192,6 +196,12 @@ public class DayManager : MonoBehaviour
         {
             dayEndPanel.ShowResult(success, currentScore, targetScore, levelConfig);
         }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        // Pausa o jogo por tras do painel final, como acontece no menu de pausa.
+        Time.timeScale = 0f;
 
         if (success)
         {
