@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\processo hamb\FryerStation.cs" />
     <Compile Include="Assets\Scripts\IInteractable.cs" />
     <Compile Include="Assets\Scripts\npcs e pedidos\CustomerFadeEffect.cs" />
+    <Compile Include="Assets\Scripts\HUD\EndCutsceneController.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelConfig.cs" />
     <Compile Include="Assets\Scripts\SKY\CloudSpriteMover.cs" />
     <Compile Include="Assets\Scripts\Player\FirstPersonPlayer.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\Scripts\processo hamb\DeliveryCounter.cs" />
     <Compile Include="Assets\Scripts\HUD\FeedbackMessageUI.cs" />
     <Compile Include="Assets\Scripts\TrashBin.cs" />
+    <Compile Include="Assets\Scripts\Levels\AssetsScriptsLevelsLevelProgress.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Main Menu\PauseMenuController.cs" />
     <Compile Include="Assets\Scripts\HUD\IntroDialogue.cs" />

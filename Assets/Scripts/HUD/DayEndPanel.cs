@@ -16,12 +16,17 @@ public class DayEndPanel : MonoBehaviour
     [SerializeField] private Button nextLevelButton;
     [SerializeField] private TMP_Text nextLevelButtonText;
 
+    [Header("cutscene final")]
+    [SerializeField] private EndCutsceneController endCutsceneController;
+
     [Header("cenas")]
     [SerializeField] private string menuSceneName = "MainMenu";
     [SerializeField] private string fallbackNextSceneName = "";
     [SerializeField] private string fallbackFinalSceneName = "";
 
     private string nextSceneToLoad = "";
+    private LevelConfig activeLevelConfig;
+    private bool shouldPlayEndCutscene = false;
 
     void Start()
     {
@@ -42,7 +47,7 @@ public class DayEndPanel : MonoBehaviour
 
         if (nextLevelButton != null)
         {
-            nextLevelButton.onClick.AddListener(GoToNextLevel);
+            nextLevelButton.onClick.AddListener(GoToNextLevelOrEndCutscene);
             nextLevelButton.gameObject.SetActive(false);
 
             if (nextLevelButtonText == null)
@@ -64,7 +69,9 @@ public class DayEndPanel : MonoBehaviour
             panel.SetActive(true);
         }
 
+        activeLevelConfig = levelConfig;
         nextSceneToLoad = "";
+        shouldPlayEndCutscene = false;
 
         if (nextLevelButton != null)
         {
@@ -87,20 +94,23 @@ public class DayEndPanel : MonoBehaviour
     private void ShowSuccess(int finalScore, int targetScore, LevelConfig levelConfig)
     {
         if (titleText != null)
-            titleText.text = "Dia Concluido!";
+            titleText.text = "Dia Concluído!";
 
         if (resultText != null)
             resultText.text = "Conseguiste " + finalScore + " / " + targetScore + " pontos.";
 
-        bool hasNextScene = false;
-        bool isFinalLevel = false;
+        bool hasNextAction = false;
 
         if (levelConfig != null)
         {
-            isFinalLevel = levelConfig.isFinalLevel;
-
-            if (isFinalLevel)
+            if (levelConfig.isFinalLevel)
             {
+                if (titleText != null)
+                    titleText.text = "Jogo Concluído!";
+
+                shouldPlayEndCutscene = endCutsceneController != null
+                    && endCutsceneController.HasFrames(levelConfig);
+
                 if (!string.IsNullOrWhiteSpace(levelConfig.finalSceneName))
                 {
                     nextSceneToLoad = levelConfig.finalSceneName;
@@ -114,34 +124,35 @@ public class DayEndPanel : MonoBehaviour
                     nextSceneToLoad = menuSceneName;
                 }
 
-                hasNextScene = true;
-
-                if (titleText != null)
-                    titleText.text = "Jogo Concluido!";
+                hasNextAction = true;
 
                 if (nextLevelButtonText != null)
-                    nextLevelButtonText.text = "Terminar";
+                    nextLevelButtonText.text = shouldPlayEndCutscene ? "Ver Final" : "Terminar";
             }
             else if (!string.IsNullOrWhiteSpace(levelConfig.nextSceneName))
             {
                 nextSceneToLoad = levelConfig.nextSceneName;
-                hasNextScene = true;
+                hasNextAction = true;
+
+                LevelProgress.SaveCurrentLevel(nextSceneToLoad);
 
                 if (nextLevelButtonText != null)
-                    nextLevelButtonText.text = "Proximo Dia";
+                    nextLevelButtonText.text = "Próximo Dia";
             }
         }
 
-        if (!hasNextScene && !string.IsNullOrWhiteSpace(fallbackNextSceneName))
+        if (!hasNextAction && !string.IsNullOrWhiteSpace(fallbackNextSceneName))
         {
             nextSceneToLoad = fallbackNextSceneName;
-            hasNextScene = true;
+            hasNextAction = true;
+
+            LevelProgress.SaveCurrentLevel(nextSceneToLoad);
 
             if (nextLevelButtonText != null)
-                nextLevelButtonText.text = "Proximo Dia";
+                nextLevelButtonText.text = "Próximo Dia";
         }
 
-        if (nextLevelButton != null && hasNextScene)
+        if (nextLevelButton != null && hasNextAction)
         {
             nextLevelButton.gameObject.SetActive(true);
         }
@@ -168,12 +179,28 @@ public class DayEndPanel : MonoBehaviour
         SceneManager.LoadScene(menuSceneName);
     }
 
-    private void GoToNextLevel()
+    private void GoToNextLevelOrEndCutscene()
     {
+        if (shouldPlayEndCutscene && endCutsceneController != null)
+        {
+            if (panel != null)
+            {
+                panel.SetActive(false);
+            }
+
+            endCutsceneController.StartEndCutscene(activeLevelConfig);
+            return;
+        }
+
         if (string.IsNullOrWhiteSpace(nextSceneToLoad))
         {
             Debug.LogWarning("Nao existe proxima scene definida.");
             return;
+        }
+
+        if (activeLevelConfig != null && activeLevelConfig.isFinalLevel)
+        {
+            LevelProgress.ClearProgress();
         }
 
         Time.timeScale = 1f;

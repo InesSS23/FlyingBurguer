@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DayManager : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class DayManager : MonoBehaviour
         Time.timeScale = 1f;
 
         ApplyLevelConfig();
+        SaveProgressForThisLevel();
 
         currentTime = dayDuration;
         currentScore = 0;
@@ -92,6 +94,17 @@ public class DayManager : MonoBehaviour
         {
             gameplayBackgroundMusic = levelConfig.gameplayBackgroundMusic;
         }
+    }
+
+    private void SaveProgressForThisLevel()
+    {
+        if (levelConfig != null && !string.IsNullOrWhiteSpace(levelConfig.sceneName))
+        {
+            LevelProgress.SaveCurrentLevel(levelConfig.sceneName);
+            return;
+        }
+
+        LevelProgress.SaveCurrentLevel(SceneManager.GetActiveScene().name);
     }
 
     public LevelConfig GetLevelConfig()
@@ -200,7 +213,6 @@ public class DayManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        // Pausa o jogo por tras do painel final, como acontece no menu de pausa.
         Time.timeScale = 0f;
 
         if (success)

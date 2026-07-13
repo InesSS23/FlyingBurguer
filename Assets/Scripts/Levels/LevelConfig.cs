@@ -47,6 +47,9 @@ public class LevelConfig : ScriptableObject
     [Header("Dialogo / cutscene inicial")]
     public DialogueFrame[] introFrames;
 
+    [Header("Cutscene final")]
+    public DialogueFrame[] endFrames;
+
     [Header("Audio")]
     public AudioClip gameplayBackgroundMusic;
 }

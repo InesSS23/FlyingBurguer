@@ -32,4 +32,5 @@ MonoBehaviour:
   allowDrink: 1
   maxExtraIngredients: 3
   introFrames: []
+  endFrames: []
   gameplayBackgroundMusic: {fileID: 0}
