@@ -75,6 +75,10 @@ public class CustomerNPC : MonoBehaviour
     private Animator gaivotaAnimator;
     private Animator corujaAnimator;
 
+    // transform do modelo/prefab de animacao do passaro atualmente usado (tucano/arara/gaivota/coruja)
+    // usado para saber que renderers pertencem ao "passaro" e quais pertencem ao "NPC base"
+    private Transform birdVisualTransform;
+
     private Coroutine patienceCoroutine;
     private float patienceTime = 25f;
 
@@ -148,6 +152,13 @@ public class CustomerNPC : MonoBehaviour
         }
     }
 
+    // chamado pelo CustomerManager logo apos instanciar o prefab de animacao do passaro
+    // guarda a referencia para depois podermos alternar entre "modelo passaro" e "modelo NPC"
+    public void SetBirdVisualTransform(Transform birdTransform)
+    {
+        birdVisualTransform = birdTransform;
+    }
+
     public void SetupCustomer(
         Transform serviceTarget,
         Transform exitTarget,
@@ -181,6 +192,9 @@ public class CustomerNPC : MonoBehaviour
 
         if (isCoruja)
             SetCorujaFlyAnimation(true);
+
+        // ao nascer o cliente esta a voar ate ao balcao, por isso mostra o modelo do passaro
+        ShowBirdModel();
 
         StartSpawnFade();
 
@@ -271,6 +285,9 @@ public class CustomerNPC : MonoBehaviour
 
             if (isCoruja)
                 SetCorujaFlyAnimation(false);
+
+            // chegou ao balcao: troca do modelo do passaro para o modelo estatico do NPC
+            ShowNpcModel();
 
             if (servicePoint != null)
             {
@@ -491,6 +508,8 @@ public class CustomerNPC : MonoBehaviour
 
         isEating = false;
 
+        // vai sair pelo ar: volta a mostrar o modelo do passaro antes de retomar o movimento
+        ShowBirdModel();
         SetCorrectFlyAnimation(true);
         targetPoint = exitPoint;
     }
@@ -591,6 +610,8 @@ public class CustomerNPC : MonoBehaviour
 
         isEating = false;
 
+        // vai embora pelo ar: volta a mostrar o modelo do passaro antes de retomar o movimento
+        ShowBirdModel();
         SetCorrectFlyAnimation(true);
 
         targetPoint = exitPoint;
@@ -627,6 +648,40 @@ public class CustomerNPC : MonoBehaviour
 
             rend.enabled = active;
         }
+    }
+
+    // liga/desliga apenas os renderers dentro do modelo de animacao do passaro
+    private void SetBirdRenderersActive(bool active)
+    {
+        if (birdVisualTransform == null)
+            return;
+
+        Renderer[] rends = birdVisualTransform.GetComponentsInChildren<Renderer>(true);
+
+        foreach (Renderer rend in rends)
+        {
+            rend.enabled = active;
+        }
+    }
+
+    // mostra o modelo do passaro (a voar) e esconde o modelo base do NPC
+    public void ShowBirdModel()
+    {
+        if (birdVisualTransform == null)
+            return;
+
+        SetVisualsActive(false, birdVisualTransform);
+        SetBirdRenderersActive(true);
+    }
+
+    // mostra o modelo base do NPC (parado no balcao) e esconde o modelo do passaro
+    public void ShowNpcModel()
+    {
+        if (birdVisualTransform == null)
+            return;
+
+        SetVisualsActive(true, birdVisualTransform);
+        SetBirdRenderersActive(false);
     }
 
     public BurgerOrder GetCurrentOrder()

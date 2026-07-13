@@ -477,7 +477,7 @@ public class CustomerManager : MonoBehaviour
             Debug.Log("TUCANO ANIM OBJECT: " + (anim == null ? "NULL" : anim.gameObject.name));
 
             customer.SetTucanoAnimator(anim);
-            customer.SetVisualsActive(false, tucanoObject.transform);
+            customer.SetBirdVisualTransform(tucanoObject.transform);
         }
         else if (araraAnimationPrefab != null && customer.IsArara())
         {
@@ -507,7 +507,7 @@ public class CustomerManager : MonoBehaviour
             Debug.Log("ARARA ANIM OBJECT: " + (anim == null ? "NULL" : anim.gameObject.name));
 
             customer.SetAraraAnimator(anim);
-            customer.SetVisualsActive(false, araraObject.transform);
+            customer.SetBirdVisualTransform(araraObject.transform);
         }
         else if (gaivotaAnimationPrefab != null && customer.IsGaivota())
         {
@@ -537,7 +537,7 @@ public class CustomerManager : MonoBehaviour
             Debug.Log("GAIVOTA ANIM OBJECT: " + (anim == null ? "NULL" : anim.gameObject.name));
 
             customer.SetGaivotaAnimator(anim);
-            customer.SetVisualsActive(false, gaivotaObject.transform);
+            customer.SetBirdVisualTransform(gaivotaObject.transform);
         }
         else if (corujaAnimationPrefab != null && customer.IsCoruja())
         {
@@ -567,7 +567,7 @@ public class CustomerManager : MonoBehaviour
             Debug.Log("CORUJA ANIM OBJECT: " + (anim == null ? "NULL" : anim.gameObject.name));
 
             customer.SetCorujaAnimator(anim);
-            customer.SetVisualsActive(false, corujaObject.transform);
+            customer.SetBirdVisualTransform(corujaObject.transform);
         }
 
         freePoint.SetCustomer(customer);
