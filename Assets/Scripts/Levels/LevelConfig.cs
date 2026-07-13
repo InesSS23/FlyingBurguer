@@ -41,8 +41,8 @@ public class LevelConfig : ScriptableObject
     public bool allowDrink = true;
 
     [Header("Complexidade dos hamburgueres")]
-    [Tooltip("0 = so pao + carne + pao. 1 = um ingrediente extra. 2 = ate dois ingredientes extra. Para manter maximo de 5 ingredientes, deixa em 2.")]
-    public int maxExtraIngredients = 2;
+    [Tooltip("0 = so pao + carne + pao. 1 = um ingrediente extra. 2 = ate dois ingredientes extra. 3 = ate tres ingredientes extra.")]
+    public int maxExtraIngredients = 3;
 
     [Header("Dialogo / cutscene inicial")]
     public DialogueFrame[] introFrames;

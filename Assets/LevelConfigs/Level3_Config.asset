@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Level3_Config
   m_EditorClassIdentifier: Assembly-CSharp::LevelConfig
   dayNumber: 3
-  sceneName: Level1
+  sceneName: Level3
   nextSceneName: 
-  isFinalLevel: 0
-  finalSceneName: 
+  isFinalLevel: 1
+  finalSceneName: MainMenu
   dayDuration: 300
-  targetScore: 100
+  targetScore: 120
   pointsPerDelivery: 10
-  minSpawnTime: 3
-  maxSpawnTime: 6
-  customerPatienceTime: 60
+  minSpawnTime: 2
+  maxSpawnTime: 4
+  customerPatienceTime: 45
   missedCustomerPenalty: 5
   allowCheese: 1
   allowLettuce: 1
@@ -30,6 +30,6 @@ MonoBehaviour:
   allowPepper: 1
   allowFries: 1
   allowDrink: 1
-  maxExtraIngredients: 2
+  maxExtraIngredients: 3
   introFrames: []
   gameplayBackgroundMusic: {fileID: 0}

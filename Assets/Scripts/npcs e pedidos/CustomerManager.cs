@@ -192,7 +192,7 @@ public class CustomerManager : MonoBehaviour
         if (config.allowPepper)
             extras.Add("Pepper");
 
-        int maxExtras = Mathf.Clamp(config.maxExtraIngredients, 0, 2);
+        int maxExtras = Mathf.Clamp(config.maxExtraIngredients, 0, 3);
 
         AdicionarPedidoComVariacoes(CriarPedido("Burger simples"));
 
@@ -219,6 +219,31 @@ public class CustomerManager : MonoBehaviour
                     string nome = "Burger " + NomeIngrediente(extraA) + " e " + NomeIngrediente(extraB);
 
                     AdicionarPedidoComVariacoes(CriarPedido(nome, extraA, extraB));
+                }
+            }
+        }
+
+        if (maxExtras >= 3)
+        {
+            for (int i = 0; i < extras.Count; i++)
+            {
+                for (int j = i + 1; j < extras.Count; j++)
+                {
+                    for (int k = j + 1; k < extras.Count; k++)
+                    {
+                        string extraA = extras[i];
+                        string extraB = extras[j];
+                        string extraC = extras[k];
+
+                        string nome = "Burger "
+                            + NomeIngrediente(extraA)
+                            + ", "
+                            + NomeIngrediente(extraB)
+                            + " e "
+                            + NomeIngrediente(extraC);
+
+                        AdicionarPedidoComVariacoes(CriarPedido(nome, extraA, extraB, extraC));
+                    }
                 }
             }
         }

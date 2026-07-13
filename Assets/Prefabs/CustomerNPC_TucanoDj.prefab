@@ -448,13 +448,22 @@ MonoBehaviour:
   - "Uma autentica explus\xE3o de sabores"
   - Que magnifico
   - "Adoraria saber do que \xE9 feito"
-  impatientComment: vou embora!  tanto tempo
+  impatientComments:
+  - Demoraste muito! Vou embora!
+  - Estou farto de esperar!
+  - "Que servi\xE7o lento!"
+  - "J\xE1 perdi a fome!"
+  - "Vou comer noutro s\xEDtio!"
   impatientLeaveDelay: 3
   speechUI: {fileID: 2996203984789836744}
   isTucano: 1
   isArara: 0
+  isGaivota: 0
+  isCoruja: 0
   flyParameterName: isFlying
   araraFlyParameterName: isFlying
+  gaivotaFlyParameterName: isFlying
+  corujaFlyParameterName: isFlying
 --- !u!95 &7592678062011132731
 Animator:
   serializedVersion: 7
