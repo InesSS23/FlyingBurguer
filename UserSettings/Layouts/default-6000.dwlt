@@ -167,8 +167,8 @@ MonoBehaviour:
     y: 0
     width: 301
     height: 596
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 226}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -221,8 +221,8 @@ MonoBehaviour:
     y: 0
     width: 354
     height: 596
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 76}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 43
+    y: 0
     width: 1920
     height: 36
   m_SerializedDataModeController:
@@ -581,7 +581,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 79
+    y: 24
     width: 300
     height: 570
   m_SerializedDataModeController:
@@ -618,8 +618,8 @@ MonoBehaviour:
       - m_Data: 47448
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: SpeechPanel
-        m_OriginalName: SpeechPanel
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
@@ -627,10 +627,10 @@ MonoBehaviour:
           width: 0
           height: 0
         m_UserData:
-          m_Data: 53254
+          m_Data: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
         m_ClientGUIView: {fileID: 7}
@@ -662,8 +662,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 301
-    y: 79
+    x: 302
+    y: 24
     width: 1263
     height: 570
   m_SerializedDataModeController:
@@ -1280,7 +1280,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: -180.21283, y: -145.96844, z: -166.64716}
     speed: 2
-    m_Value: {x: -10.266866, y: -3.7530806, z: 44.99341}
+    m_Value: {x: -180.21283, y: -145.96844, z: -166.64716}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1328,11 +1328,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.104315005, y: 0.8878681, z: -0.24801524, w: -0.3733903}
     speed: 2
-    m_Value: {x: 0.06963906, y: -0.07653138, z: 0.005325404, w: 0.99461806}
+    m_Value: {x: -0.104308575, y: 0.8878134, z: -0.24799995, w: -0.37336728}
   m_Size:
     m_Target: 151.12016
     speed: 2
-    m_Value: 29.071007
+    m_Value: 151.12016
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1615,8 +1615,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1566
-    y: 79
+    x: 1567
+    y: 24
     width: 353
     height: 570
   m_SerializedDataModeController:
@@ -1667,7 +1667,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 675
+    y: 620
     width: 1920
     height: 319
   m_SerializedDataModeController:
@@ -1723,7 +1723,6 @@ MonoBehaviour:
     - m_Data: 50150
     - m_Data: 50152
     - m_Data: 50154
-    - m_Data: 1000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

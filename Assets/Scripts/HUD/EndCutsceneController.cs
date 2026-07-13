@@ -41,6 +41,14 @@ public class EndCutsceneController : MonoBehaviour
         }
     }
 
+    private void PlayButtonSound()
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayButtonClickSFX();
+        }
+    }
+
     public bool HasFrames(LevelConfig config)
     {
         return config != null && config.endFrames != null && config.endFrames.Length > 0;
@@ -109,13 +117,15 @@ public class EndCutsceneController : MonoBehaviour
             }
             else
             {
-                nextButtonText.text = "Próximo";
+                nextButtonText.text = "Proximo";
             }
         }
     }
 
     private void NextFrame()
     {
+        PlayButtonSound();
+
         if (!active)
             return;
 

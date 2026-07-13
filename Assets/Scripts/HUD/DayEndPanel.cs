@@ -57,6 +57,14 @@ public class DayEndPanel : MonoBehaviour
         }
     }
 
+    private void PlayButtonSound()
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayButtonClickSFX();
+        }
+    }
+
     public void ShowResult(bool success, int finalScore, int targetScore)
     {
         ShowResult(success, finalScore, targetScore, null);
@@ -94,7 +102,7 @@ public class DayEndPanel : MonoBehaviour
     private void ShowSuccess(int finalScore, int targetScore, LevelConfig levelConfig)
     {
         if (titleText != null)
-            titleText.text = "Dia Concluído!";
+            titleText.text = "Dia Concluido!";
 
         if (resultText != null)
             resultText.text = "Conseguiste " + finalScore + " / " + targetScore + " pontos.";
@@ -106,7 +114,7 @@ public class DayEndPanel : MonoBehaviour
             if (levelConfig.isFinalLevel)
             {
                 if (titleText != null)
-                    titleText.text = "Jogo Concluído!";
+                    titleText.text = "Jogo Concluido!";
 
                 shouldPlayEndCutscene = endCutsceneController != null
                     && endCutsceneController.HasFrames(levelConfig);
@@ -137,7 +145,7 @@ public class DayEndPanel : MonoBehaviour
                 LevelProgress.SaveCurrentLevel(nextSceneToLoad);
 
                 if (nextLevelButtonText != null)
-                    nextLevelButtonText.text = "Próximo Dia";
+                    nextLevelButtonText.text = "Proximo Dia";
             }
         }
 
@@ -149,7 +157,7 @@ public class DayEndPanel : MonoBehaviour
             LevelProgress.SaveCurrentLevel(nextSceneToLoad);
 
             if (nextLevelButtonText != null)
-                nextLevelButtonText.text = "Próximo Dia";
+                nextLevelButtonText.text = "Proximo Dia";
         }
 
         if (nextLevelButton != null && hasNextAction)
@@ -169,18 +177,24 @@ public class DayEndPanel : MonoBehaviour
 
     private void RestartDay()
     {
+        PlayButtonSound();
+
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void GoToMenu()
     {
+        PlayButtonSound();
+
         Time.timeScale = 1f;
         SceneManager.LoadScene(menuSceneName);
     }
 
     private void GoToNextLevelOrEndCutscene()
     {
+        PlayButtonSound();
+
         if (shouldPlayEndCutscene && endCutsceneController != null)
         {
             if (panel != null)

@@ -51,6 +51,14 @@ public class IntroDialogue : MonoBehaviour
         StartDialogue();
     }
 
+    private void PlayButtonSound()
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayButtonClickSFX();
+        }
+    }
+
     private void TryLoadDialogueFromLevelConfig()
     {
         if (dayManager == null)
@@ -163,6 +171,8 @@ public class IntroDialogue : MonoBehaviour
 
     private void NextLine()
     {
+        PlayButtonSound();
+
         if (!dialogueActive)
             return;
 

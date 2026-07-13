@@ -34,6 +34,11 @@ public class PauseMenuController : MonoBehaviour
             optionsPanel.SetActive(false);
         }
 
+        if (pauseButtonsPanel != null)
+        {
+            pauseButtonsPanel.SetActive(true);
+        }
+
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -61,8 +66,18 @@ public class PauseMenuController : MonoBehaviour
         }
     }
 
+    private void PlayButtonSound()
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayButtonClickSFX();
+        }
+    }
+
     public void ResumeGame()
     {
+        PlayButtonSound();
+
         if (pauseMenuPanel != null)
         {
             pauseMenuPanel.SetActive(false);
@@ -111,6 +126,8 @@ public class PauseMenuController : MonoBehaviour
 
     public void ShowOptions()
     {
+        PlayButtonSound();
+
         if (pauseButtonsPanel != null)
         {
             pauseButtonsPanel.SetActive(false);
@@ -124,6 +141,8 @@ public class PauseMenuController : MonoBehaviour
 
     public void BackToPauseButtons()
     {
+        PlayButtonSound();
+
         if (optionsPanel != null)
         {
             optionsPanel.SetActive(false);
@@ -158,12 +177,16 @@ public class PauseMenuController : MonoBehaviour
 
     public void RestartDay()
     {
+        PlayButtonSound();
+
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void BackToMainMenu()
     {
+        PlayButtonSound();
+
         Time.timeScale = 1f;
 
         if (AudioManager.Instance != null)
