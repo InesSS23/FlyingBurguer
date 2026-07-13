@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a265f2db43918c247ad7679a866e9021, type: 3}
-  m_Name: Level3_Config
+  m_Name: Level1_Config
   m_EditorClassIdentifier: Assembly-CSharp::LevelConfig
-  dayNumber: 3
-  sceneName: Level3
-  nextSceneName: 
-  isFinalLevel: 1
-  finalSceneName: MainMenu
-  dayDuration: 300
-  targetScore: 120
+  dayNumber: 1
+  sceneName: Level1
+  nextSceneName: Level2
+  isFinalLevel: 0
+  finalSceneName: 
+  dayDuration: 250
+  targetScore: 100
   pointsPerDelivery: 10
-  minSpawnTime: 2
-  maxSpawnTime: 4
-  customerPatienceTime: 40
+  minSpawnTime: 6
+  maxSpawnTime: 8
+  customerPatienceTime: 80
   missedCustomerPenalty: 5
   allowCheese: 1
   allowLettuce: 1
-  allowTomato: 1
-  allowPepper: 1
-  allowFries: 1
-  allowDrink: 1
-  maxExtraIngredients: 3
+  allowTomato: 0
+  allowPepper: 0
+  allowFries: 0
+  allowDrink: 0
+  maxExtraIngredients: 2
   introFrames: []
   endFrames: []
   gameplayBackgroundMusic: {fileID: 0}
