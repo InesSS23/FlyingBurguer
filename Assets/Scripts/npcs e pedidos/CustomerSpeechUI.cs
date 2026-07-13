@@ -21,16 +21,22 @@ public class CustomerSpeechUI : MonoBehaviour
     [Header("tempo visivel")]
     [SerializeField] private float speechDuration = 2.5f;
 
-    [Header("limites do texto")]
+    [Header("tamanho do texto")]
     [SerializeField] private bool autoFitText = true;
-    [SerializeField] private int maxVisibleLines = 4;
-    [SerializeField] private float minFontSize = 10f;
+    [SerializeField] private float minFontSize = 7f;
     [SerializeField] private float maxFontSize = 22f;
+    [SerializeField] private float fontSizeStep = 0.25f;
+
+    [Header("margens internas do balao")]
+    [SerializeField] private float horizontalPadding = 6f;
+    [SerializeField] private float verticalPadding = 4f;
 
     [Header("camera")]
     [SerializeField] private bool faceCamera = true;
 
     private Coroutine speechCoroutine;
+
+    private const float EMERGENCY_MIN_FONT_SIZE = 4f;
 
     void Start()
     {
@@ -87,14 +93,108 @@ public class CustomerSpeechUI : MonoBehaviour
 
     private IEnumerator ShowSpeechRoutine(string message)
     {
-        PrepareSpeechText();
-
-        speechText.text = message;
         speechPanel.SetActive(true);
+
+        PrepareSpeechText();
+        ConfigureTextAreaInsideBubble();
+
+        yield return null;
+
+        if (autoFitText)
+        {
+            FitTextInsideBubble(message);
+        }
+        else
+        {
+            speechText.text = message;
+            speechText.fontSize = maxFontSize;
+        }
 
         yield return new WaitForSeconds(speechDuration);
 
         HideSpeech();
+    }
+
+    private void PrepareSpeechText()
+    {
+        if (speechText == null)
+            return;
+
+        speechText.textWrappingMode = TextWrappingModes.Normal;
+        speechText.overflowMode = TextOverflowModes.Overflow;
+        speechText.enableAutoSizing = false;
+        speechText.alignment = TextAlignmentOptions.Center;
+        speechText.raycastTarget = false;
+        speechText.margin = Vector4.zero;
+        speechText.lineSpacing = -8f;
+        speechText.characterSpacing = 0f;
+        speechText.wordSpacing = 0f;
+    }
+
+    private void ConfigureTextAreaInsideBubble()
+    {
+        if (speechPanel == null || speechText == null)
+            return;
+
+        RectTransform panelRect = speechPanel.GetComponent<RectTransform>();
+        RectTransform textRect = speechText.rectTransform;
+
+        if (panelRect == null || textRect == null)
+            return;
+
+        float width = Mathf.Max(10f, panelRect.rect.width - horizontalPadding * 2f);
+        float height = Mathf.Max(10f, panelRect.rect.height - verticalPadding * 2f);
+
+        textRect.anchorMin = new Vector2(0.5f, 0.5f);
+        textRect.anchorMax = new Vector2(0.5f, 0.5f);
+        textRect.pivot = new Vector2(0.5f, 0.5f);
+        textRect.anchoredPosition = Vector2.zero;
+        textRect.sizeDelta = new Vector2(width, height);
+    }
+
+    private void FitTextInsideBubble(string message)
+    {
+        if (speechText == null)
+            return;
+
+        RectTransform textRect = speechText.rectTransform;
+
+        float boxWidth = textRect.rect.width;
+        float boxHeight = textRect.rect.height;
+
+        if (boxWidth <= 0f || boxHeight <= 0f)
+        {
+            speechText.text = message;
+            speechText.fontSize = EMERGENCY_MIN_FONT_SIZE;
+            return;
+        }
+
+        speechText.text = message;
+
+        float realMinFontSize = Mathf.Min(minFontSize, EMERGENCY_MIN_FONT_SIZE);
+        float realMaxFontSize = Mathf.Max(maxFontSize, realMinFontSize);
+
+        float chosenSize = realMinFontSize;
+
+        for (float size = realMaxFontSize; size >= realMinFontSize; size -= fontSizeStep)
+        {
+            speechText.fontSize = size;
+            speechText.ForceMeshUpdate();
+
+            Vector2 preferredSize = speechText.GetPreferredValues(message, boxWidth, Mathf.Infinity);
+
+            bool fitsWidth = preferredSize.x <= boxWidth + 0.5f;
+            bool fitsHeight = preferredSize.y <= boxHeight + 0.5f;
+
+            if (fitsWidth && fitsHeight)
+            {
+                chosenSize = size;
+                break;
+            }
+        }
+
+        speechText.fontSize = chosenSize;
+        speechText.ForceMeshUpdate();
     }
 
     private void ApplyColors(bool angry)
@@ -108,20 +208,6 @@ public class CustomerSpeechUI : MonoBehaviour
         {
             speechText.color = angry ? angryTextColor : normalTextColor;
         }
-    }
-
-    private void PrepareSpeechText()
-    {
-        if (speechText == null || !autoFitText)
-            return;
-
-        speechText.textWrappingMode = TextWrappingModes.Normal;
-        speechText.enableAutoSizing = true;
-        speechText.fontSizeMin = minFontSize;
-        speechText.fontSizeMax = maxFontSize;
-        speechText.maxVisibleLines = maxVisibleLines;
-        speechText.overflowMode = TextOverflowModes.Overflow;
-        speechText.alignment = TextAlignmentOptions.Center;
     }
 
     private void TryFindPanelImage()
