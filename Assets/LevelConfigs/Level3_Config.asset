@@ -17,8 +17,8 @@ MonoBehaviour:
   nextSceneName: 
   isFinalLevel: 1
   finalSceneName: MainMenu
-  dayDuration: 2
-  targetScore: 0
+  dayDuration: 300
+  targetScore: 150
   pointsPerDelivery: 10
   minSpawnTime: 2
   maxSpawnTime: 4
