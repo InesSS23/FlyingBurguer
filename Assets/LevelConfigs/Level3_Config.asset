@@ -17,8 +17,8 @@ MonoBehaviour:
   nextSceneName: 
   isFinalLevel: 1
   finalSceneName: MainMenu
-  dayDuration: 300
-  targetScore: 120
+  dayDuration: 2
+  targetScore: 0
   pointsPerDelivery: 10
   minSpawnTime: 2
   maxSpawnTime: 4
@@ -31,6 +31,142 @@ MonoBehaviour:
   allowFries: 1
   allowDrink: 1
   maxExtraIngredients: 3
-  introFrames: []
-  endFrames: []
+  introFrames:
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: 'Bom dia!
+
+      Hoje trago uma surpresa!'
+    image: {fileID: 0}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "Consegui uma m\xE1quina de bebidas!\nE acredita... um hamb\xFArguer sabe
+      sempre melhor em menu."
+    image: {fileID: 0}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "Tamb\xE9m temos batatas agora.\nVais encontr\xE1-las aqui no frigorifico."
+    image: {fileID: 0}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "P\xF5es as batatas a fritar e esperas que fiquem prontas.\n\xC1pos isso
+      est\xE3o prontas a servir!"
+    image: {fileID: 0}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "Com as bebidas \xE9 parecido.\nColocas o copo na m\xE1quina e esperas
+      que encha. "
+    image: {fileID: 0}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: Depois juntas tudo ao tabuleiro!
+    image: {fileID: 0}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "O neg\xF3cio est\xE1 a crescer tanto... qualquer dia tenho de contratar
+      outro funcion\xE1rio ahaha!!"
+    image: {fileID: 0}
+  - speakerName: Pombo - Cozinheiro
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: (Ele diz isso a brincar... mas hoje parece mais nervoso do que animado.
+      Estranho)
+    image: {fileID: 0}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "Ontem ouvi muitos elogios sobre a rolote.\nPor isso prepara-te... acho
+      que hoje vais ter m\xE3os cheias!"
+    image: {fileID: 0}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: Boa sorte! Eu acredito em ti.
+    image: {fileID: 0}
+  - speakerName: Pombo - Cozinheiro
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: "Tamb\xE9m acredito em mim, eu dou conta disto ahah\n(cada vez confio menos
+      nele)"
+    image: {fileID: 0}
+  endFrames:
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: 'Ah... ainda bem que terminaste.
+
+      Tenho de te dizer uma coisa.....'
+    image: {fileID: 0}
+  - speakerName: Pombo - Cozinheiro
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: "(Eu sustei-me com a chegada dele, n\xE3o \xE9 costume dele aparecer ao
+      fim dia de trabalho. Ele parece t\xE3o nervoso...)"
+    image: {fileID: 0}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: 'Estou impressionado contigo e o teu profissionalismo.
+
+      A Flying
+      Burger tornou-se um sucesso em pouco tempo.'
+    image: {fileID: 0}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "Mas... n\xE3o vai ser preciso voltares amanh\xE3."
+    image: {fileID: 0}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "Eu... fiquei sem \"carne\", pelo menos n temos o suficiente para amanh\xE3.\nN\xE3o
+      sei quando consigo abrir outra vez."
+    image: {fileID: 0}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "Quando souber de alguma coisa, eu chamo-te amig\xE3o, n\xE3o te preocupes
+      ahahah"
+    image: {fileID: 0}
+  - speakerName: Pombo - Cozinheiro
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: "( Sem \"\"\"carne\"\"\" ?  N\xE3o... isto est\xE1 mesmo estranho)"
+    image: {fileID: 0}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "Tenho mesmo de ir!\nAt\xE9 depois! "
+    image: {fileID: 0}
+  - speakerName: Pombo - Cozinheiro
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: "Ele est\xE1 a esconder alguma coisa. E eu vou descobrir o que \xE9.\nEu
+      tenho de descobrir que \"\"\"carne\"\"\" \xE9 esta que ele parece ter tanto
+      medo de dizer\n"
+    image: {fileID: 0}
+  - speakerName: Pombo - Cozinheiro
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: "*** Segui-o sem fazer barulho. Ele nem olhou para tr\xE1s. ***"
+    image: {fileID: 0}
+  - speakerName: Pombo - Cozinheiro
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: "*** Ele voou durante algum tempo... At\xE9 chegar a um velho galp\xE3o.
+      ***"
+    image: {fileID: 0}
+  - speakerName: Pombo - Cozinheiro
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: ( Meu passaro amado! Penas por todo o lado... Eu sabia que havia algo errado
+      com ele! De quem pretencem estas penas todas? )
+    image: {fileID: 0}
+  - speakerName: Pombo - Cozinheiro
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: "*** Entrei devagar no galp\xE3o... E ouvi um som met\xE1lico ao fundo.
+      ***"
+    image: {fileID: 0}
+  - speakerName: Pombo - Cozinheiro
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: "N\xE3o... N\xE3o pode ser..."
+    image: {fileID: 0}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "Tenho de aumentar a produ\xE7\xE3o... Onde vou encontrar mais galinhas?
+      Viu ficar rico com a rolote HAHAHAHAH aqueles passaros adoram os hamburgers!"
+    image: {fileID: 0}
+  - speakerName: Galinha
+    speakerPortrait: {fileID: 1505061225, guid: d6e943a7cd030e346ae241955bd43543, type: 3}
+    text: "N\xE3o fa\xE7a isso connosco por favor, alguem nos acuda!!!"
+    image: {fileID: 0}
+  - speakerName: Pombo - Cozinheiro
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: "A carne...Os hamb\xFArgueres eram de frango.\nA Flying Burger... \xC9
+      uma rolote de hamb\xFArgueres canibais!!!!!!!"
+    image: {fileID: 0}
   gameplayBackgroundMusic: {fileID: 0}

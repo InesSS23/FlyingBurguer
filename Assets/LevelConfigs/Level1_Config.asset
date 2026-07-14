@@ -32,9 +32,47 @@ MonoBehaviour:
   allowDrink: 0
   maxExtraIngredients: 2
   introFrames:
+  - speakerName: .
+    speakerPortrait: {fileID: 1787413313, guid: 2e78c52c34b4b4b40871a4b226002c5e, type: 3}
+    text: "Um novo dia come\xE7a na Flying Burger"
+    image: {fileID: 1787413313, guid: 2e78c52c34b4b4b40871a4b226002c5e, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
-    text: Ah, chegaste! Mesmo a tempo!
+    text: "Ah, chegaste! Mesmo a tempo!\nBem-vindo \xE0 Flying Burger!"
+    image: {fileID: 1787413313, guid: 2e78c52c34b4b4b40871a4b226002c5e, type: 3}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "Aqui servimos hamb\xFArgueres fresquinhos a aves famintas.\nO neg\xF3cio
+      ainda est\xE1 a come\xE7ar... Mas eu sei que isto vai voar alto!"
+    image: {fileID: 1787413313, guid: 2e78c52c34b4b4b40871a4b226002c5e, type: 3}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "Hoje vamos manter as coisas simples.\nS\xF3 tens p\xE3o, carne, queijo
+      e alface."
+    image: {fileID: 1787413313, guid: 2e78c52c34b4b4b40871a4b226002c5e, type: 3}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "Apanha os ingredientes, monta o hamb\xFArguer certo  entrega r\xE1pido
+      ao cliente!"
+    image: {fileID: 1787413313, guid: 2e78c52c34b4b4b40871a4b226002c5e, type: 3}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "Se demorares muito, os clientes v\xE3o-se embora, se acertares nos pedidos,
+      ganhas pontos mas se errares, bem podes entregar na mesma mas os clientes tendem
+      em ficar chateados ahah!"
+    image: {fileID: 1787413313, guid: 2e78c52c34b4b4b40871a4b226002c5e, type: 3}
+  - speakerName: Pombo - Cozinheiro
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: "(Este corvo parece simp\xE1tico... Mas h\xE1 qualquer coisa estranha nele)"
+    image: {fileID: 1787413313, guid: 2e78c52c34b4b4b40871a4b226002c5e, type: 3}
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: "Tenho de ir buscar mais material para aumentar o neg\xF3cio.\nBoa sorte.
+      Faz um bom trabalho!"
+    image: {fileID: 1787413313, guid: 2e78c52c34b4b4b40871a4b226002c5e, type: 3}
+  - speakerName: Pombo - Cozinheiro
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: Certo...
     image: {fileID: 1787413313, guid: 2e78c52c34b4b4b40871a4b226002c5e, type: 3}
   endFrames: []
   gameplayBackgroundMusic: {fileID: 0}
