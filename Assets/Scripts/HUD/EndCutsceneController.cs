@@ -11,6 +11,11 @@ public class EndCutsceneController : MonoBehaviour
     [SerializeField] private Button nextButton;
     [SerializeField] private TMP_Text nextButtonText;
 
+    [Header("personagem a falar")]
+    [SerializeField] private TMP_Text speakerNameText;
+    [SerializeField] private Image speakerPortraitImage;
+    [SerializeField] private bool keepPreviousSpeakerWhenEmpty = true;
+
     [Header("imagem")]
     [SerializeField] private Image cutsceneImage;
     [SerializeField] private bool keepPreviousImageWhenFrameImageIsEmpty = true;
@@ -88,37 +93,83 @@ public class EndCutsceneController : MonoBehaviour
         if (frames == null || frames.Length == 0)
             return;
 
+        DialogueFrame frame = frames[currentFrame];
+
         if (dialogueText != null)
         {
-            dialogueText.text = frames[currentFrame].text;
+            dialogueText.text = frame.text;
         }
 
-        if (cutsceneImage != null)
-        {
-            Sprite image = frames[currentFrame].image;
+        UpdateSpeaker(frame);
+        UpdateCutsceneImage(frame);
+        UpdateButtonText();
+    }
 
-            if (image != null)
+    private void UpdateSpeaker(DialogueFrame frame)
+    {
+        if (frame == null)
+            return;
+
+        if (speakerNameText != null)
+        {
+            if (!string.IsNullOrWhiteSpace(frame.speakerName))
             {
-                cutsceneImage.sprite = image;
-                cutsceneImage.enabled = true;
+                speakerNameText.text = frame.speakerName;
+                speakerNameText.gameObject.SetActive(true);
             }
-            else if (!keepPreviousImageWhenFrameImageIsEmpty)
+            else if (!keepPreviousSpeakerWhenEmpty)
             {
-                cutsceneImage.sprite = null;
-                cutsceneImage.enabled = false;
+                speakerNameText.text = "";
+                speakerNameText.gameObject.SetActive(false);
             }
         }
 
-        if (nextButtonText != null)
+        if (speakerPortraitImage != null)
         {
-            if (currentFrame >= frames.Length - 1)
+            if (frame.speakerPortrait != null)
             {
-                nextButtonText.text = "Terminar";
+                speakerPortraitImage.sprite = frame.speakerPortrait;
+                speakerPortraitImage.enabled = true;
+                speakerPortraitImage.gameObject.SetActive(true);
             }
-            else
+            else if (!keepPreviousSpeakerWhenEmpty)
             {
-                nextButtonText.text = "Proximo";
+                speakerPortraitImage.sprite = null;
+                speakerPortraitImage.enabled = false;
+                speakerPortraitImage.gameObject.SetActive(false);
             }
+        }
+    }
+
+    private void UpdateCutsceneImage(DialogueFrame frame)
+    {
+        if (cutsceneImage == null)
+            return;
+
+        if (frame != null && frame.image != null)
+        {
+            cutsceneImage.sprite = frame.image;
+            cutsceneImage.enabled = true;
+        }
+        else if (!keepPreviousImageWhenFrameImageIsEmpty)
+        {
+            cutsceneImage.sprite = null;
+            cutsceneImage.enabled = false;
+        }
+    }
+
+    private void UpdateButtonText()
+    {
+        if (nextButtonText == null)
+            return;
+
+        if (currentFrame >= frames.Length - 1)
+        {
+            nextButtonText.text = "Terminar";
+        }
+        else
+        {
+            nextButtonText.text = "Próximo";
         }
     }
 

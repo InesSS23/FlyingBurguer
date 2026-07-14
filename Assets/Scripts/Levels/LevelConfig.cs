@@ -3,9 +3,16 @@ using UnityEngine;
 [System.Serializable]
 public class DialogueFrame
 {
+    [Header("Personagem")]
+    public string speakerName;
+
+    public Sprite speakerPortrait;
+
+    [Header("Fala")]
     [TextArea(2, 5)]
     public string text;
 
+    [Header("Imagem da cutscene")]
     public Sprite image;
 }
 

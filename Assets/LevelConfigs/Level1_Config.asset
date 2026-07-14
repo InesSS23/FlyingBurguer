@@ -31,6 +31,10 @@ MonoBehaviour:
   allowFries: 0
   allowDrink: 0
   maxExtraIngredients: 2
-  introFrames: []
+  introFrames:
+  - speakerName: "Corvo - Patr\xE3o"
+    speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
+    text: Ah, chegaste! Mesmo a tempo!
+    image: {fileID: 1787413313, guid: 2e78c52c34b4b4b40871a4b226002c5e, type: 3}
   endFrames: []
   gameplayBackgroundMusic: {fileID: 0}

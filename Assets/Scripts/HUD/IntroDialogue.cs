@@ -10,6 +10,11 @@ public class IntroDialogue : MonoBehaviour
     [SerializeField] private Button skipButton;
     [SerializeField] private TMP_Text skipButtonText;
 
+    [Header("personagem a falar")]
+    [SerializeField] private TMP_Text speakerNameText;
+    [SerializeField] private Image speakerPortraitImage;
+    [SerializeField] private bool keepPreviousSpeakerWhenEmpty = true;
+
     [Header("imagem da cutscene")]
     [SerializeField] private Image cutsceneImage;
     [SerializeField] private bool keepPreviousImageWhenFrameImageIsEmpty = true;
@@ -115,14 +120,23 @@ public class IntroDialogue : MonoBehaviour
         return 0;
     }
 
+    private DialogueFrame GetCurrentFrame()
+    {
+        if (dialogueFrames != null && currentLine >= 0 && currentLine < dialogueFrames.Length)
+        {
+            return dialogueFrames[currentLine];
+        }
+
+        return null;
+    }
+
     private string GetCurrentText()
     {
-        if (dialogueFrames != null && dialogueFrames.Length > 0)
-        {
-            if (currentLine >= 0 && currentLine < dialogueFrames.Length)
-                return dialogueFrames[currentLine].text;
+        DialogueFrame frame = GetCurrentFrame();
 
-            return "";
+        if (frame != null)
+        {
+            return frame.text;
         }
 
         if (dialogueLines != null && currentLine >= 0 && currentLine < dialogueLines.Length)
@@ -133,10 +147,11 @@ public class IntroDialogue : MonoBehaviour
 
     private Sprite GetCurrentImage()
     {
-        if (dialogueFrames != null && dialogueFrames.Length > 0)
+        DialogueFrame frame = GetCurrentFrame();
+
+        if (frame != null)
         {
-            if (currentLine >= 0 && currentLine < dialogueFrames.Length)
-                return dialogueFrames[currentLine].image;
+            return frame.image;
         }
 
         return null;
@@ -144,6 +159,8 @@ public class IntroDialogue : MonoBehaviour
 
     private void ShowCurrentLine()
     {
+        DialogueFrame frame = GetCurrentFrame();
+
         if (dialogueText == null)
         {
             Debug.Log("falta ligar DialogueText");
@@ -152,20 +169,62 @@ public class IntroDialogue : MonoBehaviour
 
         dialogueText.text = GetCurrentText();
 
-        if (cutsceneImage != null)
-        {
-            Sprite frameImage = GetCurrentImage();
+        UpdateSpeaker(frame);
+        UpdateCutsceneImage();
+    }
 
-            if (frameImage != null)
+    private void UpdateSpeaker(DialogueFrame frame)
+    {
+        if (frame == null)
+            return;
+
+        if (speakerNameText != null)
+        {
+            if (!string.IsNullOrWhiteSpace(frame.speakerName))
             {
-                cutsceneImage.sprite = frameImage;
-                cutsceneImage.enabled = true;
+                speakerNameText.text = frame.speakerName;
+                speakerNameText.gameObject.SetActive(true);
             }
-            else if (!keepPreviousImageWhenFrameImageIsEmpty)
+            else if (!keepPreviousSpeakerWhenEmpty)
             {
-                cutsceneImage.sprite = null;
-                cutsceneImage.enabled = false;
+                speakerNameText.text = "";
+                speakerNameText.gameObject.SetActive(false);
             }
+        }
+
+        if (speakerPortraitImage != null)
+        {
+            if (frame.speakerPortrait != null)
+            {
+                speakerPortraitImage.sprite = frame.speakerPortrait;
+                speakerPortraitImage.enabled = true;
+                speakerPortraitImage.gameObject.SetActive(true);
+            }
+            else if (!keepPreviousSpeakerWhenEmpty)
+            {
+                speakerPortraitImage.sprite = null;
+                speakerPortraitImage.enabled = false;
+                speakerPortraitImage.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void UpdateCutsceneImage()
+    {
+        if (cutsceneImage == null)
+            return;
+
+        Sprite frameImage = GetCurrentImage();
+
+        if (frameImage != null)
+        {
+            cutsceneImage.sprite = frameImage;
+            cutsceneImage.enabled = true;
+        }
+        else if (!keepPreviousImageWhenFrameImageIsEmpty)
+        {
+            cutsceneImage.sprite = null;
+            cutsceneImage.enabled = false;
         }
     }
 
@@ -194,9 +253,9 @@ public class IntroDialogue : MonoBehaviour
             return;
 
         if (currentLine == GetLineCount() - 1)
-            skipButtonText.text = "Comecar Dia";
+            skipButtonText.text = "Começar Dia";
         else
-            skipButtonText.text = "Proximo";
+            skipButtonText.text = "Próximo";
     }
 
     private void EndDialogue()
