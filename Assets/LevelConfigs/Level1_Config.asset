@@ -102,7 +102,7 @@ MonoBehaviour:
     hideSpeakerPortrait: 0
     hideDialogueBox: 0
   - speakerName: Tutorial
-    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    speakerPortrait: {fileID: 0}
     text: 
     image: {fileID: -767692867, guid: 97f66540ea25090479e75be3d4245cf6, type: 3}
     hideSpeakerName: 1
