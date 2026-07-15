@@ -37,54 +37,54 @@ MonoBehaviour:
     text: 'Bom dia!
 
       Hoje trago uma surpresa!'
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 8f78d63da301f2c4bbfcdef5b3895899, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Consegui uma m\xE1quina de bebidas!\nE acredita... um hamb\xFArguer sabe
       sempre melhor em menu."
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 1c7afe53e4a09ce44a032a8638b4e6fa, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Tamb\xE9m temos batatas agora.\nVais encontr\xE1-las aqui no frigorifico."
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 1c7afe53e4a09ce44a032a8638b4e6fa, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "P\xF5es as batatas a fritar e esperas que fiquem prontas.\n\xC1pos isso
       est\xE3o prontas a servir!"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 57d55f2c066590440a094e32ecf064b3, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Com as bebidas \xE9 parecido.\nColocas o copo na m\xE1quina e esperas
       que encha. "
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 57d55f2c066590440a094e32ecf064b3, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: Depois juntas tudo ao tabuleiro!
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 57d55f2c066590440a094e32ecf064b3, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "O neg\xF3cio est\xE1 a crescer tanto... qualquer dia tenho de contratar
       outro funcion\xE1rio ahaha!!"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 94a2ac177a096ef4787e704efd92babe, type: 3}
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: (Ele diz isso a brincar... mas hoje parece mais nervoso do que animado.
       Estranho)
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 94a2ac177a096ef4787e704efd92babe, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Ontem ouvi muitos elogios sobre a rolote.\nPor isso prepara-te... acho
       que hoje vais ter m\xE3os cheias!"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 94a2ac177a096ef4787e704efd92babe, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: Boa sorte! Eu acredito em ti.
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 94a2ac177a096ef4787e704efd92babe, type: 3}
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: "Tamb\xE9m acredito em mim, eu dou conta disto ahah\n(cada vez confio menos
       nele)"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 94a2ac177a096ef4787e704efd92babe, type: 3}
   endFrames:
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
