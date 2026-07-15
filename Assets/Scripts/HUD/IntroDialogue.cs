@@ -6,6 +6,7 @@ public class IntroDialogue : MonoBehaviour
 {
     [Header("ui")]
     [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private GameObject dialogueBoxBackground;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private Button skipButton;
     [SerializeField] private TMP_Text skipButtonText;
@@ -18,6 +19,9 @@ public class IntroDialogue : MonoBehaviour
     [Header("imagem da cutscene")]
     [SerializeField] private Image cutsceneImage;
     [SerializeField] private bool keepPreviousImageWhenFrameImageIsEmpty = true;
+
+    [Header("hud para esconder durante a cutscene")]
+    [SerializeField] private GameObject[] hudObjectsToHideDuringCutscene;
 
     [Header("falas antigas - fallback")]
     [TextArea(2, 5)]
@@ -38,6 +42,7 @@ public class IntroDialogue : MonoBehaviour
 
     private int currentLine = 0;
     private bool dialogueActive = false;
+    private bool[] previousHudStates;
 
     void Start()
     {
@@ -84,6 +89,8 @@ public class IntroDialogue : MonoBehaviour
     {
         dialogueActive = true;
         currentLine = 0;
+
+        HideGameplayHud();
 
         if (dialoguePanel != null)
         {
@@ -160,27 +167,40 @@ public class IntroDialogue : MonoBehaviour
     private void ShowCurrentLine()
     {
         DialogueFrame frame = GetCurrentFrame();
+        bool hideDialogueBox = frame != null && frame.hideDialogueBox;
 
-        if (dialogueText == null)
+        SetDialogueBoxVisible(!hideDialogueBox);
+
+        if (dialogueText != null)
         {
-            Debug.Log("falta ligar DialogueText");
-            return;
+            dialogueText.gameObject.SetActive(!hideDialogueBox);
+            dialogueText.text = hideDialogueBox ? "" : GetCurrentText();
         }
 
-        dialogueText.text = GetCurrentText();
-
-        UpdateSpeaker(frame);
+        UpdateSpeaker(frame, hideDialogueBox);
         UpdateCutsceneImage();
     }
 
-    private void UpdateSpeaker(DialogueFrame frame)
+    private void SetDialogueBoxVisible(bool visible)
+    {
+        if (dialogueBoxBackground != null)
+        {
+            dialogueBoxBackground.SetActive(visible);
+        }
+    }
+
+    private void UpdateSpeaker(DialogueFrame frame, bool hideDialogueBox)
     {
         if (frame == null)
             return;
 
         if (speakerNameText != null)
         {
-            if (!string.IsNullOrWhiteSpace(frame.speakerName))
+            if (hideDialogueBox || frame.hideSpeakerName)
+            {
+                speakerNameText.gameObject.SetActive(false);
+            }
+            else if (!string.IsNullOrWhiteSpace(frame.speakerName))
             {
                 speakerNameText.text = frame.speakerName;
                 speakerNameText.gameObject.SetActive(true);
@@ -194,7 +214,12 @@ public class IntroDialogue : MonoBehaviour
 
         if (speakerPortraitImage != null)
         {
-            if (frame.speakerPortrait != null)
+            if (hideDialogueBox || frame.hideSpeakerPortrait)
+            {
+                speakerPortraitImage.gameObject.SetActive(false);
+                speakerPortraitImage.enabled = false;
+            }
+            else if (frame.speakerPortrait != null)
             {
                 speakerPortraitImage.sprite = frame.speakerPortrait;
                 speakerPortraitImage.enabled = true;
@@ -218,6 +243,7 @@ public class IntroDialogue : MonoBehaviour
 
         if (frameImage != null)
         {
+            cutsceneImage.gameObject.SetActive(true);
             cutsceneImage.sprite = frameImage;
             cutsceneImage.enabled = true;
         }
@@ -225,6 +251,7 @@ public class IntroDialogue : MonoBehaviour
         {
             cutsceneImage.sprite = null;
             cutsceneImage.enabled = false;
+            cutsceneImage.gameObject.SetActive(false);
         }
     }
 
@@ -267,6 +294,7 @@ public class IntroDialogue : MonoBehaviour
             dialoguePanel.SetActive(false);
         }
 
+        RestoreGameplayHud();
         DesbloquearJogador();
 
         if (dayManager != null)
@@ -280,6 +308,40 @@ public class IntroDialogue : MonoBehaviour
         }
 
         Debug.Log("dialogo inicial terminou");
+    }
+
+    private void HideGameplayHud()
+    {
+        if (hudObjectsToHideDuringCutscene == null || hudObjectsToHideDuringCutscene.Length == 0)
+            return;
+
+        previousHudStates = new bool[hudObjectsToHideDuringCutscene.Length];
+
+        for (int i = 0; i < hudObjectsToHideDuringCutscene.Length; i++)
+        {
+            if (hudObjectsToHideDuringCutscene[i] == null)
+                continue;
+
+            previousHudStates[i] = hudObjectsToHideDuringCutscene[i].activeSelf;
+            hudObjectsToHideDuringCutscene[i].SetActive(false);
+        }
+    }
+
+    private void RestoreGameplayHud()
+    {
+        if (hudObjectsToHideDuringCutscene == null || previousHudStates == null)
+            return;
+
+        for (int i = 0; i < hudObjectsToHideDuringCutscene.Length; i++)
+        {
+            if (hudObjectsToHideDuringCutscene[i] == null)
+                continue;
+
+            if (i < previousHudStates.Length)
+            {
+                hudObjectsToHideDuringCutscene[i].SetActive(previousHudStates[i]);
+            }
+        }
     }
 
     private void BloquearJogador()

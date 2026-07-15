@@ -7,6 +7,7 @@ public class EndCutsceneController : MonoBehaviour
 {
     [Header("ui")]
     [SerializeField] private GameObject cutscenePanel;
+    [SerializeField] private GameObject dialogueBoxBackground;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private Button nextButton;
     [SerializeField] private TMP_Text nextButtonText;
@@ -20,6 +21,9 @@ public class EndCutsceneController : MonoBehaviour
     [SerializeField] private Image cutsceneImage;
     [SerializeField] private bool keepPreviousImageWhenFrameImageIsEmpty = true;
 
+    [Header("hud para esconder durante a cutscene")]
+    [SerializeField] private GameObject[] hudObjectsToHideDuringCutscene;
+
     [Header("fallback")]
     [SerializeField] private string fallbackMenuSceneName = "MainMenu";
 
@@ -27,6 +31,7 @@ public class EndCutsceneController : MonoBehaviour
     private int currentFrame = 0;
     private string sceneToLoadAfterCutscene = "MainMenu";
     private bool active = false;
+    private bool[] previousHudStates;
 
     private void Awake()
     {
@@ -37,6 +42,7 @@ public class EndCutsceneController : MonoBehaviour
 
         if (nextButton != null)
         {
+            nextButton.onClick.RemoveListener(NextFrame);
             nextButton.onClick.AddListener(NextFrame);
 
             if (nextButtonText == null)
@@ -67,6 +73,24 @@ public class EndCutsceneController : MonoBehaviour
             return;
         }
 
+        if (cutscenePanel == null)
+        {
+            Debug.LogError("EndCutsceneController: falta ligar o Cutscene Panel.");
+            return;
+        }
+
+        if (dialogueText == null)
+        {
+            Debug.LogError("EndCutsceneController: falta ligar o Dialogue Text.");
+            return;
+        }
+
+        if (nextButton == null)
+        {
+            Debug.LogError("EndCutsceneController: falta ligar o Next Button.");
+            return;
+        }
+
         frames = config.endFrames;
         currentFrame = 0;
         active = true;
@@ -75,10 +99,9 @@ public class EndCutsceneController : MonoBehaviour
             ? fallbackMenuSceneName
             : config.finalSceneName;
 
-        if (cutscenePanel != null)
-        {
-            cutscenePanel.SetActive(true);
-        }
+        HideGameplayHud();
+
+        cutscenePanel.SetActive(true);
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -94,25 +117,41 @@ public class EndCutsceneController : MonoBehaviour
             return;
 
         DialogueFrame frame = frames[currentFrame];
+        bool hideDialogueBox = frame != null && frame.hideDialogueBox;
+
+        SetDialogueBoxVisible(!hideDialogueBox);
 
         if (dialogueText != null)
         {
-            dialogueText.text = frame.text;
+            dialogueText.gameObject.SetActive(!hideDialogueBox);
+            dialogueText.text = hideDialogueBox ? "" : frame.text;
         }
 
-        UpdateSpeaker(frame);
+        UpdateSpeaker(frame, hideDialogueBox);
         UpdateCutsceneImage(frame);
         UpdateButtonText();
     }
 
-    private void UpdateSpeaker(DialogueFrame frame)
+    private void SetDialogueBoxVisible(bool visible)
+    {
+        if (dialogueBoxBackground != null)
+        {
+            dialogueBoxBackground.SetActive(visible);
+        }
+    }
+
+    private void UpdateSpeaker(DialogueFrame frame, bool hideDialogueBox)
     {
         if (frame == null)
             return;
 
         if (speakerNameText != null)
         {
-            if (!string.IsNullOrWhiteSpace(frame.speakerName))
+            if (hideDialogueBox || frame.hideSpeakerName)
+            {
+                speakerNameText.gameObject.SetActive(false);
+            }
+            else if (!string.IsNullOrWhiteSpace(frame.speakerName))
             {
                 speakerNameText.text = frame.speakerName;
                 speakerNameText.gameObject.SetActive(true);
@@ -126,7 +165,12 @@ public class EndCutsceneController : MonoBehaviour
 
         if (speakerPortraitImage != null)
         {
-            if (frame.speakerPortrait != null)
+            if (hideDialogueBox || frame.hideSpeakerPortrait)
+            {
+                speakerPortraitImage.gameObject.SetActive(false);
+                speakerPortraitImage.enabled = false;
+            }
+            else if (frame.speakerPortrait != null)
             {
                 speakerPortraitImage.sprite = frame.speakerPortrait;
                 speakerPortraitImage.enabled = true;
@@ -148,6 +192,7 @@ public class EndCutsceneController : MonoBehaviour
 
         if (frame != null && frame.image != null)
         {
+            cutsceneImage.gameObject.SetActive(true);
             cutsceneImage.sprite = frame.image;
             cutsceneImage.enabled = true;
         }
@@ -155,6 +200,7 @@ public class EndCutsceneController : MonoBehaviour
         {
             cutsceneImage.sprite = null;
             cutsceneImage.enabled = false;
+            cutsceneImage.gameObject.SetActive(false);
         }
     }
 
@@ -195,15 +241,24 @@ public class EndCutsceneController : MonoBehaviour
     {
         active = false;
 
+        RestoreGameplayHud();
+
         LevelProgress.ClearProgress();
 
         Time.timeScale = 1f;
+
+        if (string.IsNullOrWhiteSpace(sceneToLoadAfterCutscene))
+        {
+            sceneToLoadAfterCutscene = fallbackMenuSceneName;
+        }
 
         SceneManager.LoadScene(sceneToLoadAfterCutscene);
     }
 
     private void GoToFinalScene(LevelConfig config)
     {
+        RestoreGameplayHud();
+
         LevelProgress.ClearProgress();
 
         Time.timeScale = 1f;
@@ -216,5 +271,39 @@ public class EndCutsceneController : MonoBehaviour
         }
 
         SceneManager.LoadScene(sceneName);
+    }
+
+    private void HideGameplayHud()
+    {
+        if (hudObjectsToHideDuringCutscene == null || hudObjectsToHideDuringCutscene.Length == 0)
+            return;
+
+        previousHudStates = new bool[hudObjectsToHideDuringCutscene.Length];
+
+        for (int i = 0; i < hudObjectsToHideDuringCutscene.Length; i++)
+        {
+            if (hudObjectsToHideDuringCutscene[i] == null)
+                continue;
+
+            previousHudStates[i] = hudObjectsToHideDuringCutscene[i].activeSelf;
+            hudObjectsToHideDuringCutscene[i].SetActive(false);
+        }
+    }
+
+    private void RestoreGameplayHud()
+    {
+        if (hudObjectsToHideDuringCutscene == null || previousHudStates == null)
+            return;
+
+        for (int i = 0; i < hudObjectsToHideDuringCutscene.Length; i++)
+        {
+            if (hudObjectsToHideDuringCutscene[i] == null)
+                continue;
+
+            if (i < previousHudStates.Length)
+            {
+                hudObjectsToHideDuringCutscene[i].SetActive(previousHudStates[i]);
+            }
+        }
     }
 }

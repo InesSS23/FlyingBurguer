@@ -14,6 +14,11 @@ public class DialogueFrame
 
     [Header("Imagem da cutscene")]
     public Sprite image;
+
+    [Header("Opcoes deste frame")]
+    public bool hideSpeakerName = false;
+    public bool hideSpeakerPortrait = false;
+    public bool hideDialogueBox = false;
 }
 
 [CreateAssetMenu(fileName = "LevelConfig", menuName = "Flying Burger/Level Config")]

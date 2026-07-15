@@ -36,43 +36,77 @@ MonoBehaviour:
     speakerPortrait: {fileID: 1787413313, guid: 2e78c52c34b4b4b40871a4b226002c5e, type: 3}
     text: "Um novo dia come\xE7a na Flying Burger"
     image: {fileID: 21300000, guid: 8695ad81085cdc6478d9395835053e86, type: 3}
+    hideSpeakerName: 1
+    hideSpeakerPortrait: 1
+    hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Ah, chegaste! Mesmo a tempo!\nBem-vindo \xE0 Flying Burger!"
     image: {fileID: 21300000, guid: fd3102bdb20c4cb46ac579ace2da202f, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Aqui servimos hamb\xFArgueres fresquinhos a aves famintas.\nO neg\xF3cio
       ainda est\xE1 a come\xE7ar... Mas eu sei que isto vai voar alto!"
     image: {fileID: 21300000, guid: 118b924fcb28b894481dfa110e6945ff, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Hoje vamos manter as coisas simples.\nS\xF3 tens p\xE3o, carne, queijo
       e alface."
     image: {fileID: 21300000, guid: 0094f7fbf978afe4d84cd78802efa236, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Apanha os ingredientes, monta o hamb\xFArguer certo  entrega r\xE1pido
       ao cliente!"
     image: {fileID: 21300000, guid: 6b8bf81f948cd214f99de3dbda593e6b, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Se demorares muito, os clientes v\xE3o-se embora, se acertares nos pedidos,
       ganhas pontos mas se errares, bem podes entregar na mesma mas os clientes tendem
       em ficar chateados ahah!"
     image: {fileID: 21300000, guid: 6b8bf81f948cd214f99de3dbda593e6b, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: "(Este corvo parece simp\xE1tico... Mas h\xE1 qualquer coisa estranha nele)"
     image: {fileID: 21300000, guid: 6b8bf81f948cd214f99de3dbda593e6b, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Tenho de ir buscar mais material para aumentar o neg\xF3cio.\nBoa sorte.
       Faz um bom trabalho!"
     image: {fileID: 21300000, guid: 6b8bf81f948cd214f99de3dbda593e6b, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: Certo...
     image: {fileID: 21300000, guid: f94307af4a5111f42892e12ddca75724, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
+  - speakerName: Tutorial
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: 
+    image: {fileID: -767692867, guid: 97f66540ea25090479e75be3d4245cf6, type: 3}
+    hideSpeakerName: 1
+    hideSpeakerPortrait: 1
+    hideDialogueBox: 1
   endFrames: []
   gameplayBackgroundMusic: {fileID: 0}
