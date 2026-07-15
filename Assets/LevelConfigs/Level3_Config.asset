@@ -91,51 +91,51 @@ MonoBehaviour:
     text: 'Ah... ainda bem que terminaste.
 
       Tenho de te dizer uma coisa.....'
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 70ab5d48047c36d4ebb474ea9c040d4f, type: 3}
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: "(Eu sustei-me com a chegada dele, n\xE3o \xE9 costume dele aparecer ao
       fim dia de trabalho. Ele parece t\xE3o nervoso...)"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 70ab5d48047c36d4ebb474ea9c040d4f, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: 'Estou impressionado contigo e o teu profissionalismo.
 
       A Flying
       Burger tornou-se um sucesso em pouco tempo.'
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 70ab5d48047c36d4ebb474ea9c040d4f, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Mas... n\xE3o vai ser preciso voltares amanh\xE3."
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 244c73953979f214fa53f9722885cba0, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Eu... fiquei sem \"carne\", pelo menos n temos o suficiente para amanh\xE3.\nN\xE3o
       sei quando consigo abrir outra vez."
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 244c73953979f214fa53f9722885cba0, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Quando souber de alguma coisa, eu chamo-te amig\xE3o, n\xE3o te preocupes
       ahahah"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 340e09533a54ea649bdc49cc49c4e515, type: 3}
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: "( Sem \"\"\"carne\"\"\" ?  N\xE3o... isto est\xE1 mesmo estranho)"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 340e09533a54ea649bdc49cc49c4e515, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Tenho mesmo de ir!\nAt\xE9 depois! "
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: b5da5736306fff3438b05a3cc23aba72, type: 3}
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: "Ele est\xE1 a esconder alguma coisa. E eu vou descobrir o que \xE9.\nEu
       tenho de descobrir que \"\"\"carne\"\"\" \xE9 esta que ele parece ter tanto
       medo de dizer\n"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: cba50519e913534449bc0e67f714080b, type: 3}
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: "*** Segui-o sem fazer barulho. Ele nem olhou para tr\xE1s. ***"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: e18f6b365b55c65449903808bd753e64, type: 3}
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: "*** Ele voou durante algum tempo... At\xE9 chegar a um velho galp\xE3o.
@@ -145,28 +145,28 @@ MonoBehaviour:
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: ( Meu passaro amado! Penas por todo o lado... Eu sabia que havia algo errado
       com ele! De quem pretencem estas penas todas? )
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: e6e6d2d440fe05a478dedb53e5a069bc, type: 3}
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: "*** Entrei devagar no galp\xE3o... E ouvi um som met\xE1lico ao fundo.
       ***"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: fb6d8ab02d45f304c857b70312a606a8, type: 3}
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: "N\xE3o... N\xE3o pode ser..."
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: fb6d8ab02d45f304c857b70312a606a8, type: 3}
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Tenho de aumentar a produ\xE7\xE3o... Onde vou encontrar mais galinhas?
       Viu ficar rico com a rolote HAHAHAHAH aqueles passaros adoram os hamburgers!"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: fb6d8ab02d45f304c857b70312a606a8, type: 3}
   - speakerName: Galinha
     speakerPortrait: {fileID: 1505061225, guid: d6e943a7cd030e346ae241955bd43543, type: 3}
     text: "N\xE3o fa\xE7a isso connosco por favor, alguem nos acuda!!!"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: fb6d8ab02d45f304c857b70312a606a8, type: 3}
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: "A carne...Os hamb\xFArgueres eram de frango.\nA Flying Burger... \xC9
       uma rolote de hamb\xFArgueres canibais!!!!!!!"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 1e259db02747c9d4cb9ac71f083cd7d3, type: 3}
   gameplayBackgroundMusic: {fileID: 0}
