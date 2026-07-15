@@ -1,0 +1,12 @@
+{
+    "asset": "cd3095915d2d9b942b960341eb907689",
+    "fileName": "019f65db-aa8c-718b-8ea2-48d2d771ed0d_Preview.jpg",
+    "prompt": "Seamless tileable stylized hand-painted brushed stainless steel texture for a cartoon low-poly fast-food kitchen. Cool light silver-grey metal with soft horizontal brushed streaks, gentle stylized highlights, very subtle scratches, matte satin finish, NOT a mirror, NOT glossy. Clean game art, subtle detail, flat even lighting, no seams.",
+    "negativePrompt": "",
+    "model": "hand-painted-textures-2-0",
+    "modelName": "Hand Painted Textures 2.0",
+    "customSeed": 2070472038,
+    "w3CTraceId": "",
+    "feedback": 0,
+    "refinementMode": "Generation"
+}

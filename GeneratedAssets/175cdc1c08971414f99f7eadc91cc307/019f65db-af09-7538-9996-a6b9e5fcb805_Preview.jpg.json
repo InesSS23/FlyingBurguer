@@ -1,0 +1,12 @@
+{
+    "asset": "175cdc1c08971414f99f7eadc91cc307",
+    "fileName": "019f65db-af09-7538-9996-a6b9e5fcb805_Preview.jpg",
+    "prompt": "Seamless tileable stylized hand-painted painted metal texture for a cartoon fast-food kitchen. Soft pastel mint-teal enameled painted metal panel, smooth semi-matte finish, subtle hand-painted shading, very faint edge wear, gentle color variation, cheerful but not oversaturated. Clean stylized game art, no seams, flat even lighting.",
+    "negativePrompt": "",
+    "model": "hand-painted-textures-2-0",
+    "modelName": "Hand Painted Textures 2.0",
+    "customSeed": 1094157862,
+    "w3CTraceId": "",
+    "feedback": 0,
+    "refinementMode": "Generation"
+}

@@ -1,0 +1,12 @@
+{
+    "asset": "e5bdeff09ce6e254cb8aa1a87c77acd6",
+    "fileName": "019f65dd-4971-7599-8682-abffa93ec9b4_Preview.jpg",
+    "prompt": "Seamless tileable stylized hand-painted terrazzo countertop texture, light cream base with soft speckles of pastel mint, coral and grey chips, smooth semi-matte finish, clean modern diner prep surface. Cartoon stylized game art, subtle detail, not photorealistic, no seams, flat even lighting.",
+    "negativePrompt": "",
+    "model": "hand-painted-textures-2-0",
+    "modelName": "Hand Painted Textures 2.0",
+    "customSeed": 611055426,
+    "w3CTraceId": "",
+    "feedback": 0,
+    "refinementMode": "Generation"
+}

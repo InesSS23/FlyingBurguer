@@ -1,0 +1,12 @@
+{
+    "asset": "4ea872694bc362042bfffd4de8d28866",
+    "fileName": "019f65dd-34d8-75f6-931c-005aec0ced27_Preview.jpg",
+    "prompt": "Seamless tileable stylized hand-painted kraft cardboard paper texture for fast-food packaging, warm tan brown recycled paper with soft fibrous grain, matte finish, subtle stylized creases. Cartoon game art, not photorealistic, no seams, flat even lighting.",
+    "negativePrompt": "",
+    "model": "hand-painted-textures-2-0",
+    "modelName": "Hand Painted Textures 2.0",
+    "customSeed": 1623730538,
+    "w3CTraceId": "",
+    "feedback": 0,
+    "refinementMode": "Generation"
+}

@@ -940,11 +940,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 85b60365-090f-4656-8f36-b83e6cda097b
+  cloudProjectId: 2516131c-cee6-484d-92cc-6ef576eb8fdb
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: flyburger
-  organizationId: ivanmarques610
+  projectName: flyburger (1)
+  organizationId: nunesgustavo
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

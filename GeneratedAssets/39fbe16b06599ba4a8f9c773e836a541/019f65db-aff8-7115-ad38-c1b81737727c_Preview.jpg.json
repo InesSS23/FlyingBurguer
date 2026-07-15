@@ -1,0 +1,12 @@
+{
+    "asset": "39fbe16b06599ba4a8f9c773e836a541",
+    "fileName": "019f65db-aff8-7115-ad38-c1b81737727c_Preview.jpg",
+    "prompt": "Seamless tileable stylized hand-painted kitchen wall texture, soft pastel sky-blue subway tiles with gentle grout lines, subtle hand-painted highlights and soft ceramic sheen, cheerful clean diner wall. Cartoon stylized game art, not photorealistic, no seams, flat even lighting.",
+    "negativePrompt": "",
+    "model": "hand-painted-textures-2-0",
+    "modelName": "Hand Painted Textures 2.0",
+    "customSeed": 1653140367,
+    "w3CTraceId": "",
+    "feedback": 0,
+    "refinementMode": "Generation"
+}

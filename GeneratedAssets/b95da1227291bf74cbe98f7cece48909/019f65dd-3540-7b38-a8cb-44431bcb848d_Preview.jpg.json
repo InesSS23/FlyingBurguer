@@ -1,0 +1,12 @@
+{
+    "asset": "b95da1227291bf74cbe98f7cece48909",
+    "fileName": "019f65dd-3540-7b38-a8cb-44431bcb848d_Preview.jpg",
+    "prompt": "Seamless tileable stylized hand-painted diner floor texture, checkerboard tiles in soft cream and warm coral, gentle stylized wear, matte finish, cozy retro fast-food vibe. Cartoon game art, subtle detail, not photorealistic, no seams, flat even lighting.",
+    "negativePrompt": "",
+    "model": "hand-painted-textures-2-0",
+    "modelName": "Hand Painted Textures 2.0",
+    "customSeed": 898958512,
+    "w3CTraceId": "",
+    "feedback": 0,
+    "refinementMode": "Generation"
+}
