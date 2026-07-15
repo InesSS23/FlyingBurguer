@@ -17,8 +17,8 @@ MonoBehaviour:
   nextSceneName: Level3
   isFinalLevel: 0
   finalSceneName: 
-  dayDuration: 270
-  targetScore: 110
+  dayDuration: 240
+  targetScore: 130
   pointsPerDelivery: 10
   minSpawnTime: 4
   maxSpawnTime: 6
