@@ -179,6 +179,9 @@ public class DayEndPanel : MonoBehaviour
     {
         PlayButtonSound();
 
+        if (GameplayHUDPolish.Instance != null)
+            GameplayHUDPolish.Instance.SetMenuVisible(true);
+
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

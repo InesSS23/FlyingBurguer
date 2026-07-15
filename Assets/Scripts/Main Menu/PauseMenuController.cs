@@ -96,12 +96,18 @@ public class PauseMenuController : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
 
+        if (GameplayHUDPolish.Instance != null)
+            GameplayHUDPolish.Instance.SetMenuVisible(false);
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     public void PauseGame()
     {
+        if (GameplayHUDPolish.Instance != null)
+            GameplayHUDPolish.Instance.SetMenuVisible(true);
+
         if (pauseMenuPanel != null)
         {
             pauseMenuPanel.SetActive(true);
@@ -179,6 +185,9 @@ public class PauseMenuController : MonoBehaviour
     {
         PlayButtonSound();
 
+        if (GameplayHUDPolish.Instance != null)
+            GameplayHUDPolish.Instance.SetMenuVisible(true);
+
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -186,6 +195,9 @@ public class PauseMenuController : MonoBehaviour
     public void BackToMainMenu()
     {
         PlayButtonSound();
+
+        if (GameplayHUDPolish.Instance != null)
+            GameplayHUDPolish.Instance.SetMenuVisible(true);
 
         Time.timeScale = 1f;
 

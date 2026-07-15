@@ -1,4 +1,5 @@
-using TMPro;
+ï»¿using TMPro;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,10 @@ public class IntroDialogue : MonoBehaviour
     [Header("imagem da cutscene")]
     [SerializeField] private Image cutsceneImage;
     [SerializeField] private bool keepPreviousImageWhenFrameImageIsEmpty = true;
+
+    [Header("legendas com voz")]
+    [SerializeField] private bool animateSubtitles = true;
+    [SerializeField, Range(0.01f, 0.08f)] private float characterDelay = 0.026f;
 
     [Header("hud para esconder durante a cutscene")]
     [SerializeField] private GameObject[] hudObjectsToHideDuringCutscene;
@@ -43,9 +48,15 @@ public class IntroDialogue : MonoBehaviour
     private int currentLine = 0;
     private bool dialogueActive = false;
     private bool[] previousHudStates;
+    private SubtitleVoicePlayer subtitleVoice;
+    private Coroutine subtitleRoutine;
 
     void Start()
     {
+        subtitleVoice = GetComponent<SubtitleVoicePlayer>();
+        if (subtitleVoice == null)
+            subtitleVoice = gameObject.AddComponent<SubtitleVoicePlayer>();
+
         TryLoadDialogueFromLevelConfig();
 
         if (skipButton != null)
@@ -89,6 +100,15 @@ public class IntroDialogue : MonoBehaviour
     {
         dialogueActive = true;
         currentLine = 0;
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.ResumeBackgroundMusic();
+
+        if (subtitleVoice != null)
+            subtitleVoice.StartAmbience();
+
+        if (GameplayHUDPolish.Instance != null)
+            GameplayHUDPolish.Instance.SetMenuVisible(true);
 
         HideGameplayHud();
 
@@ -174,7 +194,10 @@ public class IntroDialogue : MonoBehaviour
         if (dialogueText != null)
         {
             dialogueText.gameObject.SetActive(!hideDialogueBox);
-            dialogueText.text = hideDialogueBox ? "" : GetCurrentText();
+            if (hideDialogueBox)
+                CompleteSubtitle("");
+            else
+                BeginSubtitle(GetCurrentText(), frame != null ? frame.speakerName : "");
         }
 
         UpdateSpeaker(frame, hideDialogueBox);
@@ -246,6 +269,7 @@ public class IntroDialogue : MonoBehaviour
             cutsceneImage.gameObject.SetActive(true);
             cutsceneImage.sprite = frameImage;
             cutsceneImage.enabled = true;
+            ConfigureFullscreenCover(cutsceneImage, frameImage);
         }
         else if (!keepPreviousImageWhenFrameImageIsEmpty)
         {
@@ -261,6 +285,12 @@ public class IntroDialogue : MonoBehaviour
 
         if (!dialogueActive)
             return;
+
+        if (subtitleRoutine != null)
+        {
+            CompleteSubtitle(GetCurrentText());
+            return;
+        }
 
         currentLine++;
 
@@ -280,21 +310,32 @@ public class IntroDialogue : MonoBehaviour
             return;
 
         if (currentLine == GetLineCount() - 1)
-            skipButtonText.text = "Começar Dia";
+            skipButtonText.text = "ComeÃ§ar Dia";
         else
-            skipButtonText.text = "Próximo";
+            skipButtonText.text = "PrÃ³ximo";
     }
 
     private void EndDialogue()
     {
         dialogueActive = false;
+        CompleteSubtitle("");
+
+        if (subtitleVoice != null)
+            subtitleVoice.StopAmbience();
 
         if (dialoguePanel != null)
         {
             dialoguePanel.SetActive(false);
         }
 
+        if (cutsceneImage != null)
+            cutsceneImage.gameObject.SetActive(false);
+
         RestoreGameplayHud();
+
+        if (GameplayHUDPolish.Instance != null)
+            GameplayHUDPolish.Instance.SetMenuVisible(false);
+
         DesbloquearJogador();
 
         if (dayManager != null)
@@ -308,6 +349,95 @@ public class IntroDialogue : MonoBehaviour
         }
 
         Debug.Log("dialogo inicial terminou");
+    }
+
+    private void BeginSubtitle(string text, string speakerName)
+    {
+        CompleteSubtitle(text);
+
+        if (dialogueText == null || !animateSubtitles || string.IsNullOrEmpty(text))
+            return;
+
+        dialogueText.maxVisibleCharacters = 0;
+        dialogueText.ForceMeshUpdate();
+        subtitleRoutine = StartCoroutine(RevealSubtitle(speakerName));
+    }
+
+    private IEnumerator RevealSubtitle(string speakerName)
+    {
+        int characterCount = dialogueText.textInfo.characterCount;
+        int spokenCharacters = 0;
+
+        for (int i = 0; i < characterCount; i++)
+        {
+            dialogueText.maxVisibleCharacters = i + 1;
+            char character = dialogueText.textInfo.characterInfo[i].character;
+
+            if (!char.IsWhiteSpace(character))
+            {
+                if (spokenCharacters % 2 == 0 && subtitleVoice != null)
+                    subtitleVoice.PlayCharacter(speakerName, spokenCharacters);
+
+                spokenCharacters++;
+            }
+
+            yield return new WaitForSecondsRealtime(characterDelay);
+        }
+
+        dialogueText.maxVisibleCharacters = int.MaxValue;
+        subtitleRoutine = null;
+    }
+
+    private void CompleteSubtitle(string finalText)
+    {
+        if (subtitleRoutine != null)
+        {
+            StopCoroutine(subtitleRoutine);
+            subtitleRoutine = null;
+        }
+
+        if (subtitleVoice != null)
+            subtitleVoice.StopVoice();
+
+        if (dialogueText != null)
+        {
+            dialogueText.text = finalText ?? "";
+            dialogueText.maxVisibleCharacters = int.MaxValue;
+        }
+    }
+
+    private static void ConfigureFullscreenCover(Image image, Sprite sprite)
+    {
+        if (image == null || sprite == null)
+            return;
+
+        RectTransform rect = image.rectTransform;
+
+        // Nas cenas antigas a imagem estava dentro da pequena caixa inferior.
+        // Movemo-la para o contentor do ecra e deixamos a caixa de dialogo por cima.
+        Canvas rootCanvas = image.canvas != null ? image.canvas.rootCanvas : null;
+        if (rootCanvas != null && rootCanvas.transform is RectTransform screenParent)
+        {
+            if (rect.parent != screenParent)
+                rect.SetParent(screenParent, false);
+
+            // Fundo da cutscene: ocupa o Canvas inteiro e fica atras de toda a UI.
+            rect.SetAsFirstSibling();
+        }
+
+        rect.anchorMin = new Vector2(0.5f, 0.5f);
+        rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.pivot = new Vector2(0.5f, 0.5f);
+        rect.anchoredPosition = Vector2.zero;
+
+        AspectRatioFitter fitter = image.GetComponent<AspectRatioFitter>();
+        if (fitter == null)
+            fitter = image.gameObject.AddComponent<AspectRatioFitter>();
+
+        fitter.aspectMode = AspectRatioFitter.AspectMode.EnvelopeParent;
+        fitter.aspectRatio = sprite.rect.width / Mathf.Max(sprite.rect.height, 1f);
+        image.preserveAspect = true;
+        image.raycastTarget = false;
     }
 
     private void HideGameplayHud()

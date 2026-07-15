@@ -8,6 +8,9 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float interactionDistance = 10f;
     [SerializeField] private bool debugRaycastHits = false;
 
+    private IInteractable focusedInteractable;
+    private Component focusedComponent;
+
     void Start()
     {
         if (playerCamera == null)
@@ -18,6 +21,11 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
+        focusedInteractable = FindInteractable(out focusedComponent);
+
+        if (GameplayHUDPolish.Instance != null)
+            GameplayHUDPolish.Instance.SetInteractionTarget(focusedComponent);
+
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             TryInteract();
@@ -32,14 +40,33 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
+        IInteractable interactable = focusedInteractable ?? FindInteractable(out focusedComponent);
+
+        if (interactable == null)
+        {
+            if (GameplayHUDPolish.Instance != null)
+                GameplayHUDPolish.Instance.PulseInteraction(false);
+            return;
+        }
+
+        interactable.Interact();
+
+        if (GameplayHUDPolish.Instance != null)
+            GameplayHUDPolish.Instance.PulseInteraction(true);
+    }
+
+    private IInteractable FindInteractable(out Component interactableComponent)
+    {
+        interactableComponent = null;
+
+        if (playerCamera == null)
+            return null;
+
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         RaycastHit[] hits = Physics.RaycastAll(ray, interactionDistance, ~0, QueryTriggerInteraction.Collide);
 
         if (hits.Length == 0)
-        {
-            Debug.Log("nao acertei em nada com o clique");
-            return;
-        }
+            return null;
 
         System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
 
@@ -61,12 +88,11 @@ public class PlayerInteraction : MonoBehaviour
 
             if (interactable != null)
             {
-                Debug.Log("interagi com: " + hit.collider.name);
-                interactable.Interact();
-                return;
+                interactableComponent = interactable as Component;
+                return interactable;
             }
         }
 
-        Debug.Log("olhei para objetos, mas nenhum tinha interacao");
+        return null;
     }
 }

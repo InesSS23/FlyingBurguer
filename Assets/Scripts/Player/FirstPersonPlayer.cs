@@ -6,20 +6,26 @@ public class FirstPersonPlayer : MonoBehaviour
 {
     [Header("movimento")]
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float sprintMultiplier = 1.45f;
+    [SerializeField] private float acceleration = 18f;
+    [SerializeField] private float deceleration = 24f;
+    [SerializeField] private float gravity = -24f;
     [SerializeField] private float mouseSensitivity = 0.12f;
 
     [Header("camera")]
     [SerializeField] private Transform playerCamera;
 
-    [Header("posição da camera dentro do player")]
+    [Header("posiÃ§Ã£o da camera dentro do player")]
     [SerializeField] private Vector3 cameraLocalPosition = new Vector3(0f, 7.78f, 0f);
 
-    [Header("posição inicial do jogador no Level1")]
+    [Header("posiÃ§Ã£o inicial do jogador no Level1")]
     [SerializeField] private Vector3 startPosition = new Vector3(14.5f, 0f, 12.9f);
     [SerializeField] private Vector3 startRotation = new Vector3(0f, 244.9f, 0f);
 
     private float cameraPitch = 0f;
     private CharacterController characterController;
+    private Vector3 planarVelocity;
+    private float verticalVelocity;
 
     private bool canMove = true;
 
@@ -28,8 +34,8 @@ public class FirstPersonPlayer : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         mouseSensitivity = GameSettings.GetMouseSensitivity();
 
-        // CORREÇÃO: o Level1 passa a corrigir sozinho a posição inicial do jogador e da câmara.
-        // Assim não depende do MainMenu nem da ordem em que o WebGL/itch.io carrega os scripts.
+        // CORREÃ‡ÃƒO: o Level1 passa a corrigir sozinho a posiÃ§Ã£o inicial do jogador e da cÃ¢mara.
+        // Assim nÃ£o depende do MainMenu nem da ordem em que o WebGL/itch.io carrega os scripts.
         ResetPlayerAndCameraToStart();
     }
 
@@ -37,15 +43,15 @@ public class FirstPersonPlayer : MonoBehaviour
     {
         LockCursor();
 
-        // CORREÇÃO: força novamente durante os primeiros frames.
-        // Isto evita que outro script ou a troca de cena altere a câmara logo no arranque.
+        // CORREÃ‡ÃƒO: forÃ§a novamente durante os primeiros frames.
+        // Isto evita que outro script ou a troca de cena altere a cÃ¢mara logo no arranque.
         StartCoroutine(ForceCameraAtStart());
     }
 
     private void OnEnable()
     {
-        // Quando o diálogo acaba, este script volta a ser ativado.
-        // Nessa altura garantimos outra vez que a vista começa correta.
+        // Quando o diÃ¡logo acaba, este script volta a ser ativado.
+        // Nessa altura garantimos outra vez que a vista comeÃ§a correta.
         ResetCameraView();
     }
 
@@ -160,13 +166,24 @@ public class FirstPersonPlayer : MonoBehaviour
         direction.y = 0f;
         direction.Normalize();
 
+        bool sprinting = Keyboard.current.leftShiftKey.isPressed && direction.sqrMagnitude > 0f;
+        float targetSpeed = moveSpeed * (sprinting ? sprintMultiplier : 1f);
+        Vector3 targetVelocity = direction * targetSpeed;
+        float velocityChange = direction.sqrMagnitude > 0f ? acceleration : deceleration;
+        planarVelocity = Vector3.MoveTowards(planarVelocity, targetVelocity, velocityChange * Time.deltaTime);
+
         if (characterController != null)
         {
-            characterController.Move(direction * moveSpeed * Time.deltaTime);
+            if (characterController.isGrounded && verticalVelocity < 0f)
+                verticalVelocity = -2f;
+            else
+                verticalVelocity += gravity * Time.deltaTime;
+
+            characterController.Move((planarVelocity + Vector3.up * verticalVelocity) * Time.deltaTime);
         }
         else
         {
-            transform.position += direction * moveSpeed * Time.deltaTime;
+            transform.position += planarVelocity * Time.deltaTime;
         }
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -144,6 +144,26 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void ResumeBackgroundMusic()
+    {
+        InitializeAudio();
+
+        if (bgmAudioSource == null)
+            return;
+
+        if (bgmAudioSource.clip == null && backgroundMusic != null)
+            bgmAudioSource.clip = backgroundMusic;
+
+        if (bgmAudioSource.clip == null)
+            return;
+
+        bgmAudioSource.loop = true;
+        bgmAudioSource.volume = bgmVolume;
+
+        if (!bgmAudioSource.isPlaying)
+            bgmAudioSource.Play();
+    }
+
     public void PlaySFX(AudioClip clip)
     {
         PlaySFX(clip, 1f);
@@ -159,8 +179,8 @@ public class AudioManager : MonoBehaviour
         float safeMultiplier = Mathf.Clamp(volumeMultiplier, 0f, 3f);
 
         /*
-            O volume geral continua controlado pela barra das opções.
-            Aqui só estamos a dizer se este som é mais forte/fraco que os outros.
+            O volume geral continua controlado pela barra das opÃ§Ãµes.
+            Aqui sÃ³ estamos a dizer se este som Ã© mais forte/fraco que os outros.
         */
         sfxAudioSource.volume = sfxVolume;
         sfxAudioSource.PlayOneShot(clip, safeMultiplier);
