@@ -2,11 +2,53 @@ using UnityEngine;
 
 public class IngredientStation : MonoBehaviour, IInteractable
 {
-    [Header("ingrediente desta estação")]
+    [Header("ingrediente desta estaï¿½ï¿½o")]
     [SerializeField] private string ingredientName;
+
+    private LevelConfig levelConfig;
+
+    private void Start()
+    {
+        DayManager dayManager = FindFirstObjectByType<DayManager>();
+
+        if (dayManager != null)
+        {
+            levelConfig = dayManager.GetLevelConfig();
+        }
+    }
+
+    private bool IsUnlocked()
+    {
+        if (levelConfig == null)
+            return true;
+
+        switch (ingredientName)
+        {
+            case "Tomato":
+                return levelConfig.allowTomato;
+            case "Pepper":
+                return levelConfig.allowPepper;
+            case "FrozenFries":
+                return levelConfig.allowFries;
+            case "EmptyCup":
+                return levelConfig.allowDrink;
+            default:
+                return true;
+        }
+    }
 
     public void Interact()
     {
+        if (!IsUnlocked())
+        {
+            if (GameplayHUDPolish.Instance != null)
+            {
+                GameplayHUDPolish.Instance.ShowFeedback("Ainda nÃ£o desbloqueaste este ingrediente.");
+            }
+
+            return;
+        }
+
         PlayerHand playerHand = FindFirstObjectByType<PlayerHand>();
 
         if (playerHand == null)

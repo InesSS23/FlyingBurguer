@@ -9,19 +9,19 @@ public class OrderSlotUI : MonoBehaviour
     [SerializeField] private Transform iconsParent;
 
     [Header("tamanhos")]
-    [SerializeField] private Vector2 ingredientIconSize = new Vector2(70f, 70f);
-    [SerializeField] private Vector2 extraIconSize = new Vector2(52f, 52f);
+    [SerializeField] private Vector2 ingredientIconSize = new Vector2(140f, 140f);
+    [SerializeField] private Vector2 extraIconSize = new Vector2(121f, 121f);
 
     [Header("barra de tempo")]
-    [SerializeField] private Vector2 horizontalTimeBarSize = new Vector2(220f, 8f);
-    [SerializeField] private float timeBarGapBelowOrder = 4f;
+    [SerializeField] private Vector2 horizontalTimeBarSize = new Vector2(890f, 19f);
+    [SerializeField] private float timeBarGapBelowOrder = 51f;
     [SerializeField] private float timeAlertSeconds = 15f;
     [SerializeField] private Color timeBarNormalColor = new Color(0.1f, 0.75f, 0.2f, 1f);
     [SerializeField] private Color timeBarAlertColor = new Color(0.9f, 0.05f, 0.05f, 1f);
     [SerializeField] private Color timeBarBackgroundColor = new Color(0f, 0f, 0f, 0.25f);
 
     [Header("numero do pedido")]
-    [SerializeField] private Vector2 numberLabelSize = new Vector2(90f, 90f);
+    [SerializeField] private Vector2 numberLabelSize = new Vector2(204f, 204f);
 
     private const float ExtraIconSpacing = 5f;
     private const float ExtraIconGapFromBurgerBox = 8f;
@@ -73,6 +73,17 @@ public class OrderSlotUI : MonoBehaviour
 
         UpdateTimer(remainingTime, maxTime);
         UpdateNumberLabel(order.orderNumber, hudManager, totalExtras);
+
+        // forca o recalculo do layout no mesmo frame - sem isto, os grupos de layout aninhados
+        // (ticket dentro do painel) por vezes so se ajustam num frame seguinte, e nesse frame
+        // intermedio o conteudo pode aparecer fora da moldura
+        RectTransform slotRect = GetSlotRect();
+
+        if (iconsParent is RectTransform iconsRect)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(iconsRect);
+
+        if (slotRect != null && slotRect.parent is RectTransform panelRect)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(panelRect);
     }
 
     public void UpdateTimer(float remainingTime, float maxTime)

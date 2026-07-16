@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -32,6 +33,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip spawnSFX;
     [SerializeField] private AudioClip orderHappySFX;
     [SerializeField] private AudioClip orderAngrySFX;
+    [SerializeField] private AudioClip newOrderBellSFX;
 
     [Header("Volume Settings")]
     [SerializeField] private float defaultBGMVolume = 0.5f;
@@ -63,8 +65,9 @@ public class AudioManager : MonoBehaviour
     private const float BIRD_ARRIVE_VOLUME = 1.25f;
     private const float CLOCK_TICK_VOLUME = 1f;
     private const float SPAWN_VOLUME = 1.25f;
-    private const float ORDER_HAPPY_VOLUME = 1.25f;
-    private const float ORDER_ANGRY_VOLUME = 1.25f;
+    private const float ORDER_HAPPY_VOLUME = 0.9f;
+    private const float ORDER_ANGRY_VOLUME = 0.9f;
+    private const float NEW_ORDER_BELL_VOLUME = 1.25f;
 
     private float bgmVolume;
     private float sfxVolume;
@@ -175,6 +178,92 @@ public class AudioManager : MonoBehaviour
 
         if (!bgmAudioSource.isPlaying)
             bgmAudioSource.Play();
+    }
+
+    private Coroutine bgmFadeCoroutine;
+
+    public void FadeToBackgroundMusic(AudioClip clip, float fadeOutDuration, float fadeInDuration)
+    {
+        InitializeAudio();
+
+        if (bgmAudioSource == null)
+            return;
+
+        if (bgmFadeCoroutine != null)
+        {
+            StopCoroutine(bgmFadeCoroutine);
+        }
+
+        bgmFadeCoroutine = StartCoroutine(FadeToBackgroundMusicRoutine(clip, fadeOutDuration, fadeInDuration));
+    }
+
+    public void FadeOutBackgroundMusic(float duration)
+    {
+        InitializeAudio();
+
+        if (bgmAudioSource == null)
+            return;
+
+        if (bgmFadeCoroutine != null)
+        {
+            StopCoroutine(bgmFadeCoroutine);
+        }
+
+        bgmFadeCoroutine = StartCoroutine(FadeOutBackgroundMusicRoutine(duration));
+    }
+
+    private IEnumerator FadeToBackgroundMusicRoutine(AudioClip clip, float fadeOutDuration, float fadeInDuration)
+    {
+        if (bgmAudioSource.isPlaying)
+        {
+            yield return FadeBgmVolume(bgmAudioSource.volume, 0f, fadeOutDuration);
+        }
+
+        bgmAudioSource.Stop();
+        bgmAudioSource.clip = clip;
+        bgmAudioSource.loop = true;
+
+        if (clip == null)
+        {
+            bgmFadeCoroutine = null;
+            yield break;
+        }
+
+        bgmAudioSource.volume = 0f;
+        bgmAudioSource.Play();
+
+        yield return FadeBgmVolume(0f, bgmVolume, fadeInDuration);
+
+        bgmFadeCoroutine = null;
+    }
+
+    private IEnumerator FadeOutBackgroundMusicRoutine(float duration)
+    {
+        yield return FadeBgmVolume(bgmAudioSource.volume, 0f, duration);
+
+        bgmAudioSource.Stop();
+        bgmFadeCoroutine = null;
+    }
+
+    private IEnumerator FadeBgmVolume(float from, float to, float duration)
+    {
+        if (duration <= 0f)
+        {
+            bgmAudioSource.volume = to;
+            yield break;
+        }
+
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            // unscaled porque isto tambem corre durante cutscenes com Time.timeScale = 0
+            elapsed += Time.unscaledDeltaTime;
+            bgmAudioSource.volume = Mathf.Lerp(from, to, elapsed / duration);
+            yield return null;
+        }
+
+        bgmAudioSource.volume = to;
     }
 
     public void PlaySFX(AudioClip clip)
@@ -339,6 +428,11 @@ public class AudioManager : MonoBehaviour
     public void PlayOrderAngrySFX()
     {
         PlaySFX(orderAngrySFX, ORDER_ANGRY_VOLUME);
+    }
+
+    public void PlayNewOrderBellSFX()
+    {
+        PlaySFX(newOrderBellSFX, NEW_ORDER_BELL_VOLUME);
     }
 
     public void SetBGMVolume(float volume)

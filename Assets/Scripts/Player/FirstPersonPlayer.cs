@@ -5,10 +5,10 @@ using UnityEngine.InputSystem;
 public class FirstPersonPlayer : MonoBehaviour
 {
     [Header("movimento")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 15f;
     [SerializeField] private float sprintMultiplier = 1.45f;
-    [SerializeField] private float acceleration = 18f;
-    [SerializeField] private float deceleration = 24f;
+    [SerializeField] private float acceleration = 24f;
+    [SerializeField] private float deceleration = 30f;
     [SerializeField] private float gravity = -24f;
     [SerializeField] private float mouseSensitivity = 0.12f;
 

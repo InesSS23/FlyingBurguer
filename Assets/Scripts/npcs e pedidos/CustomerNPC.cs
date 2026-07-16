@@ -292,6 +292,7 @@ public class CustomerNPC : MonoBehaviour
             if (AudioManager.Instance != null)
             {
                 AudioManager.Instance.PlayBirdArriveSFX();
+                AudioManager.Instance.PlayNewOrderBellSFX();
             }
 
             if (servicePoint != null)

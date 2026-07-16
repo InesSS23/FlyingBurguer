@@ -29,6 +29,17 @@ public class FryerStation : MonoBehaviour, IInteractable
 
     private GameObject currentVisual;
     private AudioSource cookingLoopSource;
+    private LevelConfig levelConfig;
+
+    private void Start()
+    {
+        DayManager dayManager = FindFirstObjectByType<DayManager>();
+
+        if (dayManager != null)
+        {
+            levelConfig = dayManager.GetLevelConfig();
+        }
+    }
 
     private void OnDisable()
     {
@@ -37,6 +48,16 @@ public class FryerStation : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (levelConfig != null && !levelConfig.allowFries)
+        {
+            if (GameplayHUDPolish.Instance != null)
+            {
+                GameplayHUDPolish.Instance.ShowFeedback("Ainda não desbloqueaste as batatas fritas.");
+            }
+
+            return;
+        }
+
         PlayerHand playerHand = FindFirstObjectByType<PlayerHand>();
 
         if (playerHand == null)

@@ -32,6 +32,11 @@ public class EndCutsceneController : MonoBehaviour
     [Header("fallback")]
     [SerializeField] private string fallbackMenuSceneName = "MainMenu";
 
+    [Header("musica final")]
+    [SerializeField] private AudioClip finalMusic;
+    [SerializeField] private float musicFadeOutDuration = 1.5f;
+    [SerializeField] private float musicFadeInDuration = 2f;
+
     private DialogueFrame[] frames;
     private int currentFrame = 0;
     private string sceneToLoadAfterCutscene = "MainMenu";
@@ -106,8 +111,8 @@ public class EndCutsceneController : MonoBehaviour
         currentFrame = 0;
         active = true;
 
-        if (AudioManager.Instance != null)
-            AudioManager.Instance.ResumeBackgroundMusic();
+        if (AudioManager.Instance != null && finalMusic != null)
+            AudioManager.Instance.FadeToBackgroundMusic(finalMusic, musicFadeOutDuration, musicFadeInDuration);
 
         if (subtitleVoice != null)
             subtitleVoice.StartAmbience();
@@ -282,6 +287,9 @@ public class EndCutsceneController : MonoBehaviour
 
         Time.timeScale = 1f;
 
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.FadeOutBackgroundMusic(musicFadeOutDuration);
+
         if (string.IsNullOrWhiteSpace(sceneToLoadAfterCutscene))
         {
             sceneToLoadAfterCutscene = fallbackMenuSceneName;
@@ -307,6 +315,9 @@ public class EndCutsceneController : MonoBehaviour
         {
             sceneName = config.finalSceneName;
         }
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.FadeOutBackgroundMusic(musicFadeOutDuration);
 
         SceneManager.LoadScene(sceneName);
     }
