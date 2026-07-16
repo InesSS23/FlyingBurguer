@@ -1,11 +1,11 @@
 [Licensing::Module] Trying to connect to existing licensing client channel...
 Built from '6000.3/staging' branch; Version is '6000.3.8f1 (1c7db571dde0) revision 1867189'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ivanl" at "2026-07-16T23:24:38.3130701Z"
 OS: 'Windows 11  (10.0.26200) Professional' Language: 'pt' Physical Memory: 16236 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
 System  architecture: x64
 Process architecture: x64
-Date: 2026-07-16T20:31:52Z
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ivanl" at "2026-07-16T20:31:52.9723814Z"
+Date: 2026-07-16T23:24:38Z
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity 6000.3.8f1\Editor\Unity.exe
@@ -19,7 +19,7 @@ C:/Users/ivanl/Downloads/parque-aquilino-ribeiro/FlyingBurguer
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-59314
+51988
 -licensingIpc
 LicenseClient-ivanl
 -job-worker-count
@@ -67,12 +67,12 @@ C:/Users/ivanl/Downloads/parque-aquilino-ribeiro/FlyingBurguer
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
     "memorysetup-temp-allocator-size-cloud-worker=32768"
-Player connection [32212]  Target information:
+Player connection [4944]  Target information:
 
-Player connection [32212]  * "[IP] 192.168.1.215 [Port] 0 [Flags] 2 [Guid] 3647849982 [EditorId] 3647849982 [Version] 1048832 [Id] WindowsEditor(7,IVAN) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [4944]  * "[IP] 192.168.1.215 [Port] 0 [Flags] 2 [Guid] 473828274 [EditorId] 473828274 [Version] 1048832 [Id] WindowsEditor(7,IVAN) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [32212] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [32212] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [4944] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [4944] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 5
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -84,7 +84,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 5.01 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 11.35 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.3.8f1 (1c7db571dde0)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity 6000.3.8f1/Editor/Data/Resources/UnitySubsystems
@@ -100,55 +100,55 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity 6000.3.8f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity 6000.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity 6000.3.8f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56688
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56756
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity 6000.3.8f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity 6000.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.006455 seconds.
-- Loaded All Assemblies, in  0.808 seconds
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
+Registered in 0.007405 seconds.
 [Licensing::Client] Handshaking with LicensingClient:
   Version:                 1.17.4+4293ba1
-  Session Id:              f3eed06360e14ecc90d63a3a56e934ca
-  Correlation Id:          f98c6411d9e2f63fd2877b452fb34393
-  External correlation Id: 3914094533882645617
+  Session Id:              454b88cce617496288f26ef8609392eb
+  Correlation Id:          c41a2710bdddbf18ff5635431b606875
+  External correlation Id: 5772526367462910294
   Machine Id:              XQU+l6sgkb3/WTww7QqeiY4Io7w=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-ivanl" (connect: 0.00s, validation: 0.00s, handshake: 2.40s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ivanl-notifications" at "2026-07-16T20:31:55.3802599Z"
-[Licensing::Module] Licensing Background thread has ended after 2.41s
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-ivanl" (connect: 0.00s, validation: 0.01s, handshake: 2.55s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-ivanl-notifications" at "2026-07-16T23:24:40.8771051Z"
+[Licensing::Module] Licensing Background thread has ended after 2.56s
+- Loaded All Assemblies, in  1.177 seconds
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.770 seconds
-Domain Reload Profiling: 1568ms
-	BeginReloadAssembly (272ms)
+- Finished resetting the current domain, in  0.802 seconds
+Domain Reload Profiling: 1967ms
+	BeginReloadAssembly (495ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (69ms)
-	RebuildNativeTypeToScriptingClass (22ms)
-	initialDomainReloadingComplete (100ms)
-	LoadAllAssembliesAndSetupDomain (334ms)
-		LoadAssemblies (255ms)
+	RebuildCommonClasses (79ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (109ms)
+	LoadAllAssembliesAndSetupDomain (458ms)
+		LoadAssemblies (483ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (328ms)
-			TypeCache.Refresh (326ms)
-				TypeCache.ScanAssembly (303ms)
+		AnalyzeDomain (452ms)
+			TypeCache.Refresh (449ms)
+				TypeCache.ScanAssembly (413ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (771ms)
+	FinalizeReload (803ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (680ms)
+		SetupLoadedEditorAssemblies (724ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (130ms)
+			InitializePlatformSupportModulesInManaged (110ms)
 			SetLoadedEditorAssemblies (7ms)
-			BeforeProcessingInitializeOnLoad (160ms)
-			ProcessInitializeOnLoadAttributes (286ms)
-			ProcessInitializeOnLoadMethodAttributes (97ms)
+			BeforeProcessingInitializeOnLoad (193ms)
+			ProcessInitializeOnLoadAttributes (306ms)
+			ProcessInitializeOnLoadMethodAttributes (109ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -169,8 +169,8 @@ Begin MonoManager ReloadAssembly
   Type: Assigned
   Expiration: Unlimited
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.641 seconds
-Refreshing native plugins compatible for Editor in 1.71 ms, found 3 plugins.
+- Loaded All Assemblies, in  2.352 seconds
+Refreshing native plugins compatible for Editor in 1.57 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Package Manager log level set to [2]
@@ -182,77 +182,77 @@ Package Manager log level set to [2]
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.815 seconds
-Domain Reload Profiling: 4440ms
-	BeginReloadAssembly (299ms)
+- Finished resetting the current domain, in  2.788 seconds
+Domain Reload Profiling: 5123ms
+	BeginReloadAssembly (298ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (11ms)
+		DisableScriptedObjects (9ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (45ms)
-	RebuildCommonClasses (66ms)
-	RebuildNativeTypeToScriptingClass (18ms)
-	initialDomainReloadingComplete (100ms)
-	LoadAllAssembliesAndSetupDomain (1141ms)
-		LoadAssemblies (746ms)
+		CreateAndSetChildDomain (46ms)
+	RebuildCommonClasses (58ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (104ms)
+	LoadAllAssembliesAndSetupDomain (1861ms)
+		LoadAssemblies (1279ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (562ms)
-			TypeCache.Refresh (419ms)
-				TypeCache.ScanAssembly (397ms)
-			BuildScriptInfoCaches (122ms)
-			ResolveRequiredComponents (15ms)
-	FinalizeReload (2816ms)
+		AnalyzeDomain (750ms)
+			TypeCache.Refresh (573ms)
+				TypeCache.ScanAssembly (539ms)
+			BuildScriptInfoCaches (149ms)
+			ResolveRequiredComponents (19ms)
+	FinalizeReload (2788ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2464ms)
+		SetupLoadedEditorAssemblies (2462ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (4ms)
-			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (387ms)
-			ProcessInitializeOnLoadAttributes (1713ms)
-			ProcessInitializeOnLoadMethodAttributes (338ms)
-			AfterProcessingInitializeOnLoad (17ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (287ms)
+			ProcessInitializeOnLoadAttributes (1876ms)
+			ProcessInitializeOnLoadMethodAttributes (276ms)
+			AfterProcessingInitializeOnLoad (15ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (13ms)
+		AwakeInstancesAfterBackupRestoration (9ms)
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 3.36 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 2.01 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 68 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8334 unused Assets / (13.2 MB). Loaded Objects now: 9047.
-Memory consumption went from 173.2 MB to 160.0 MB.
-Total: 40.122700 ms (FindLiveObjects: 2.014000 ms CreateObjectMapping: 2.025200 ms MarkObjects: 25.287800 ms  DeleteObjects: 10.793800 ms)
+Unloading 8334 unused Assets / (13.8 MB). Loaded Objects now: 9047.
+Memory consumption went from 171.1 MB to 157.3 MB.
+Total: 29.470600 ms (FindLiveObjects: 1.464300 ms CreateObjectMapping: 1.636500 ms MarkObjects: 17.062700 ms  DeleteObjects: 9.304800 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 353946.304164 seconds.
-  path: Assets/Scripts/HUD/EndCutsceneController.cs
-  artifactKey: Guid(4933af492bc345c4f823458ca460d9c7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Scripts/HUD/EndCutsceneController.cs using Guid(4933af492bc345c4f823458ca460d9c7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '12d8773f0d5496a1f146dc5f80af24a1') in 0.1115078 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
+  Time since last request: 364313.929994 seconds.
   path: Assets/Scripts/HUD/OrderSlotUI.cs
   artifactKey: Guid(68c6a21dd78b5094f833fe1f7a03db85) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Scripts/HUD/OrderSlotUI.cs using Guid(68c6a21dd78b5094f833fe1f7a03db85) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '31cd93970d0563f975fc95abae601e02') in 0.0244258 seconds
+Start importing Assets/Scripts/HUD/OrderSlotUI.cs using Guid(68c6a21dd78b5094f833fe1f7a03db85) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4c6f46b6afa56737fef6364c0f51d03b') in 0.1070778 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000045 seconds.
-  path: Assets/Audio/Sons/musicafinal.mp3
-  artifactKey: Guid(331fd583e3462224da4e71db5d97b8c7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Audio/Sons/musicafinal.mp3 using Guid(331fd583e3462224da4e71db5d97b8c7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c3a3d14caf45c6bf2d4ec7aff35e58b7') in 0.1138912 seconds
+  Time since last request: 0.000028 seconds.
+  path: Assets/Scripts/Audio/AudioManager.cs
+  artifactKey: Guid(425424d95f503b0478a1504a36dbdc41) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Audio/AudioManager.cs using Guid(425424d95f503b0478a1504a36dbdc41) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '10062daef3ee8776a1d9f223097e5c69') in 0.0203014 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/_Recovery/0 (3).unity
+  artifactKey: Guid(1d54d1cbf257f584185d381eb7767250) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_Recovery/0 (3).unity using Guid(1d54d1cbf257f584185d381eb7767250) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '287343d6fd496a6c69518c434d621e1c') in 0.0286542 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.589 seconds
-Refreshing native plugins compatible for Editor in 1.78 ms, found 3 plugins.
+- Loaded All Assemblies, in  2.936 seconds
+Refreshing native plugins compatible for Editor in 3.17 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
@@ -263,1841 +263,44 @@ Native extension for WebGL target not found
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.401 seconds
-Domain Reload Profiling: 3979ms
-	BeginReloadAssembly (361ms)
+- Finished resetting the current domain, in  3.114 seconds
+Domain Reload Profiling: 6023ms
+	BeginReloadAssembly (739ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (10ms)
+		DisableScriptedObjects (50ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (114ms)
-	RebuildCommonClasses (58ms)
-	RebuildNativeTypeToScriptingClass (15ms)
-	initialDomainReloadingComplete (86ms)
-	LoadAllAssembliesAndSetupDomain (1057ms)
-		LoadAssemblies (744ms)
+		CreateAndSetChildDomain (212ms)
+	RebuildCommonClasses (118ms)
+	RebuildNativeTypeToScriptingClass (35ms)
+	initialDomainReloadingComplete (193ms)
+	LoadAllAssembliesAndSetupDomain (1823ms)
+		LoadAssemblies (1336ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (459ms)
-			TypeCache.Refresh (12ms)
+		AnalyzeDomain (748ms)
+			TypeCache.Refresh (19ms)
 				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (427ms)
-			ResolveRequiredComponents (14ms)
-	FinalizeReload (2402ms)
+			BuildScriptInfoCaches (680ms)
+			ResolveRequiredComponents (39ms)
+	FinalizeReload (3115ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2105ms)
+		SetupLoadedEditorAssemblies (2795ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (4ms)
-			SetLoadedEditorAssemblies (7ms)
-			BeforeProcessingInitializeOnLoad (353ms)
-			ProcessInitializeOnLoadAttributes (1295ms)
-			ProcessInitializeOnLoadMethodAttributes (429ms)
-			AfterProcessingInitializeOnLoad (17ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (601ms)
+			ProcessInitializeOnLoadAttributes (1582ms)
+			ProcessInitializeOnLoadMethodAttributes (580ms)
+			AfterProcessingInitializeOnLoad (19ms)
 			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (28ms)
-Refreshing native plugins compatible for Editor in 2.01 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (30ms)
+Refreshing native plugins compatible for Editor in 4.25 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8331 unused Assets / (13.5 MB). Loaded Objects now: 9066.
-Memory consumption went from 178.1 MB to 164.6 MB.
-Total: 26.875600 ms (FindLiveObjects: 1.074800 ms CreateObjectMapping: 0.923500 ms MarkObjects: 17.390200 ms  DeleteObjects: 7.485800 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-W7A9-PE5P-6BUN-52Y6-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 6872731912865-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.227 seconds
-Refreshing native plugins compatible for Editor in 1.83 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.717 seconds
-Domain Reload Profiling: 2933ms
-	BeginReloadAssembly (270ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (7ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (81ms)
-	RebuildCommonClasses (38ms)
-	RebuildNativeTypeToScriptingClass (17ms)
-	initialDomainReloadingComplete (73ms)
-	LoadAllAssembliesAndSetupDomain (818ms)
-		LoadAssemblies (607ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (322ms)
-			TypeCache.Refresh (10ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (297ms)
-			ResolveRequiredComponents (11ms)
-	FinalizeReload (1717ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1511ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (243ms)
-			ProcessInitializeOnLoadAttributes (954ms)
-			ProcessInitializeOnLoadMethodAttributes (291ms)
-			AfterProcessingInitializeOnLoad (14ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (18ms)
-Refreshing native plugins compatible for Editor in 1.99 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8331 unused Assets / (14.0 MB). Loaded Objects now: 9069.
-Memory consumption went from 178.2 MB to 164.2 MB.
-Total: 30.503400 ms (FindLiveObjects: 0.856000 ms CreateObjectMapping: 1.203600 ms MarkObjects: 20.129700 ms  DeleteObjects: 8.312500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 4935.645227 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '36027064811e1ba12df8d7f593980d53') in 0.0045549 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-W7A9-PE5P-6BUN-52Y6-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 6872731912865-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.246 seconds
-Refreshing native plugins compatible for Editor in 1.71 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.756 seconds
-Domain Reload Profiling: 2991ms
-	BeginReloadAssembly (287ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (7ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (85ms)
-	RebuildCommonClasses (39ms)
-	RebuildNativeTypeToScriptingClass (13ms)
-	initialDomainReloadingComplete (78ms)
-	LoadAllAssembliesAndSetupDomain (818ms)
-		LoadAssemblies (608ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (331ms)
-			TypeCache.Refresh (9ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (307ms)
-			ResolveRequiredComponents (10ms)
-	FinalizeReload (1757ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1553ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (239ms)
-			ProcessInitializeOnLoadAttributes (973ms)
-			ProcessInitializeOnLoadMethodAttributes (319ms)
-			AfterProcessingInitializeOnLoad (14ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (21ms)
-Refreshing native plugins compatible for Editor in 1.84 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8331 unused Assets / (13.4 MB). Loaded Objects now: 9072.
-Memory consumption went from 178.2 MB to 164.8 MB.
-Total: 24.523800 ms (FindLiveObjects: 1.227000 ms CreateObjectMapping: 1.566800 ms MarkObjects: 15.124000 ms  DeleteObjects: 6.604800 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.90 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8325 unused Assets / (13.5 MB). Loaded Objects now: 9072.
-Memory consumption went from 178.4 MB to 164.8 MB.
-Total: 27.645300 ms (FindLiveObjects: 1.107100 ms CreateObjectMapping: 0.801600 ms MarkObjects: 17.835500 ms  DeleteObjects: 7.899800 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 124.781266 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '57910269f03e7e01553cc9c7e6e3bb6b') in 0.0048206 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-W7A9-PE5P-6BUN-52Y6-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 6872731912865-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.334 seconds
-Refreshing native plugins compatible for Editor in 1.92 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.577 seconds
-Domain Reload Profiling: 2898ms
-	BeginReloadAssembly (304ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (8ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (91ms)
-	RebuildCommonClasses (41ms)
-	RebuildNativeTypeToScriptingClass (13ms)
-	initialDomainReloadingComplete (74ms)
-	LoadAllAssembliesAndSetupDomain (889ms)
-		LoadAssemblies (648ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (361ms)
-			TypeCache.Refresh (13ms)
-				TypeCache.ScanAssembly (1ms)
-			BuildScriptInfoCaches (331ms)
-			ResolveRequiredComponents (11ms)
-	FinalizeReload (1578ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1389ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (248ms)
-			ProcessInitializeOnLoadAttributes (823ms)
-			ProcessInitializeOnLoadMethodAttributes (298ms)
-			AfterProcessingInitializeOnLoad (13ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (20ms)
-Refreshing native plugins compatible for Editor in 1.97 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8331 unused Assets / (13.5 MB). Loaded Objects now: 9075.
-Memory consumption went from 178.3 MB to 164.8 MB.
-Total: 24.889300 ms (FindLiveObjects: 0.895300 ms CreateObjectMapping: 0.710600 ms MarkObjects: 15.109400 ms  DeleteObjects: 8.172400 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-W7A9-PE5P-6BUN-52Y6-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 6872731912865-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  4.487 seconds
-Refreshing native plugins compatible for Editor in 2.26 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.930 seconds
-Domain Reload Profiling: 6409ms
-	BeginReloadAssembly (566ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (9ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (85ms)
-	RebuildCommonClasses (42ms)
-	RebuildNativeTypeToScriptingClass (13ms)
-	initialDomainReloadingComplete (73ms)
-	LoadAllAssembliesAndSetupDomain (3783ms)
-		LoadAssemblies (3223ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (952ms)
-			TypeCache.Refresh (10ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (922ms)
-			ResolveRequiredComponents (13ms)
-	FinalizeReload (1930ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1704ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (5ms)
-			BeforeProcessingInitializeOnLoad (266ms)
-			ProcessInitializeOnLoadAttributes (1053ms)
-			ProcessInitializeOnLoadMethodAttributes (357ms)
-			AfterProcessingInitializeOnLoad (20ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (23ms)
-Refreshing native plugins compatible for Editor in 3.14 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8331 unused Assets / (13.8 MB). Loaded Objects now: 9078.
-Memory consumption went from 178.3 MB to 164.5 MB.
-Total: 29.226400 ms (FindLiveObjects: 1.195600 ms CreateObjectMapping: 1.008300 ms MarkObjects: 17.579300 ms  DeleteObjects: 9.441300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 339.877914 seconds.
-  path: Assets/Scenes/Level1.unity
-  artifactKey: Guid(53c462d7674b52945b9f824f5309668d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level1.unity using Guid(53c462d7674b52945b9f824f5309668d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4308223f2ebc5cfd91bbb50b274f90e6') in 0.0043283 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-W7A9-PE5P-6BUN-52Y6-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 6872731912865-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.466 seconds
-Refreshing native plugins compatible for Editor in 1.70 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.800 seconds
-Domain Reload Profiling: 3254ms
-	BeginReloadAssembly (387ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (11ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (119ms)
-	RebuildCommonClasses (56ms)
-	RebuildNativeTypeToScriptingClass (18ms)
-	initialDomainReloadingComplete (90ms)
-	LoadAllAssembliesAndSetupDomain (903ms)
-		LoadAssemblies (667ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (384ms)
-			TypeCache.Refresh (8ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (358ms)
-			ResolveRequiredComponents (11ms)
-	FinalizeReload (1801ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1610ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (258ms)
-			ProcessInitializeOnLoadAttributes (931ms)
-			ProcessInitializeOnLoadMethodAttributes (399ms)
-			AfterProcessingInitializeOnLoad (14ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (25ms)
-Refreshing native plugins compatible for Editor in 1.79 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8331 unused Assets / (13.5 MB). Loaded Objects now: 9081.
-Memory consumption went from 178.3 MB to 164.8 MB.
-Total: 24.391200 ms (FindLiveObjects: 0.828000 ms CreateObjectMapping: 0.594100 ms MarkObjects: 15.477400 ms  DeleteObjects: 7.489400 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 85.651605 seconds.
-  path: Assets/Scenes/Level2.unity
-  artifactKey: Guid(760e3b4d4c668f243a4a76f454d265e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level2.unity using Guid(760e3b4d4c668f243a4a76f454d265e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '775d4f92a810a954176c9317101a2786') in 0.0030477 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-W7A9-PE5P-6BUN-52Y6-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 6872731912865-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.224 seconds
-Refreshing native plugins compatible for Editor in 1.80 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.759 seconds
-Domain Reload Profiling: 2972ms
-	BeginReloadAssembly (281ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (7ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (85ms)
-	RebuildCommonClasses (38ms)
-	RebuildNativeTypeToScriptingClass (12ms)
-	initialDomainReloadingComplete (73ms)
-	LoadAllAssembliesAndSetupDomain (809ms)
-		LoadAssemblies (596ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (325ms)
-			TypeCache.Refresh (8ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (301ms)
-			ResolveRequiredComponents (10ms)
-	FinalizeReload (1759ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1552ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (239ms)
-			ProcessInitializeOnLoadAttributes (975ms)
-			ProcessInitializeOnLoadMethodAttributes (316ms)
-			AfterProcessingInitializeOnLoad (15ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (22ms)
-Refreshing native plugins compatible for Editor in 1.88 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8331 unused Assets / (13.3 MB). Loaded Objects now: 9084.
-Memory consumption went from 178.3 MB to 165.0 MB.
-Total: 26.675700 ms (FindLiveObjects: 1.073400 ms CreateObjectMapping: 1.599100 ms MarkObjects: 16.607600 ms  DeleteObjects: 7.393300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 129.234815 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0027536 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.019529 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000619 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.795808 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007343 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.036802 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006076 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.124324 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006437 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.026193 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0005973 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.077916 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006507 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.060880 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007195 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.061920 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0005822 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.061608 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006064 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.061460 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006322 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.061005 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006137 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.061278 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007455 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.062210 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006112 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.063055 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000608 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.062589 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006452 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.085380 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0009365 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.035154 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0005868 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.062596 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006217 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.061093 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006356 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.057455 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006172 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.061041 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006343 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.060008 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006153 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.058987 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006539 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.057669 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007002 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.056291 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007732 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.054650 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006316 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.053921 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006391 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.055823 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006898 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.053626 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007909 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.051250 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007121 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.048748 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006965 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.046164 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007404 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.044250 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007272 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.046285 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007431 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.047718 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007362 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.047404 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007351 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.045903 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0013986 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000723 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.023242 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0009771 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.065732 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0009868 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.010516 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0008212 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.030167 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0008403 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.030975 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007621 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.043521 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000775 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.040213 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0008074 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.041951 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007696 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.058574 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007624 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.026312 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000867 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.039483 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007379 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.044714 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000747 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.042806 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007007 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.049636 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006743 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.056100 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006729 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.057750 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007077 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.048814 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006385 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.058137 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000673 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.057745 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006549 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.058749 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006669 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.056024 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0008409 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.058828 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000697 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.054829 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006556 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.056488 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006449 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.060800 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006736 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.072135 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006329 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.041520 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006671 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.061341 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006536 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.051913 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006471 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.058744 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006095 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.057736 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006927 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.058177 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000742 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.057176 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000692 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.059417 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006576 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.047318 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006808 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.060034 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000665 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.054775 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0007219 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.055524 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0008404 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.054938 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0006652 seconds
-Import Error Code:(4)
-Message: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-  ERROR: Build asset version error: assets/scenes/level3.unity in SourceAssetDB has modification time of '2026-07-16T22:02:16.1294358Z' while content on disk has modification time of '2026-07-16T22:04:57.4012544Z'
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.238273 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '74d934250ebe020a78d08729bb72e6d0') in 0.000729 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-W7A9-PE5P-6BUN-52Y6-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 6872731912865-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.275 seconds
-Refreshing native plugins compatible for Editor in 1.67 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.774 seconds
-Domain Reload Profiling: 3039ms
-	BeginReloadAssembly (296ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (8ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (81ms)
-	RebuildCommonClasses (37ms)
-	RebuildNativeTypeToScriptingClass (13ms)
-	initialDomainReloadingComplete (72ms)
-	LoadAllAssembliesAndSetupDomain (846ms)
-		LoadAssemblies (615ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (356ms)
-			TypeCache.Refresh (10ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (326ms)
-			ResolveRequiredComponents (12ms)
-	FinalizeReload (1775ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1592ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (249ms)
-			ProcessInitializeOnLoadAttributes (958ms)
-			ProcessInitializeOnLoadMethodAttributes (361ms)
-			AfterProcessingInitializeOnLoad (18ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (20ms)
-Refreshing native plugins compatible for Editor in 2.46 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8331 unused Assets / (13.8 MB). Loaded Objects now: 9087.
-Memory consumption went from 178.5 MB to 164.7 MB.
-Total: 24.348400 ms (FindLiveObjects: 0.991700 ms CreateObjectMapping: 0.782000 ms MarkObjects: 14.845500 ms  DeleteObjects: 7.727700 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.95 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8325 unused Assets / (13.2 MB). Loaded Objects now: 9087.
-Memory consumption went from 178.7 MB to 165.5 MB.
-Total: 29.984700 ms (FindLiveObjects: 0.927200 ms CreateObjectMapping: 1.127100 ms MarkObjects: 19.368900 ms  DeleteObjects: 8.560100 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 377.990454 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(6ac3e65104c19104db002c0e5d352cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '70febe13e18d0a02da056f1e77a4d7b8') in 0.0043887 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-W7A9-PE5P-6BUN-52Y6-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 6872731912865-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.272 seconds
-Refreshing native plugins compatible for Editor in 1.72 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.692 seconds
-Domain Reload Profiling: 2954ms
-	BeginReloadAssembly (286ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (8ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (84ms)
-	RebuildCommonClasses (36ms)
-	RebuildNativeTypeToScriptingClass (13ms)
-	initialDomainReloadingComplete (79ms)
-	LoadAllAssembliesAndSetupDomain (847ms)
-		LoadAssemblies (615ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (346ms)
-			TypeCache.Refresh (13ms)
-				TypeCache.ScanAssembly (1ms)
-			BuildScriptInfoCaches (317ms)
-			ResolveRequiredComponents (11ms)
-	FinalizeReload (1693ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1504ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (4ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (242ms)
-			ProcessInitializeOnLoadAttributes (942ms)
-			ProcessInitializeOnLoadMethodAttributes (297ms)
-			AfterProcessingInitializeOnLoad (15ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (19ms)
-Refreshing native plugins compatible for Editor in 1.79 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8331 unused Assets / (13.6 MB). Loaded Objects now: 9090.
-Memory consumption went from 178.6 MB to 164.9 MB.
-Total: 25.983000 ms (FindLiveObjects: 1.003300 ms CreateObjectMapping: 1.082900 ms MarkObjects: 16.938000 ms  DeleteObjects: 6.957300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.222 seconds
-Refreshing native plugins compatible for Editor in 1.77 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.761 seconds
-Domain Reload Profiling: 2973ms
-	BeginReloadAssembly (274ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (7ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (83ms)
-	RebuildCommonClasses (37ms)
-	RebuildNativeTypeToScriptingClass (13ms)
-	initialDomainReloadingComplete (77ms)
-	LoadAllAssembliesAndSetupDomain (810ms)
-		LoadAssemblies (591ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (329ms)
-			TypeCache.Refresh (8ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (304ms)
-			ResolveRequiredComponents (11ms)
-	FinalizeReload (1762ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1563ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (255ms)
-			ProcessInitializeOnLoadAttributes (975ms)
-			ProcessInitializeOnLoadMethodAttributes (308ms)
-			AfterProcessingInitializeOnLoad (17ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (19ms)
-Refreshing native plugins compatible for Editor in 1.67 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8331 unused Assets / (13.9 MB). Loaded Objects now: 9093.
-Memory consumption went from 178.6 MB to 164.7 MB.
-Total: 24.733800 ms (FindLiveObjects: 0.845100 ms CreateObjectMapping: 0.590400 ms MarkObjects: 16.114000 ms  DeleteObjects: 7.183100 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 2.09 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8325 unused Assets / (13.5 MB). Loaded Objects now: 9093.
-Memory consumption went from 178.8 MB to 165.2 MB.
-Total: 28.061100 ms (FindLiveObjects: 0.894800 ms CreateObjectMapping: 1.116900 ms MarkObjects: 17.995200 ms  DeleteObjects: 8.052800 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-W7A9-PE5P-6BUN-52Y6-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 6872731912865-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.404 seconds
-Refreshing native plugins compatible for Editor in 2.34 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.643 seconds
-Domain Reload Profiling: 3033ms
-	BeginReloadAssembly (323ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (9ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (99ms)
-	RebuildCommonClasses (39ms)
-	RebuildNativeTypeToScriptingClass (14ms)
-	initialDomainReloadingComplete (73ms)
-	LoadAllAssembliesAndSetupDomain (941ms)
-		LoadAssemblies (685ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (382ms)
-			TypeCache.Refresh (14ms)
-				TypeCache.ScanAssembly (1ms)
-			BuildScriptInfoCaches (352ms)
-			ResolveRequiredComponents (12ms)
-	FinalizeReload (1643ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1443ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (240ms)
-			ProcessInitializeOnLoadAttributes (885ms)
-			ProcessInitializeOnLoadMethodAttributes (298ms)
-			AfterProcessingInitializeOnLoad (13ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (20ms)
-Refreshing native plugins compatible for Editor in 1.60 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8331 unused Assets / (13.9 MB). Loaded Objects now: 9096.
-Memory consumption went from 178.7 MB to 164.8 MB.
-Total: 24.061400 ms (FindLiveObjects: 0.893200 ms CreateObjectMapping: 0.677500 ms MarkObjects: 14.912200 ms  DeleteObjects: 7.577100 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.212 seconds
-Refreshing native plugins compatible for Editor in 2.31 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.661 seconds
-Domain Reload Profiling: 2864ms
-	BeginReloadAssembly (267ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (6ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (79ms)
-	RebuildCommonClasses (36ms)
-	RebuildNativeTypeToScriptingClass (13ms)
-	initialDomainReloadingComplete (76ms)
-	LoadAllAssembliesAndSetupDomain (811ms)
-		LoadAssemblies (586ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (335ms)
-			TypeCache.Refresh (8ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (310ms)
-			ResolveRequiredComponents (11ms)
-	FinalizeReload (1661ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1474ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (235ms)
-			ProcessInitializeOnLoadAttributes (930ms)
-			ProcessInitializeOnLoadMethodAttributes (287ms)
-			AfterProcessingInitializeOnLoad (15ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (19ms)
-Refreshing native plugins compatible for Editor in 7.01 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8331 unused Assets / (14.8 MB). Loaded Objects now: 9099.
-Memory consumption went from 178.7 MB to 163.9 MB.
-Total: 82.525100 ms (FindLiveObjects: 2.844400 ms CreateObjectMapping: 3.224600 ms MarkObjects: 54.825600 ms  DeleteObjects: 21.626300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 2.54 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8325 unused Assets / (14.1 MB). Loaded Objects now: 9099.
-Memory consumption went from 178.9 MB to 164.8 MB.
-Total: 33.401800 ms (FindLiveObjects: 0.956000 ms CreateObjectMapping: 0.715300 ms MarkObjects: 22.055500 ms  DeleteObjects: 9.673400 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-W7A9-PE5P-6BUN-52Y6-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 6872731912865-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.684 seconds
-Refreshing native plugins compatible for Editor in 2.76 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.979 seconds
-Domain Reload Profiling: 3645ms
-	BeginReloadAssembly (364ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (10ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (103ms)
-	RebuildCommonClasses (58ms)
-	RebuildNativeTypeToScriptingClass (26ms)
-	initialDomainReloadingComplete (108ms)
-	LoadAllAssembliesAndSetupDomain (1109ms)
-		LoadAssemblies (757ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (502ms)
-			TypeCache.Refresh (18ms)
-				TypeCache.ScanAssembly (1ms)
-			BuildScriptInfoCaches (462ms)
-			ResolveRequiredComponents (15ms)
-	FinalizeReload (1980ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1730ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (304ms)
-			ProcessInitializeOnLoadAttributes (1031ms)
-			ProcessInitializeOnLoadMethodAttributes (371ms)
-			AfterProcessingInitializeOnLoad (17ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (22ms)
-Refreshing native plugins compatible for Editor in 1.58 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8331 unused Assets / (13.5 MB). Loaded Objects now: 9102.
-Memory consumption went from 178.8 MB to 165.3 MB.
-Total: 35.162700 ms (FindLiveObjects: 1.528800 ms CreateObjectMapping: 1.214500 ms MarkObjects: 22.643300 ms  DeleteObjects: 9.774700 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.267 seconds
-Refreshing native plugins compatible for Editor in 1.88 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.648 seconds
-Domain Reload Profiling: 2904ms
-	BeginReloadAssembly (267ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (7ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (81ms)
-	RebuildCommonClasses (36ms)
-	RebuildNativeTypeToScriptingClass (14ms)
-	initialDomainReloadingComplete (72ms)
-	LoadAllAssembliesAndSetupDomain (866ms)
-		LoadAssemblies (603ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (373ms)
-			TypeCache.Refresh (9ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (347ms)
-			ResolveRequiredComponents (11ms)
-	FinalizeReload (1649ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1454ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (5ms)
-			BeforeProcessingInitializeOnLoad (244ms)
-			ProcessInitializeOnLoadAttributes (886ms)
-			ProcessInitializeOnLoadMethodAttributes (301ms)
-			AfterProcessingInitializeOnLoad (15ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (19ms)
-Refreshing native plugins compatible for Editor in 1.67 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8331 unused Assets / (14.2 MB). Loaded Objects now: 9105.
-Memory consumption went from 178.8 MB to 164.6 MB.
-Total: 24.468400 ms (FindLiveObjects: 0.890800 ms CreateObjectMapping: 0.833600 ms MarkObjects: 15.231600 ms  DeleteObjects: 7.511100 ms)
+Unloading 8331 unused Assets / (9.1 MB). Loaded Objects now: 9066.
+Memory consumption went from 176.1 MB to 167.1 MB.
+Total: 59.795800 ms (FindLiveObjects: 2.710600 ms CreateObjectMapping: 3.448000 ms MarkObjects: 42.163200 ms  DeleteObjects: 11.470600 ms)
 
 Prepare: number of updated asset objects reloaded= 0
