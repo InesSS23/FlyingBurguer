@@ -22,6 +22,10 @@ public class DrinkMachine : MonoBehaviour, IInteractable
     private bool hasCup = false;
     private bool isFilling = false;
     private bool isFilled = false;
+    private float fillingProgress = 0f;
+
+    public bool IsProcessing => isFilling;
+    public float ProcessingProgress => fillingProgress;
 
     private GameObject currentVisual;
     private AudioSource fillingLoopSource;
@@ -78,6 +82,7 @@ public class DrinkMachine : MonoBehaviour, IInteractable
         hasCup = true;
         isFilling = true;
         isFilled = false;
+        fillingProgress = 0f;
 
         MostrarCopoVazio();
         PlayFillingSound();
@@ -94,8 +99,17 @@ public class DrinkMachine : MonoBehaviour, IInteractable
 
     private IEnumerator EncherCopo()
     {
-        yield return new WaitForSeconds(fillTime);
+        float elapsed = 0f;
+        float duration = Mathf.Max(0.01f, fillTime);
 
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            fillingProgress = Mathf.Clamp01(elapsed / duration);
+            yield return null;
+        }
+
+        fillingProgress = 1f;
         isFilling = false;
         isFilled = true;
 
@@ -125,6 +139,7 @@ public class DrinkMachine : MonoBehaviour, IInteractable
         hasCup = false;
         isFilling = false;
         isFilled = false;
+        fillingProgress = 0f;
 
         LimparVisual();
 

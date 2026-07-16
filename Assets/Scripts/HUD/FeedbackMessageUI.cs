@@ -31,6 +31,12 @@ public class FeedbackMessageUI : MonoBehaviour
 
     public void ShowMessage(string message)
     {
+        if (GameplayHUDPolish.Instance != null)
+        {
+            GameplayHUDPolish.Instance.ShowFeedback(message);
+            return;
+        }
+
         if (messageText == null)
         {
             Debug.LogWarning("FeedbackMessageUI nao tem Message Text ligado.");

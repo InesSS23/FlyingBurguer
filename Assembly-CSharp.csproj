@@ -58,6 +58,7 @@
     <Compile Include="Assets\Scripts\processo hamb\DrinkMachine.cs" />
     <Compile Include="Assets\Scripts\Visual\FoodVisualPolish.cs" />
     <Compile Include="Assets\Scripts\SKY\SkyColorController.cs" />
+    <Compile Include="Assets\Scripts\HUD\SafeHUDVisualPolish.cs" />
     <Compile Include="Assets\Scripts\HUD\GameplayHUDPolish.cs" />
     <Compile Include="Assets\Scripts\Main Menu\FloatingUIElement.cs" />
     <Compile Include="Assets\Scripts\processo hamb\GrillStation.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\Scripts\npcs e pedidos\CustomerFadeEffect.cs" />
     <Compile Include="Assets\Scripts\HUD\EndCutsceneController.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelConfig.cs" />
+    <Compile Include="Assets\Scripts\HUD\StationProgressHUD.cs" />
     <Compile Include="Assets\Scripts\SKY\CloudSpriteMover.cs" />
     <Compile Include="Assets\Scripts\Player\FirstPersonPlayer.cs" />
     <Compile Include="Assets\Scripts\processo hamb\AssemblyTable.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Assets\Scripts\HUD\IntroDialogue.cs" />
     <Compile Include="Assets\Scripts\processo hamb\MealTray.cs" />
     <Compile Include="Assets\Scripts\Main Menu\MainMenuController.cs" />
+    <Compile Include="Assets\Scripts\HUD\NewIngredientIndicator.cs" />
     <Compile Include="Assets\Scripts\Visual\InteriorWallInstaller.cs" />
     <Compile Include="Assets\Scripts\npcs e pedidos\CustomerServicePoint.cs" />
     <Compile Include="Assets\Scripts\npcs e pedidos\BurgerOrder.cs" />

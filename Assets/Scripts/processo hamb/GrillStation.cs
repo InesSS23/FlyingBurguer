@@ -18,6 +18,10 @@ public class GrillStation : MonoBehaviour, IInteractable
     private bool hasMeat = false;
     private bool isCooking = false;
     private bool isCooked = false;
+    private float cookingProgress = 0f;
+
+    public bool IsProcessing => isCooking;
+    public float ProcessingProgress => cookingProgress;
 
     private GameObject currentVisual;
     private AudioSource cookingLoopSource;
@@ -74,6 +78,7 @@ public class GrillStation : MonoBehaviour, IInteractable
         hasMeat = true;
         isCooking = true;
         isCooked = false;
+        cookingProgress = 0f;
 
         CriarVisual(rawMeatVisualPrefab);
         PlayCookingSound();
@@ -85,8 +90,17 @@ public class GrillStation : MonoBehaviour, IInteractable
 
     private IEnumerator CozinharCarne()
     {
-        yield return new WaitForSeconds(cookTime);
+        float elapsed = 0f;
+        float duration = Mathf.Max(0.01f, cookTime);
 
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            cookingProgress = Mathf.Clamp01(elapsed / duration);
+            yield return null;
+        }
+
+        cookingProgress = 1f;
         isCooking = false;
         isCooked = true;
 
@@ -116,6 +130,7 @@ public class GrillStation : MonoBehaviour, IInteractable
         hasMeat = false;
         isCooking = false;
         isCooked = false;
+        cookingProgress = 0f;
 
         LimparVisual();
 

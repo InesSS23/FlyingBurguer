@@ -51,6 +51,11 @@ public class IntroDialogue : MonoBehaviour
     private SubtitleVoicePlayer subtitleVoice;
     private Coroutine subtitleRoutine;
 
+    public bool IsDialogueActive()
+    {
+        return dialogueActive;
+    }
+
     void Start()
     {
         subtitleVoice = GetComponent<SubtitleVoicePlayer>();
