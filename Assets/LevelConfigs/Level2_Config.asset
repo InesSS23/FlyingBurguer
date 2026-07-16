@@ -17,8 +17,8 @@ MonoBehaviour:
   nextSceneName: Level3
   isFinalLevel: 0
   finalSceneName: 
-  dayDuration: 240
-  targetScore: 130
+  dayDuration: 300
+  targetScore: 90
   pointsPerDelivery: 10
   minSpawnTime: 4
   maxSpawnTime: 6
@@ -36,38 +36,62 @@ MonoBehaviour:
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Bom dia!\nTenho de te dar os parab\xE9ns pelo trabalho de ontem!"
     image: {fileID: 21300000, guid: 8287ee062c424404c8d9a8ae4d0f304d, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Recebemos mais clientes do que eu esperava.\nE parece que adoraram os
       hamb\xFArgueres!"
     image: {fileID: 21300000, guid: 8287ee062c424404c8d9a8ae4d0f304d, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "A partir de hoje tens tomate e piment\xE3o!"
     image: {fileID: 21300000, guid: 75cd928f9b8393d4e8138be7c31e5d4c, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "J\xE1 os deixei no s\xEDtio certo.\n\xC9 s\xF3 apanhares e montares os
       pedidos com cuidado."
     image: {fileID: 21300000, guid: 6dfaa0234d18c814388c1e36d2840b87, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: "(Ele est\xE1 sempre demasiado entusiasmado... e ele tem um cheiro esquisito)"
     image: {fileID: 21300000, guid: 6dfaa0234d18c814388c1e36d2840b87, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: 'Hoje vai correr ainda melhor!!!
 
       Confio em ti!'
     image: {fileID: 21300000, guid: 6dfaa0234d18c814388c1e36d2840b87, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: "Espero que sim...\n(vou continuar de olho nele, algo nele me deixa com
       uma sensa\xE7\xE3o estranha)"
     image: {fileID: 21300000, guid: 404c476162ab74340b322a49bbfc9ef9, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
     text: "Bem, vamos l\xE1 come\xE7ar mais um dia"
     image: {fileID: 21300000, guid: 404c476162ab74340b322a49bbfc9ef9, type: 3}
+    hideSpeakerName: 0
+    hideSpeakerPortrait: 0
+    hideDialogueBox: 0
   endFrames: []
   gameplayBackgroundMusic: {fileID: 0}
