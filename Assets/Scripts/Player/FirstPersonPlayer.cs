@@ -7,8 +7,9 @@ public class FirstPersonPlayer : MonoBehaviour
     [Header("movimento")]
     [SerializeField] private float moveSpeed = 15f;
     [SerializeField] private float sprintMultiplier = 1.45f;
-    [SerializeField] private float acceleration = 24f;
-    [SerializeField] private float deceleration = 30f;
+    [SerializeField] private float acceleration = 50f;
+    [SerializeField] private float deceleration = 60f;
+    [SerializeField] private float turnAcceleration = 110f;
     [SerializeField] private float gravity = -24f;
     [SerializeField] private float mouseSensitivity = 0.12f;
 
@@ -166,10 +167,17 @@ public class FirstPersonPlayer : MonoBehaviour
         direction.y = 0f;
         direction.Normalize();
 
-        bool sprinting = Keyboard.current.leftShiftKey.isPressed && direction.sqrMagnitude > 0f;
+        bool hasInput = direction.sqrMagnitude > 0f;
+        bool sprinting = Keyboard.current.leftShiftKey.isPressed && hasInput;
         float targetSpeed = moveSpeed * (sprinting ? sprintMultiplier : 1f);
         Vector3 targetVelocity = direction * targetSpeed;
-        float velocityChange = direction.sqrMagnitude > 0f ? acceleration : deceleration;
+
+        // se o jogador inverte a direcao (ex: W depois S), a velocidade atual aponta contra o
+        // alvo novo - usar so a "acceleration" normal fazia o jogador deslizar vários segundos
+        // antes de responder, porque tem de percorrer o dobro da velocidade a um ritmo lento
+        bool isReversing = hasInput && Vector3.Dot(planarVelocity, direction) < 0f;
+        float velocityChange = !hasInput ? deceleration : (isReversing ? turnAcceleration : acceleration);
+
         planarVelocity = Vector3.MoveTowards(planarVelocity, targetVelocity, velocityChange * Time.deltaTime);
 
         if (characterController != null)
