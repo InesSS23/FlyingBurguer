@@ -343,6 +343,11 @@ public class IntroDialogue : MonoBehaviour
 
         DesbloquearJogador();
 
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySpawnSFX();
+        }
+
         if (dayManager != null)
         {
             dayManager.StartDay();

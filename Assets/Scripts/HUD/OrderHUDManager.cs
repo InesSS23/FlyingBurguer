@@ -16,6 +16,10 @@ public class OrderHUDManager : MonoBehaviour
     [SerializeField] private Sprite friesSprite;
     [SerializeField] private Sprite drinkSprite;
 
+    [Header("sprites dos numeros do pedido")]
+    // indice 0 = numero 1, indice 1 = numero 2, indice 2 = numero 3 (maximo 3 pontos de servico)
+    [SerializeField] private Sprite[] orderNumberSprites;
+
     private readonly List<ActiveOrderHUD> activeOrders = new List<ActiveOrderHUD>();
 
     void Start()
@@ -135,6 +139,16 @@ public class OrderHUDManager : MonoBehaviour
             return drinkSprite;
 
         return null;
+    }
+
+    public Sprite GetSpriteForOrderNumber(int number)
+    {
+        int index = number - 1;
+
+        if (orderNumberSprites == null || index < 0 || index >= orderNumberSprites.Length)
+            return null;
+
+        return orderNumberSprites[index];
     }
 
     private void RefreshSlots()

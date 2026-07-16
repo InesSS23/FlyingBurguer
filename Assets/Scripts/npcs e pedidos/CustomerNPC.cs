@@ -289,9 +289,19 @@ public class CustomerNPC : MonoBehaviour
             // chegou ao balcao: troca do modelo do passaro para o modelo estatico do NPC
             ShowNpcModel();
 
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayBirdArriveSFX();
+            }
+
             if (servicePoint != null)
             {
                 servicePoint.ShowOrderHUD(currentOrder, patienceTime);
+            }
+
+            if (speechUI != null)
+            {
+                speechUI.ShowOrderNumber(currentOrder.orderNumber);
             }
 
             StartPatienceTimer();
@@ -490,6 +500,11 @@ public class CustomerNPC : MonoBehaviour
 
         Debug.Log("pedido certo, cliente recebeu o tabuleiro");
 
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayOrderHappySFX();
+        }
+
         string comment = GetRandomHappyComment();
 
         if (speechUI != null)
@@ -585,6 +600,11 @@ public class CustomerNPC : MonoBehaviour
         if (servicePoint != null)
         {
             servicePoint.ClearOrderHUD();
+        }
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayOrderAngrySFX();
         }
 
         string impatientComment = GetRandomImpatientComment();

@@ -180,13 +180,13 @@ public sealed class NewIngredientIndicator : MonoBehaviour
         rootObject.transform.SetParent(canvas.transform, false);
         RectTransform root = rootObject.GetComponent<RectTransform>();
         root.anchorMin = root.anchorMax = new Vector2(0.5f, 0.5f);
-        root.sizeDelta = new Vector2(340f, 116f);
+        root.sizeDelta = new Vector2(450f, 116f);
 
         Image shadow = CreateImage("Sombra", root, new Color(0.18f, 0.07f, 0.03f, 0.32f));
-        SetRect(shadow.rectTransform, new Vector2(5f, 35f), new Vector2(292f, 60f));
+        SetRect(shadow.rectTransform, new Vector2(5f, 35f), new Vector2(400f, 60f));
 
         Image border = CreateImage("Moldura", root, new Color(0.28f, 0.12f, 0.055f, 1f));
-        SetRect(border.rectTransform, new Vector2(0f, 41f), new Vector2(292f, 60f));
+        SetRect(border.rectTransform, new Vector2(0f, 41f), new Vector2(400f, 60f));
 
         Image background = CreateImage("Fundo", border.rectTransform, new Color(1f, 0.965f, 0.82f, 1f));
         RectTransform backgroundRect = background.rectTransform;

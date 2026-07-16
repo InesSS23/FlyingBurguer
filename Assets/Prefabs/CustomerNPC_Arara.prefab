@@ -996,6 +996,13 @@ MonoBehaviour:
   maxFontSize: 22
   fontSizeStep: 0.5
   faceCamera: 1
+  orderNumberScale: 0.35
+  orderNumberImageSize: {x: 120, y: 120}
+  orderNumberHeightOffset: 2.5
+  orderNumberSprites:
+  - {fileID: 21300000, guid: a8ef5e5eed641b848a4d46900b18ce75, type: 3}
+  - {fileID: 21300000, guid: 5fdbae53147b0ce4fa02b33d4e366955, type: 3}
+  - {fileID: 21300000, guid: 6de0460facc916948a28ca99d320b721, type: 3}
 --- !u!1 &8977742977722894626
 GameObject:
   m_ObjectHideFlags: 0

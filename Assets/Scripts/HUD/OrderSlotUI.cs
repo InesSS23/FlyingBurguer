@@ -20,6 +20,9 @@ public class OrderSlotUI : MonoBehaviour
     [SerializeField] private Color timeBarAlertColor = new Color(0.9f, 0.05f, 0.05f, 1f);
     [SerializeField] private Color timeBarBackgroundColor = new Color(0f, 0f, 0f, 0.25f);
 
+    [Header("numero do pedido")]
+    [SerializeField] private Vector2 numberLabelSize = new Vector2(90f, 90f);
+
     private const float ExtraIconSpacing = 5f;
     private const float ExtraIconGapFromBurgerBox = 8f;
 
@@ -29,11 +32,15 @@ public class OrderSlotUI : MonoBehaviour
     private Image timeBarFill;
     private RectTransform timeBarFillRect;
 
+    private GameObject numberLabelObject;
+    private Image numberLabelImage;
+
     private int shownSourceIndex = -1;
 
     void Awake()
     {
         EnsureTimeBar();
+        EnsureNumberLabel();
         ClearOrder();
     }
 
@@ -46,6 +53,7 @@ public class OrderSlotUI : MonoBehaviour
     {
         ClearIcons();
         EnsureTimeBar();
+        EnsureNumberLabel();
 
         shownSourceIndex = sourceIndex;
 
@@ -58,12 +66,13 @@ public class OrderSlotUI : MonoBehaviour
             return;
         }
 
-        AddExtraIcons(order, hudManager);
+        int totalExtras = AddExtraIcons(order, hudManager);
 
         for (int i = 0; i < order.ingredients.Count; i++)
             AddIngredientIcon(order.ingredients[i], hudManager);
 
         UpdateTimer(remainingTime, maxTime);
+        UpdateNumberLabel(order.orderNumber, hudManager, totalExtras);
     }
 
     public void UpdateTimer(float remainingTime, float maxTime)
@@ -98,11 +107,14 @@ public class OrderSlotUI : MonoBehaviour
         if (timeBarRoot != null)
             timeBarRoot.SetActive(false);
 
+        if (numberLabelObject != null)
+            numberLabelObject.SetActive(false);
+
         if (slotRoot != null)
             slotRoot.SetActive(false);
     }
 
-    private void AddExtraIcons(BurgerOrder order, OrderHUDManager hudManager)
+    private int AddExtraIcons(BurgerOrder order, OrderHUDManager hudManager)
     {
         List<string> extras = new List<string>();
 
@@ -114,6 +126,8 @@ public class OrderSlotUI : MonoBehaviour
 
         for (int i = 0; i < extras.Count; i++)
             AddExtraIcon(extras[i], i, extras.Count, hudManager);
+
+        return extras.Count;
     }
 
     private void AddIngredientIcon(string itemName, OrderHUDManager hudManager)
@@ -222,6 +236,90 @@ public class OrderSlotUI : MonoBehaviour
 
         PositionTimeBar();
         timeBarRoot.SetActive(false);
+    }
+
+    private void EnsureNumberLabel()
+    {
+        if (numberLabelObject != null)
+            return;
+
+        RectTransform slotRect = GetSlotRect();
+
+        if (slotRect == null)
+            return;
+
+        numberLabelObject = new GameObject("PedidoNumero");
+        numberLabelObject.transform.SetParent(slotRect, false);
+
+        numberLabelImage = numberLabelObject.AddComponent<Image>();
+        numberLabelImage.preserveAspect = true;
+        numberLabelImage.raycastTarget = false;
+
+        // ancorado ao centro (tal como os icones extra de batatas/bebida) em vez do canto do RectTransform,
+        // porque o RectTransform do slot pode ter margem/padding e o canto ficava fora da area visivel do ticket
+        RectTransform rect = numberLabelObject.GetComponent<RectTransform>();
+        rect.anchorMin = new Vector2(0.5f, 0.5f);
+        rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.pivot = new Vector2(0.5f, 0.5f);
+        rect.sizeDelta = numberLabelSize;
+
+        numberLabelObject.SetActive(false);
+
+        PositionNumberLabel(0);
+    }
+
+    private void PositionNumberLabel(int totalExtras)
+    {
+        if (numberLabelObject == null)
+            return;
+
+        RectTransform slotRect = GetSlotRect();
+        RectTransform rect = numberLabelObject.GetComponent<RectTransform>();
+
+        if (slotRect == null || rect == null)
+            return;
+
+        float slotHalfWidth = GetSlotWidth(slotRect) * 0.5f;
+
+        // segue a mesma logica do AddExtraIcon: fica sempre um passo mais a esquerda do que o
+        // ultimo extra (batatas/bebida), ou logo a esquerda dos ingredientes se nao houver nenhum
+        float x = -slotHalfWidth
+            - ExtraIconGapFromBurgerBox
+            - (numberLabelSize.x * 0.5f)
+            - totalExtras * (extraIconSize.x + ExtraIconSpacing);
+
+        rect.anchoredPosition = new Vector2(x, 0f);
+    }
+
+    private void UpdateNumberLabel(int number, OrderHUDManager hudManager, int totalExtras)
+    {
+        EnsureNumberLabel();
+
+        if (numberLabelObject == null)
+        {
+            Debug.LogWarning("OrderSlotUI: numberLabelObject nao foi criado (falta o slotRoot?)");
+            return;
+        }
+
+        if (numberLabelImage == null || hudManager == null)
+            return;
+
+        Sprite sprite = hudManager.GetSpriteForOrderNumber(number);
+
+        if (sprite == null)
+        {
+            Debug.LogWarning("OrderSlotUI: falta a imagem do numero " + number + " em Order Number Sprites (no OrderHUDManager)");
+            numberLabelObject.SetActive(false);
+            return;
+        }
+
+        numberLabelImage.sprite = sprite;
+        PositionNumberLabel(totalExtras);
+        numberLabelObject.SetActive(true);
+
+        // garante que fica sempre por cima dos icones extra (batatas/bebida), que sao recriados
+        // a cada pedido novo e por isso ficariam com um indice de renderizacao mais recente
+        numberLabelObject.transform.SetAsLastSibling();
     }
 
     private void PositionTimeBar()

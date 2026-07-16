@@ -26,6 +26,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip fryFriesLoopSFX;
     [SerializeField] private AudioClip fillDrinkLoopSFX;
 
+    [Header("Efeitos gerais 2")]
+    [SerializeField] private AudioClip birdArriveSFX;
+    [SerializeField] private AudioClip clockTickLoopSFX;
+    [SerializeField] private AudioClip spawnSFX;
+    [SerializeField] private AudioClip orderHappySFX;
+    [SerializeField] private AudioClip orderAngrySFX;
+
     [Header("Volume Settings")]
     [SerializeField] private float defaultBGMVolume = 0.5f;
     [SerializeField] private float defaultSFXVolume = 0.7f;
@@ -52,6 +59,12 @@ public class AudioManager : MonoBehaviour
     private const float GRILL_MEAT_VOLUME = 1.25f;
     private const float FRY_FRIES_VOLUME = 1.25f;
     private const float FILL_DRINK_VOLUME = 1.35f;
+
+    private const float BIRD_ARRIVE_VOLUME = 1.25f;
+    private const float CLOCK_TICK_VOLUME = 1f;
+    private const float SPAWN_VOLUME = 1.25f;
+    private const float ORDER_HAPPY_VOLUME = 1.25f;
+    private const float ORDER_ANGRY_VOLUME = 1.25f;
 
     private float bgmVolume;
     private float sfxVolume;
@@ -301,6 +314,31 @@ public class AudioManager : MonoBehaviour
     public AudioSource PlayFillDrinkLoopSFX()
     {
         return PlayLoopingSFX(fillDrinkLoopSFX, FILL_DRINK_VOLUME);
+    }
+
+    public void PlayBirdArriveSFX()
+    {
+        PlaySFX(birdArriveSFX, BIRD_ARRIVE_VOLUME);
+    }
+
+    public AudioSource PlayClockTickLoopSFX()
+    {
+        return PlayLoopingSFX(clockTickLoopSFX, CLOCK_TICK_VOLUME);
+    }
+
+    public void PlaySpawnSFX()
+    {
+        PlaySFX(spawnSFX, SPAWN_VOLUME);
+    }
+
+    public void PlayOrderHappySFX()
+    {
+        PlaySFX(orderHappySFX, ORDER_HAPPY_VOLUME);
+    }
+
+    public void PlayOrderAngrySFX()
+    {
+        PlaySFX(orderAngrySFX, ORDER_ANGRY_VOLUME);
     }
 
     public void SetBGMVolume(float volume)

@@ -428,7 +428,17 @@ public class CustomerManager : MonoBehaviour
         }
 
         Transform exitPoint = exitPoints[Random.Range(0, exitPoints.Length)];
-        BurgerOrder order = possibleOrders[Random.Range(0, possibleOrders.Count)];
+        BurgerOrder baseOrder = possibleOrders[Random.Range(0, possibleOrders.Count)];
+
+        // clona o pedido para cada cliente ter o seu proprio numero (possibleOrders e uma lista partilhada e reutilizada)
+        // o numero do pedido e o numero do posto de servico (1, 2 ou 3), ha no maximo 3 pontos de servico
+        BurgerOrder order = new BurgerOrder(
+            baseOrder.orderName,
+            new List<string>(baseOrder.ingredients),
+            baseOrder.wantsFries,
+            baseOrder.wantsDrink
+        );
+        order.orderNumber = freePoint.GetOrderSlotIndex() + 1;
 
         Debug.Log("PREFAB SELECIONADO: [" + selectedCustomerPrefab.name + "]");
 

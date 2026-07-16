@@ -7,6 +7,7 @@ public class BurgerOrder
     public List<string> ingredients = new List<string>();
     public bool wantsFries = false;
     public bool wantsDrink = false;
+    public int orderNumber = 0;
 
     public BurgerOrder(string name, List<string> orderIngredients)
     {

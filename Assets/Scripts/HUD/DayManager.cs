@@ -28,10 +28,14 @@ public class DayManager : MonoBehaviour
     [Header("audio")]
     [SerializeField] private AudioClip gameplayBackgroundMusic;
 
+    private const float CLOCK_TICK_WARNING_TIME = 30f;
+
     private float currentTime;
     private int currentScore;
     private bool dayRunning = false;
     private bool dayEnded = false;
+    private bool clockTickStarted = false;
+    private AudioSource clockTickSource;
 
     void Start()
     {
@@ -44,6 +48,8 @@ public class DayManager : MonoBehaviour
         currentScore = 0;
         dayRunning = false;
         dayEnded = false;
+        clockTickStarted = false;
+        clockTickSource = null;
 
         if (customerManager != null && levelConfig != null)
         {
@@ -64,6 +70,16 @@ public class DayManager : MonoBehaviour
             return;
 
         currentTime -= Time.deltaTime;
+
+        if (!clockTickStarted && currentTime <= CLOCK_TICK_WARNING_TIME)
+        {
+            clockTickStarted = true;
+
+            if (AudioManager.Instance != null)
+            {
+                clockTickSource = AudioManager.Instance.PlayClockTickLoopSFX();
+            }
+        }
 
         if (currentTime <= 0f)
         {
