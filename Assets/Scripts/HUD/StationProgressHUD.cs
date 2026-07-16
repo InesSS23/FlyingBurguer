@@ -38,10 +38,16 @@ public sealed class StationProgressHUD : MonoBehaviour
     private readonly Color peach = new Color(1f, 0.67f, 0.26f, 1f);
     private readonly Color mint = new Color(0.30f, 0.78f, 0.45f, 1f);
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    private static void Install()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void RegisterForSceneLoads()
     {
-        if (!SceneManager.GetActiveScene().name.StartsWith("Level"))
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (!scene.name.StartsWith("Level"))
             return;
 
         if (FindFirstObjectByType<StationProgressHUD>() == null)

@@ -57,6 +57,7 @@
     <Compile Include="Assets\Scripts\HUD\DayManager.cs" />
     <Compile Include="Assets\Scripts\processo hamb\DrinkMachine.cs" />
     <Compile Include="Assets\Scripts\Visual\FoodVisualPolish.cs" />
+    <Compile Include="Assets\Scripts\Visual\InteriorWallInstallRunner.cs" />
     <Compile Include="Assets\Scripts\SKY\SkyColorController.cs" />
     <Compile Include="Assets\Scripts\HUD\SafeHUDVisualPolish.cs" />
     <Compile Include="Assets\Scripts\HUD\GameplayHUDPolish.cs" />

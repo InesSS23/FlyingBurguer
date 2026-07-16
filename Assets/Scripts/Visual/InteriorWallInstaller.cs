@@ -9,21 +9,36 @@ public static class InteriorWallInstaller
     private const string TextureResourcePath = "Textures/Wall_White_Brick";
     private const string WoodTextureResourcePath = "Textures/Ceiling_Light_Wood_Planks";
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    private static void Install()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void RegisterForSceneLoads()
     {
-        if (!SceneManager.GetActiveScene().name.StartsWith("Level"))
+        // O primeiro carregamento pode ser o MainMenu; mantemos o instalador
+        // atento aos Levels que forem abertos posteriormente.
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (!scene.name.StartsWith("Level"))
             return;
+
+        GameObject host = new GameObject("Interior Wall Installer");
+        SceneManager.MoveGameObjectToScene(host, scene);
+        host.AddComponent<InteriorWallInstallRunner>().Initialize(scene);
+    }
+
+    internal static bool TryInstall(Scene scene)
+    {
+        if (!scene.IsValid() || !scene.isLoaded)
+            return false;
 
         Texture2D wallTexture = Resources.Load<Texture2D>(TextureResourcePath);
         Texture2D woodTexture = Resources.Load<Texture2D>(WoodTextureResourcePath);
-        GameObject roulote = GameObject.Find("Cenario_Rolote_Demo");
+        GameObject roulote = FindRoulote(scene);
 
         if (wallTexture == null || woodTexture == null || roulote == null)
-        {
-            Debug.LogWarning("Nao foi possivel aplicar a textura nas paredes da roulote.");
-            return;
-        }
+            return false;
 
         Renderer[] renderers = roulote.GetComponentsInChildren<Renderer>(true);
         int changedMaterialCount = 0;
@@ -62,7 +77,32 @@ public static class InteriorWallInstaller
         }
 
         if (changedMaterialCount == 0)
-            Debug.LogWarning("Nao encontrei o material das paredes no modelo da roulote.");
+            return false;
+
+        return true;
+    }
+
+    private static GameObject FindRoulote(Scene scene)
+    {
+        GameObject[] roots = scene.GetRootGameObjects();
+
+        for (int rootIndex = 0; rootIndex < roots.Length; rootIndex++)
+        {
+            Transform[] transforms = roots[rootIndex].GetComponentsInChildren<Transform>(true);
+
+            for (int transformIndex = 0; transformIndex < transforms.Length; transformIndex++)
+            {
+                if (transforms[transformIndex].name.StartsWith(
+                    "Cenario_Rolote_Demo",
+                    System.StringComparison.OrdinalIgnoreCase
+                ))
+                {
+                    return transforms[transformIndex].gameObject;
+                }
+            }
+        }
+
+        return null;
     }
 
     private static void ApplyWallUVMapping(Renderer targetRenderer, Texture2D woodTexture)
@@ -72,6 +112,9 @@ public static class InteriorWallInstaller
             return;
 
         Mesh sourceMesh = meshFilter.sharedMesh;
+        if (!sourceMesh.isReadable)
+            return;
+
         Mesh mappedMesh = Object.Instantiate(sourceMesh);
         mappedMesh.name = sourceMesh.name + " - Brick UV";
 

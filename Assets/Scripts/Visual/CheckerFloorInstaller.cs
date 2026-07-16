@@ -6,10 +6,18 @@ public static class CheckerFloorInstaller
     private const string FloorObjectName = "Chao_Xadrez_Coral";
     private const string TextureResourcePath = "Textures/Floor_Checker_Coral_Cream";
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    private static void Install()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void RegisterForSceneLoads()
     {
-        if (!SceneManager.GetActiveScene().name.StartsWith("Level"))
+        // O jogo pode arrancar no MainMenu. Nesse caso, AfterSceneLoad seria
+        // executado apenas no menu e o instalador nunca veria o Level1.
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (!scene.name.StartsWith("Level"))
             return;
 
         if (GameObject.Find(FloorObjectName) != null)

@@ -18,10 +18,16 @@ public sealed class SafeHUDVisualPolish : MonoBehaviour
     private static readonly Color Cream = new Color(1f, 0.965f, 0.84f, 1f);
     private static readonly Color Mint = new Color(0.58f, 0.84f, 0.48f, 1f);
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    private static void Install()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void RegisterForSceneLoads()
     {
-        if (!SceneManager.GetActiveScene().name.StartsWith("Level"))
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (!scene.name.StartsWith("Level"))
             return;
 
         if (FindFirstObjectByType<SafeHUDVisualPolish>() == null)

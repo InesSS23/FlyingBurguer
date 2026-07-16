@@ -27,11 +27,16 @@ public sealed class NewIngredientIndicator : MonoBehaviour
     private PlayerHand playerHand;
     private static Sprite roundedSprite;
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    private static void Install()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void RegisterForSceneLoads()
     {
-        string scene = SceneManager.GetActiveScene().name;
-        if (scene != "Level2" && scene != "Level3")
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name != "Level2" && scene.name != "Level3")
             return;
 
         if (FindFirstObjectByType<NewIngredientIndicator>() == null)

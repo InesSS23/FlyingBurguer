@@ -32,10 +32,16 @@ public class GameplayHUDPolish : MonoBehaviour
     private string lastFeedbackMessage = string.Empty;
     private float lastFeedbackTime = -10f;
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    private static void Install()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void RegisterForSceneLoads()
     {
-        if (!SceneManager.GetActiveScene().name.StartsWith("Level"))
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (!scene.name.StartsWith("Level"))
             return;
 
         if (FindFirstObjectByType<GameplayHUDPolish>() == null)
