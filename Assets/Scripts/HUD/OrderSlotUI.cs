@@ -9,22 +9,22 @@ public class OrderSlotUI : MonoBehaviour
     [SerializeField] private Transform iconsParent;
 
     [Header("tamanhos")]
-    [SerializeField] private Vector2 ingredientIconSize = new Vector2(140f, 140f);
-    [SerializeField] private Vector2 extraIconSize = new Vector2(121f, 121f);
+    [SerializeField] private Vector2 ingredientIconSize = new Vector2(90f, 90f);
+    [SerializeField] private Vector2 extraIconSize = new Vector2(80f, 80f);
 
     [Header("barra de tempo")]
-    [SerializeField] private Vector2 horizontalTimeBarSize = new Vector2(890f, 19f);
-    [SerializeField] private float timeBarGapBelowOrder = 51f;
+    [SerializeField] private Vector2 horizontalTimeBarSize = new Vector2(580f, 13f);
+    [SerializeField] private float timeBarGapBelowOrder = 33f;
     [SerializeField] private float timeAlertSeconds = 15f;
     [SerializeField] private Color timeBarNormalColor = new Color(0.1f, 0.75f, 0.2f, 1f);
     [SerializeField] private Color timeBarAlertColor = new Color(0.9f, 0.05f, 0.05f, 1f);
     [SerializeField] private Color timeBarBackgroundColor = new Color(0f, 0f, 0f, 0.25f);
 
     [Header("numero do pedido")]
-    [SerializeField] private Vector2 numberLabelSize = new Vector2(204f, 204f);
+    [SerializeField] private Vector2 numberLabelSize = new Vector2(133f, 133f);
 
-    private const float ExtraIconSpacing = 5f;
-    private const float ExtraIconGapFromBurgerBox = 8f;
+    private const float ExtraIconSpacing = 2f;
+    private const float ExtraIconGapFromBurgerBox = 4f;
 
     private readonly List<GameObject> spawnedIcons = new List<GameObject>();
 
@@ -36,6 +36,7 @@ public class OrderSlotUI : MonoBehaviour
     private Image numberLabelImage;
 
     private int shownSourceIndex = -1;
+    private int currentIngredientCount = 0;
 
     void Awake()
     {
@@ -71,6 +72,8 @@ public class OrderSlotUI : MonoBehaviour
         for (int i = 0; i < order.ingredients.Count; i++)
             AddIngredientIcon(order.ingredients[i], hudManager);
 
+        currentIngredientCount = order.ingredients.Count;
+
         UpdateTimer(remainingTime, maxTime);
         UpdateNumberLabel(order.orderNumber, hudManager, totalExtras);
 
@@ -101,18 +104,24 @@ public class OrderSlotUI : MonoBehaviour
 
         timeBarRoot.SetActive(true);
 
+        // reposiciona/redimensiona primeiro (usa a largura real dos icones do pedido)
+        // para depois calcularmos o preenchimento em cima dessa largura, e nao da largura fixa antiga
+        PositionTimeBar();
+
         float remaining = Mathf.Clamp(remainingTime, 0f, maxTime);
         float normalizedTime = remaining / maxTime;
 
         timeBarFill.color = remaining <= timeAlertSeconds ? timeBarAlertColor : timeBarNormalColor;
-        timeBarFillRect.sizeDelta = new Vector2(horizontalTimeBarSize.x * normalizedTime, horizontalTimeBarSize.y);
 
-        PositionTimeBar();
+        RectTransform barRect = timeBarRoot.GetComponent<RectTransform>();
+        float fullWidth = barRect != null ? barRect.sizeDelta.x : horizontalTimeBarSize.x;
+        timeBarFillRect.sizeDelta = new Vector2(fullWidth * normalizedTime, horizontalTimeBarSize.y);
     }
 
     public void ClearOrder()
     {
         shownSourceIndex = -1;
+        currentIngredientCount = 0;
         ClearIcons();
 
         if (timeBarRoot != null)
@@ -344,7 +353,11 @@ public class OrderSlotUI : MonoBehaviour
         if (slotRect == null || barRect == null)
             return;
 
-        barRect.sizeDelta = horizontalTimeBarSize;
+        float contentWidth;
+        float contentCenterX;
+        GetIngredientRowBounds(out contentWidth, out contentCenterX);
+
+        barRect.sizeDelta = new Vector2(contentWidth, horizontalTimeBarSize.y);
 
         if (timeBarFillRect != null)
             timeBarFillRect.sizeDelta = new Vector2(timeBarFillRect.sizeDelta.x, horizontalTimeBarSize.y);
@@ -355,7 +368,33 @@ public class OrderSlotUI : MonoBehaviour
             slotHeight = 70f;
 
         float y = -(slotHeight * 0.5f) - timeBarGapBelowOrder - (horizontalTimeBarSize.y * 0.5f);
-        barRect.anchoredPosition = new Vector2(0f, y);
+        barRect.anchoredPosition = new Vector2(contentCenterX, y);
+    }
+
+    // faz a barra ocupar exatamente a largura da fila de icones do burger (do primeiro ao
+    // ultimo icone), em vez de uma largura fixa - assim fica sempre alinhada com a comida,
+    // seja qual for o numero de ingredientes do pedido
+    private void GetIngredientRowBounds(out float width, out float centerX)
+    {
+        if (iconsParent == null || currentIngredientCount <= 0 || !(iconsParent is RectTransform iconsRect))
+        {
+            width = horizontalTimeBarSize.x;
+            centerX = 0f;
+            return;
+        }
+
+        HorizontalLayoutGroup layoutGroup = iconsParent.GetComponent<HorizontalLayoutGroup>();
+
+        float spacing = layoutGroup != null ? layoutGroup.spacing : 0f;
+        float paddingLeft = layoutGroup != null ? layoutGroup.padding.left : 0f;
+
+        width = currentIngredientCount * ingredientIconSize.x
+            + Mathf.Max(0, currentIngredientCount - 1) * spacing;
+
+        float iconsHalfWidth = iconsRect.rect.width * 0.5f;
+        float leftEdgeInIcons = -iconsHalfWidth + paddingLeft;
+
+        centerX = iconsRect.anchoredPosition.x + leftEdgeInIcons + (width * 0.5f);
     }
 
     private float GetSlotWidth(RectTransform slotRect)

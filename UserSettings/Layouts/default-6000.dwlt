@@ -220,8 +220,8 @@ MonoBehaviour:
     y: 0
     width: 256.80005
     height: 716.8
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 76}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 43.2
+    y: 0
     width: 1536
     height: 36
   m_SerializedDataModeController:
@@ -580,8 +580,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Hierarchy\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 787.2
-    y: 79.200005
+    x: 788.2
+    y: 24
     width: 269.2
     height: 690.8
   m_SerializedDataModeController:
@@ -651,8 +651,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1279.2001
-    y: 79.200005
+    x: 1280.2
+    y: 24
     width: 255.80005
     height: 690.8
   m_SerializedDataModeController:
@@ -702,8 +702,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Project\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1058.4
-    y: 79.200005
+    x: 1059.4
+    y: 24
     width: 218.79993
     height: 690.8
   m_SerializedDataModeController:
@@ -887,7 +887,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 432
+    y: 376.8
     width: 786.2
     height: 338
   m_SerializedDataModeController:
@@ -961,7 +961,7 @@ MonoBehaviour:
       height: 864
     m_MinimalGUI: 1
   m_defaultScale: 0.36689815
-  m_LastWindowPixelSize: {x: 982.75, y: 422.5}
+  m_LastWindowPixelSize: {x: 786.2, y: 338}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 00000000000000000000
@@ -990,7 +990,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 79.200005
+    y: 24
     width: 786.2
     height: 326.8
   m_SerializedDataModeController:
@@ -1655,7 +1655,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.01227421, y: 0.91889304, z: -0.028678795, w: -0.39327654}
     speed: 2
-    m_Value: {x: -0.012274185, y: 0.9188912, z: -0.028678738, w: -0.39327574}
+    m_Value: {x: -0.012274188, y: 0.9188912, z: -0.028678732, w: -0.39327574}
   m_Size:
     m_Target: 6.801557
     speed: 2
