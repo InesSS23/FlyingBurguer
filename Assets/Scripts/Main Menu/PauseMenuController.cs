@@ -99,6 +99,9 @@ public class PauseMenuController : MonoBehaviour
         if (GameplayHUDPolish.Instance != null)
             GameplayHUDPolish.Instance.SetMenuVisible(false);
 
+        if (dayManager != null)
+            dayManager.SetHUDVisible(true);
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -107,6 +110,9 @@ public class PauseMenuController : MonoBehaviour
     {
         if (GameplayHUDPolish.Instance != null)
             GameplayHUDPolish.Instance.SetMenuVisible(true);
+
+        if (dayManager != null)
+            dayManager.SetHUDVisible(false);
 
         if (pauseMenuPanel != null)
         {

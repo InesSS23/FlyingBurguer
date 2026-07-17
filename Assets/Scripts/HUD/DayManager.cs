@@ -37,9 +37,16 @@ public class DayManager : MonoBehaviour
     private bool clockTickStarted = false;
     private AudioSource clockTickSource;
 
+    // painel comum (Dia / tempo / pontuacao) - descoberto a partir do pai do dayText,
+    // para nao precisar de outro campo serializado nas 3 cenas
+    private GameObject dayHUDPanel;
+
     void Start()
     {
         Time.timeScale = 1f;
+
+        if (dayText != null && dayText.transform.parent != null)
+            dayHUDPanel = dayText.transform.parent.gameObject;
 
         ApplyLevelConfig();
         SaveProgressForThisLevel();
@@ -171,6 +178,14 @@ public class DayManager : MonoBehaviour
     public bool IsDayEnded()
     {
         return dayEnded;
+    }
+
+    // esconde o painel "Dia / tempo / pontuacao" quando o menu de pausa esta aberto,
+    // para nao ficar visivel por cima do fundo do menu
+    public void SetHUDVisible(bool visible)
+    {
+        if (dayHUDPanel != null)
+            dayHUDPanel.SetActive(visible);
     }
 
     private void UpdateUI()
