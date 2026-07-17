@@ -51,23 +51,23 @@ MonoBehaviour:
     hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
-    text: "Tamb\xE9m temos batatas agora.\nVais encontr\xE1-las aqui no frigorifico."
+    text: "Tamb\xE9m temos batatas agora. \nVais encontr\xE1-las aqui no frigor\xEDfico."
     image: {fileID: 21300000, guid: 1c7afe53e4a09ce44a032a8638b4e6fa, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
     hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
-    text: "P\xF5es as batatas a fritar e esperas que fiquem prontas.\n\xC1pos isso
-      est\xE3o prontas a servir!"
+    text: "P\xF5e as batatas a fritar e espera que fiquem prontas.\r\nDepois, ficam
+      prontas para servir!"
     image: {fileID: 21300000, guid: 57d55f2c066590440a094e32ecf064b3, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
     hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
-    text: "Com as bebidas \xE9 parecido.\nColocas o copo na m\xE1quina e esperas
-      que encha. "
+    text: "Com as bebidas \xE9 parecido.\r\nColocas o copo na m\xE1quina e esperas
+      que encha."
     image: {fileID: 21300000, guid: 57d55f2c066590440a094e32ecf064b3, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
@@ -81,24 +81,27 @@ MonoBehaviour:
     hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
-    text: "O neg\xF3cio est\xE1 a crescer tanto... qualquer dia tenho de contratar
-      outro funcion\xE1rio ahaha!!"
+    text: "O neg\xF3cio est\xE1 a crescer tanto...\r\nQualquer dia tenho de contratar
+      outro funcion\xE1rio, ahah!"
     image: {fileID: 21300000, guid: 94a2ac177a096ef4787e704efd92babe, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
     hideDialogueBox: 0
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
-    text: (Ele diz isso a brincar... mas hoje parece mais nervoso do que animado.
-      Estranho)
+    text: '(Ele diz isso a brincar... Mas hoje parece mais nervoso do que animado.
+
+      Estranho.)'
     image: {fileID: 21300000, guid: 94a2ac177a096ef4787e704efd92babe, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
     hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
-    text: "Ontem ouvi muitos elogios sobre a rolote.\nPor isso prepara-te... acho
-      que hoje vais ter m\xE3os cheias!"
+    text: 'Ontem ouvi muitos elogios sobre a rolote.
+
+      Por isso prepara-te...
+      acho que hoje vais ter as asas cheias ahah!'
     image: {fileID: 21300000, guid: 94a2ac177a096ef4787e704efd92babe, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
@@ -112,8 +115,8 @@ MonoBehaviour:
     hideDialogueBox: 0
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
-    text: "Tamb\xE9m acredito em mim, eu dou conta disto ahah\n(cada vez confio menos
-      nele)"
+    text: "Tamb\xE9m acredito em mim. Eu dou conta disto, ahah.\r\n(Cada vez confio
+      menos nele.)"
     image: {fileID: 21300000, guid: 94a2ac177a096ef4787e704efd92babe, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
@@ -123,55 +126,55 @@ MonoBehaviour:
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: 'Ah... ainda bem que terminaste.
 
-      Tenho de te dizer uma coisa.....'
+      Tenho de te dizer uma coisa...'
     image: {fileID: 21300000, guid: 70ab5d48047c36d4ebb474ea9c040d4f, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
     hideDialogueBox: 0
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
-    text: "(Eu sustei-me com a chegada dele, n\xE3o \xE9 costume dele aparecer ao
-      fim dia de trabalho. Ele parece t\xE3o nervoso...)"
+    text: "(Assustei-me com a chegada dele. N\xE3o \xE9 costume ele aparecer no fim
+      do dia de trabalho.\r\nEle parece t\xE3o nervoso...)"
     image: {fileID: 21300000, guid: 70ab5d48047c36d4ebb474ea9c040d4f, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
     hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
-    text: 'Estou impressionado contigo e o teu profissionalismo.
+    text: 'Estou impressionado contigo e com o teu profissionalismo.
 
       A Flying
-      Burger tornou-se um sucesso em pouco tempo.'
+      Burguer tornou-se um sucesso em pouco tempo.'
     image: {fileID: 21300000, guid: 70ab5d48047c36d4ebb474ea9c040d4f, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
     hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
-    text: "Mas... n\xE3o vai ser preciso voltares amanh\xE3."
+    text: "Mas... n\xE3o vai ser preciso voltares amanh\xE3..."
     image: {fileID: 21300000, guid: 244c73953979f214fa53f9722885cba0, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
     hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
-    text: "Eu... fiquei sem \"carne\", pelo menos n temos o suficiente para amanh\xE3.\nN\xE3o
-      sei quando consigo abrir outra vez."
+    text: "Eu... fiquei sem \"carne\"... Pelo menos, n\xE3o temos o suficiente para
+      amanh\xE3.\r\nN\xE3o sei quando consigo abrir outra vez."
     image: {fileID: 21300000, guid: 244c73953979f214fa53f9722885cba0, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
     hideDialogueBox: 0
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
-    text: "Quando souber de alguma coisa, eu chamo-te amig\xE3o, n\xE3o te preocupes
-      ahahah"
+    text: "Quando souber de alguma coisa, eu chamo-te, amig\xE3o.\r\nN\xE3o te preocupes,
+      ahah..."
     image: {fileID: 21300000, guid: 340e09533a54ea649bdc49cc49c4e515, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
     hideDialogueBox: 0
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
-    text: "( Sem \"\"\"carne\"\"\" ?  N\xE3o... isto est\xE1 mesmo estranho)"
+    text: "(Sem \"carne\"? N\xE3o... isto est\xE1 mesmo estranho.)"
     image: {fileID: 21300000, guid: 340e09533a54ea649bdc49cc49c4e515, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
@@ -185,9 +188,9 @@ MonoBehaviour:
     hideDialogueBox: 0
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
-    text: "Ele est\xE1 a esconder alguma coisa. E eu vou descobrir o que \xE9.\nEu
-      tenho de descobrir que \"\"\"carne\"\"\" \xE9 esta que ele parece ter tanto
-      medo de dizer\n"
+    text: "Ele est\xE1 a esconder alguma coisa. E eu vou descobrir o que \xE9.\r\nTenho
+      de descobrir que \"carne\" \xE9 esta, e porque \xE9 que ele tem tanto medo
+      de falar dela."
     image: {fileID: 21300000, guid: cba50519e913534449bc0e67f714080b, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
@@ -209,8 +212,8 @@ MonoBehaviour:
     hideDialogueBox: 0
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
-    text: ( Meu passaro amado! Penas por todo o lado... Eu sabia que havia algo errado
-      com ele! De quem pretencem estas penas todas? )
+    text: "( Meus p\xE1ssaros me mordam! Penas por todo o lado... Eu sabia que havia
+      algo errado com ele! De quem pretencem estas penas todas? )"
     image: {fileID: 21300000, guid: e6e6d2d440fe05a478dedb53e5a069bc, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
@@ -233,21 +236,21 @@ MonoBehaviour:
   - speakerName: "Corvo - Patr\xE3o"
     speakerPortrait: {fileID: 1322915936, guid: 339f49ce74725f54fac381965b7e253c, type: 3}
     text: "Tenho de aumentar a produ\xE7\xE3o... Onde vou encontrar mais galinhas?
-      Viu ficar rico com a rolote HAHAHAHAH aqueles passaros adoram os hamburgers!"
+      \nVou ficar rico com a rolote!! MUAHAHAHAH\nAqueles passaros adoram os hamburgers!!!"
     image: {fileID: 21300000, guid: fb6d8ab02d45f304c857b70312a606a8, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
     hideDialogueBox: 0
   - speakerName: Galinha
     speakerPortrait: {fileID: 1505061225, guid: d6e943a7cd030e346ae241955bd43543, type: 3}
-    text: "N\xE3o fa\xE7a isso connosco por favor, alguem nos acuda!!!"
+    text: "N\xE3o fa\xE7a isso connosco por favor, alguem nos ajude!!"
     image: {fileID: 21300000, guid: fb6d8ab02d45f304c857b70312a606a8, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
     hideDialogueBox: 0
   - speakerName: Pombo - Cozinheiro
     speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
-    text: "A carne...Os hamb\xFArgueres eram de frango.\nA Flying Burger... \xC9
+    text: "A carne...Os hamb\xFArgueres eram de frango.\nA Flying Burguer... \xC9
       uma rolote de hamb\xFArgueres canibais!!!!!!!"
     image: {fileID: 21300000, guid: 1e259db02747c9d4cb9ac71f083cd7d3, type: 3}
     hideSpeakerName: 0

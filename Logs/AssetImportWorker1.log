@@ -1,11 +1,11 @@
-Built from '6000.3/staging' branch; Version is '6000.3.8f1 (1c7db571dde0) revision 1867189'; Using compiler version '194234433'; Build Type 'Release'
 [Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.3/staging' branch; Version is '6000.3.8f1 (1c7db571dde0) revision 1867189'; Using compiler version '194234433'; Build Type 'Release'
 OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'pt' Physical Memory: 15791 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
 System  architecture: x64
 Process architecture: x64
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-inesa" at "2026-07-17T15:22:22.7897378Z"
-Date: 2026-07-17T15:22:22Z
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-inesa" at "2026-07-17T16:35:52.1465562Z"
+Date: 2026-07-17T16:35:52Z
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\6000.3.8f1\Editor\Unity.exe
@@ -19,7 +19,7 @@ C:/UnityProjects/jogo grupo/FlyingBurguer
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-62042
+64074
 -licensingIpc
 LicenseClient-inesa
 -job-worker-count
@@ -67,12 +67,12 @@ C:/UnityProjects/jogo grupo/FlyingBurguer
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
     "memorysetup-temp-allocator-size-cloud-worker=32768"
-Player connection [14252]  Target information:
+Player connection [10844]  Target information:
 
-Player connection [14252]  * "[IP] 192.168.1.222 [Port] 0 [Flags] 2 [Guid] 1065502367 [EditorId] 1065502367 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-UN92G2IM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [10844]  * "[IP] 192.168.1.222 [Port] 0 [Flags] 2 [Guid] 4079555906 [EditorId] 4079555906 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-UN92G2IM) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [14252] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [14252] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [10844] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [10844] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 7
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -84,7 +84,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 16.57 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 11.13 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.3.8f1 (1c7db571dde0)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.3.8f1/Editor/Data/Resources/UnitySubsystems
@@ -100,55 +100,55 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.3.8f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.3.8f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56832
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56296
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.3.8f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.008922 seconds.
+Registered in 0.012503 seconds.
 [Licensing::Client] Handshaking with LicensingClient:
   Version:                 1.17.4+4293ba1
-  Session Id:              ee1e2e4c47d9461896768e35624e75ca
+  Session Id:              24acc350f85f4307bb1a8359fa3505fd
   Correlation Id:          cb7f1fe4216e07ec27a7361eb0b42675
-  External correlation Id: 5238364003507182630
+  External correlation Id: 5125602166104024629
   Machine Id:              ficHV0FX4y8g0dZ5wwJVWqlDRak=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-inesa" (connect: 0.00s, validation: 0.00s, handshake: 2.78s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-inesa-notifications" at "2026-07-17T15:22:25.5786717Z"
-[Licensing::Module] Licensing Background thread has ended after 2.79s
-- Loaded All Assemblies, in  1.534 seconds
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-inesa" (connect: 0.00s, validation: 0.00s, handshake: 1.98s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-inesa-notifications" at "2026-07-17T16:35:54.1344967Z"
+[Licensing::Module] Licensing Background thread has ended after 1.99s
+- Loaded All Assemblies, in  1.014 seconds
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.245 seconds
-Domain Reload Profiling: 2768ms
-	BeginReloadAssembly (670ms)
+- Finished resetting the current domain, in  0.743 seconds
+Domain Reload Profiling: 1747ms
+	BeginReloadAssembly (377ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (161ms)
-	RebuildNativeTypeToScriptingClass (31ms)
-	initialDomainReloadingComplete (189ms)
-	LoadAllAssembliesAndSetupDomain (471ms)
-		LoadAssemblies (662ms)
+	RebuildCommonClasses (98ms)
+	RebuildNativeTypeToScriptingClass (27ms)
+	initialDomainReloadingComplete (141ms)
+	LoadAllAssembliesAndSetupDomain (359ms)
+		LoadAssemblies (365ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (460ms)
-			TypeCache.Refresh (456ms)
-				TypeCache.ScanAssembly (386ms)
+		AnalyzeDomain (350ms)
+			TypeCache.Refresh (347ms)
+				TypeCache.ScanAssembly (315ms)
 			BuildScriptInfoCaches (0ms)
-			ResolveRequiredComponents (2ms)
-	FinalizeReload (1247ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (744ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1152ms)
+		SetupLoadedEditorAssemblies (686ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (123ms)
-			SetLoadedEditorAssemblies (9ms)
-			BeforeProcessingInitializeOnLoad (221ms)
-			ProcessInitializeOnLoadAttributes (570ms)
-			ProcessInitializeOnLoadMethodAttributes (228ms)
+			InitializePlatformSupportModulesInManaged (94ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (162ms)
+			ProcessInitializeOnLoadAttributes (307ms)
+			ProcessInitializeOnLoadMethodAttributes (117ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -169,8 +169,8 @@ Begin MonoManager ReloadAssembly
   Type: Assigned
   Expiration: Unlimited
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  3.588 seconds
-Refreshing native plugins compatible for Editor in 2.40 ms, found 3 plugins.
+- Loaded All Assemblies, in  2.430 seconds
+Refreshing native plugins compatible for Editor in 7.04 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Package Manager log level set to [2]
@@ -182,64 +182,76 @@ Package Manager log level set to [2]
 [Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  7.615 seconds
-Domain Reload Profiling: 11184ms
-	BeginReloadAssembly (691ms)
+- Finished resetting the current domain, in  3.111 seconds
+Domain Reload Profiling: 5521ms
+	BeginReloadAssembly (405ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (50ms)
+		DisableScriptedObjects (10ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (93ms)
-	RebuildCommonClasses (74ms)
-	RebuildNativeTypeToScriptingClass (50ms)
-	initialDomainReloadingComplete (155ms)
-	LoadAllAssembliesAndSetupDomain (2598ms)
-		LoadAssemblies (1945ms)
+		CreateAndSetChildDomain (81ms)
+	RebuildCommonClasses (53ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (125ms)
+	LoadAllAssembliesAndSetupDomain (1809ms)
+		LoadAssemblies (1190ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1046ms)
-			TypeCache.Refresh (825ms)
-				TypeCache.ScanAssembly (757ms)
-			BuildScriptInfoCaches (176ms)
-			ResolveRequiredComponents (29ms)
-	FinalizeReload (7616ms)
+		AnalyzeDomain (842ms)
+			TypeCache.Refresh (681ms)
+				TypeCache.ScanAssembly (628ms)
+			BuildScriptInfoCaches (139ms)
+			ResolveRequiredComponents (15ms)
+	FinalizeReload (3111ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (7146ms)
+		SetupLoadedEditorAssemblies (2550ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (4ms)
-			SetLoadedEditorAssemblies (9ms)
-			BeforeProcessingInitializeOnLoad (530ms)
-			ProcessInitializeOnLoadAttributes (6055ms)
-			ProcessInitializeOnLoadMethodAttributes (523ms)
-			AfterProcessingInitializeOnLoad (23ms)
-			EditorAssembliesLoaded (1ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			SetLoadedEditorAssemblies (10ms)
+			BeforeProcessingInitializeOnLoad (403ms)
+			ProcessInitializeOnLoadAttributes (1759ms)
+			ProcessInitializeOnLoadMethodAttributes (354ms)
+			AfterProcessingInitializeOnLoad (17ms)
+			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (21ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 7.54 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (9ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+Refreshing native plugins compatible for Editor in 2.26 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 57 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 8324 unused Assets / (11.0 MB). Loaded Objects now: 9057.
-Memory consumption went from 175.2 MB to 164.3 MB.
-Total: 68.559000 ms (FindLiveObjects: 2.998000 ms CreateObjectMapping: 3.764500 ms MarkObjects: 40.919200 ms  DeleteObjects: 20.872200 ms)
+Unloading 8324 unused Assets / (9.9 MB). Loaded Objects now: 9057.
+Memory consumption went from 172.9 MB to 163.0 MB.
+Total: 46.397600 ms (FindLiveObjects: 2.636600 ms CreateObjectMapping: 3.266400 ms MarkObjects: 27.732800 ms  DeleteObjects: 12.759000 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 149803.514841 seconds.
-  path: Assets/Scripts/Main Menu/PauseMenuController.cs
-  artifactKey: Guid(17340337743c197449b0436fe77f9fdc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Scripts/Main Menu/PauseMenuController.cs using Guid(17340337743c197449b0436fe77f9fdc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '68c6d391020c1038080b2ee729d773e1') in 0.228315 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+  Time since last request: 154204.264836 seconds.
+  path: Assets/Sprits/logo_TDM+descricÌ§aÌo-branco.png
+  artifactKey: Guid(6fe35d1aea347d84791990f631ed3996) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Sprits/logo_TDM+descricÌ§aÌo-branco.png using Guid(6fe35d1aea347d84791990f631ed3996) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '9e39f5efeda554c324dbefe2d3e0211e') in 0.2710449 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000059 seconds.
+  Time since last request: 0.000164 seconds.
+  path: Assets/Scenes/Level2.unity
+  artifactKey: Guid(760e3b4d4c668f243a4a76f454d265e1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Level2.unity using Guid(760e3b4d4c668f243a4a76f454d265e1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7fb3ce0545dc8c62d88e8c7a4b62c09c') in 0.0403799 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 718.115834 seconds.
+  path: Assets/LevelConfigs/Level1_Config.asset
+  artifactKey: Guid(c3eb6266bbc36a344b0840ce251878f6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/LevelConfigs/Level1_Config.asset using Guid(c3eb6266bbc36a344b0840ce251878f6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8e046a285a36fdc813825764bf80d1ff') in 0.067329 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+
+========================================================================
+Received Import Request.
+  Time since last request: 201.838324 seconds.
   path: Assets/LevelConfigs/Level2_Config.asset
   artifactKey: Guid(cf611e2497ea11f4faa8d991d5d99640) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/LevelConfigs/Level2_Config.asset using Guid(cf611e2497ea11f4faa8d991d5d99640) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7ac3724e1c09ed38ef67118a9313c3c6') in 0.0916254 seconds
+Start importing Assets/LevelConfigs/Level2_Config.asset using Guid(cf611e2497ea11f4faa8d991d5d99640) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '369b875f3a0f6f266fa592bbc2a1b330') in 0.0241893 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
 
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0
