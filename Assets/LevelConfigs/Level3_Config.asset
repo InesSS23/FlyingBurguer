@@ -17,8 +17,8 @@ MonoBehaviour:
   nextSceneName: 
   isFinalLevel: 1
   finalSceneName: MainMenu
-  dayDuration: 300
-  targetScore: 100
+  dayDuration: 10
+  targetScore: 0
   pointsPerDelivery: 10
   minSpawnTime: 2
   maxSpawnTime: 4
@@ -252,5 +252,13 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 1e259db02747c9d4cb9ac71f083cd7d3, type: 3}
     hideSpeakerName: 0
     hideSpeakerPortrait: 0
+    hideDialogueBox: 0
+  - speakerName: Pombo - Cozinheiro
+    speakerPortrait: {fileID: 750865326, guid: 0b0a1dcaf32f7694ba39aef34198c794, type: 3}
+    text: Parabens! descobriste a verdade por detras de flying Burguer e a origem
+      dos Hamburgers!
+    image: {fileID: 21300000, guid: 1e259db02747c9d4cb9ac71f083cd7d3, type: 3}
+    hideSpeakerName: 1
+    hideSpeakerPortrait: 1
     hideDialogueBox: 0
   gameplayBackgroundMusic: {fileID: 0}
