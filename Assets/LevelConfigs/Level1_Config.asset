@@ -104,7 +104,14 @@ MonoBehaviour:
   - speakerName: Tutorial
     speakerPortrait: {fileID: 0}
     text: 
-    image: {fileID: 21300000, guid: 21aafe4448a82de4f911f9ff2cf2da89, type: 3}
+    image: {fileID: 21300000, guid: a43587394533b4d4181c27f94168021f, type: 3}
+    hideSpeakerName: 1
+    hideSpeakerPortrait: 1
+    hideDialogueBox: 1
+  - speakerName: Tutorial
+    speakerPortrait: {fileID: 0}
+    text: 
+    image: {fileID: 21300000, guid: a2479eb73c80ae540814c4b821118231, type: 3}
     hideSpeakerName: 1
     hideSpeakerPortrait: 1
     hideDialogueBox: 1
