@@ -19,8 +19,11 @@ public static class LevelProgress
 
     public static bool HasProgress()
     {
+        string savedLevel = GetCurrentLevel();
+
         return PlayerPrefs.GetInt(HAS_PROGRESS_KEY, 0) == 1
-            && !string.IsNullOrWhiteSpace(GetCurrentLevel());
+            && !string.IsNullOrWhiteSpace(savedLevel)
+            && savedLevel != "Level1";
     }
 
     public static string GetCurrentLevel()

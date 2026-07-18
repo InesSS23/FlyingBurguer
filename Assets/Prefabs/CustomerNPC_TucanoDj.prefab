@@ -454,15 +454,17 @@ MonoBehaviour:
   moveSpeed: 9
   eatTime: 4
   happyComments:
-  - "Uma autentica explus\xE3o de sabores"
-  - Que magnifico
-  - "Adoraria saber do que \xE9 feito"
+  - "Esta carne tem um sabor \xFAnico..."
+  - "Que carne t\xE3o diferente."
+  - "Uma explos\xE3o de sabores!"
+  - O chefe sabe misturar sabores!
+  - Boa mistura, chefe!
+  - "O segredo est\xE1 mesmo na carne."
   impatientComments:
-  - Demoraste muito! Vou embora!
-  - Estou farto de esperar!
+  - "O ritmo est\xE1 muito lento pro meu gosto!"
+  - Estou a perder a vibe!
   - "Que servi\xE7o lento!"
-  - "J\xE1 perdi a fome!"
-  - "Vou comer noutro s\xEDtio!"
+  - A pista chama por mim!
   impatientLeaveDelay: 3
   speechUI: {fileID: 2996203984789836744}
   isTucano: 1

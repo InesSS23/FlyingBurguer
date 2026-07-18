@@ -589,15 +589,18 @@ MonoBehaviour:
   moveSpeed: 10
   eatTime: 2
   happyComments:
-  - Que carne saburosa
-  - "T\xE3o soculento"
-  - Este sabor...
+  - Que carne saborosa...
+  - "T\xE3o suculento."
+  - Este sabor... lembra-me de algo
+  - Muito bem preparado.
+  - A carne tem um toque curioso...
+  - "H\xE1 algo diferente neste hamb\xFArguer."
   impatientComments:
-  - Demoraste muito! Vou embora!
-  - Estou farto de esperar!
-  - "Que servi\xE7o lento!"
-  - "J\xE1 perdi a fome!"
-  - "Vou comer noutro s\xEDtio!"
+  - "A espera tornou-se insuport\xE1vel."
+  - "J\xE1 n\xE3o tenho tempo para isto."
+  - "A minha paci\xEAncia terminou."
+  - Vou procurar outro local.
+  - "Que dece\xE7\xE3o..."
   impatientLeaveDelay: 3
   speechUI: {fileID: 3412567793025327373}
   isTucano: 0

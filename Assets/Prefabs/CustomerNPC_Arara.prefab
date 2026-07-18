@@ -306,15 +306,15 @@ MonoBehaviour:
   moveSpeed: 12
   eatTime: 3
   happyComments:
-  - Muito bom!
+  - "Esta carne \xE9 mesmo especial!"
   - "Isto sim \xE9 servi\xE7o!"
-  - "Adoro hamb\xFArgueres voadores!"
+  - "Adoro estes hamb\xFArgueres!"
+  - "Volto c\xE1 de certeza!"
+  - Nunca provei nada assim!
   impatientComments:
-  - Demoraste muito! Vou embora!
-  - Estou farto de esperar!
-  - "Que servi\xE7o lento!"
-  - "J\xE1 perdi a fome!"
-  - "Vou comer noutro s\xEDtio!"
+  - Nem as minhas penas aguentam isto!
+  - "Vou procurar comida noutro s\xEDtio!"
+  - A fome venceu-me. Adeus!
   impatientLeaveDelay: 3
   speechUI: {fileID: 7308702097472960885}
   isTucano: 0
@@ -995,6 +995,8 @@ MonoBehaviour:
   minFontSize: 7
   maxFontSize: 22
   fontSizeStep: 0.5
+  horizontalPadding: 6
+  verticalPadding: 4
   faceCamera: 1
   orderNumberScale: 0.35
   orderNumberImageSize: {x: 120, y: 120}

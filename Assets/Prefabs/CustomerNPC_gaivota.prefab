@@ -456,15 +456,17 @@ MonoBehaviour:
   moveSpeed: 14
   eatTime: 2
   happyComments:
-  - Que maravilha
-  - Comida Comida COMIDAAA
+  - Ahhh, finalmente comida!
+  - Comida! Comida! COMIDAAA!!!
   - "Chefe, qual \xE9 a receita?"
+  - "Esta carne \xE9 viciante!"
+  - Preciso de outro destes!
   impatientComments:
-  - Demoraste muito! Vou embora!
+  - Vou embora antes que desmaie!
   - Estou farto de esperar!
-  - "Que servi\uFFFDo lento!"
-  - "J\uFFFD perdi a fome!"
-  - "Vou comer noutro s\uFFFDtio!"
+  - "Que servi\xE7o lento!"
+  - "J\xE1 perdi a fome de tanto stress!"
+  - "N\xE3o aguento mais, vou embora!"
   impatientLeaveDelay: 3
   speechUI: {fileID: 5494391676580021966}
   isTucano: 0

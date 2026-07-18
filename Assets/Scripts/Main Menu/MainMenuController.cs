@@ -41,8 +41,8 @@ public class MainMenuController : MonoBehaviour
             AudioManager.Instance.StopBackgroundMusic();
         }
 
-        // Novo jogo começa sempre no primeiro nível.
-        LevelProgress.SaveCurrentLevel(levelSceneName);
+        // Novo jogo começa sempre do início e apaga progresso antigo.
+        LevelProgress.ClearProgress();
 
         SceneManager.LoadScene(levelSceneName);
     }

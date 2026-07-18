@@ -121,13 +121,26 @@ public class DayManager : MonoBehaviour
 
     private void SaveProgressForThisLevel()
     {
-        if (levelConfig != null && !string.IsNullOrWhiteSpace(levelConfig.sceneName))
+        // O Level1 não conta como progresso para o botão Continuar.
+        // O progresso só deve existir depois de o jogador passar para o Level2 ou Level3.
+        if (levelConfig != null)
         {
-            LevelProgress.SaveCurrentLevel(levelConfig.sceneName);
-            return;
+            if (levelConfig.dayNumber <= 1)
+                return;
+
+            if (!string.IsNullOrWhiteSpace(levelConfig.sceneName))
+            {
+                LevelProgress.SaveCurrentLevel(levelConfig.sceneName);
+                return;
+            }
         }
 
-        LevelProgress.SaveCurrentLevel(SceneManager.GetActiveScene().name);
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        if (currentSceneName == "Level1")
+            return;
+
+        LevelProgress.SaveCurrentLevel(currentSceneName);
     }
 
     public LevelConfig GetLevelConfig()

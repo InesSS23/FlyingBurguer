@@ -136,7 +136,7 @@ public class GameplayHUDPolish : MonoBehaviour
         promptKeyText = CreateText("Comando", keyBadge.transform, 18);
         promptKeyText.text = "<b>CLIQUE</b>";
         promptKeyText.color = cream;
-        promptKeyText.enableWordWrapping = false;
+        promptKeyText.textWrappingMode = TextWrappingModes.NoWrap;
         promptKeyText.overflowMode = TextOverflowModes.Overflow;
         RectTransform keyTextRect = promptKeyText.rectTransform;
         keyTextRect.offsetMin = new Vector2(5f, 3f);
