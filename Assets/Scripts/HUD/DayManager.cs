@@ -121,8 +121,8 @@ public class DayManager : MonoBehaviour
 
     private void SaveProgressForThisLevel()
     {
-        // O Level1 não conta como progresso para o botão Continuar.
-        // O progresso só deve existir depois de o jogador passar para o Level2 ou Level3.
+        // O Level1 nï¿½o conta como progresso para o botï¿½o Continuar.
+        // O progresso sï¿½ deve existir depois de o jogador passar para o Level2 ou Level3.
         if (levelConfig != null)
         {
             if (levelConfig.dayNumber <= 1)
@@ -171,6 +171,12 @@ public class DayManager : MonoBehaviour
         UpdateUI();
 
         Debug.Log("pontos atuais: " + currentScore);
+
+        // termina o dia assim que o objetivo e atingido, sem esperar que o tempo acabe
+        if (currentScore >= targetScore)
+        {
+            FinishDay();
+        }
     }
 
     public int GetCurrentScore()
@@ -233,6 +239,9 @@ public class DayManager : MonoBehaviour
         {
             AudioManager.Instance.StopBackgroundMusic();
             AudioManager.Instance.StopAllLoopingSFX();
+
+            if (success)
+                AudioManager.Instance.PlayDayCompleteSFX();
         }
 
         if (pauseMenuController != null)

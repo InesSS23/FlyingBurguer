@@ -34,6 +34,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip orderHappySFX;
     [SerializeField] private AudioClip orderAngrySFX;
     [SerializeField] private AudioClip newOrderBellSFX;
+    [SerializeField] private AudioClip dayCompleteSFX;
 
     [Header("Volume Settings")]
     [SerializeField] private float defaultBGMVolume = 0.5f;
@@ -68,6 +69,7 @@ public class AudioManager : MonoBehaviour
     private const float ORDER_HAPPY_VOLUME = 0.9f;
     private const float ORDER_ANGRY_VOLUME = 0.9f;
     private const float NEW_ORDER_BELL_VOLUME = 1.25f;
+    private const float DAY_COMPLETE_VOLUME = 1.2f;
 
     private float bgmVolume;
     private float sfxVolume;
@@ -433,6 +435,11 @@ public class AudioManager : MonoBehaviour
     public void PlayNewOrderBellSFX()
     {
         PlaySFX(newOrderBellSFX, NEW_ORDER_BELL_VOLUME);
+    }
+
+    public void PlayDayCompleteSFX()
+    {
+        PlaySFX(dayCompleteSFX, DAY_COMPLETE_VOLUME);
     }
 
     public void SetBGMVolume(float volume)
